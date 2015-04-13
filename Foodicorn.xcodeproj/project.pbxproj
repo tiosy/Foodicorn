@@ -27,6 +27,11 @@
 		6EE7E7741ADC64EF00CF6B9D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7E7731ADC64EF00CF6B9D /* SystemConfiguration.framework */; };
 		6EE7E7761ADC650800CF6B9D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7E7751ADC650800CF6B9D /* libz.dylib */; };
 		6EE7E7781ADC651D00CF6B9D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7E7771ADC651D00CF6B9D /* libsqlite3.dylib */; };
+		6EE7E77C1ADC6D6C00CF6B9D /* FDPFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7E77B1ADC6D6C00CF6B9D /* FDPFUser.m */; };
+		6EE7E77F1ADC6E2400CF6B9D /* FDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7E77E1ADC6E2400CF6B9D /* FDUser.m */; };
+		6EE7E7821ADC6F4E00CF6B9D /* TYUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7E7811ADC6F4E00CF6B9D /* TYUtility.m */; };
+		6EE7E7861ADC70B500CF6B9D /* FDDish.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7E7851ADC70B500CF6B9D /* FDDish.m */; };
+		6EE7E7891ADC727B00CF6B9D /* FDTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7E7881ADC727B00CF6B9D /* FDTransaction.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +71,16 @@
 		6EE7E7731ADC64EF00CF6B9D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6EE7E7751ADC650800CF6B9D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		6EE7E7771ADC651D00CF6B9D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		6EE7E77A1ADC6D6C00CF6B9D /* FDPFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDPFUser.h; sourceTree = "<group>"; };
+		6EE7E77B1ADC6D6C00CF6B9D /* FDPFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDPFUser.m; sourceTree = "<group>"; };
+		6EE7E77D1ADC6E2400CF6B9D /* FDUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDUser.h; sourceTree = "<group>"; };
+		6EE7E77E1ADC6E2400CF6B9D /* FDUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDUser.m; sourceTree = "<group>"; };
+		6EE7E7801ADC6F4E00CF6B9D /* TYUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYUtility.h; sourceTree = "<group>"; };
+		6EE7E7811ADC6F4E00CF6B9D /* TYUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYUtility.m; sourceTree = "<group>"; };
+		6EE7E7841ADC70B500CF6B9D /* FDDish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDish.h; sourceTree = "<group>"; };
+		6EE7E7851ADC70B500CF6B9D /* FDDish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDish.m; sourceTree = "<group>"; };
+		6EE7E7871ADC727B00CF6B9D /* FDTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTransaction.h; sourceTree = "<group>"; };
+		6EE7E7881ADC727B00CF6B9D /* FDTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTransaction.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +135,7 @@
 		6EA8A4121ADC5FA900C6BD62 /* Foodicorn */ = {
 			isa = PBXGroup;
 			children = (
+				6EE7E7831ADC6F6700CF6B9D /* Utilities */,
 				6EE7E7791ADC666900CF6B9D /* Data Model */,
 				6EA8A4171ADC5FA900C6BD62 /* AppDelegate.h */,
 				6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */,
@@ -183,8 +199,25 @@
 		6EE7E7791ADC666900CF6B9D /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				6EE7E77A1ADC6D6C00CF6B9D /* FDPFUser.h */,
+				6EE7E77B1ADC6D6C00CF6B9D /* FDPFUser.m */,
+				6EE7E77D1ADC6E2400CF6B9D /* FDUser.h */,
+				6EE7E77E1ADC6E2400CF6B9D /* FDUser.m */,
+				6EE7E7841ADC70B500CF6B9D /* FDDish.h */,
+				6EE7E7851ADC70B500CF6B9D /* FDDish.m */,
+				6EE7E7871ADC727B00CF6B9D /* FDTransaction.h */,
+				6EE7E7881ADC727B00CF6B9D /* FDTransaction.m */,
 			);
 			name = "Data Model";
+			sourceTree = "<group>";
+		};
+		6EE7E7831ADC6F6700CF6B9D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6EE7E7801ADC6F4E00CF6B9D /* TYUtility.h */,
+				6EE7E7811ADC6F4E00CF6B9D /* TYUtility.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,9 +320,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EE7E77C1ADC6D6C00CF6B9D /* FDPFUser.m in Sources */,
+				6EE7E7821ADC6F4E00CF6B9D /* TYUtility.m in Sources */,
+				6EE7E7891ADC727B00CF6B9D /* FDTransaction.m in Sources */,
 				6EA8A41C1ADC5FA900C6BD62 /* ViewController.m in Sources */,
+				6EE7E7861ADC70B500CF6B9D /* FDDish.m in Sources */,
 				6EA8A4191ADC5FA900C6BD62 /* AppDelegate.m in Sources */,
 				6EA8A4161ADC5FA900C6BD62 /* main.m in Sources */,
+				6EE7E77F1ADC6E2400CF6B9D /* FDUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
