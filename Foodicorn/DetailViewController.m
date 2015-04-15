@@ -22,10 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [Yummly detailDictionaryFromDictionary:self.recipeId completeHandler:^(Yummly *yummly) {
+    [Yummly detailDictionaryFromDictionary:self.recipeID completeHandler:^(Yummly *yummly) {
         self.yummly = yummly;
 
-        NSLog(@"RecipeId is %@", self.recipeId);
+        NSLog(@"RecipeId is %@", self.recipeID);
 
         //Converting image
         NSURL *url = [NSURL URLWithString:self.yummly.urlString360];

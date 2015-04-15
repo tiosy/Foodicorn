@@ -7,15 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		334846691ADD8984003B0296 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334846681ADD8984003B0296 /* SearchViewController.m */; };
-		3348466C1ADE282E003B0296 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3348466B1ADE282E003B0296 /* DetailViewController.m */; };
+		3396E4F61ADF1B2900AE53BB /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3396E4F51ADF1B2900AE53BB /* SearchViewController.m */; };
 		33D857F61ADC99C5006EBEE0 /* Yummly.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D857F51ADC99C5006EBEE0 /* Yummly.m */; };
 		6EA8A4161ADC5FA900C6BD62 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A4151ADC5FA900C6BD62 /* main.m */; };
 		6EA8A4191ADC5FA900C6BD62 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */; };
 		6EA8A41C1ADC5FA900C6BD62 /* JustinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A41B1ADC5FA900C6BD62 /* JustinViewController.m */; };
-		6EA8A41F1ADC5FA900C6BD62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EA8A41D1ADC5FA900C6BD62 /* Main.storyboard */; };
 		6EA8A4211ADC5FA900C6BD62 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EA8A4201ADC5FA900C6BD62 /* Images.xcassets */; };
-		6EA8A4241ADC5FA900C6BD62 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EA8A4221ADC5FA900C6BD62 /* LaunchScreen.xib */; };
 		6EA8A4301ADC5FA900C6BD62 /* FoodicornTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A42F1ADC5FA900C6BD62 /* FoodicornTests.m */; };
 		6EE7E7601ADC640C00CF6B9D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7E75F1ADC640C00CF6B9D /* Parse.framework */; };
 		6EE7E7621ADC641D00CF6B9D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7E7611ADC641D00CF6B9D /* Bolts.framework */; };
@@ -41,7 +38,6 @@
 		E15A3C671ADDF01D00F63159 /* FavCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15A3C661ADDF01D00F63159 /* FavCollectionViewCell.m */; };
 		E15A3C6A1ADDF15200F63159 /* FavTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15A3C691ADDF15200F63159 /* FavTableViewCell.m */; };
 		E15A3C6D1ADE05F500F63159 /* FavView.m in Sources */ = {isa = PBXBuildFile; fileRef = E15A3C6C1ADE05F500F63159 /* FavView.m */; };
-		E186FFC91ADEE9E900F1981F /* a.png in Resources */ = {isa = PBXBuildFile; fileRef = E186FFC81ADEE9E900F1981F /* a.png */; };
 		E186FFCC1ADEEFA600F1981F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E186FFCB1ADEEFA600F1981F /* ProfileViewController.m */; };
 		E186FFCF1ADEF11800F1981F /* ProfileCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E186FFCE1ADEF11800F1981F /* ProfileCollectionViewCell.m */; };
 /* End PBXBuildFile section */
@@ -57,10 +53,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		334846671ADD8984003B0296 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
-		334846681ADD8984003B0296 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		3348466A1ADE282E003B0296 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		3348466B1ADE282E003B0296 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		3396E4F41ADF1B2900AE53BB /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = ../SearchViewController.h; sourceTree = "<group>"; };
+		3396E4F51ADF1B2900AE53BB /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = ../SearchViewController.m; sourceTree = "<group>"; };
 		33D857F41ADC99C5006EBEE0 /* Yummly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yummly.h; sourceTree = "<group>"; };
 		33D857F51ADC99C5006EBEE0 /* Yummly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Yummly.m; sourceTree = "<group>"; };
 		6EA8A4101ADC5FA900C6BD62 /* Foodicorn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodicorn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,7 +107,6 @@
 		E15A3C691ADDF15200F63159 /* FavTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavTableViewCell.m; sourceTree = "<group>"; };
 		E15A3C6B1ADE05F500F63159 /* FavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavView.h; sourceTree = "<group>"; };
 		E15A3C6C1ADE05F500F63159 /* FavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavView.m; sourceTree = "<group>"; };
-		E186FFC81ADEE9E900F1981F /* a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a.png; sourceTree = "<group>"; };
 		E186FFCA1ADEEFA600F1981F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		E186FFCB1ADEEFA600F1981F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		E186FFCD1ADEF11800F1981F /* ProfileCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCollectionViewCell.h; sourceTree = "<group>"; };
@@ -176,6 +171,8 @@
 				6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */,
 				33D857F41ADC99C5006EBEE0 /* Yummly.h */,
 				33D857F51ADC99C5006EBEE0 /* Yummly.m */,
+				3396E4F41ADF1B2900AE53BB /* SearchViewController.h */,
+				3396E4F51ADF1B2900AE53BB /* SearchViewController.m */,
 				6EA8A41A1ADC5FA900C6BD62 /* JustinViewController.h */,
 				6EA8A41B1ADC5FA900C6BD62 /* JustinViewController.m */,
 				3348466A1ADE282E003B0296 /* DetailViewController.h */,
@@ -254,8 +251,6 @@
 		6EE7E7791ADC666900CF6B9D /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				33D857F41ADC99C5006EBEE0 /* Yummly.h */,
-				33D857F51ADC99C5006EBEE0 /* Yummly.m */,
 				6EE7E77A1ADC6D6C00CF6B9D /* FDPFUser.h */,
 				6EE7E77B1ADC6D6C00CF6B9D /* FDPFUser.m */,
 				6EE7E77D1ADC6E2400CF6B9D /* FDUser.h */,
@@ -357,9 +352,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EA8A41F1ADC5FA900C6BD62 /* Main.storyboard in Resources */,
-				E186FFC91ADEE9E900F1981F /* a.png in Resources */,
-				6EA8A4241ADC5FA900C6BD62 /* LaunchScreen.xib in Resources */,
 				6EA8A4211ADC5FA900C6BD62 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,9 +372,9 @@
 			files = (
 				6EE7E77C1ADC6D6C00CF6B9D /* FDPFUser.m in Sources */,
 				E15A3C6D1ADE05F500F63159 /* FavView.m in Sources */,
+				3396E4F61ADF1B2900AE53BB /* SearchViewController.m in Sources */,
 				E15A3C6A1ADDF15200F63159 /* FavTableViewCell.m in Sources */,
 				33D857F61ADC99C5006EBEE0 /* Yummly.m in Sources */,
-				334846691ADD8984003B0296 /* SearchViewController.m in Sources */,
 				6EE7E7821ADC6F4E00CF6B9D /* TYUtility.m in Sources */,
 				6EE7E7891ADC727B00CF6B9D /* FDTransaction.m in Sources */,
 				E11A42F21ADD88EB0051FB83 /* MainFeedTableViewCell.m in Sources */,
@@ -390,7 +382,6 @@
 				E15A3C641ADDD4BD00F63159 /* FavoriteViewController.m in Sources */,
 				E186FFCC1ADEEFA600F1981F /* ProfileViewController.m in Sources */,
 				6EE7E7861ADC70B500CF6B9D /* FDDish.m in Sources */,
-				3348466C1ADE282E003B0296 /* DetailViewController.m in Sources */,
 				6EA8A4191ADC5FA900C6BD62 /* AppDelegate.m in Sources */,
 				E186FFCF1ADEF11800F1981F /* ProfileCollectionViewCell.m in Sources */,
 				E11A42F51ADD8B2A0051FB83 /* MainFeedViewController.m in Sources */,

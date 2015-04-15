@@ -1,8 +1,8 @@
 //
-//  SearchViewController.h
+//  SearchViewController2.h
 //  Foodicorn
 //
-//  Created by Justin Haar on 4/14/15.
+//  Created by Justin Haar on 4/15/15.
 //  Copyright (c) 2015 Timothy Yeh. All rights reserved.
 //
 

@@ -1,5 +1,5 @@
 //
-//  SearchViewController.m
+//  SearchViewController2.m
 //  Foodicorn
 //
 //  Created by Justin Haar on 4/14/15.
@@ -26,7 +26,7 @@
 @property NSMutableArray *stringsArray;
 @property NSString *urlText;
 @property NSMutableArray *cellSelectedArray;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -228,16 +228,8 @@
     JustinViewController *justinVC = segue.destinationViewController;
     self.urlText = [[self.stringsArray valueForKey:@"description"] componentsJoinedByString:@""];
     justinVC.urlText = self.urlText;
-//    NSLog(@"The Url Text is %@", self.urlText);
-
+    //    NSLog(@"The Url Text is %@", self.urlText);
+    
 }
-
-
-
-
-
-
-
-
 
 @end

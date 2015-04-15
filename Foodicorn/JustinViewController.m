@@ -71,8 +71,8 @@
     DetailViewController *detailVC = segue.destinationViewController;
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     self.yummly = [self.recipes objectAtIndex:indexPath.row];
-//    self.friend = [self.filteredFriends objectAtIndex:indexPath.row];
-    detailVC.recipeId = self.yummly.recipeId ;
+//    detailVC.recipeID = self.yummly.recipeId ;
+//    detailVC.recipeID = self.yummly.recipeId;
 }
 
 @end
