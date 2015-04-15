@@ -20,14 +20,16 @@
         self.recipeId = [dictionary objectForKey:@"id"];
         self.thumbnailString = [[dictionary objectForKey:@"smallImageUrls"]objectAtIndex:0];
         self.recipeName = [dictionary objectForKey:@"recipeName"];
+        self.sourceId = [dictionary objectForKey:@"sourceDisplayName"];
     }
     return self;
 }
 
 +(void)recipeArrayFromDictionaryArray:(NSString *)urlString completeHandler:(void (^)(NSArray *))complete
 {
-    NSString *string = [NSString stringWithFormat:@"http://api.yummly.com/v1/api/recipes?_app_id=6ad7e65d&_app_key=7754c5b595a890cdb54ca45ed4072020&requirePictures=true&maxResult=6&start=0"];
+    NSString *string = [NSString stringWithFormat:@"http://api.yummly.com/v1/api/recipes?_app_id=6ad7e65d&_app_key=7754c5b595a890cdb54ca45ed4072020&requirePictures=true&maxResult=20&start=0"];
     string = [string stringByAppendingString:urlString];
+    NSLog(@"==%@==", string);
     NSURL *url = [NSURL URLWithString:string];
     [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
      {
@@ -42,10 +44,18 @@
      }];
 }
 
-//+(void)detailedArrayFromDictionaryArray:(void(^)(NSArray *))complete
-//{
-//    NSURL *url = [NSURL URLWithString:@"http://api.yummly.com/v1/api/recipe/%@?_app_id=6ad7e65d &_app_key=7754c5b595a890cdb54ca45ed4072020", self.recipeId];
-//
-//}
++(void)detailArrayFromDictionaryArray:(NSString *)recipeId completeHandler:(void (^)(NSArray *))complete{
+    NSString *string1 = @"http://api.yummly.com/v1/api/recipe/";
+    NSString *string2 = recipeId;
+    NSString *string3 = @"?_app_id=6ad7e65d &_app_key=7754c5b595a890cdb54ca45ed4072020";
+    NSString *string4 = [NSString stringWithFormat:@"%@%@%@", string1, string2, string3];
+    NSURL *url = [NSURL URLWithString:string4];
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        NSDictionary *recipeDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+         
+    }];
+
+}
+
 
 @end

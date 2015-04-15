@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		334846691ADD8984003B0296 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334846681ADD8984003B0296 /* SearchViewController.m */; };
+		3348466C1ADE282E003B0296 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3348466B1ADE282E003B0296 /* DetailViewController.m */; };
 		33D857F61ADC99C5006EBEE0 /* Yummly.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D857F51ADC99C5006EBEE0 /* Yummly.m */; };
 		6EA8A4161ADC5FA900C6BD62 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A4151ADC5FA900C6BD62 /* main.m */; };
 		6EA8A4191ADC5FA900C6BD62 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */; };
@@ -49,6 +50,8 @@
 /* Begin PBXFileReference section */
 		334846671ADD8984003B0296 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		334846681ADD8984003B0296 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		3348466A1ADE282E003B0296 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		3348466B1ADE282E003B0296 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		33D857F41ADC99C5006EBEE0 /* Yummly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yummly.h; sourceTree = "<group>"; };
 		33D857F51ADC99C5006EBEE0 /* Yummly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Yummly.m; sourceTree = "<group>"; };
 		6EA8A4101ADC5FA900C6BD62 /* Foodicorn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodicorn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,10 +150,12 @@
 				6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */,
 				33D857F41ADC99C5006EBEE0 /* Yummly.h */,
 				33D857F51ADC99C5006EBEE0 /* Yummly.m */,
-				6EA8A41A1ADC5FA900C6BD62 /* JustinViewController.h */,
-				6EA8A41B1ADC5FA900C6BD62 /* JustinViewController.m */,
 				334846671ADD8984003B0296 /* SearchViewController.h */,
 				334846681ADD8984003B0296 /* SearchViewController.m */,
+				6EA8A41A1ADC5FA900C6BD62 /* JustinViewController.h */,
+				6EA8A41B1ADC5FA900C6BD62 /* JustinViewController.m */,
+				3348466A1ADE282E003B0296 /* DetailViewController.h */,
+				3348466B1ADE282E003B0296 /* DetailViewController.m */,
 				6EA8A41D1ADC5FA900C6BD62 /* Main.storyboard */,
 				6EA8A4201ADC5FA900C6BD62 /* Images.xcassets */,
 				6EA8A4221ADC5FA900C6BD62 /* LaunchScreen.xib */,
@@ -337,6 +342,7 @@
 				6EE7E7891ADC727B00CF6B9D /* FDTransaction.m in Sources */,
 				6EA8A41C1ADC5FA900C6BD62 /* JustinViewController.m in Sources */,
 				6EE7E7861ADC70B500CF6B9D /* FDDish.m in Sources */,
+				3348466C1ADE282E003B0296 /* DetailViewController.m in Sources */,
 				6EA8A4191ADC5FA900C6BD62 /* AppDelegate.m in Sources */,
 				6EA8A4161ADC5FA900C6BD62 /* main.m in Sources */,
 				6EE7E77F1ADC6E2400CF6B9D /* FDUser.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "JustinViewController.h"
 #import "Yummly.h"
+#import "DetailViewController.h"
 
 @interface JustinViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -48,7 +49,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"recipe"];
     Yummly *recipe = [self.recipes objectAtIndex:indexPath.row];
     cell.textLabel.text = recipe.recipeName;
-    cell.detailTextLabel.text = recipe.recipeId;
+    cell.detailTextLabel.text = recipe.sourceId;
 
     NSString *thumnailImage = recipe.thumbnailString;
     NSURL *url = [NSURL URLWithString:thumnailImage];
@@ -64,6 +65,11 @@
 }
 
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    DetailViewController *detailVC = segue.destinationViewController;
+
+}
 
 @end
 

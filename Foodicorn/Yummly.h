@@ -13,6 +13,7 @@
 @property NSString *imageUrl;
 @property NSArray *ingredients;
 @property NSString *recipeId;
+@property NSString *sourceId;
 @property NSString *thumbnailString;
 @property NSString *recipeName;
 @property NSString *urlText;

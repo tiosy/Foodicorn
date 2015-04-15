@@ -39,7 +39,7 @@
     self.stringsArray = [NSMutableArray new];
     self.urlText = [self.stringsArray valueForKey:@"description"];
     self.cellSelectedArray = [NSMutableArray new];
-    self.searchBar.placeholder = @"Enter Keyword For Recipe Title, Ingredient, Cuisine, Course, Holiday, Diet, or Allergy";
+    self.searchBar.placeholder = @"Enter Any Keyword";
 
     //TODO: Cut down number of arrays. Very difficult to manage multiple arrays in this fashion, would be better off using array of arrays. EX: NSArray *someArray = @[@[], @[], @[]];
 
@@ -51,11 +51,11 @@
 
     //TODO: Make custom NSObjects that have a display name property (NSString) that will be the correct value from allowedAllergies. Second property of urlString (NSString) that will be the correct value from allowedAllergiesStringsArray. This will make one array where we were currently using two.
     self.allowedAllergies = [NSArray arrayWithObjects:@"Dairy-free", @"Egg-free", @"Gluten-free", @"Peanut-free", @"Seafood-free", @"Sesame-free", @"Soy-free", @"Sulfite-free", @"Tree nut-free", @"Wheat-free", nil];
-    self.allowedAllergiesStringsArray = [NSArray arrayWithObjects:@"&allowedallergy[]=^Dairy-free", @"&allowedallergy[]=^Egg-free", @"&allowedallergy[]=^Gluten-free", @"&allowedallergy[]=^Peanut-free", @"&allowedallergy[]=^Seafood-free", @"&allowedallergy[]=^Sesame-free", @"&allowedallergy[]=^Soy-free", @"&allowedallergy[]=^Sulfite-free", @"&allowedallergy[]=^Tree+nut-free", @"&allowedallergy[]=^Wheat-free", nil];
+    self.allowedAllergiesStringsArray = [NSArray arrayWithObjects:@"&allowedallergy[]=396^Dairy-free", @"&allowedallergy[]=397^Egg-free", @"&allowedallergy[]=393^Gluten-free", @"&allowedallergy[]=394^Peanut-free", @"&allowedallergy[]=398^Seafood-free", @"&allowedallergy[]=399^Sesame-free", @"&allowedallergy[]=400^Soy-free", @"&allowedallergy[]=401^Sulfite-free", @"&allowedallergy[]=395^Tree+nut-free", @"&allowedallergy[]=392^Wheat-free", nil];
 
     //TODO:
     self.allowedDiets = [NSArray arrayWithObjects:@"Lacto vegetarian", @"Ovo vegetarian", @"Pescetarian", @"Vegan", @"Vegetarian", nil];
-    self.allowedDietsStringsArray = [NSArray arrayWithObjects:@"&allowedDiet[]=^Lacto+vegetarian", @"&allowedDiet[]=^Ovo+vegetarian", @"&allowedDiet[]=^Pescetarian", @"&allowedDiet[]=^Vegan", @"&allowedDiet[]=^Vegetarian", nil];
+    self.allowedDietsStringsArray = [NSArray arrayWithObjects:@"&allowedDiet[]=388^Lacto+vegetarian", @"&allowedDiet[]=389^Ovo+vegetarian", @"&allowedDiet[]=390^Pescetarian", @"&allowedDiet[]=386^Vegan", @"&allowedDiet[]=387^Vegetarian", nil];
 
     self.allowedCuisines = [NSArray arrayWithObjects:@"American", @"Italian", @"Asian", @"Mexican", @"Southern & Soul Food", @"French", @"Southwestern", @"Barbecue", @"Indian", @"Chinese", @"Cajun & Creole", @"English", @"Mediterranean", @"Greek", @"Spanish", @"German", @"Thai", @"Moroccan", @"Irish", @"Japanese", @"Cuban", @"Hawaiin", @"Swedish", @"Hungarian", @"Portugese", nil];
     self.allowedCuisinesStringsArray = [NSArray arrayWithObjects:@"&allowedCuisine[]=cuisine^cuisine-American", @"&allowedCuisine[]=cuisine^cuisine-Italian", @"&allowedCuisine[]=cuisine^cuisine-Asian", @"&allowedCuisine[]=cuisine^cuisine-Mexican", @"&allowedCuisine[]=cuisine^cuisine-Southern+&+Soul+Food", @"&allowedCuisine[]=cuisine^cuisine-French", @"&allowedCuisine[]=cuisine^cuisine-Southwestern", @"&allowedCuisine[]=cuisine^cuisine-Barbecue", @"&allowedCuisine[]=cuisine^cuisine-Indian", @"&allowedCuisine[]=cuisine^cuisine-Chinese", @"&allowedCuisine[]=cuisine^cuisine-Cajun+&+Creole", @"&allowedCuisine[]=cuisine^cuisine-English", @"&allowedCuisine[]=cuisine^cuisine-Mediterranean", @"&allowedCuisine[]=cuisine^cuisine-Greek", @"&allowedCuisine[]=cuisine^cuisine-Spanish", @"&allowedCuisine[]=cuisine^cuisine-German", @"&allowedCuisine[]=cuisine^cuisine-Thai", @"&allowedCuisine[]=cuisine^cuisine-Moroccan", @"&allowedCuisine[]=cuisine^cuisine-Irish", @"&allowedCuisine[]=cuisine^cuisine-Japanese", @"&allowedCuisine[]=cuisine^cuisine-Cuban", @"&allowedCuisine[]=cuisine^cuisine-Hawaiin", @"&allowedCuisine[]=cuisine^cuisine-Swedish", @"&allowedCuisine[]=cuisine^cuisine-Hungarian", @"&allowedCuisine[]=cuisine^cuisine-Portugese", nil];
@@ -66,13 +66,6 @@
     self.allowedHolidays = [NSArray arrayWithObjects:@"Christmas", @"Summer", @"Thanksgiving", @"New Year", @"Super Bowl / Game+Day", @"Halloween", @"Hanukkah", @"4th of July", nil];
     self.allowedHolidaysStringsArray = [NSArray arrayWithObjects:@"&allowedHoliday[]=holiday^holiday-Christmas", @"&allowedHoliday[]=holiday^holiday-Summer", @"&allowedHoliday[]=holiday^holiday-Thanksgiving", @"&allowedHoliday[]=holiday^holiday-New+Year", @"&allowedHoliday[]=holiday^holiday-Super+Bowl+/+Game+Day", @"&allowedHoliday[]=holiday^holiday-Halloween", @"&allowedHoliday[]=holiday^holiday-Hanukkah", @"&allowedHoliday[]=holiday^holiday-4th+of+July", nil];
 
-}
-
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    NSString *string = [NSString stringWithFormat:@"&q=%@", searchBar.text];
-    [self.stringsArray addObject:string];
-    [searchBar resignFirstResponder];
 }
 
 
@@ -113,6 +106,7 @@
     {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
+
 
     if (indexPath.section == 0)
     {
@@ -222,16 +216,21 @@
     }
 
     [self.tableView reloadData];
-    NSLog(@"The text is %@", self.stringsArray);
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSString *string = [NSString stringWithFormat:@"&q=%@", searchBar.text];
+    [self.stringsArray addObject:string];
+    [searchBar resignFirstResponder];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    self.urlText = [[self.stringsArray valueForKey:@"description"] componentsJoinedByString:@""];
     JustinViewController *justinVC = segue.destinationViewController;
+    self.urlText = [[self.stringsArray valueForKey:@"description"] componentsJoinedByString:@""];
     justinVC.urlText = self.urlText;
-    NSLog(@"The UrlText is %@", self.urlText);
-
+    NSLog(@"The Url Text is %@", self.urlText);
 
 }
 
