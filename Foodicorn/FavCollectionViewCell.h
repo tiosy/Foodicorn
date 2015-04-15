@@ -10,4 +10,6 @@
 
 @interface FavCollectionViewCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *favFoodImageView;
+
 @end

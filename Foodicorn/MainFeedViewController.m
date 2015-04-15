@@ -60,7 +60,8 @@
     cell.mainFeedImageView.image = [UIImage imageNamed:[dict objectForKey:@"dishImage"]];
     NSArray *likes = [dict objectForKey:@"likes"];
     cell.likesLabel.text = [NSString stringWithFormat:@"%ld", likes.count];
-
+    cell.userImage.image = [UIImage imageNamed:[dict objectForKey:@"userImageName"]];
+    
     return cell;
 }
 - (IBAction)onLikeButtonTap:(id)sender

@@ -61,6 +61,11 @@
                         ];
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.initialArray.count;
@@ -77,16 +82,11 @@
     cell.favTimeLabel.text  = [dict objectForKey:@"timeSince"];
 
 
-//    NSArray *collectionData = [cellData objectForKey:@"collections"];
-//    [cell setCollectionData:collectionData];
+    NSArray *collectionData = [dict objectForKey:@"collections"];
+    [cell setCollectionData:collectionData];
 
 
     return cell;
 }
-
-
-
-
-
 
 @end
