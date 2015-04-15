@@ -18,9 +18,21 @@
 @property NSString *recipeName;
 @property NSString *urlText;
 
+@property NSArray *detailimageUrls;
+@property NSString *urlString360;
+@property NSString *detailRecipeName;
+@property NSString *detailInstructionsUrl;
+@property NSArray *detailIngredients;
+@property NSString *detailIngredientsString;
+@property NSString *detailLogoUrl;
+
+
+
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 +(void)recipeArrayFromDictionaryArray:(NSString *)urlString completeHandler:(void (^)(NSArray *))complete;
-//+(void)detailedArrayFromDictionaryArray:(void(^)(NSArray *))complete;
+
+-(instancetype)initWithDetailDictionary:(NSDictionary *)dictionary;
++(void)detailDictionaryFromDictionary:(NSString *)recipeId completeHandler:(void (^)(Yummly *))complete;
 
 
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Yummly.h"
 
 @interface DetailViewController : UIViewController
+
+@property NSString *recipeId;
 
 @end
