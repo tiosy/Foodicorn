@@ -24,7 +24,7 @@
 
 + (NSString *)parseClassName;
 
-+(void) addTransaction:(UIImage *)userProfileImage userName:(NSString *)userName dishID:(NSString *)dishID dishImage:(UIImage *)dishImage likedBy:(NSArray *)likedBy transactionType:(NSString *)transactionType;
++(void) addTransaction:(UIImage *)userProfileImage userName:(NSString *)userName dishImage:(UIImage *)dishImage likedBy:(NSArray *)likedBy transactionType:(NSString *)transactionType;
 @end
 
 

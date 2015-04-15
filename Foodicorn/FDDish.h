@@ -8,6 +8,7 @@
 
 
 #import <Parse/Parse.h>
+#import "FDUser.h"
 
 @interface FDDish : PFObject<PFSubclassing>
 
@@ -16,8 +17,8 @@
 @property (nonatomic, strong) PFFile *imagePFFile;
 @property (nonatomic, strong) NSData *imageThumbnailNSData;
 @property (nonatomic, strong) NSArray *comments; // mids
-@property (nonatomic, strong) NSArray *likedBy; //uids
-@property (nonatomic, strong) NSString *uploadedBy; //uid
+@property (nonatomic, strong) NSArray *likedBy; // each element is FDUser
+@property (nonatomic, strong) FDUser *user; //
 
 + (NSString *)parseClassName;
 

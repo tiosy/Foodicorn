@@ -44,19 +44,19 @@
     return @"FDTransaction";
 }
 
-+(void) addTransaction:(UIImage *)userProfileImage userName:(NSString *)userName dishID:(NSString *)dishID dishImage:(UIImage *)dishImage likedBy:(NSArray *)likedBy transactionType:(NSString *)transactionType{
++(void) addTransaction:(UIImage *)userProfileImage userName:(NSString *)userName dishImage:(UIImage *)dishImage likedBy:(NSArray *)likedBy transactionType:(NSString *)transactionType{
 
     FDTransaction *xtran = [FDTransaction object];
 
     //UIImage-> NSData-> PFFile
     NSData *imageNSData = UIImagePNGRepresentation(userProfileImage);
-    xtran.userProfileImageNSData = imageNSData;
+    xtran.userProfileImageNSData = imageNSData;  // must be < 128KB
     NSString *fileWithName = xtran.objectId;
     PFFile *imagePFFile = [PFFile fileWithName:fileWithName data:imageNSData]; //use uniqe objectId as file name
     xtran.userProfileImagePFFile = imagePFFile;
 
     xtran.userName = userName;
-    xtran.dishID = dishID;
+    xtran.dishID = xtran.objectId;
 
     //UIImage-> NSData-> PFFile
     NSData *imageNSData2 = UIImagePNGRepresentation(dishImage);
