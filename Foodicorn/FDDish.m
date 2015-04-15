@@ -25,7 +25,7 @@
 @dynamic imageThumbnailNSData;
 @dynamic comments;
 @dynamic likedBy;
-@dynamic uploadedBy;
+@dynamic user;
 
 
 + (void)load {
@@ -51,7 +51,7 @@
     NSData *imageThumbnailNSData = UIImagePNGRepresentation(imageThumbnail);
     fddish.imageThumbnailNSData = imageThumbnailNSData;
 
-    fddish.uploadedBy = username;
+//    fddish.uploadedBy = username;
 
     [fddish saveInBackground];
 
