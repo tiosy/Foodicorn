@@ -19,9 +19,9 @@
 @property (nonatomic, strong) PFFile *profileThumbnailPFFile;
 @property (nonatomic, strong) NSData *profileThumbnailNSData;
 
-@property (nonatomic, strong) NSArray *followers; //contains NSString *uid
-@property (nonatomic, strong) NSArray *followings; //contains NSString *uid
-@property (nonatomic, strong) NSArray *likes; //contains NSString *pid
+@property (nonatomic, strong) NSArray *followers; //contains FDUser
+@property (nonatomic, strong) NSArray *followings; //contains FDUser
+@property (nonatomic, strong) NSArray *likes; //contains FDDish
 
 + (NSString *)parseClassName;
 
@@ -32,6 +32,6 @@
 //add user profile image
 +(void) addUserProfileImage:(NSString *)username userProfileImage: (UIImage *) userProfileImage;
 
--(void) addFollowing: (NSString *) currentUID followingUID:(NSString *) uid;
+-(void) addFollowing: (FDUser *) followingFDUser;
 
 @end

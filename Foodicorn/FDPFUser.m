@@ -10,4 +10,16 @@
 
 @implementation FDPFUser
 
+@dynamic fullName;
+@dynamic profileThumbnailImage;
+
++ (void)load {
+    [self registerSubclass];
+}
+
+//PFUser does not use this:
+//+ (NSString *)parseClassName {
+//    return @"TUPFUser";
+//}
+
 @end

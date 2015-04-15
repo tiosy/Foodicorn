@@ -57,15 +57,15 @@
 
 
     //add transaction
-    [FDTransaction addTransaction:username fid:fddish.fid type:@"addDish"];
-
+   // [FDTransaction addTransaction:username
 
 
 
 }
 
-// ???
--(void) likeDish:(NSString *)username{
+///??? TBD
+-(void) likeDish: (NSString *) username{
+
 //
 //    //self is the TUPhoto
 //
