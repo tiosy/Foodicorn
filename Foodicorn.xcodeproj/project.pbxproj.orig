@@ -174,8 +174,11 @@
 				6EE7E7791ADC666900CF6B9D /* Data Model */,
 				6EA8A4171ADC5FA900C6BD62 /* AppDelegate.h */,
 				6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */,
+<<<<<<< HEAD
+=======
 				33D857F41ADC99C5006EBEE0 /* Yummly.h */,
 				33D857F51ADC99C5006EBEE0 /* Yummly.m */,
+>>>>>>> newFavorite
 				6EA8A41A1ADC5FA900C6BD62 /* JustinViewController.h */,
 				6EA8A41B1ADC5FA900C6BD62 /* JustinViewController.m */,
 				334846671ADD8984003B0296 /* SearchViewController.h */,
@@ -256,8 +259,12 @@
 		6EE7E7791ADC666900CF6B9D /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				33D857F41ADC99C5006EBEE0 /* Yummly.h */,
 				33D857F51ADC99C5006EBEE0 /* Yummly.m */,
+=======
+				E186FFC81ADEE9E900F1981F /* a.png */,
+>>>>>>> newFavorite
 				6EE7E77A1ADC6D6C00CF6B9D /* FDPFUser.h */,
 				6EE7E77B1ADC6D6C00CF6B9D /* FDPFUser.m */,
 				6EE7E77D1ADC6E2400CF6B9D /* FDUser.h */,

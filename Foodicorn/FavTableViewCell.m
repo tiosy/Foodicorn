@@ -9,9 +9,11 @@
 #import "FavTableViewCell.h"
 #import "FavView.h"
 
+@interface FavTableViewCell ()
 
+@property (weak, nonatomic) IBOutlet FavView *favCellView;
 
-
+@end
 @implementation FavTableViewCell
 - (void)awakeFromNib {
     // Initialization code
@@ -25,7 +27,7 @@
 
 -(void) setCollectionData:(NSArray *)collectionData {
 
-//    [self.collectionView setCollectionData:collectionData];
+    [self.favCellView setCollectionData:collectionData];
 }
 
 @end
