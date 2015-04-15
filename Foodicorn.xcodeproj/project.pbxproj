@@ -141,6 +141,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6EA54BAE1ADF121100A9CE66 /* FavoriteView */ = {
+			isa = PBXGroup;
+			children = (
+				E15A3C621ADDD4BD00F63159 /* FavoriteViewController.h */,
+				E15A3C631ADDD4BD00F63159 /* FavoriteViewController.m */,
+				E15A3C681ADDF15200F63159 /* FavTableViewCell.h */,
+				E15A3C691ADDF15200F63159 /* FavTableViewCell.m */,
+				E15A3C6B1ADE05F500F63159 /* FavView.h */,
+				E15A3C6C1ADE05F500F63159 /* FavView.m */,
+				E15A3C651ADDF01D00F63159 /* FavCollectionViewCell.h */,
+				E15A3C661ADDF01D00F63159 /* FavCollectionViewCell.m */,
+			);
+			name = FavoriteView;
+			sourceTree = "<group>";
+		};
+		6EA54BAF1ADF12A300A9CE66 /* MainFeedView */ = {
+			isa = PBXGroup;
+			children = (
+				E11A42F31ADD8B2A0051FB83 /* MainFeedViewController.h */,
+				E11A42F41ADD8B2A0051FB83 /* MainFeedViewController.m */,
+				E11A42F01ADD88EB0051FB83 /* MainFeedTableViewCell.h */,
+				E11A42F11ADD88EB0051FB83 /* MainFeedTableViewCell.m */,
+			);
+			name = MainFeedView;
+			sourceTree = "<group>";
+		};
 		6EA8A4071ADC5FA900C6BD62 = {
 			isa = PBXGroup;
 			children = (
@@ -162,31 +188,21 @@
 		6EA8A4121ADC5FA900C6BD62 /* Foodicorn */ = {
 			isa = PBXGroup;
 			children = (
-				6EE7E7831ADC6F6700CF6B9D /* Utilities */,
-				6EE7E7791ADC666900CF6B9D /* Data Model */,
 				6EA8A4171ADC5FA900C6BD62 /* AppDelegate.h */,
 				6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */,
+				6EA8A41D1ADC5FA900C6BD62 /* Main.storyboard */,
+				6EA54BAE1ADF121100A9CE66 /* FavoriteView */,
+				6EA54BAF1ADF12A300A9CE66 /* MainFeedView */,
 				6EA8A41A1ADC5FA900C6BD62 /* JustinViewController.h */,
 				6EA8A41B1ADC5FA900C6BD62 /* JustinViewController.m */,
 				334846671ADD8984003B0296 /* SearchViewController.h */,
 				334846681ADD8984003B0296 /* SearchViewController.m */,
-				E11A42F31ADD8B2A0051FB83 /* MainFeedViewController.h */,
-				E11A42F41ADD8B2A0051FB83 /* MainFeedViewController.m */,
 				3348466A1ADE282E003B0296 /* DetailViewController.h */,
 				3348466B1ADE282E003B0296 /* DetailViewController.m */,
-				6EA8A41D1ADC5FA900C6BD62 /* Main.storyboard */,
-				E11A42F01ADD88EB0051FB83 /* MainFeedTableViewCell.h */,
-				E11A42F11ADD88EB0051FB83 /* MainFeedTableViewCell.m */,
-				E15A3C681ADDF15200F63159 /* FavTableViewCell.h */,
-				E15A3C691ADDF15200F63159 /* FavTableViewCell.m */,
-				E15A3C6B1ADE05F500F63159 /* FavView.h */,
-				E15A3C6C1ADE05F500F63159 /* FavView.m */,
-				E15A3C651ADDF01D00F63159 /* FavCollectionViewCell.h */,
-				E15A3C661ADDF01D00F63159 /* FavCollectionViewCell.m */,
-				E15A3C621ADDD4BD00F63159 /* FavoriteViewController.h */,
-				E15A3C631ADDD4BD00F63159 /* FavoriteViewController.m */,
 				6EA8A4201ADC5FA900C6BD62 /* Images.xcassets */,
 				6EA8A4221ADC5FA900C6BD62 /* LaunchScreen.xib */,
+				6EE7E7831ADC6F6700CF6B9D /* Utilities */,
+				6EE7E7791ADC666900CF6B9D /* Data Model */,
 				6EE7E75E1ADC63E200CF6B9D /* Frameworks */,
 				6EA8A4131ADC5FA900C6BD62 /* Supporting Files */,
 			);

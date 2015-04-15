@@ -67,7 +67,7 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    DetailViewController *detailVC = segue.destinationViewController;
+    //DetailViewController *detailVC = segue.destinationViewController;
 
 }
 
