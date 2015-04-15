@@ -41,7 +41,6 @@
 		E15A3C671ADDF01D00F63159 /* FavCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15A3C661ADDF01D00F63159 /* FavCollectionViewCell.m */; };
 		E15A3C6A1ADDF15200F63159 /* FavTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15A3C691ADDF15200F63159 /* FavTableViewCell.m */; };
 		E15A3C6D1ADE05F500F63159 /* FavView.m in Sources */ = {isa = PBXBuildFile; fileRef = E15A3C6C1ADE05F500F63159 /* FavView.m */; };
-		E186FFC91ADEE9E900F1981F /* a.png in Resources */ = {isa = PBXBuildFile; fileRef = E186FFC81ADEE9E900F1981F /* a.png */; };
 		E186FFCC1ADEEFA600F1981F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E186FFCB1ADEEFA600F1981F /* ProfileViewController.m */; };
 		E186FFCF1ADEF11800F1981F /* ProfileCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E186FFCE1ADEF11800F1981F /* ProfileCollectionViewCell.m */; };
 /* End PBXBuildFile section */
@@ -111,7 +110,6 @@
 		E15A3C691ADDF15200F63159 /* FavTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavTableViewCell.m; sourceTree = "<group>"; };
 		E15A3C6B1ADE05F500F63159 /* FavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavView.h; sourceTree = "<group>"; };
 		E15A3C6C1ADE05F500F63159 /* FavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavView.m; sourceTree = "<group>"; };
-		E186FFC81ADEE9E900F1981F /* a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a.png; sourceTree = "<group>"; };
 		E186FFCA1ADEEFA600F1981F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		E186FFCB1ADEEFA600F1981F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		E186FFCD1ADEF11800F1981F /* ProfileCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCollectionViewCell.h; sourceTree = "<group>"; };
@@ -256,8 +254,6 @@
 		6EE7E7791ADC666900CF6B9D /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				33D857F41ADC99C5006EBEE0 /* Yummly.h */,
-				33D857F51ADC99C5006EBEE0 /* Yummly.m */,
 				6EE7E77A1ADC6D6C00CF6B9D /* FDPFUser.h */,
 				6EE7E77B1ADC6D6C00CF6B9D /* FDPFUser.m */,
 				6EE7E77D1ADC6E2400CF6B9D /* FDUser.h */,
@@ -360,7 +356,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EA8A41F1ADC5FA900C6BD62 /* Main.storyboard in Resources */,
-				E186FFC91ADEE9E900F1981F /* a.png in Resources */,
 				6EA8A4241ADC5FA900C6BD62 /* LaunchScreen.xib in Resources */,
 				6EA8A4211ADC5FA900C6BD62 /* Images.xcassets in Resources */,
 			);
