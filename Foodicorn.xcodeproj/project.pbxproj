@@ -34,6 +34,12 @@
 		6EE7E7821ADC6F4E00CF6B9D /* TYUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7E7811ADC6F4E00CF6B9D /* TYUtility.m */; };
 		6EE7E7861ADC70B500CF6B9D /* FDDish.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7E7851ADC70B500CF6B9D /* FDDish.m */; };
 		6EE7E7891ADC727B00CF6B9D /* FDTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7E7881ADC727B00CF6B9D /* FDTransaction.m */; };
+		E11A42F21ADD88EB0051FB83 /* MainFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E11A42F11ADD88EB0051FB83 /* MainFeedTableViewCell.m */; };
+		E11A42F51ADD8B2A0051FB83 /* MainFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E11A42F41ADD8B2A0051FB83 /* MainFeedViewController.m */; };
+		E15A3C641ADDD4BD00F63159 /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15A3C631ADDD4BD00F63159 /* FavoriteViewController.m */; };
+		E15A3C671ADDF01D00F63159 /* FavCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15A3C661ADDF01D00F63159 /* FavCollectionViewCell.m */; };
+		E15A3C6A1ADDF15200F63159 /* FavTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E15A3C691ADDF15200F63159 /* FavTableViewCell.m */; };
+		E15A3C6D1ADE05F500F63159 /* FavView.m in Sources */ = {isa = PBXBuildFile; fileRef = E15A3C6C1ADE05F500F63159 /* FavView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +93,18 @@
 		6EE7E7851ADC70B500CF6B9D /* FDDish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDish.m; sourceTree = "<group>"; };
 		6EE7E7871ADC727B00CF6B9D /* FDTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTransaction.h; sourceTree = "<group>"; };
 		6EE7E7881ADC727B00CF6B9D /* FDTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDTransaction.m; sourceTree = "<group>"; };
+		E11A42F01ADD88EB0051FB83 /* MainFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainFeedTableViewCell.h; sourceTree = "<group>"; };
+		E11A42F11ADD88EB0051FB83 /* MainFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainFeedTableViewCell.m; sourceTree = "<group>"; };
+		E11A42F31ADD8B2A0051FB83 /* MainFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainFeedViewController.h; sourceTree = "<group>"; };
+		E11A42F41ADD8B2A0051FB83 /* MainFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainFeedViewController.m; sourceTree = "<group>"; };
+		E15A3C621ADDD4BD00F63159 /* FavoriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteViewController.h; sourceTree = "<group>"; };
+		E15A3C631ADDD4BD00F63159 /* FavoriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteViewController.m; sourceTree = "<group>"; };
+		E15A3C651ADDF01D00F63159 /* FavCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavCollectionViewCell.h; sourceTree = "<group>"; };
+		E15A3C661ADDF01D00F63159 /* FavCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavCollectionViewCell.m; sourceTree = "<group>"; };
+		E15A3C681ADDF15200F63159 /* FavTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavTableViewCell.h; sourceTree = "<group>"; };
+		E15A3C691ADDF15200F63159 /* FavTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavTableViewCell.m; sourceTree = "<group>"; };
+		E15A3C6B1ADE05F500F63159 /* FavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavView.h; sourceTree = "<group>"; };
+		E15A3C6C1ADE05F500F63159 /* FavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +169,19 @@
 				6EA8A41B1ADC5FA900C6BD62 /* JustinViewController.m */,
 				334846671ADD8984003B0296 /* SearchViewController.h */,
 				334846681ADD8984003B0296 /* SearchViewController.m */,
+				E11A42F31ADD8B2A0051FB83 /* MainFeedViewController.h */,
+				E11A42F41ADD8B2A0051FB83 /* MainFeedViewController.m */,
 				6EA8A41D1ADC5FA900C6BD62 /* Main.storyboard */,
+				E11A42F01ADD88EB0051FB83 /* MainFeedTableViewCell.h */,
+				E11A42F11ADD88EB0051FB83 /* MainFeedTableViewCell.m */,
+				E15A3C681ADDF15200F63159 /* FavTableViewCell.h */,
+				E15A3C691ADDF15200F63159 /* FavTableViewCell.m */,
+				E15A3C6B1ADE05F500F63159 /* FavView.h */,
+				E15A3C6C1ADE05F500F63159 /* FavView.m */,
+				E15A3C651ADDF01D00F63159 /* FavCollectionViewCell.h */,
+				E15A3C661ADDF01D00F63159 /* FavCollectionViewCell.m */,
+				E15A3C621ADDD4BD00F63159 /* FavoriteViewController.h */,
+				E15A3C631ADDD4BD00F63159 /* FavoriteViewController.m */,
 				6EA8A4201ADC5FA900C6BD62 /* Images.xcassets */,
 				6EA8A4221ADC5FA900C6BD62 /* LaunchScreen.xib */,
 				6EE7E75E1ADC63E200CF6B9D /* Frameworks */,
@@ -331,13 +361,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EE7E77C1ADC6D6C00CF6B9D /* FDPFUser.m in Sources */,
+				E15A3C6D1ADE05F500F63159 /* FavView.m in Sources */,
+				E15A3C6A1ADDF15200F63159 /* FavTableViewCell.m in Sources */,
 				33D857F61ADC99C5006EBEE0 /* Yummly.m in Sources */,
 				334846691ADD8984003B0296 /* SearchViewController.m in Sources */,
 				6EE7E7821ADC6F4E00CF6B9D /* TYUtility.m in Sources */,
 				6EE7E7891ADC727B00CF6B9D /* FDTransaction.m in Sources */,
+				E11A42F21ADD88EB0051FB83 /* MainFeedTableViewCell.m in Sources */,
 				6EA8A41C1ADC5FA900C6BD62 /* JustinViewController.m in Sources */,
+				E15A3C641ADDD4BD00F63159 /* FavoriteViewController.m in Sources */,
 				6EE7E7861ADC70B500CF6B9D /* FDDish.m in Sources */,
 				6EA8A4191ADC5FA900C6BD62 /* AppDelegate.m in Sources */,
+				E11A42F51ADD8B2A0051FB83 /* MainFeedViewController.m in Sources */,
+				E15A3C671ADDF01D00F63159 /* FavCollectionViewCell.m in Sources */,
 				6EA8A4161ADC5FA900C6BD62 /* main.m in Sources */,
 				6EE7E77F1ADC6E2400CF6B9D /* FDUser.m in Sources */,
 			);
