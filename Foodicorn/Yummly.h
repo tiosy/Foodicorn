@@ -15,10 +15,11 @@
 @property NSString *recipeId;
 @property NSString *thumbnailString;
 @property NSString *recipeName;
+@property NSString *urlText;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
-+(void)recipeArrayFromDictionaryArray:(void(^)(NSArray *))complete;
-+(void)detailedArrayFromDictionaryArray:(void(^)(NSArray *))complete;
++(void)recipeArrayFromDictionaryArray:(NSString *)urlString completeHandler:(void (^)(NSArray *))complete;
+//+(void)detailedArrayFromDictionaryArray:(void(^)(NSArray *))complete;
 
 
 @end

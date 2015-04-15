@@ -24,11 +24,11 @@
     return self;
 }
 
-+(void)recipeArrayFromDictionaryArray:(void (^)(NSArray *))complete
++(void)recipeArrayFromDictionaryArray:(NSString *)urlString completeHandler:(void (^)(NSArray *))complete
 {
-    NSURL *url = [NSURL URLWithString:@"http://api.yummly.com/v1/api/recipes?_app_id=6ad7e65d&_app_key=7754c5b595a890cdb54ca45ed4072020&q=chicken&requirePictures=true"];
-//                  &allowedAllergy[]=396^Dairy-Free&allowedDiet[]=390^Pescetarian&allowedCuisine[]=cuisine^cuisine-american&allowedCourse[]=course^course-Appetizers&allowedHoliday[]=holiday^holiday-thanksgiving&maxResult=6&start=0"];
-                  //string1+string2, allowedallergy, allowed diet,allowed cuisine,allowed course, allowed holiday.
+    NSString *string = [NSString stringWithFormat:@"http://api.yummly.com/v1/api/recipes?_app_id=6ad7e65d&_app_key=7754c5b595a890cdb54ca45ed4072020&requirePictures=true&maxResult=6&start=0"];
+    string = [string stringByAppendingString:urlString];
+    NSURL *url = [NSURL URLWithString:string];
     [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
      {
          NSDictionary *recipeDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];

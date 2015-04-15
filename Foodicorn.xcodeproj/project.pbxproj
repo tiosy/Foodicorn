@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		334846691ADD8984003B0296 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334846681ADD8984003B0296 /* SearchViewController.m */; };
 		33D857F61ADC99C5006EBEE0 /* Yummly.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D857F51ADC99C5006EBEE0 /* Yummly.m */; };
 		6EA8A4161ADC5FA900C6BD62 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A4151ADC5FA900C6BD62 /* main.m */; };
 		6EA8A4191ADC5FA900C6BD62 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */; };
@@ -46,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		334846671ADD8984003B0296 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		334846681ADD8984003B0296 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		33D857F41ADC99C5006EBEE0 /* Yummly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yummly.h; sourceTree = "<group>"; };
 		33D857F51ADC99C5006EBEE0 /* Yummly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Yummly.m; sourceTree = "<group>"; };
 		6EA8A4101ADC5FA900C6BD62 /* Foodicorn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodicorn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +149,8 @@
 				33D857F51ADC99C5006EBEE0 /* Yummly.m */,
 				6EA8A41A1ADC5FA900C6BD62 /* JustinViewController.h */,
 				6EA8A41B1ADC5FA900C6BD62 /* JustinViewController.m */,
+				334846671ADD8984003B0296 /* SearchViewController.h */,
+				334846681ADD8984003B0296 /* SearchViewController.m */,
 				6EA8A41D1ADC5FA900C6BD62 /* Main.storyboard */,
 				6EA8A4201ADC5FA900C6BD62 /* Images.xcassets */,
 				6EA8A4221ADC5FA900C6BD62 /* LaunchScreen.xib */,
@@ -327,6 +332,7 @@
 			files = (
 				6EE7E77C1ADC6D6C00CF6B9D /* FDPFUser.m in Sources */,
 				33D857F61ADC99C5006EBEE0 /* Yummly.m in Sources */,
+				334846691ADD8984003B0296 /* SearchViewController.m in Sources */,
 				6EE7E7821ADC6F4E00CF6B9D /* TYUtility.m in Sources */,
 				6EE7E7891ADC727B00CF6B9D /* FDTransaction.m in Sources */,
 				6EA8A41C1ADC5FA900C6BD62 /* JustinViewController.m in Sources */,

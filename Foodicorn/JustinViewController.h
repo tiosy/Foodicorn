@@ -11,6 +11,7 @@
 
 @interface JustinViewController : UIViewController
 
+@property NSString *urlText;
 
 @end
 
