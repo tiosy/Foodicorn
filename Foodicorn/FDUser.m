@@ -31,7 +31,7 @@
 }
 
 + (NSString *)parseClassName {
-    return @"TUUser";
+    return @"FDUser";
 }
 
 
@@ -50,14 +50,14 @@
 //add user profile image
 +(void) addUserProfileImage:(NSString *)username userProfileImage: (UIImage *) userProfileImage {
 
-    //retrieve the TUUser first
+    //retrieve the FDUser first
     PFQuery *query = [FDUser query];
     [query whereKey:@"username" equalTo:username];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
 
-            //retrieve the TUUser
+            //retrieve the FDUser
             FDUser *fduser = [objects firstObject];
 
             NSLog(@"%@", fduser.username);
@@ -82,48 +82,46 @@
 
 
 
+-(void) addFollowing: (FDUser *) followingFDUser{
 
-
-
--(void) addFollowing: (NSString *) currentUID followingUID:(NSString *) uid{
-
-    if(self)
-    {
-        [self addUniqueObject:uid forKey:@"followings"];
-        [self saveInBackground];
-
-        //now write follower(aka currentUID) to uid
-        //retrieve the TUUser
-        PFQuery *query = [FDUser query];
-        [query whereKey:@"uid" equalTo:uid];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                // The find succeeded.
-
-                //retrieve the TUPhoto
-                FDUser *fduser = [objects firstObject];
-                [fduser addUniqueObject:currentUID forKey:@"followers"];
-                [fduser saveInBackground];
-
-                //add transaction
-
-
-
-
-            } else {
-                // Log details of the failure
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
-            }
-        }];
-        
-        
-    }
-    
-    
-    
-    
-    
 }
+
+
+//-(void) addFollowing: (NSString *) currentUID followingUID:(NSString *) uid{
+//
+//    if(self)
+//    {
+//        [self addUniqueObject:uid forKey:@"followings"];
+//        [self saveInBackground];
+//
+//        //now write follower(aka currentUID) to uid
+//        //retrieve the FDUser
+//        PFQuery *query = [FDUser query];
+//        [query whereKey:@"uid" equalTo:uid];
+//        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//            if (!error) {
+//                // The find succeeded.
+//
+//                //retrieve the fduser
+//                FDUser *fduser = [objects firstObject];
+//                [fduser addUniqueObject:currentUID forKey:@"followers"];
+//                [fduser saveInBackground];
+//
+//                //add transaction
+//
+//
+//
+//
+//            } else {
+//                // Log details of the failure
+//                NSLog(@"Error: %@ %@", error, [error userInfo]);
+//            }
+//        }];
+//        
+//        
+//    }
+//    
+//}
 
 
 
