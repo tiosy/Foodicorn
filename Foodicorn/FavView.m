@@ -26,7 +26,6 @@
     
 }
 
-
 #pragma mark - UICollectionViewDataSource methods
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
@@ -41,7 +40,14 @@
     FavCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cvCell" forIndexPath:indexPath];
     NSDictionary *cellData = [self.collectionData objectAtIndex:[indexPath row]];
     NSString *imageName = [cellData objectForKey:@"dishImageName"];
-//    cell.imageFood.image =  [UIImage imageNamed:imageName];
+    cell.favFoodImageView.image =  [UIImage imageNamed:imageName];
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    NSLog(@"collection cell selected %ld", indexPath.row);
+
 }
 @end

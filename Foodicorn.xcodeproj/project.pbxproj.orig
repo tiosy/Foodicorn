@@ -174,14 +174,19 @@
 				6EE7E7791ADC666900CF6B9D /* Data Model */,
 				6EA8A4171ADC5FA900C6BD62 /* AppDelegate.h */,
 				6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */,
+<<<<<<< HEAD
+=======
 				33D857F41ADC99C5006EBEE0 /* Yummly.h */,
 				33D857F51ADC99C5006EBEE0 /* Yummly.m */,
+>>>>>>> newFavorite
 				6EA8A41A1ADC5FA900C6BD62 /* JustinViewController.h */,
 				6EA8A41B1ADC5FA900C6BD62 /* JustinViewController.m */,
-				3348466A1ADE282E003B0296 /* DetailViewController.h */,
-				3348466B1ADE282E003B0296 /* DetailViewController.m */,
+				334846671ADD8984003B0296 /* SearchViewController.h */,
+				334846681ADD8984003B0296 /* SearchViewController.m */,
 				E11A42F31ADD8B2A0051FB83 /* MainFeedViewController.h */,
 				E11A42F41ADD8B2A0051FB83 /* MainFeedViewController.m */,
+				3348466A1ADE282E003B0296 /* DetailViewController.h */,
+				3348466B1ADE282E003B0296 /* DetailViewController.m */,
 				6EA8A41D1ADC5FA900C6BD62 /* Main.storyboard */,
 				E186FFCA1ADEEFA600F1981F /* ProfileViewController.h */,
 				E186FFCB1ADEEFA600F1981F /* ProfileViewController.m */,
@@ -254,8 +259,12 @@
 		6EE7E7791ADC666900CF6B9D /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				33D857F41ADC99C5006EBEE0 /* Yummly.h */,
 				33D857F51ADC99C5006EBEE0 /* Yummly.m */,
+=======
+				E186FFC81ADEE9E900F1981F /* a.png */,
+>>>>>>> newFavorite
 				6EE7E77A1ADC6D6C00CF6B9D /* FDPFUser.h */,
 				6EE7E77B1ADC6D6C00CF6B9D /* FDPFUser.m */,
 				6EE7E77D1ADC6E2400CF6B9D /* FDUser.h */,

@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *likesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *mainFeedImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
 
 
 @end
