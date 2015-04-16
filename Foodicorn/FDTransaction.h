@@ -11,16 +11,20 @@
 
 @interface FDTransaction : PFObject<PFSubclassing>
 
-@property NSString *xtranID;
-@property NSString *uid; //user ID
-@property NSString *fid; // FOOD DISH ID
-@property NSString *type;
+//it has 3 system generated properties: objectId, createdAt, updatedAt
+
+@property NSData *userProfileImageNSData;
+@property PFFile *userProfileImagePFFile;
+@property NSString *userName;
+@property NSString *dishID;
+@property PFFile *dishImagePFFile;
+@property NSArray *likedBy;  //each element is FDUser
+@property NSString *transactionType;
 
 
 + (NSString *)parseClassName;
 
-+(void) addTransaction:(NSString *)uid fid:(NSString *)fid type:(NSString *)type;
-
++(void) addTransaction:(UIImage *)userProfileImage userName:(NSString *)userName dishImage:(UIImage *)dishImage likedBy:(NSArray *)likedBy transactionType:(NSString *)transactionType;
 @end
 
 
