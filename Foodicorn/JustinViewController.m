@@ -14,6 +14,7 @@
 
 @property (nonatomic)  NSArray *recipes;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property Yummly *yummly;
 
 
 @end
@@ -47,11 +48,11 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"recipe"];
-    Yummly *recipe = [self.recipes objectAtIndex:indexPath.row];
-    cell.textLabel.text = recipe.recipeName;
-    cell.detailTextLabel.text = recipe.sourceId;
+    self.yummly = [self.recipes objectAtIndex:indexPath.row];
+    cell.textLabel.text = self.yummly.recipeName;
+    cell.detailTextLabel.text = self.yummly.sourceId;
 
-    NSString *thumnailImage = recipe.thumbnailString;
+    NSString *thumnailImage = self.yummly.thumbnailString;
     NSURL *url = [NSURL URLWithString:thumnailImage];
     NSData *data = [[NSData alloc]initWithContentsOfURL:url];
     cell.imageView.image = [UIImage imageWithData:data];
@@ -68,7 +69,9 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     DetailViewController *detailVC = segue.destinationViewController;
-
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    self.yummly = [self.recipes objectAtIndex:indexPath.row];
+    detailVC.recipeID = self.yummly.recipeId ;
 }
 
 @end
