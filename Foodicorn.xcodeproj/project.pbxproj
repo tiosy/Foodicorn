@@ -15,6 +15,7 @@
 		3360242C1AE012A50058422B /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3360242B1AE012A50058422B /* Profile.storyboard */; };
 		3360242F1AE014740058422B /* RootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3360242E1AE014740058422B /* RootTabBarController.m */; };
 		336024361AE0227C0058422B /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 336024351AE0227C0058422B /* Detail.storyboard */; };
+		336024391AE02E990058422B /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 336024381AE02E990058422B /* WebViewController.m */; };
 		33D857F61ADC99C5006EBEE0 /* Yummly.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D857F51ADC99C5006EBEE0 /* Yummly.m */; };
 		6EA8A4161ADC5FA900C6BD62 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A4151ADC5FA900C6BD62 /* main.m */; };
 		6EA8A4191ADC5FA900C6BD62 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */; };
@@ -73,6 +74,8 @@
 		3360242D1AE014740058422B /* RootTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTabBarController.h; sourceTree = "<group>"; };
 		3360242E1AE014740058422B /* RootTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTabBarController.m; sourceTree = "<group>"; };
 		336024351AE0227C0058422B /* Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		336024371AE02E990058422B /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		336024381AE02E990058422B /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		33D857F41ADC99C5006EBEE0 /* Yummly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yummly.h; sourceTree = "<group>"; };
 		33D857F51ADC99C5006EBEE0 /* Yummly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Yummly.m; sourceTree = "<group>"; };
 		6EA8A4101ADC5FA900C6BD62 /* Foodicorn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodicorn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +212,8 @@
 			children = (
 				3348466A1ADE282E003B0296 /* DetailViewController.h */,
 				3348466B1ADE282E003B0296 /* DetailViewController.m */,
+				336024371AE02E990058422B /* WebViewController.h */,
+				336024381AE02E990058422B /* WebViewController.m */,
 				336024351AE0227C0058422B /* Detail.storyboard */,
 			);
 			name = "Detail Group";
@@ -441,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EE7E77C1ADC6D6C00CF6B9D /* FDPFUser.m in Sources */,
+				336024391AE02E990058422B /* WebViewController.m in Sources */,
 				3360242F1AE014740058422B /* RootTabBarController.m in Sources */,
 				E15A3C6D1ADE05F500F63159 /* FavView.m in Sources */,
 				E15A3C6A1ADDF15200F63159 /* FavTableViewCell.m in Sources */,

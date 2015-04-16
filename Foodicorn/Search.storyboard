@@ -54,10 +54,10 @@
                                 <exclude reference="Wdr-Nz-Fu8"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="VSv-0B-7fl"/>
                                 <exclude reference="CTG-Oi-a6y"/>
                                 <exclude reference="cRP-7S-Pio"/>
                                 <exclude reference="rCB-L8-vD1"/>
-                                <exclude reference="VSv-0B-7fl"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -65,10 +65,10 @@
                                 <include reference="Wdr-Nz-Fu8"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="VSv-0B-7fl"/>
                                 <include reference="CTG-Oi-a6y"/>
                                 <include reference="cRP-7S-Pio"/>
                                 <include reference="rCB-L8-vD1"/>
-                                <include reference="VSv-0B-7fl"/>
                             </mask>
                         </variation>
                     </view>
@@ -150,10 +150,10 @@
                                 <exclude reference="6ih-Ti-Jsa"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="mKh-Sg-lcE"/>
                                 <exclude reference="2iU-f7-nJP"/>
                                 <exclude reference="5nh-Xk-9Mr"/>
                                 <exclude reference="y6m-gW-Y4k"/>
+                                <exclude reference="mKh-Sg-lcE"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -161,10 +161,10 @@
                                 <include reference="6ih-Ti-Jsa"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="mKh-Sg-lcE"/>
                                 <include reference="2iU-f7-nJP"/>
                                 <include reference="5nh-Xk-9Mr"/>
                                 <include reference="y6m-gW-Y4k"/>
+                                <include reference="mKh-Sg-lcE"/>
                             </mask>
                         </variation>
                     </view>

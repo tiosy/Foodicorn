@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "WebViewController.h"
 #import "Yummly.h"
 
 @interface DetailViewController ()
@@ -45,8 +46,12 @@
 }
 
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    WebViewController *webVC = segue.destinationViewController;
+    webVC.yummly = self.yummly;
 
-- (IBAction)onInstructionsButtonTapped:(UIButton *)sender {
 }
+
 
 @end

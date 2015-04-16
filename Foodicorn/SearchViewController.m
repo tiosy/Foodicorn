@@ -220,7 +220,11 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSString *string = [NSString stringWithFormat:@"&q=%@", searchBar.text];
+    NSString *firstString = [searchBar.text mutableCopy];
+    NSMutableString *searchString = [[firstString stringByReplacingOccurrencesOfString:@" " withString:@"+"]mutableCopy];
+    NSString *string = [NSString stringWithFormat:@"&q=%@", searchString];
+    NSLog(@"%@", string);
+
     [self.stringsArray addObject:string];
     [searchBar resignFirstResponder];
 }

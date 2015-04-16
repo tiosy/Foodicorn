@@ -65,19 +65,15 @@
     return self.recipes.count;
 }
 
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
     DetailViewController *detailVC= [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
-    [self.navigationController pushViewController:detailVC animated:YES];
-}
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    DetailViewController *detailVC = segue.destinationViewController;
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     self.yummly = [self.recipes objectAtIndex:indexPath.row];
-    detailVC.recipeID = self.yummly.recipeId ;
+    detailVC.recipeID = self.yummly.recipeId ;    [self.navigationController pushViewController:detailVC animated:YES];
 }
+
 
 @end
 
