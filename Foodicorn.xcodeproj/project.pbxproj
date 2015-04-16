@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		334846691ADD8984003B0296 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334846681ADD8984003B0296 /* SearchViewController.m */; };
 		3348466C1ADE282E003B0296 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3348466B1ADE282E003B0296 /* DetailViewController.m */; };
+		336024231AE00F7F0058422B /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 336024221AE00F7F0058422B /* Search.storyboard */; };
 		33D857F61ADC99C5006EBEE0 /* Yummly.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D857F51ADC99C5006EBEE0 /* Yummly.m */; };
 		6EA8A4161ADC5FA900C6BD62 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A4151ADC5FA900C6BD62 /* main.m */; };
 		6EA8A4191ADC5FA900C6BD62 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */; };
@@ -60,6 +61,7 @@
 		334846681ADD8984003B0296 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		3348466A1ADE282E003B0296 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		3348466B1ADE282E003B0296 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		336024221AE00F7F0058422B /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		33D857F41ADC99C5006EBEE0 /* Yummly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yummly.h; sourceTree = "<group>"; };
 		33D857F51ADC99C5006EBEE0 /* Yummly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Yummly.m; sourceTree = "<group>"; };
 		6EA8A4101ADC5FA900C6BD62 /* Foodicorn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodicorn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +149,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		336024211AE00F290058422B /* Search Group */ = {
+			isa = PBXGroup;
+			children = (
+				336024221AE00F7F0058422B /* Search.storyboard */,
+			);
+			name = "Search Group";
+			sourceTree = "<group>";
+		};
 		6EA8A4071ADC5FA900C6BD62 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +178,7 @@
 		6EA8A4121ADC5FA900C6BD62 /* Foodicorn */ = {
 			isa = PBXGroup;
 			children = (
+				336024211AE00F290058422B /* Search Group */,
 				6EE7E7831ADC6F6700CF6B9D /* Utilities */,
 				6EE7E7791ADC666900CF6B9D /* Data Model */,
 				6EA8A4171ADC5FA900C6BD62 /* AppDelegate.h */,
@@ -357,6 +368,7 @@
 			files = (
 				6EA8A41F1ADC5FA900C6BD62 /* Main.storyboard in Resources */,
 				6EA8A4241ADC5FA900C6BD62 /* LaunchScreen.xib in Resources */,
+				336024231AE00F7F0058422B /* Search.storyboard in Resources */,
 				6EA8A4211ADC5FA900C6BD62 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
