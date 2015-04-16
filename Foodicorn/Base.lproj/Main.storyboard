@@ -1068,9 +1068,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="X4z-kO-9q5" kind="show" id="JH9-Uj-qmA"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1118,90 +1115,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UKZ-eq-vjp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1666.5" y="1152"/>
-        </scene>
-        <!--Detail View Controller-->
-        <scene sceneID="wDe-Ib-xfM">
-            <objects>
-                <viewController id="X4z-kO-9q5" customClass="DetailViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xtC-lX-hi5"/>
-                        <viewControllerLayoutGuide type="bottom" id="qYx-rR-iLc"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="39k-SW-sd0">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FNJ-na-fAl">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elq-fT-jHT">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="86" id="BtT-Yf-MnA"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="BtT-Yf-MnA"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="BtT-Yf-MnA"/>
-                                    </mask>
-                                </variation>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="qYx-rR-iLc" firstAttribute="top" secondItem="FNJ-na-fAl" secondAttribute="bottom" constant="240" id="4aq-HI-AF9">
-                                <variation key="widthClass=compact" constant="176"/>
-                            </constraint>
-                            <constraint firstItem="elq-fT-jHT" firstAttribute="leading" secondItem="39k-SW-sd0" secondAttribute="leadingMargin" constant="-16" id="8De-sK-PAC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FNJ-na-fAl" secondAttribute="trailing" constant="-16" id="8w4-4B-U2p"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="elq-fT-jHT" secondAttribute="trailing" constant="-16" id="Eao-9N-CEC"/>
-                            <constraint firstItem="FNJ-na-fAl" firstAttribute="leading" secondItem="39k-SW-sd0" secondAttribute="leadingMargin" constant="-16" id="qAW-Dh-VKk"/>
-                            <constraint firstItem="FNJ-na-fAl" firstAttribute="top" secondItem="xtC-lX-hi5" secondAttribute="bottom" id="wZN-Df-FeZ"/>
-                            <constraint firstItem="elq-fT-jHT" firstAttribute="top" secondItem="FNJ-na-fAl" secondAttribute="bottom" constant="8" id="wyG-Ao-xvV"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="FNJ-na-fAl"/>
-                                <exclude reference="elq-fT-jHT"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="4aq-HI-AF9"/>
-                                <exclude reference="8w4-4B-U2p"/>
-                                <exclude reference="qAW-Dh-VKk"/>
-                                <exclude reference="wZN-Df-FeZ"/>
-                                <exclude reference="8De-sK-PAC"/>
-                                <exclude reference="Eao-9N-CEC"/>
-                                <exclude reference="wyG-Ao-xvV"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="FNJ-na-fAl"/>
-                                <include reference="elq-fT-jHT"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="4aq-HI-AF9"/>
-                                <include reference="8w4-4B-U2p"/>
-                                <include reference="qAW-Dh-VKk"/>
-                                <include reference="wZN-Df-FeZ"/>
-                                <include reference="8De-sK-PAC"/>
-                                <include reference="Eao-9N-CEC"/>
-                                <include reference="wyG-Ao-xvV"/>
-                            </mask>
-                        </variation>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="45I-kc-CB3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2353.5" y="1152"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jv6-mH-A4A">
