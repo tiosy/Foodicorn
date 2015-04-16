@@ -1,5 +1,5 @@
 //
-//  SearchViewController.m
+//  SearchViewController2.m
 //  Foodicorn
 //
 //  Created by Justin Haar on 4/14/15.
@@ -26,7 +26,7 @@
 @property NSMutableArray *stringsArray;
 @property NSString *urlText;
 @property NSMutableArray *cellSelectedArray;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -35,9 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.urlText = @"";
     self.stringsArray = [NSMutableArray new];
-    self.urlText = [self.stringsArray valueForKey:@"description"];
     self.cellSelectedArray = [NSMutableArray new];
     self.searchBar.placeholder = @"Enter Any Keyword";
 
@@ -51,7 +49,7 @@
 
     //TODO: Make custom NSObjects that have a display name property (NSString) that will be the correct value from allowedAllergies. Second property of urlString (NSString) that will be the correct value from allowedAllergiesStringsArray. This will make one array where we were currently using two.
     self.allowedAllergies = [NSArray arrayWithObjects:@"Dairy-free", @"Egg-free", @"Gluten-free", @"Peanut-free", @"Seafood-free", @"Sesame-free", @"Soy-free", @"Sulfite-free", @"Tree nut-free", @"Wheat-free", nil];
-    self.allowedAllergiesStringsArray = [NSArray arrayWithObjects:@"&allowedallergy[]=396^Dairy-free", @"&allowedallergy[]=397^Egg-free", @"&allowedallergy[]=393^Gluten-free", @"&allowedallergy[]=394^Peanut-free", @"&allowedallergy[]=398^Seafood-free", @"&allowedallergy[]=399^Sesame-free", @"&allowedallergy[]=400^Soy-free", @"&allowedallergy[]=401^Sulfite-free", @"&allowedallergy[]=395^Tree+nut-free", @"&allowedallergy[]=392^Wheat-free", nil];
+    self.allowedAllergiesStringsArray = [NSArray arrayWithObjects:@"&allowedAllergy[]=396^Dairy-free", @"&allowedAllergy[]=397^Egg-free", @"&allowedAllergy[]=393^Gluten-free", @"&allowedAllergy[]=394^Peanut-free", @"&allowedAllergy[]=398^Seafood-free", @"&allowedAllergy[]=399^Sesame-free", @"&allowedAllergy[]=400^Soy-free", @"&allowedAllergy[]=401^Sulfite-free", @"&allowedAllergy[]=395^Tree+nut-free", @"&allowedAllergy[]=392^Wheat-free", nil];
 
     //TODO:
     self.allowedDiets = [NSArray arrayWithObjects:@"Lacto vegetarian", @"Ovo vegetarian", @"Pescetarian", @"Vegan", @"Vegetarian", nil];
@@ -230,16 +228,7 @@
     JustinViewController *justinVC = segue.destinationViewController;
     self.urlText = [[self.stringsArray valueForKey:@"description"] componentsJoinedByString:@""];
     justinVC.urlText = self.urlText;
-    NSLog(@"The Url Text is %@", self.urlText);
-
+    //    NSLog(@"The Url Text is %@", self.urlText);
+    
 }
-
-
-
-
-
-
-
-
-
 @end
