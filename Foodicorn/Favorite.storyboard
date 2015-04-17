@@ -69,8 +69,7 @@
                                                             <exclude reference="ZhE-Th-6V3"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="270" y="20" width="42" height="21"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="EP1-LT-j6Z"/>
                                                             <include reference="ZhE-Th-6V3"/>
@@ -82,8 +81,8 @@
                                                     <subviews>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aSc-ot-4ac">
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                                            <color key="backgroundColor" red="0.46510022099999998" green="0.46510022099999998" blue="0.46510022099999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cFV-D7-7dq">
+                                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cFV-D7-7dq">
                                                                 <size key="itemSize" width="100" height="100"/>
                                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -137,9 +136,6 @@
                                                                     </connections>
                                                                 </collectionViewCell>
                                                             </cells>
-                                                            <variation key="widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
-                                                            </variation>
                                                             <connections>
                                                                 <outlet property="dataSource" destination="82e-9d-4Eo" id="8GP-Ao-nad"/>
                                                                 <outlet property="delegate" destination="82e-9d-4Eo" id="Vzf-ZU-2c5"/>
@@ -164,8 +160,7 @@
                                                             <exclude reference="YQB-5o-HD8"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="49" width="320" height="100"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="subviews">
                                                             <include reference="aSc-ot-4ac"/>
                                                         </mask>
@@ -215,8 +210,7 @@
                                                             <exclude reference="cEh-WJ-PDN"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="134" y="17" width="128" height="21"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <exclude reference="0Nn-7A-4X1"/>
                                                             <include reference="5GP-VI-EAk"/>

@@ -27,7 +27,7 @@
 @property NSString *urlText;
 @property NSMutableArray *cellSelectedArray;
 @property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *searchBar;
-
+@property (nonatomic) CGFloat lastContentOffsetY;
 @end
 
 @implementation SearchViewController
@@ -239,4 +239,34 @@
     //    NSLog(@"The Url Text is %@", self.urlText);
     
 }
+
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+
+{
+
+    self.lastContentOffsetY = scrollView.contentOffset.y;
+
+}
+
+
+
+
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+
+{
+
+    if (self.lastContentOffsetY > scrollView.contentOffset.y) {
+
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+
+    } else if (self.lastContentOffsetY < scrollView.contentOffset.y) {
+
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+        
+    }
+    
+}
+
 @end

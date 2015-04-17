@@ -10,11 +10,15 @@
 #import "FavCollectionViewCell.h"
 #import "FavTableViewCell.h"
 #import "DetailViewController.h"
+#import "Yummly.h"
 
 @interface FavoriteViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *favTableView;
 @property NSArray *initialArray;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
+@property (nonatomic) CGFloat lastContentOffsetY;
+@property (nonatomic)  NSArray *recipes;
+@property Yummly *yummly;
 
 @end
 
@@ -22,6 +26,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [Yummly recipeArrayFromDictionaryArray:self.urlText completeHandler:^(NSArray *array) {
+        self.recipes = array;
+
+        NSLog(@"%@", self.recipes);
+    }];
+
 
     self.initialArray = @[ @{ @"cell": @"Cell A",
                            @"userImageName": @"person",
@@ -61,10 +72,11 @@
                                               ]
                            }
                         ];
-    self.tapGesture = [UITapGestureRecognizer new];
-    self.tapGesture.delegate = self;
-    self.tapGesture.enabled = YES;
+//    self.tapGesture = [UITapGestureRecognizer new];
+//    self.tapGesture.delegate = self;
+//    self.tapGesture.enabled = YES;
 }
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -102,6 +114,34 @@
 
 
     //pass the yummly object here
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+
+{
+
+    self.lastContentOffsetY = scrollView.contentOffset.y;
+
+}
+
+
+
+
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+
+{
+
+    if (self.lastContentOffsetY > scrollView.contentOffset.y) {
+
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+
+    } else if (self.lastContentOffsetY < scrollView.contentOffset.y) {
+
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+        
+    }
+    
 }
 
 

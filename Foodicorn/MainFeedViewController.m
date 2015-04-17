@@ -15,7 +15,7 @@
 @property NSArray *cellNames;
 @property NSMutableArray *tableViewArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (nonatomic) CGFloat lastContentOffsetY;
 @end
 
 @implementation MainFeedViewController
@@ -81,6 +81,34 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+
+{
+
+    self.lastContentOffsetY = scrollView.contentOffset.y;
+
+}
+
+
+
+
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+
+{
+
+    if (self.lastContentOffsetY > scrollView.contentOffset.y) {
+
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+
+    } else if (self.lastContentOffsetY < scrollView.contentOffset.y) {
+
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+        
+    }
+    
 }
 
 
