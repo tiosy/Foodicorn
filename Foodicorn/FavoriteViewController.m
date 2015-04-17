@@ -10,15 +10,14 @@
 #import "FavCollectionViewCell.h"
 #import "FavTableViewCell.h"
 #import "DetailViewController.h"
-#import "Yummly.h"
+#import "JustinViewController.h"
 
 @interface FavoriteViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *favTableView;
 @property NSArray *initialArray;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
 @property (nonatomic) CGFloat lastContentOffsetY;
-@property (nonatomic)  NSArray *recipes;
-@property Yummly *yummly;
+
 
 @end
 
@@ -28,12 +27,6 @@
     [super viewDidLoad];
 
     self.title = @"Like Activity";
-
-    [Yummly recipeArrayFromDictionaryArray:self.urlText completeHandler:^(NSArray *array) {
-        self.recipes = array;
-
-        NSLog(@"%@", self.recipes);
-    }];
 
 
     self.initialArray = @[ @{ @"cell": @"Cell A",
@@ -71,12 +64,15 @@
                                               @{ @"dishImageName": @"food5"},
                                               @{ @"dishImageName": @"food7"},
                                               @{ @"dishImageName": @"food8"}
-                                              ]
+                                              ],
+//                           @"recipeID" : @"Melt-in-Your-Mouth-Chicken-1066441",
+//                                           @"Yaki-Udon-With-Beef-571964",
+//                                           @"Vegetable-Sushi-Martha-Stewart"
+
+
                            }
                         ];
-//    self.tapGesture = [UITapGestureRecognizer new];
-//    self.tapGesture.delegate = self;
-//    self.tapGesture.enabled = YES;
+
 }
 
 
@@ -103,6 +99,7 @@
 
     NSArray *collectionData = [dict objectForKey:@"collections"];
     [cell setCollectionData:collectionData];
+
 
     [cell setParentVC:self];
     

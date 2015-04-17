@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -377,6 +377,7 @@
                         <viewControllerLayoutGuide type="bottom" id="MfG-Aa-NvA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="f3w-WF-erz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8oK-e1-Ruw">
@@ -473,12 +474,12 @@
                             <mask key="constraints">
                                 <exclude reference="4Sp-Xn-ts2"/>
                                 <exclude reference="4fc-yZ-UIH"/>
-                                <exclude reference="BsC-ns-AiK"/>
-                                <exclude reference="ctv-Jv-bYI"/>
-                                <exclude reference="7k9-nq-R1o"/>
-                                <exclude reference="VUP-17-mQw"/>
                                 <exclude reference="64R-me-Cyi"/>
                                 <exclude reference="Qci-SY-dSB"/>
+                                <exclude reference="7k9-nq-R1o"/>
+                                <exclude reference="VUP-17-mQw"/>
+                                <exclude reference="BsC-ns-AiK"/>
+                                <exclude reference="ctv-Jv-bYI"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -491,12 +492,12 @@
                             <mask key="constraints">
                                 <include reference="4Sp-Xn-ts2"/>
                                 <include reference="4fc-yZ-UIH"/>
-                                <include reference="BsC-ns-AiK"/>
-                                <include reference="ctv-Jv-bYI"/>
-                                <include reference="7k9-nq-R1o"/>
-                                <include reference="VUP-17-mQw"/>
                                 <include reference="64R-me-Cyi"/>
                                 <include reference="Qci-SY-dSB"/>
+                                <include reference="7k9-nq-R1o"/>
+                                <include reference="VUP-17-mQw"/>
+                                <include reference="BsC-ns-AiK"/>
+                                <include reference="ctv-Jv-bYI"/>
                             </mask>
                         </variation>
                     </view>
