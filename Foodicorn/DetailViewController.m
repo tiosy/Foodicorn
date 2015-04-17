@@ -51,7 +51,7 @@
         //add like to photo add photo to liked photos array of current userlike
     } else
     {
-        [self.likeButton setTitleColor:self.view.tintColor forState:UIControlStateNormal];
+        [self.likeButton setTitleColor:[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2] forState:UIControlStateNormal];
         [self.likeButton setTitle:@"Like" forState:UIControlStateNormal];
         self.likeButton.backgroundColor = [UIColor whiteColor];
     }

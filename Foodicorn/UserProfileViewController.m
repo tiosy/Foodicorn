@@ -30,8 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.followButton.tintColor = self.view.tintColor;
-
     self.followersTapGesture = [UITapGestureRecognizer new];
     self.followersTapGesture.delegate = self;
     self.followersTapGesture.enabled = YES;
@@ -94,7 +92,7 @@
 
     }else
     {
-        [self.followButton setTitleColor:self.view.tintColor forState:UIControlStateNormal];
+        [self.followButton setTitleColor:[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2] forState:UIControlStateNormal];
         [self.followButton setTitle:@"Follow" forState:UIControlStateNormal];
         self.followButton.backgroundColor = [UIColor whiteColor];
         //write code to unfollow a user
