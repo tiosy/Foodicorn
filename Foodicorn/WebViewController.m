@@ -11,8 +11,6 @@
 @interface WebViewController () <UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *barButtonItem;
 
 @end
 
@@ -26,7 +24,8 @@
     NSURL *url = [NSURL URLWithString:self.yummly.detailInstructionsUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
-    self.barButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareToSocialMedia)];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareToSocialMedia)];
+    self.navigationController.navigationItem.rightBarButtonItem = shareButton;
 }
 
 

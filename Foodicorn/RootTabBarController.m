@@ -29,6 +29,18 @@
 
     [self setViewControllers:@[mainNavVC, searchNavVC, favoriteNavVC, profileNavVC]];
 
+    mainNavVC.tabBarItem.image = [UIImage imageNamed:@"home"];
+    mainNavVC.tabBarItem.title = @"Home";
+
+    searchNavVC.tabBarItem.image = [UIImage imageNamed:@"search"];
+    searchNavVC.tabBarItem.title = @"Search";
+
+    favoriteNavVC.tabBarItem.image = [UIImage imageNamed:@"like"];
+    favoriteNavVC.tabBarItem.title = @"Likes";
+
+    profileNavVC.tabBarItem.image = [UIImage imageNamed:@"profile"];
+    profileNavVC.tabBarItem.title = @"Profile";
+
 }
 
 

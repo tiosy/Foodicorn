@@ -65,7 +65,7 @@
     self.allowedCoursesStringsArray = [NSArray arrayWithObjects:@"&allowedCourse[]=course^course-Main+Dishes", @"&allowedCourse[]=course^course-Desserts", @"&allowedCourse[]=course^course-Side+Dishes", @"&allowedCourse[]=course^course-Lunch+And+Snacks", @"&allowedCourse[]=course^course-Appetizers", @"&allowedCourse[]=course^course-Salads", @"&allowedCourse[]=course^course-Breads", @"&allowedCourse[]=course^course-Breakfast+And+Brunch", @"&allowedCourse[]=course^course-Soups", @"&allowedCourse[]=course^course-Beverages", @"&allowedCourse[]=course^course-Condiments+And+Sauces", @"&allowedCourse[]=course^course-Cocktails", nil];
 
     self.allowedHolidays = [NSArray arrayWithObjects:@"Christmas", @"Summer", @"Thanksgiving", @"New Year", @"Super Bowl / Game+Day", @"Halloween", @"Hanukkah", @"4th of July", nil];
-    self.allowedHolidaysStringsArray = [NSArray arrayWithObjects:@"&allowedHoliday[]=holiday^holiday-Christmas", @"&allowedholiday[]=holiday^holiday-Summer", @"&allowedHoliday[]=holiday^holiday-Thanksgiving", @"&allowedHoliday[]=holiday^holiday-New+Year", @"&allowedHoliday[]=holiday^holiday-Super+Bowl+/+Game+Day", @"&allowedHoliday[]=holiday^holiday-Halloween", @"&allowedHoliday[]=holiday^holiday-Hanukkah", @"&allowedHoliday[]=holiday^holiday-4th+Of+July", nil];
+    self.allowedHolidaysStringsArray = [NSArray arrayWithObjects:@"&allowedHoliday[]=holiday^holiday-christmas", @"&allowedholiday[]=holiday^holiday-summer", @"&allowedHoliday[]=holiday^holiday-thanksgiving", @"&allowedHoliday[]=holiday^holiday-new+year", @"&allowedHoliday[]=holiday^holiday-super-bowl", @"&allowedHoliday[]=holiday^holiday-halloween", @"&allowedHoliday[]=holiday^holiday-hanukkah", @"&allowedHoliday[]=holiday^holiday-4th+of+july", nil];
 
 }
 
@@ -159,6 +159,17 @@
     }
 }
 
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSString *firstString = [searchBar.text mutableCopy];
+    NSMutableString *searchString = [[firstString stringByReplacingOccurrencesOfString:@" " withString:@"+"]mutableCopy];
+    NSString *string = [NSString stringWithFormat:@"&q=%@", searchString];
+    NSLog(@"%@", string);
+
+    [self.stringsArray addObject:string];
+    [searchBar resignFirstResponder];
+}
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -219,16 +230,6 @@
     [self.tableView reloadData];
 }
 
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    NSString *firstString = [searchBar.text mutableCopy];
-    NSMutableString *searchString = [[firstString stringByReplacingOccurrencesOfString:@" " withString:@"+"]mutableCopy];
-    NSString *string = [NSString stringWithFormat:@"&q=%@", searchString];
-    NSLog(@"%@", string);
-
-    [self.stringsArray addObject:string];
-    [searchBar resignFirstResponder];
-}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
