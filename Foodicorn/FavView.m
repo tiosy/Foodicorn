@@ -10,6 +10,7 @@
 #import "FavoriteViewController.h"
 #import "FavCollectionViewCell.h"
 #import "DetailViewController.h"
+#import "Yummly.h"
 
 @interface FavView () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -57,8 +58,10 @@
     DetailViewController *detailVC = [detailStoryboard instantiateViewControllerWithIdentifier:@"DetailVC"];
     [self.parentVC showViewController:detailVC sender:self];
 //    [self.parentVC presentViewController:detailVC animated:YES completion:nil];
-
-
+    [self.parentVC presentViewController:detailVC animated:YES completion:nil];
+    NSDictionary *cellData = [self.collectionData objectAtIndex:[indexPath row]];
+    NSString *imageName = [cellData objectForKey:@"dishImageName"];
+    NSLog(@"%@", imageName);
 
 
     NSLog(@"collection cell selected %ld", indexPath.row);

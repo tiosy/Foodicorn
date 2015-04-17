@@ -72,7 +72,7 @@
     DetailViewController *detailVC= [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
     [self.navigationController pushViewController:detailVC animated:YES];
     self.yummly = [self.recipes objectAtIndex:indexPath.row];
-    detailVC.recipeID = self.yummly.recipeId ;
+    detailVC.recipeID = self.yummly.recipeId;
 }
 
 

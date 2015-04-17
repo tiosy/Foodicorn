@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *likersTapGesture;
 @property Yummly *yummly;
 
+@property (nonatomic) CGFloat lastContentOffsetY;
 @end
 
 @implementation MainFeedViewController
@@ -116,9 +117,33 @@
     //write code in here to pass people who liked the picture
 }
 
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+
+{
+
+    self.lastContentOffsetY = scrollView.contentOffset.y;
+
+}
 
 
 
+
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+
+{
+
+    if (self.lastContentOffsetY > scrollView.contentOffset.y) {
+
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+
+    } else if (self.lastContentOffsetY < scrollView.contentOffset.y) {
+
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+        
+    }
+    
+}
 
 
 @end

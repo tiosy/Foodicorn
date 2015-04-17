@@ -36,7 +36,7 @@
         NSData *data = [NSData dataWithContentsOfURL:url];
         self.imageView.image = [UIImage imageWithData:data];
         self.textView.text = self.yummly.detailIngredientsString;
-        
+
     }];
 }
 
