@@ -29,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.title = @"FOODiCORN";
     self.imageViewTapGesture = [UITapGestureRecognizer new];
     self.imageViewTapGesture.delegate = self;
     self.imageViewTapGesture.enabled = YES;

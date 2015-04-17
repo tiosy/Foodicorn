@@ -39,21 +39,28 @@
     self.followersTapGesture.delegate = self;
     self.followersTapGesture.enabled = YES;
     self.followersLabel.userInteractionEnabled = YES;
+    self.followersLabel.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
+    self.followersLabel.layer.borderWidth = 1.0;
+    self.followersLabel.layer.cornerRadius = 10;
+    self.followersLabel.clipsToBounds = YES;
 
     self.followingTapGesture = [UITapGestureRecognizer new];
     self.followingTapGesture.delegate = self;
     self.followingTapGesture.enabled = YES;
     self.followingsLabel.userInteractionEnabled = YES;
+    self.followingsLabel.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
+    self.followingsLabel.layer.borderWidth = 1.0;
+    self.followingsLabel.layer.cornerRadius = 10;
+    self.followingsLabel.clipsToBounds = YES;
 
     self.imageViewTapGesture = [UITapGestureRecognizer new];
     self.imageViewTapGesture.delegate = self;
     self.imageViewTapGesture.enabled = YES;
     self.profileImageView.userInteractionEnabled = YES;
-
-
-    //self.userNameLabel.text = passed user's username
-    //self.followersCountLabel = passed user's followers
-    //self.followingsCountLabel = passed user's followings
+    self.profileImageView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
+    self.profileImageView.layer.borderWidth = 2.0f;
+    self.profileImageView.layer.cornerRadius = 10;
+    self.profileImageView.clipsToBounds = YES;
 
     self.collectionDict = @{ @"cell": @"Cell A",
                               @"userImageName": @"person",
@@ -101,10 +108,9 @@
     //write code here to pass yummly recipe to detail
 }
 
-- (IBAction)onEditProfileButtonTap:(UIButton *)sender
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [self performSegueWithIdentifier:@"edit" sender:self];
-    //segue to edit profile view controller
+    
 }
 
 

@@ -11,6 +11,4 @@
 
 @interface FavoriteViewController : UIViewController
 
-@property NSString *urlText;
-
 @end

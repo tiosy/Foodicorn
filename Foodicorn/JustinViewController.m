@@ -51,11 +51,22 @@
     self.yummly = [self.recipes objectAtIndex:indexPath.row];
     cell.textLabel.text = self.yummly.recipeName;
     cell.detailTextLabel.text = self.yummly.sourceId;
+    if (indexPath.row %2 == 0) {
+        cell.backgroundColor = [UIColor whiteColor];
+    } else
+    {
+        cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    }
 
     NSString *thumnailImage = self.yummly.thumbnailString;
     NSURL *url = [NSURL URLWithString:thumnailImage];
     NSData *data = [[NSData alloc]initWithContentsOfURL:url];
     cell.imageView.image = [UIImage imageWithData:data];
+    cell.imageView.frame = CGRectMake(self.view.frame.size.width - 50, self.view.frame.size.height - 50, 50, 50);
+    cell.imageView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
+    cell.imageView.layer.borderWidth = 2.0f;
+    cell.imageView.layer.cornerRadius = cell.imageView.frame.size.width/2;
+    cell.imageView.clipsToBounds = YES;
     return cell;
 }
 

@@ -17,8 +17,7 @@
 @property NSArray *initialArray;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
 @property (nonatomic) CGFloat lastContentOffsetY;
-@property (nonatomic)  NSArray *recipes;
-@property Yummly *yummly;
+
 
 @end
 
@@ -28,12 +27,6 @@
     [super viewDidLoad];
 
     self.title = @"Like Activity";
-
-    [Yummly recipeArrayFromDictionaryArray:self.urlText completeHandler:^(NSArray *array) {
-        self.recipes = array;
-
-        NSLog(@"%@", self.recipes);
-    }];
 
 
     self.initialArray = @[ @{ @"cell": @"Cell A",
@@ -74,9 +67,7 @@
                                               ]
                            }
                         ];
-//    self.tapGesture = [UITapGestureRecognizer new];
-//    self.tapGesture.delegate = self;
-//    self.tapGesture.enabled = YES;
+
 }
 
 
@@ -125,9 +116,6 @@
     self.lastContentOffsetY = scrollView.contentOffset.y;
 
 }
-
-
-
 
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView

@@ -20,7 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *followersTapGesture;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *followingTapGesture;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *imageViewTapGesture;
+@property (weak, nonatomic) IBOutlet UIButton *followButton;
+
 
 @end
 
@@ -29,20 +30,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.followButton.tintColor = self.view.tintColor;
+
     self.followersTapGesture = [UITapGestureRecognizer new];
     self.followersTapGesture.delegate = self;
     self.followersTapGesture.enabled = YES;
     self.followersLabel.userInteractionEnabled = YES;
+    self.followersLabel.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
+    self.followersLabel.layer.borderWidth = 1.0;
+    self.followersLabel.layer.cornerRadius = 10;
+    self.followersLabel.clipsToBounds = YES;
 
     self.followingTapGesture = [UITapGestureRecognizer new];
     self.followingTapGesture.delegate = self;
     self.followingTapGesture.enabled = YES;
     self.followingsLabel.userInteractionEnabled = YES;
+    self.followingsLabel.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
+    self.followingsLabel.layer.borderWidth = 1.0;
+    self.followingsLabel.layer.cornerRadius = 10;
+    self.followingsLabel.clipsToBounds = YES;
 
-    self.imageViewTapGesture = [UITapGestureRecognizer new];
-    self.imageViewTapGesture.delegate = self;
-    self.imageViewTapGesture.enabled = YES;
-    self.profileImageView.userInteractionEnabled = YES;
+//    self.profileImageView.userInteractionEnabled = YES;
+    self.profileImageView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
+    self.profileImageView.layer.borderWidth  = 1.0;
+    self.profileImageView.layer.cornerRadius = 10;
+    self.profileImageView.clipsToBounds = YES;
     
 
     //self.userNameLabel.text = passed user's username
@@ -74,7 +86,19 @@
 #pragma mark - Button Methods
 - (IBAction)onFollowButtonTapped:(UIButton *)sender
 {
-    //write code to show that current user followed another user
+    if (![self.followButton.backgroundColor isEqual:[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2]]) {
+        self.followButton.backgroundColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
+        [self.followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
+        //write code to show that current user followed another user
+
+    }else
+    {
+        [self.followButton setTitleColor:self.view.tintColor forState:UIControlStateNormal];
+        [self.followButton setTitle:@"Follow" forState:UIControlStateNormal];
+        self.followButton.backgroundColor = [UIColor whiteColor];
+        //write code to unfollow a user
+    }
 }
 
 
