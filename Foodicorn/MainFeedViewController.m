@@ -66,12 +66,12 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
-    DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
-    [self.navigationController pushViewController:detailVC animated:YES];
-}
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
+//    DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
+//    [self.navigationController pushViewController:detailVC animated:YES];
+//}
 
 - (IBAction)onLikeButtonTap:(id)sender
 {
