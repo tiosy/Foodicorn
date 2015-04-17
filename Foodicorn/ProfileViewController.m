@@ -9,13 +9,20 @@
 #import "ProfileViewController.h"
 #import "ProfileCollectionViewCell.h"
 #import "DetailViewController.h"
+#import "LikersViewController.h"
+#import "EditProfileViewController.h"
 
-@interface ProfileViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface ProfileViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
-@property (weak, nonatomic) IBOutlet UILabel *profileUsernameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *profileFollowersLabel;
-@property (weak, nonatomic) IBOutlet UILabel *profileFollowingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followersCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followersLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followingsLabel;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *imageViewTapGesture;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *followersTapGesture;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *followingTapGesture;
 @property NSArray *collectionArray;
 @property NSDictionary *collectionDict;
 @end
@@ -25,6 +32,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //will change title to user.username
+    self.title = @"My Profile";
+
+    self.followersTapGesture = [UITapGestureRecognizer new];
+    self.followersTapGesture.delegate = self;
+    self.followersTapGesture.enabled = YES;
+    self.followersLabel.userInteractionEnabled = YES;
+
+    self.followingTapGesture = [UITapGestureRecognizer new];
+    self.followingTapGesture.delegate = self;
+    self.followingTapGesture.enabled = YES;
+    self.followingsLabel.userInteractionEnabled = YES;
+
+    self.imageViewTapGesture = [UITapGestureRecognizer new];
+    self.imageViewTapGesture.delegate = self;
+    self.imageViewTapGesture.enabled = YES;
+    self.profileImageView.userInteractionEnabled = YES;
+
+
+    //self.userNameLabel.text = passed user's username
+    //self.followersCountLabel = passed user's followers
+    //self.followingsCountLabel = passed user's followings
+
     self.collectionDict = @{ @"cell": @"Cell A",
                               @"userImageName": @"person",
                               @"userName": @"tylorswift",
@@ -54,9 +84,9 @@
     cell.profileCellImage.image = [UIImage imageNamed:cellImage];
     NSString *userImage = [self.collectionDict objectForKey:@"userImageName"];
     self.profileImageView.image =[UIImage imageNamed:userImage];
-    self.profileUsernameLabel.text = [self.collectionDict objectForKey:@"userName"];
-    self.profileFollowersLabel.text =[self.collectionDict objectForKey:@"numOfFollowers"];
-    self.profileFollowingLabel.text =[self.collectionDict objectForKey:@"numOfFollowing"];
+    self.userNameLabel.text = [self.collectionDict objectForKey:@"userName"];
+    self.followersCountLabel.text =[self.collectionDict objectForKey:@"numOfFollowers"];
+    self.followingCountLabel.text =[self.collectionDict objectForKey:@"numOfFollowing"];
 
 
 
@@ -68,11 +98,36 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
     DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
     [self.navigationController pushViewController:detailVC animated:YES];
+    //write code here to pass yummly recipe to detail
 }
 
-- (IBAction)onEditProfileButtonTap:(id)sender
+- (IBAction)onEditProfileButtonTap:(UIButton *)sender
 {
-    
+    [self performSegueWithIdentifier:@"edit" sender:self];
+    //segue to edit profile view controller
 }
 
+
+- (IBAction)editImageTapGesture:(UITapGestureRecognizer *)sender
+{
+    //write code to show image picker
+}
+
+
+- (IBAction)followersTapGesture:(UITapGestureRecognizer *)sender
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
+    LikersViewController *likersVC= [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
+    [self.navigationController pushViewController:likersVC animated:YES];
+    //write code here to pass user to likersVC and show followers
+}
+
+
+- (IBAction)followingTapGesture:(UITapGestureRecognizer *)sender
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
+    LikersViewController *likersVC= [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
+    [self.navigationController pushViewController:likersVC animated:YES];
+    //write code here to pass user to likersVC and show followings
+}
 @end

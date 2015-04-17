@@ -19,12 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.title = self.yummly.detailRecipeName;
+
     self.activityIndicator.hidesWhenStopped = YES;
 
     NSURL *url = [NSURL URLWithString:self.yummly.detailInstructionsUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareToSocialMedia)];
+    shareButton.style = UIBarButtonSystemItemAction;
     self.navigationController.navigationItem.rightBarButtonItem = shareButton;
 }
 

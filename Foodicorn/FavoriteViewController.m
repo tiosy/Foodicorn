@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.title = @"Like Activity";
+
     self.initialArray = @[ @{ @"cell": @"Cell A",
                            @"userImageName": @"person",
                            @"userName": @"tylorswift",

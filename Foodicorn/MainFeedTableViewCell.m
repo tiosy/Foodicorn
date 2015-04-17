@@ -12,6 +12,10 @@
 
 - (void)awakeFromNib {
     // Initialization code
+
+    self.usernameLabel.userInteractionEnabled = YES;
+    self.likesLabel.userInteractionEnabled = YES;
+    self.mainFeedImageView.userInteractionEnabled = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

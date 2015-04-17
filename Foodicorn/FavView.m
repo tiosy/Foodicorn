@@ -27,6 +27,9 @@
     [_collectionView reloadData];
 
     self.collectionView.delegate = self;
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:1].CGColor;
+    self.collectionView.layer.borderWidth = 2.0f;
 }
 
 #pragma mark - UICollectionViewDataSource methods
@@ -52,7 +55,8 @@
 
     UIStoryboard *detailStoryboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
     DetailViewController *detailVC = [detailStoryboard instantiateViewControllerWithIdentifier:@"DetailVC"];
-    [self.parentVC presentViewController:detailVC animated:YES completion:nil];
+    [self.parentVC showViewController:detailVC sender:self];
+//    [self.parentVC presentViewController:detailVC animated:YES completion:nil];
 
 
 

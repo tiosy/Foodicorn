@@ -16,6 +16,9 @@
 		3360242F1AE014740058422B /* RootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3360242E1AE014740058422B /* RootTabBarController.m */; };
 		336024361AE0227C0058422B /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 336024351AE0227C0058422B /* Detail.storyboard */; };
 		336024391AE02E990058422B /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 336024381AE02E990058422B /* WebViewController.m */; };
+		3360243C1AE0BC350058422B /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3360243B1AE0BC350058422B /* UserProfileViewController.m */; };
+		3360243F1AE0C1850058422B /* LikersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3360243E1AE0C1850058422B /* LikersViewController.m */; };
+		336024421AE0DCB30058422B /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 336024411AE0DCB30058422B /* EditProfileViewController.m */; };
 		33D857F61ADC99C5006EBEE0 /* Yummly.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D857F51ADC99C5006EBEE0 /* Yummly.m */; };
 		6EA8A4161ADC5FA900C6BD62 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A4151ADC5FA900C6BD62 /* main.m */; };
 		6EA8A4191ADC5FA900C6BD62 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */; };
@@ -76,6 +79,12 @@
 		336024351AE0227C0058422B /* Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		336024371AE02E990058422B /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		336024381AE02E990058422B /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		3360243A1AE0BC350058422B /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
+		3360243B1AE0BC350058422B /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
+		3360243D1AE0C1850058422B /* LikersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikersViewController.h; sourceTree = "<group>"; };
+		3360243E1AE0C1850058422B /* LikersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikersViewController.m; sourceTree = "<group>"; };
+		336024401AE0DCB30058422B /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		336024411AE0DCB30058422B /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		33D857F41ADC99C5006EBEE0 /* Yummly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yummly.h; sourceTree = "<group>"; };
 		33D857F51ADC99C5006EBEE0 /* Yummly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Yummly.m; sourceTree = "<group>"; };
 		6EA8A4101ADC5FA900C6BD62 /* Foodicorn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodicorn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +210,10 @@
 				E11A42F41ADD8B2A0051FB83 /* MainFeedViewController.m */,
 				E11A42F01ADD88EB0051FB83 /* MainFeedTableViewCell.h */,
 				E11A42F11ADD88EB0051FB83 /* MainFeedTableViewCell.m */,
+				3360243A1AE0BC350058422B /* UserProfileViewController.h */,
+				3360243B1AE0BC350058422B /* UserProfileViewController.m */,
+				3360243D1AE0C1850058422B /* LikersViewController.h */,
+				3360243E1AE0C1850058422B /* LikersViewController.m */,
 			);
 			name = "Main Group";
 			sourceTree = "<group>";
@@ -211,6 +224,8 @@
 				3360242B1AE012A50058422B /* Profile.storyboard */,
 				E186FFCA1ADEEFA600F1981F /* ProfileViewController.h */,
 				E186FFCB1ADEEFA600F1981F /* ProfileViewController.m */,
+				336024401AE0DCB30058422B /* EditProfileViewController.h */,
+				336024411AE0DCB30058422B /* EditProfileViewController.m */,
 				E186FFCD1ADEF11800F1981F /* ProfileCollectionViewCell.h */,
 				E186FFCE1ADEF11800F1981F /* ProfileCollectionViewCell.m */,
 			);
@@ -452,6 +467,7 @@
 				E15A3C6A1ADDF15200F63159 /* FavTableViewCell.m in Sources */,
 				33D857F61ADC99C5006EBEE0 /* Yummly.m in Sources */,
 				334846691ADD8984003B0296 /* SearchViewController.m in Sources */,
+				3360243C1AE0BC350058422B /* UserProfileViewController.m in Sources */,
 				6EE7E7821ADC6F4E00CF6B9D /* TYUtility.m in Sources */,
 				6EE7E7891ADC727B00CF6B9D /* FDTransaction.m in Sources */,
 				E11A42F21ADD88EB0051FB83 /* MainFeedTableViewCell.m in Sources */,
@@ -462,7 +478,9 @@
 				3348466C1ADE282E003B0296 /* DetailViewController.m in Sources */,
 				6EA8A4191ADC5FA900C6BD62 /* AppDelegate.m in Sources */,
 				E186FFCF1ADEF11800F1981F /* ProfileCollectionViewCell.m in Sources */,
+				3360243F1AE0C1850058422B /* LikersViewController.m in Sources */,
 				E11A42F51ADD8B2A0051FB83 /* MainFeedViewController.m in Sources */,
+				336024421AE0DCB30058422B /* EditProfileViewController.m in Sources */,
 				E15A3C671ADDF01D00F63159 /* FavCollectionViewCell.m in Sources */,
 				6EA8A4161ADC5FA900C6BD62 /* main.m in Sources */,
 				6EE7E77F1ADC6E2400CF6B9D /* FDUser.m in Sources */,
