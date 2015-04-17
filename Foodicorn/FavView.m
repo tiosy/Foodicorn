@@ -50,11 +50,10 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
-    DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
+    UIStoryboard *detailStoryboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
+    DetailViewController *detailVC = [detailStoryboard instantiateViewControllerWithIdentifier:@"DetailVC"];
+    [self.parentVC presentViewController:detailVC animated:YES completion:nil];
 
-//    UINavigationController *navCon = [UINavigationController alloc]initWithRootViewController:detailVC;
-//    [self pre]
 
 
 

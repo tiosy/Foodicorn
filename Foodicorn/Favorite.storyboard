@@ -9,7 +9,7 @@
         <!--Favorite View Controller-->
         <scene sceneID="ADD-D6-y7f">
             <objects>
-                <viewController id="VGK-Yx-EHX" customClass="FavoriteViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="favVC" id="VGK-Yx-EHX" customClass="FavoriteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YQn-bA-KG9"/>
                         <viewControllerLayoutGuide type="bottom" id="UQ0-yn-95m"/>
@@ -99,6 +99,7 @@
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wTI-de-tMI">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                                                <gestureRecognizers/>
                                                                             </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

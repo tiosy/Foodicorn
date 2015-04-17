@@ -12,4 +12,6 @@
 
 - (void)setCollectionData:(NSArray *)collectionData;
 
+@property (nonatomic) UIViewController *parentVC;
+
 @end

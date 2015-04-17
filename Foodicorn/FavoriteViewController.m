@@ -90,16 +90,20 @@
     NSArray *collectionData = [dict objectForKey:@"collections"];
     [cell setCollectionData:collectionData];
 
-
+    [cell setParentVC:self];
+    
     return cell;
 }
 - (IBAction)onTapGestureTapped:(UITapGestureRecognizer *)sender
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
     DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
-    [self.navigationController pushViewController:detailVC animated:NO];
+    [self.navigationController pushViewController:detailVC animated:YES];
+
 
     //pass the yummly object here
 }
+
+
 
 @end
