@@ -7,7 +7,9 @@
 //
 
 #import "FavView.h"
+#import "FavoriteViewController.h"
 #import "FavCollectionViewCell.h"
+#import "DetailViewController.h"
 
 @interface FavView () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -23,7 +25,8 @@
     _collectionData = collectionData;
     [_collectionView setContentOffset:CGPointZero animated:NO];
     [_collectionView reloadData];
-    
+
+    self.collectionView.delegate = self;
 }
 
 #pragma mark - UICollectionViewDataSource methods
@@ -46,6 +49,14 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
+    DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
+
+//    UINavigationController *navCon = [UINavigationController alloc]initWithRootViewController:detailVC;
+//    [self pre]
+
+
 
     NSLog(@"collection cell selected %ld", indexPath.row);
 

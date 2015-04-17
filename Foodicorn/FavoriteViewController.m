@@ -9,10 +9,12 @@
 #import "FavoriteViewController.h"
 #import "FavCollectionViewCell.h"
 #import "FavTableViewCell.h"
+#import "DetailViewController.h"
 
-@interface FavoriteViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface FavoriteViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *favTableView;
 @property NSArray *initialArray;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
 
 @end
 
@@ -59,6 +61,9 @@
                                               ]
                            }
                         ];
+    self.tapGesture = [UITapGestureRecognizer new];
+    self.tapGesture.delegate = self;
+    self.tapGesture.enabled = YES;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -87,6 +92,14 @@
 
 
     return cell;
+}
+- (IBAction)onTapGestureTapped:(UITapGestureRecognizer *)sender
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
+    DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
+    [self.navigationController pushViewController:detailVC animated:NO];
+
+    //pass the yummly object here
 }
 
 @end

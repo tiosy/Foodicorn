@@ -180,6 +180,12 @@
 				336024251AE0112F0058422B /* Favorite.storyboard */,
 				E15A3C621ADDD4BD00F63159 /* FavoriteViewController.h */,
 				E15A3C631ADDD4BD00F63159 /* FavoriteViewController.m */,
+				E15A3C681ADDF15200F63159 /* FavTableViewCell.h */,
+				E15A3C691ADDF15200F63159 /* FavTableViewCell.m */,
+				E15A3C6B1ADE05F500F63159 /* FavView.h */,
+				E15A3C6C1ADE05F500F63159 /* FavView.m */,
+				E15A3C651ADDF01D00F63159 /* FavCollectionViewCell.h */,
+				E15A3C661ADDF01D00F63159 /* FavCollectionViewCell.m */,
 			);
 			name = "Favorite Group";
 			sourceTree = "<group>";
@@ -190,6 +196,8 @@
 				336024281AE012510058422B /* MainFeed.storyboard */,
 				E11A42F31ADD8B2A0051FB83 /* MainFeedViewController.h */,
 				E11A42F41ADD8B2A0051FB83 /* MainFeedViewController.m */,
+				E11A42F01ADD88EB0051FB83 /* MainFeedTableViewCell.h */,
+				E11A42F11ADD88EB0051FB83 /* MainFeedTableViewCell.m */,
 			);
 			name = "Main Group";
 			sourceTree = "<group>";
@@ -200,6 +208,8 @@
 				3360242B1AE012A50058422B /* Profile.storyboard */,
 				E186FFCA1ADEEFA600F1981F /* ProfileViewController.h */,
 				E186FFCB1ADEEFA600F1981F /* ProfileViewController.m */,
+				E186FFCD1ADEF11800F1981F /* ProfileCollectionViewCell.h */,
+				E186FFCE1ADEF11800F1981F /* ProfileCollectionViewCell.m */,
 			);
 			name = "Profile Group";
 			sourceTree = "<group>";
@@ -247,16 +257,6 @@
 				6EA8A41D1ADC5FA900C6BD62 /* Main.storyboard */,
 				3360242D1AE014740058422B /* RootTabBarController.h */,
 				3360242E1AE014740058422B /* RootTabBarController.m */,
-				E186FFCD1ADEF11800F1981F /* ProfileCollectionViewCell.h */,
-				E186FFCE1ADEF11800F1981F /* ProfileCollectionViewCell.m */,
-				E11A42F01ADD88EB0051FB83 /* MainFeedTableViewCell.h */,
-				E11A42F11ADD88EB0051FB83 /* MainFeedTableViewCell.m */,
-				E15A3C681ADDF15200F63159 /* FavTableViewCell.h */,
-				E15A3C691ADDF15200F63159 /* FavTableViewCell.m */,
-				E15A3C6B1ADE05F500F63159 /* FavView.h */,
-				E15A3C6C1ADE05F500F63159 /* FavView.m */,
-				E15A3C651ADDF01D00F63159 /* FavCollectionViewCell.h */,
-				E15A3C661ADDF01D00F63159 /* FavCollectionViewCell.m */,
 				6EA8A4201ADC5FA900C6BD62 /* Images.xcassets */,
 				6EA8A4221ADC5FA900C6BD62 /* LaunchScreen.xib */,
 				6EE7E75E1ADC63E200CF6B9D /* Frameworks */,
