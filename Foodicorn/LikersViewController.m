@@ -28,11 +28,11 @@
                            @"userFullName" : @"Lady Gaga",
                            @"following" : @"YES"
                            },
-                         @{@"userImageName" : @"person3",
-                           @"userName" : @"Hannah Montana",
-                           @"userFullName" : @"Miley Cyrus",
-                           @"following" : @"NO"
-                           }
+//                         @{@"userImageName" : @"person3",
+//                           @"userName" : @"Hannah Montana",
+//                           @"userFullName" : @"Miley Cyrus",
+//                           @"following" : @"NO"
+//                           }
                         ];
 
 }

@@ -28,6 +28,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.allowsSelection = NO;
+    self.title = @"FOODiCORN";
 
 //    self.title = @"FOODiCORN";
     self.imageViewTapGesture = [UITapGestureRecognizer new];
@@ -75,7 +77,7 @@
 {
     MainFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainFeedCell"];
     NSDictionary *dict = [self.initialArray objectAtIndex:indexPath.row];
-    cell.usernameLabel.text = [dict objectForKey:@"cell"];
+    cell.usernameLabel.text = [dict objectForKey:@"userName"];
     cell.timeLabel.text = [dict objectForKey:@"timeSince"];
     cell.mainFeedImageView.image = [UIImage imageNamed:[dict objectForKey:@"dishImage"]];
     NSArray *likes = [dict objectForKey:@"likes"];
@@ -102,7 +104,7 @@
     //need to replace initial array with parse array
     self.yummly = [self.initialArray objectAtIndex:indexPath.row];
     //need to write code to pass a yummly object from an array
-    //detailVC.recipeID = self.yummly.recipeId ;
+    detailVC.recipeID = @"Melt-in-Your-Mouth-Chicken-1066441"  ;
 }
 
 - (IBAction)userNameTapGestureOnTapped:(UITapGestureRecognizer *)sender

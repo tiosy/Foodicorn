@@ -16,22 +16,25 @@
 @interface MainFeedViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 @property NSArray *initialArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-<<<<<<< HEAD
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *imageViewTapGesture;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *userNameTapGesture;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *likersTapGesture;
 @property Yummly *yummly;
 
-=======
 @property (nonatomic) CGFloat lastContentOffsetY;
->>>>>>> thursdaynight
 @end
 
 @implementation MainFeedViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+<<<<<<< HEAD
 
+//    self.title = @"FOODiCORN";
+=======
+    self.tableView.allowsSelection = NO;
+    self.title = @"FOODiCORN";
+>>>>>>> fridaynoonish
     self.imageViewTapGesture = [UITapGestureRecognizer new];
     self.imageViewTapGesture.delegate = self;
     self.imageViewTapGesture.enabled = YES;
@@ -77,7 +80,7 @@
 {
     MainFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainFeedCell"];
     NSDictionary *dict = [self.initialArray objectAtIndex:indexPath.row];
-    cell.usernameLabel.text = [dict objectForKey:@"cell"];
+    cell.usernameLabel.text = [dict objectForKey:@"userName"];
     cell.timeLabel.text = [dict objectForKey:@"timeSince"];
     cell.mainFeedImageView.image = [UIImage imageNamed:[dict objectForKey:@"dishImage"]];
     NSArray *likes = [dict objectForKey:@"likes"];
@@ -104,7 +107,7 @@
     //need to replace initial array with parse array
     self.yummly = [self.initialArray objectAtIndex:indexPath.row];
     //need to write code to pass a yummly object from an array
-    //detailVC.recipeID = self.yummly.recipeId ;
+    detailVC.recipeID = @"Melt-in-Your-Mouth-Chicken-1066441"  ;
 }
 
 - (IBAction)userNameTapGestureOnTapped:(UITapGestureRecognizer *)sender
@@ -147,10 +150,6 @@
     }
     
 }
-
-
-
-
 
 
 @end
