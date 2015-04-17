@@ -8,22 +8,71 @@
 
 #import "ProfileViewController.h"
 #import "ProfileCollectionViewCell.h"
+#import "DetailViewController.h"
 
-@interface ProfileViewController ()<UICollectionViewDelegate, UICollectionViewDelegate>
+@interface ProfileViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *profileUsernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *profileFollowersLabel;
+@property (weak, nonatomic) IBOutlet UILabel *profileFollowingLabel;
+@property NSArray *collectionArray;
+@property NSDictionary *collectionDict;
 @end
 
 @implementation ProfileViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.collectionDict = @{ @"cell": @"Cell A",
+                              @"userImageName": @"person",
+                              @"userName": @"tylorswift",
+                              @"numOfFollowers": @"5",
+                              @"numOfFollowing": @"1",
+                              @"collections": @[@"food1", @"food2", @"food3", @"food4", @"food5", @"food7"]
+                           };
+
+     self.collectionArray = [self.collectionDict objectForKey:@"collections"];
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
 }
 
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.collectionArray.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ProfileCollectionCell" forIndexPath:indexPath];
+    NSString *cellImage = [self.collectionArray objectAtIndex:indexPath.row];
+    cell.profileCellImage.image = [UIImage imageNamed:cellImage];
+    NSString *userImage = [self.collectionDict objectForKey:@"userImageName"];
+    self.profileImageView.image =[UIImage imageNamed:userImage];
+    self.profileUsernameLabel.text = [self.collectionDict objectForKey:@"userName"];
+    self.profileFollowersLabel.text =[self.collectionDict objectForKey:@"numOfFollowers"];
+    self.profileFollowingLabel.text =[self.collectionDict objectForKey:@"numOfFollowing"];
+
+
+
+    return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
+    DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
+
+- (IBAction)onEditProfileButtonTap:(id)sender
+{
+    
+}
 
 @end

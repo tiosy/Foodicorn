@@ -30,4 +30,9 @@
     [self.favCellView setCollectionData:collectionData];
 }
 
+-(void)setParentVC:(UIViewController *)parentVC
+{
+    [self.favCellView setParentVC:parentVC];
+}
+
 @end
