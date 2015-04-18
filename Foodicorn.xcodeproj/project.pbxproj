@@ -271,8 +271,6 @@
 		6EA8A4071ADC5FA900C6BD62 = {
 			isa = PBXGroup;
 			children = (
-				6E67B7001AE2A185003CEAB6 /* Accounts.framework */,
-				6E67B6FE1AE2A17A003CEAB6 /* Social.framework */,
 				6EA8A4121ADC5FA900C6BD62 /* Foodicorn */,
 				6EA8A42C1ADC5FA900C6BD62 /* FoodicornTests */,
 				6EA8A4111ADC5FA900C6BD62 /* Products */,
@@ -293,6 +291,9 @@
 			children = (
 				6EA8A4171ADC5FA900C6BD62 /* AppDelegate.h */,
 				6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */,
+				6EA8A41D1ADC5FA900C6BD62 /* Main.storyboard */,
+				3360242D1AE014740058422B /* RootTabBarController.h */,
+				3360242E1AE014740058422B /* RootTabBarController.m */,
 				6E67B6F51AE294C0003CEAB6 /* LoginSignUp Group */,
 				336024271AE0123F0058422B /* Main Group */,
 				336024211AE00F290058422B /* Search Group */,
@@ -300,12 +301,9 @@
 				3360242A1AE012880058422B /* Profile Group */,
 				336024341AE01B1C0058422B /* Detail Group */,
 				6EE7E7831ADC6F6700CF6B9D /* Utilities */,
-				6EE7E7791ADC666900CF6B9D /* Data Model */,
-				6EA8A41D1ADC5FA900C6BD62 /* Main.storyboard */,
-				3360242D1AE014740058422B /* RootTabBarController.h */,
-				3360242E1AE014740058422B /* RootTabBarController.m */,
 				6EA8A4201ADC5FA900C6BD62 /* Images.xcassets */,
 				6EA8A4221ADC5FA900C6BD62 /* LaunchScreen.xib */,
+				6EE7E7791ADC666900CF6B9D /* Data Model */,
 				6EE7E75E1ADC63E200CF6B9D /* Frameworks */,
 				6EA8A4131ADC5FA900C6BD62 /* Supporting Files */,
 			);
@@ -341,6 +339,8 @@
 		6EE7E75E1ADC63E200CF6B9D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E67B6FE1AE2A17A003CEAB6 /* Social.framework */,
+				6E67B7001AE2A185003CEAB6 /* Accounts.framework */,
 				6E67B6F31AE2949F003CEAB6 /* ParseUI.framework */,
 				6EE7E7611ADC641D00CF6B9D /* Bolts.framework */,
 				6EE7E75F1ADC640C00CF6B9D /* Parse.framework */,

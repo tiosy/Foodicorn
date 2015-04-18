@@ -14,7 +14,12 @@
 
 //PFUser has email, username, password
 @property (nonatomic, strong) NSString *fullName;
-@property (nonatomic, strong) NSData *profileThumbnailImage;
+@property (nonatomic, strong) PFFile *profileThumbnailPFFile;
+@property (nonatomic, strong) NSData *profileThumbnailNSData;
+
+@property (nonatomic, strong) NSArray *followers; //contains NSDictionary
+@property (nonatomic, strong) NSArray *followings; //contains NSDictionary
+@property (nonatomic, strong) NSArray *likes; //contains FDDish
 
 
 //+ (NSString *)parseClassName;

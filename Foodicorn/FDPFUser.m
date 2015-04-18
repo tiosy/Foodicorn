@@ -11,7 +11,11 @@
 @implementation FDPFUser
 
 @dynamic fullName;
-@dynamic profileThumbnailImage;
+@dynamic profileThumbnailPFFile;
+@dynamic profileThumbnailNSData;
+@dynamic followers;
+@dynamic followings;
+@dynamic likes;
 
 + (void)load {
     [self registerSubclass];

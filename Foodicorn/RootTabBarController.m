@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    UIStoryboard *loginSignUpStoryboard = [UIStoryboard storyboardWithName:@"LoginSignUp" bundle:nil];
+   // UIStoryboard *loginSignUpStoryboard = [UIStoryboard storyboardWithName:@"LoginSignUp" bundle:nil];
 
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
     UIStoryboard *searchStoryboard = [UIStoryboard storyboardWithName:@"Search" bundle:nil];
@@ -26,10 +26,7 @@
 
     //UIViewController only
     //UIViewController *loginSignUpVC = [loginSignUpStoryboard instantiateViewControllerWithIdentifier:@"LoginSignUp"];
-    UINavigationController *loginSignUpNavVC = [loginSignUpStoryboard instantiateViewControllerWithIdentifier:@"LoginSignUpNavVC"];
-
-
-
+    //UINavigationController *loginSignUpNavVC = [loginSignUpStoryboard instantiateViewControllerWithIdentifier:@"LoginSignUpNavVC"];
 
 
     UINavigationController *mainNavVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"MainfeedNavVC"];
