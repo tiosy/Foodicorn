@@ -9,6 +9,7 @@
 #import "JustinViewController.h"
 #import "Yummly.h"
 #import "DetailViewController.h"
+#import "SearchViewController.h"
 
 @interface JustinViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -26,6 +27,13 @@
     [Yummly recipeArrayFromDictionaryArray:self.urlText completeHandler:^(NSArray *array) {
         self.recipes = array;
 
+        if (self.recipes.count == 0)
+        {
+            [self showAlert];
+        }
+
+        self.title = @"Search Results";
+
         NSLog(@"%@", self.recipes);
     }];
 
@@ -33,7 +41,17 @@
     PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
     testObject[@"foo"] = @"bar";
     [testObject saveInBackground];
+}
 
+-(void)showAlert
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Results" message:@"Sorry, we could not find any recipes for your specified search. Please check your search and try again." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"Ok!" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+
+    [alertController addAction:alertAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 
 }
 
@@ -64,9 +82,9 @@
     cell.imageView.image = [UIImage imageWithData:data];
     cell.imageView.frame = CGRectMake(self.view.frame.size.width - 50, self.view.frame.size.height - 50, 50, 50);
     cell.imageView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
-    cell.imageView.layer.borderWidth = 2.0f;
+    cell.imageView.layer.borderWidth = 1.0f;
     cell.imageView.layer.cornerRadius = cell.imageView.frame.size.width/2;
-    cell.imageView.clipsToBounds = YES;
+    cell.imageView.layer.masksToBounds = YES;
     return cell;
 }
 

@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 #import "LikersViewController.h"
 #import "EditProfileViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ProfileViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate>
 
@@ -58,9 +59,10 @@
     self.imageViewTapGesture.enabled = YES;
     self.profileImageView.userInteractionEnabled = YES;
     self.profileImageView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
-    self.profileImageView.layer.borderWidth = 2.0f;
-    self.profileImageView.layer.cornerRadius = 10;
-    self.profileImageView.clipsToBounds = YES;
+    self.profileImageView.layer.borderWidth = 1.0f;
+    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2;
+    self.profileImageView.layer.masksToBounds = YES;
+    [self.view addSubview:self.profileImageView];
 
     self.collectionDict = @{ @"cell": @"Cell A",
                               @"userImageName": @"person",

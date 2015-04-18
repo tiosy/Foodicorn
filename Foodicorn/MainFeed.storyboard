@@ -795,6 +795,9 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="65" width="600" height="535"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="gtU-Tr-S8K" id="DcX-DB-Qkp"/>
                                     <outlet property="delegate" destination="gtU-Tr-S8K" id="etW-au-4m4"/>
@@ -813,10 +816,10 @@
                                 <exclude reference="JSm-4y-RpT"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Uvk-S0-piv"/>
                                 <exclude reference="8s8-kx-bYk"/>
                                 <exclude reference="NLD-Ks-0Nm"/>
                                 <exclude reference="nZZ-xw-W4Y"/>
-                                <exclude reference="Uvk-S0-piv"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -824,10 +827,10 @@
                                 <include reference="JSm-4y-RpT"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Uvk-S0-piv"/>
                                 <include reference="8s8-kx-bYk"/>
                                 <include reference="NLD-Ks-0Nm"/>
                                 <include reference="nZZ-xw-W4Y"/>
-                                <include reference="Uvk-S0-piv"/>
                             </mask>
                         </variation>
                     </view>
