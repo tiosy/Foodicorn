@@ -13,10 +13,9 @@
 // of the methods for PFSubclassing.
 #import <Parse/PFObject+Subclass.h>
 
-#import "FDUser.h"
-//#import "FDComment.h"
+#import "FDPFUser.h"
 #import "FDTransaction.h"
-#import "TYUtility.h"
+#import "FDUtility.h"
 
 
 @implementation FDDish
@@ -47,7 +46,7 @@
     PFFile *imagePFFile = [PFFile fileWithName:fddish.objectId data:imageNSData]; //use uniqe objectId as file name
     fddish.imagePFFile = imagePFFile;
     //UIImage ->  to Thumbnail -> NSData -> PFFile
-    UIImage *imageThumbnail = [TYUtility imageWithImage:imageUIImage scaledToSize:CGSizeMake(60.0, 60.0)];
+    UIImage *imageThumbnail = [FDUtility imageWithImage:imageUIImage scaledToSize:CGSizeMake(60.0, 60.0)];
     NSData *imageThumbnailNSData = UIImagePNGRepresentation(imageThumbnail);
     fddish.imageThumbnailNSData = imageThumbnailNSData;
 

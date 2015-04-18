@@ -13,7 +13,7 @@
 // Import this header to let Armor know that PFObject privately provides most
 // of the methods for PFSubclassing.
 #import <Parse/PFObject+Subclass.h>
-#import "TYUtility.h"
+#import "FDUtility.h"
 
 @implementation FDUser
 
@@ -63,7 +63,7 @@
             NSLog(@"%@", fduser.username);
 
             //UIImage ->  to Thumbnail -> NSData -> PFFile
-            UIImage *imageThumbnail = [TYUtility imageWithImage:userProfileImage scaledToSize:CGSizeMake(30.0, 30.0)];
+            UIImage *imageThumbnail = [FDUtility imageWithImage:userProfileImage scaledToSize:CGSizeMake(30.0, 30.0)];
             NSData *imageNSData = UIImagePNGRepresentation(imageThumbnail);
             fduser.profileThumbnailNSData = imageNSData;
             PFFile *imagePFFile = [PFFile fileWithName:fduser.objectId data:imageNSData]; //use uniqe objectId as file name

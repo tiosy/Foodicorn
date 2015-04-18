@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "FDPFUser.h"
+#import "FDDish.h"
+#import "FDTransaction.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +24,15 @@
     //[Optional] Power your app with Local Datastore. For more info, go to
     // https://parse.com/docs/ios_guide#localdatastore/iOS
     [Parse enableLocalDatastore];
+
+
+
+    //When created Subclass of PFObjects...put a load here
+    //[...registerSubclass]
+    [FDPFUser load];
+    [FDDish load];
+    [FDTransaction load];
+
 
     // Initialize Parse.
     [Parse setApplicationId:@"cvUotZUxRQ2x3IBqzH5B0WtSlGhxPMqoO1mXMKnW"

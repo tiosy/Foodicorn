@@ -20,6 +20,11 @@
 		3360243F1AE0C1850058422B /* LikersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3360243E1AE0C1850058422B /* LikersViewController.m */; };
 		336024421AE0DCB30058422B /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 336024411AE0DCB30058422B /* EditProfileViewController.m */; };
 		33D857F61ADC99C5006EBEE0 /* Yummly.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D857F51ADC99C5006EBEE0 /* Yummly.m */; };
+		6E5DB0361AE2DAF400D32036 /* LoginSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5DB0351AE2DAF400D32036 /* LoginSignUpViewController.m */; };
+		6E67B6F41AE2949F003CEAB6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E67B6F31AE2949F003CEAB6 /* ParseUI.framework */; };
+		6E67B6F71AE29508003CEAB6 /* LoginSignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E67B6F61AE29508003CEAB6 /* LoginSignUp.storyboard */; };
+		6E67B6FF1AE2A17A003CEAB6 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E67B6FE1AE2A17A003CEAB6 /* Social.framework */; };
+		6E67B7011AE2A185003CEAB6 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E67B7001AE2A185003CEAB6 /* Accounts.framework */; };
 		6EA8A4161ADC5FA900C6BD62 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A4151ADC5FA900C6BD62 /* main.m */; };
 		6EA8A4191ADC5FA900C6BD62 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */; };
 		6EA8A41C1ADC5FA900C6BD62 /* JustinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A41B1ADC5FA900C6BD62 /* JustinViewController.m */; };
@@ -42,7 +47,7 @@
 		6EE7E7781ADC651D00CF6B9D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7E7771ADC651D00CF6B9D /* libsqlite3.dylib */; };
 		6EE7E77C1ADC6D6C00CF6B9D /* FDPFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7E77B1ADC6D6C00CF6B9D /* FDPFUser.m */; };
 		6EE7E77F1ADC6E2400CF6B9D /* FDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7E77E1ADC6E2400CF6B9D /* FDUser.m */; };
-		6EE7E7821ADC6F4E00CF6B9D /* TYUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7E7811ADC6F4E00CF6B9D /* TYUtility.m */; };
+		6EE7E7821ADC6F4E00CF6B9D /* FDUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7E7811ADC6F4E00CF6B9D /* FDUtility.m */; };
 		6EE7E7861ADC70B500CF6B9D /* FDDish.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7E7851ADC70B500CF6B9D /* FDDish.m */; };
 		6EE7E7891ADC727B00CF6B9D /* FDTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7E7881ADC727B00CF6B9D /* FDTransaction.m */; };
 		E11A42F21ADD88EB0051FB83 /* MainFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E11A42F11ADD88EB0051FB83 /* MainFeedTableViewCell.m */; };
@@ -87,6 +92,12 @@
 		336024411AE0DCB30058422B /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		33D857F41ADC99C5006EBEE0 /* Yummly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yummly.h; sourceTree = "<group>"; };
 		33D857F51ADC99C5006EBEE0 /* Yummly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Yummly.m; sourceTree = "<group>"; };
+		6E5DB0341AE2DAF400D32036 /* LoginSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSignUpViewController.h; sourceTree = "<group>"; };
+		6E5DB0351AE2DAF400D32036 /* LoginSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginSignUpViewController.m; sourceTree = "<group>"; };
+		6E67B6F31AE2949F003CEAB6 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		6E67B6F61AE29508003CEAB6 /* LoginSignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginSignUp.storyboard; sourceTree = "<group>"; };
+		6E67B6FE1AE2A17A003CEAB6 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		6E67B7001AE2A185003CEAB6 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		6EA8A4101ADC5FA900C6BD62 /* Foodicorn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodicorn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EA8A4141ADC5FA900C6BD62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EA8A4151ADC5FA900C6BD62 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -117,8 +128,8 @@
 		6EE7E77B1ADC6D6C00CF6B9D /* FDPFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDPFUser.m; sourceTree = "<group>"; };
 		6EE7E77D1ADC6E2400CF6B9D /* FDUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDUser.h; sourceTree = "<group>"; };
 		6EE7E77E1ADC6E2400CF6B9D /* FDUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDUser.m; sourceTree = "<group>"; };
-		6EE7E7801ADC6F4E00CF6B9D /* TYUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYUtility.h; sourceTree = "<group>"; };
-		6EE7E7811ADC6F4E00CF6B9D /* TYUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYUtility.m; sourceTree = "<group>"; };
+		6EE7E7801ADC6F4E00CF6B9D /* FDUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDUtility.h; sourceTree = "<group>"; };
+		6EE7E7811ADC6F4E00CF6B9D /* FDUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDUtility.m; sourceTree = "<group>"; };
 		6EE7E7841ADC70B500CF6B9D /* FDDish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDDish.h; sourceTree = "<group>"; };
 		6EE7E7851ADC70B500CF6B9D /* FDDish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDDish.m; sourceTree = "<group>"; };
 		6EE7E7871ADC727B00CF6B9D /* FDTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDTransaction.h; sourceTree = "<group>"; };
@@ -146,8 +157,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E67B7011AE2A185003CEAB6 /* Accounts.framework in Frameworks */,
+				6E67B6FF1AE2A17A003CEAB6 /* Social.framework in Frameworks */,
 				6EE7E7781ADC651D00CF6B9D /* libsqlite3.dylib in Frameworks */,
 				6EE7E7761ADC650800CF6B9D /* libz.dylib in Frameworks */,
+				6E67B6F41AE2949F003CEAB6 /* ParseUI.framework in Frameworks */,
 				6EE7E7741ADC64EF00CF6B9D /* SystemConfiguration.framework in Frameworks */,
 				6EE7E7721ADC64CA00CF6B9D /* StoreKit.framework in Frameworks */,
 				6EE7E7701ADC64C100CF6B9D /* Security.framework in Frameworks */,
@@ -244,9 +258,21 @@
 			name = "Detail Group";
 			sourceTree = "<group>";
 		};
+		6E67B6F51AE294C0003CEAB6 /* LoginSignUp Group */ = {
+			isa = PBXGroup;
+			children = (
+				6E67B6F61AE29508003CEAB6 /* LoginSignUp.storyboard */,
+				6E5DB0341AE2DAF400D32036 /* LoginSignUpViewController.h */,
+				6E5DB0351AE2DAF400D32036 /* LoginSignUpViewController.m */,
+			);
+			name = "LoginSignUp Group";
+			sourceTree = "<group>";
+		};
 		6EA8A4071ADC5FA900C6BD62 = {
 			isa = PBXGroup;
 			children = (
+				6E67B7001AE2A185003CEAB6 /* Accounts.framework */,
+				6E67B6FE1AE2A17A003CEAB6 /* Social.framework */,
 				6EA8A4121ADC5FA900C6BD62 /* Foodicorn */,
 				6EA8A42C1ADC5FA900C6BD62 /* FoodicornTests */,
 				6EA8A4111ADC5FA900C6BD62 /* Products */,
@@ -265,6 +291,9 @@
 		6EA8A4121ADC5FA900C6BD62 /* Foodicorn */ = {
 			isa = PBXGroup;
 			children = (
+				6EA8A4171ADC5FA900C6BD62 /* AppDelegate.h */,
+				6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */,
+				6E67B6F51AE294C0003CEAB6 /* LoginSignUp Group */,
 				336024271AE0123F0058422B /* Main Group */,
 				336024211AE00F290058422B /* Search Group */,
 				336024241AE011150058422B /* Favorite Group */,
@@ -272,8 +301,6 @@
 				336024341AE01B1C0058422B /* Detail Group */,
 				6EE7E7831ADC6F6700CF6B9D /* Utilities */,
 				6EE7E7791ADC666900CF6B9D /* Data Model */,
-				6EA8A4171ADC5FA900C6BD62 /* AppDelegate.h */,
-				6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */,
 				6EA8A41D1ADC5FA900C6BD62 /* Main.storyboard */,
 				3360242D1AE014740058422B /* RootTabBarController.h */,
 				3360242E1AE014740058422B /* RootTabBarController.m */,
@@ -314,6 +341,9 @@
 		6EE7E75E1ADC63E200CF6B9D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E67B6F31AE2949F003CEAB6 /* ParseUI.framework */,
+				6EE7E7611ADC641D00CF6B9D /* Bolts.framework */,
+				6EE7E75F1ADC640C00CF6B9D /* Parse.framework */,
 				6EE7E7631ADC646B00CF6B9D /* AudioToolbox.framework */,
 				6EE7E7651ADC647500CF6B9D /* CFNetwork.framework */,
 				6EE7E7671ADC648600CF6B9D /* CoreGraphics.framework */,
@@ -325,8 +355,6 @@
 				6EE7E7731ADC64EF00CF6B9D /* SystemConfiguration.framework */,
 				6EE7E7751ADC650800CF6B9D /* libz.dylib */,
 				6EE7E7771ADC651D00CF6B9D /* libsqlite3.dylib */,
-				6EE7E75F1ADC640C00CF6B9D /* Parse.framework */,
-				6EE7E7611ADC641D00CF6B9D /* Bolts.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -349,8 +377,8 @@
 		6EE7E7831ADC6F6700CF6B9D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				6EE7E7801ADC6F4E00CF6B9D /* TYUtility.h */,
-				6EE7E7811ADC6F4E00CF6B9D /* TYUtility.m */,
+				6EE7E7801ADC6F4E00CF6B9D /* FDUtility.h */,
+				6EE7E7811ADC6F4E00CF6B9D /* FDUtility.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -440,6 +468,7 @@
 				336024231AE00F7F0058422B /* Search.storyboard in Resources */,
 				336024361AE0227C0058422B /* Detail.storyboard in Resources */,
 				336024261AE0112F0058422B /* Favorite.storyboard in Resources */,
+				6E67B6F71AE29508003CEAB6 /* LoginSignUp.storyboard in Resources */,
 				6EA8A4211ADC5FA900C6BD62 /* Images.xcassets in Resources */,
 				3360242C1AE012A50058422B /* Profile.storyboard in Resources */,
 				336024291AE012510058422B /* MainFeed.storyboard in Resources */,
@@ -468,7 +497,7 @@
 				33D857F61ADC99C5006EBEE0 /* Yummly.m in Sources */,
 				334846691ADD8984003B0296 /* SearchViewController.m in Sources */,
 				3360243C1AE0BC350058422B /* UserProfileViewController.m in Sources */,
-				6EE7E7821ADC6F4E00CF6B9D /* TYUtility.m in Sources */,
+				6EE7E7821ADC6F4E00CF6B9D /* FDUtility.m in Sources */,
 				6EE7E7891ADC727B00CF6B9D /* FDTransaction.m in Sources */,
 				E11A42F21ADD88EB0051FB83 /* MainFeedTableViewCell.m in Sources */,
 				6EA8A41C1ADC5FA900C6BD62 /* JustinViewController.m in Sources */,
@@ -480,6 +509,7 @@
 				E186FFCF1ADEF11800F1981F /* ProfileCollectionViewCell.m in Sources */,
 				3360243F1AE0C1850058422B /* LikersViewController.m in Sources */,
 				E11A42F51ADD8B2A0051FB83 /* MainFeedViewController.m in Sources */,
+				6E5DB0361AE2DAF400D32036 /* LoginSignUpViewController.m in Sources */,
 				336024421AE0DCB30058422B /* EditProfileViewController.m in Sources */,
 				E15A3C671ADDF01D00F63159 /* FavCollectionViewCell.m in Sources */,
 				6EA8A4161ADC5FA900C6BD62 /* main.m in Sources */,

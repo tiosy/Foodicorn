@@ -7,7 +7,7 @@
 //
 
 #import <Parse/Parse.h>
-#import "FDDish.h"
+
 
 @interface FDTransaction : PFObject<PFSubclassing>
 

@@ -12,7 +12,7 @@
 // Import this header to let Armor know that PFObject privately provides most
 // of the methods for PFSubclassing.
 #import <Parse/PFObject+Subclass.h>
-#import "FDUser.h"
+#import "FDPFUser.h"
 
 @implementation FDTransaction
 
