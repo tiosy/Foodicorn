@@ -795,6 +795,9 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="65" width="600" height="535"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="gtU-Tr-S8K" id="DcX-DB-Qkp"/>
                                     <outlet property="delegate" destination="gtU-Tr-S8K" id="etW-au-4m4"/>
