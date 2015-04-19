@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cHv-b2-Obt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vsP-bf-Seg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
+        <!--Login Sign Up View Controller-->
+        <scene sceneID="RaE-F8-Ahu">
+            <objects>
+                <viewController storyboardIdentifier="LoginSignUpVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vsP-bf-Seg" customClass="LoginSignUpViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="81W-PM-vfb"/>
+                        <viewControllerLayoutGuide type="bottom" id="OL5-pX-0xQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="o65-Wu-mr4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="cHv-b2-Obt" kind="presentation" identifier="SegueToRoot" id="wFB-3Y-xLI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dtU-t7-4dy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4.5" y="149"/>
+        </scene>
         <!--Root Tab Bar Controller-->
         <scene sceneID="Sfh-Bh-Flo">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="cHv-b2-Obt" customClass="RootTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="RootTabBarController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cHv-b2-Obt" customClass="RootTabBarController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="jOL-yV-PQs">
@@ -17,7 +38,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdZ-eo-yh8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="304" y="429"/>
+            <point key="canvasLocation" x="801" y="124"/>
         </scene>
     </scenes>
 </document>

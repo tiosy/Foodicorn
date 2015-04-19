@@ -14,30 +14,50 @@
 
 @interface LoginSignUpViewController () <PFLogInViewControllerDelegate , PFSignUpViewControllerDelegate>
 
+
 @end
 
 @implementation LoginSignUpViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-
-    FDPFUser *u = [FDPFUser currentUser];
-    NSLog(@"%@",u);
-    [FDPFUser logOut];
+   [super viewDidLoad];
 
 
+    //test
+//    [FDPFUser logOut];
 
 
+}
 
 
+-(void)viewWillAppear:(BOOL)animated{
 
-
+   // self.logInView.logo = nil;
+  //  [self.logInView.dismissButton ];
 
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if (![FDPFUser currentUser]) { // No user logged in
+
+    FDPFUser *me = [FDPFUser currentUser];
+
+    //test
+    // [FDPFUser logOut];
+    //test
+
+    if(me){
+        //logged-in already
+
+      //  self.modalPresentationStyle ;
+        UITabBarController *rootTabBarVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RootTabBarController"];
+
+      [rootTabBarVC setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+        [self presentViewController:rootTabBarVC animated:YES completion:nil];
+
+
+    }
+    else { // No user logged in
         // Create the log in view controller
         PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
         [logInViewController setDelegate:self]; // Set ourselves as the delegate
@@ -58,7 +78,6 @@
                                       //   | PFLogInFieldsFacebook
                                       //   | PFLogInFieldsTwitter
                                       );
-
 
         self.view.backgroundColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
         logInViewController.logInView.backgroundColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
@@ -89,7 +108,10 @@
 
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+  [self dismissViewControllerAnimated:YES completion:NULL];
+[self performSegueWithIdentifier:@"SegueToRoot" sender:self];
+
+
 }
 
 // Sent to the delegate when the log in attempt fails.

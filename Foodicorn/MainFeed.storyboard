@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--FOODiCORN-->
+        <!--FoodiCorn-->
         <scene sceneID="aui-lz-hIk">
             <objects>
                 <viewController storyboardIdentifier="MainfeedVC" id="VbL-jE-V9r" customClass="MainFeedViewController" sceneMemberID="viewController">
@@ -347,7 +347,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="FOODiCORN" id="sAc-wP-Fhn"/>
+                    <navigationItem key="navigationItem" title="FoodiCorn" id="sAc-wP-Fhn"/>
                     <connections>
                         <outlet property="imageViewTapGesture" destination="QMn-ko-VcV" id="GKE-4e-9BE"/>
                         <outlet property="likersTapGesture" destination="YM8-nW-uZU" id="NEn-ic-KPB"/>

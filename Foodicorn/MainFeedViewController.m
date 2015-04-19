@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.allowsSelection = NO;
-    self.title = @"FOODiCORN";
+    self.title = @"FoodiCorn";
 
 //    self.title = @"FOODiCORN";
     self.imageViewTapGesture = [UITapGestureRecognizer new];
