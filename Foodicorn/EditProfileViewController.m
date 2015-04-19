@@ -42,8 +42,8 @@
     UIAlertAction *logOffAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [FDPFUser logOut];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        LoginSignUpViewController *loginVC= [storyboard instantiateViewControllerWithIdentifier:@"LoginSignUp"];
-        [self.navigationController popToViewController:loginVC animated:YES];
+        LoginSignUpViewController *loginVC= [storyboard instantiateViewControllerWithIdentifier:@"LoginSignUpVC"];
+        [self.navigationController presentViewController:loginVC animated:YES completion:nil];
     }];
 
     [alertController addAction:cancelAction];
