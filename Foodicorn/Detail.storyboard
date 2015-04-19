@@ -65,7 +65,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3AU-1T-2H3">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AU-1T-2H3">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -93,7 +93,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="xmN-Yw-gzI" kind="show" id="MGU-W2-03i"/>
+                                    <segue destination="xmN-Yw-gzI" kind="show" id="D58-hh-rxd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -233,6 +233,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="x7f-w5-Rr0">
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="action" id="SOq-hZ-deJ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="JjV-nq-jZk" id="kyn-qJ-wk6"/>
                         <outlet property="webView" destination="joo-nf-ifx" id="xdl-BR-SNU"/>
@@ -240,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZlO-v9-LKu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5766" y="1152"/>
+            <point key="canvasLocation" x="6451.5" y="1152"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lfs-hJ-Wm5">
@@ -260,5 +263,26 @@
             </objects>
             <point key="canvasLocation" x="4377" y="1152"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VjK-pY-SOh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xXf-yH-XCh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WzX-NL-FWg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xmN-Yw-gzI" kind="relationship" relationship="rootViewController" id="jpP-vv-p5t"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SNx-5K-vNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5749.5" y="1535"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jpP-vv-p5t"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -27,8 +27,9 @@
 
     self.mainFeedImageView.userInteractionEnabled = YES;
 
-    self.userImage.layer.cornerRadius = 10;
-    self.userImage.clipsToBounds = YES;
+    self.userImage.layer.cornerRadius = self.userImage.frame.size.width/2;
+    self.userImage.layer.borderWidth = 1.0;
+    self.userImage.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
