@@ -23,38 +23,25 @@
    [super viewDidLoad];
 
 
-    //test
-//    [FDPFUser logOut];
+    //test ONLY.... remove after test
+   // [FDPFUser logOut];
 
 
 }
 
 
--(void)viewWillAppear:(BOOL)animated{
-
-   // self.logInView.logo = nil;
-  //  [self.logInView.dismissButton ];
-
-}
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 
     FDPFUser *me = [FDPFUser currentUser];
-
-    //test
-    // [FDPFUser logOut];
-    //test
-
     if(me){
         //logged-in already
 
-      //  self.modalPresentationStyle ;
         UITabBarController *rootTabBarVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RootTabBarController"];
 
-      [rootTabBarVC setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+        [rootTabBarVC setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
         [self presentViewController:rootTabBarVC animated:YES completion:nil];
-
 
     }
     else { // No user logged in
@@ -108,8 +95,9 @@
 
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-  [self dismissViewControllerAnimated:YES completion:NULL];
-[self performSegueWithIdentifier:@"SegueToRoot" sender:self];
+
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self performSegueWithIdentifier:@"SegueToRoot" sender:self];
 
 
 }
