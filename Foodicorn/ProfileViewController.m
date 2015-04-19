@@ -146,6 +146,7 @@
     imagePicker.mediaTypes = @[(NSString *) kUTTypeImage, (NSString *) kUTTypeMovie];
     imagePicker.allowsEditing = NO;
     imagePicker.showsCameraControls = YES;
+    
 //    imagePicker.cameraOverlayView = UIImagePickerControllerSourceTypePhotoLibrary;
     [self presentViewController:imagePicker animated:YES completion:nil];
 
