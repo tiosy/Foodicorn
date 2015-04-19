@@ -214,7 +214,7 @@
 			name = "Favorite Group";
 			sourceTree = "<group>";
 		};
-		336024271AE0123F0058422B /* Main Group */ = {
+		336024271AE0123F0058422B /* MainFeed Group */ = {
 			isa = PBXGroup;
 			children = (
 				336024281AE012510058422B /* MainFeed.storyboard */,
@@ -227,7 +227,7 @@
 				3360243D1AE0C1850058422B /* LikersViewController.h */,
 				3360243E1AE0C1850058422B /* LikersViewController.m */,
 			);
-			name = "Main Group";
+			name = "MainFeed Group";
 			sourceTree = "<group>";
 		};
 		3360242A1AE012880058422B /* Profile Group */ = {
@@ -284,7 +284,7 @@
 				6E5DB0351AE2DAF400D32036 /* LoginSignUpViewController.m */,
 				3360242D1AE014740058422B /* RootTabBarController.h */,
 				3360242E1AE014740058422B /* RootTabBarController.m */,
-				336024271AE0123F0058422B /* Main Group */,
+				336024271AE0123F0058422B /* MainFeed Group */,
 				336024211AE00F290058422B /* Search Group */,
 				336024241AE011150058422B /* Favorite Group */,
 				3360242A1AE012880058422B /* Profile Group */,

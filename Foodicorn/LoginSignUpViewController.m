@@ -24,7 +24,7 @@
 
 
     //test ONLY.... remove after test
-   // [FDPFUser logOut];
+    //[FDPFUser logOut];
 
 
 }
