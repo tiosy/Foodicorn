@@ -11,9 +11,9 @@
 #import "DetailViewController.h"
 #import "LikersViewController.h"
 #import "EditProfileViewController.h"
-#import <QuartzCore/QuartzCore.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
-@interface ProfileViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate>
+@interface ProfileViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
@@ -62,7 +62,7 @@
     self.profileImageView.layer.borderWidth = 1.0f;
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2;
     self.profileImageView.layer.masksToBounds = YES;
-    [self.view addSubview:self.profileImageView];
+    self.profileImageView.clipsToBounds = YES;
 
     self.collectionDict = @{ @"cell": @"Cell A",
                               @"userImageName": @"person",
@@ -73,6 +73,12 @@
                            };
 
      self.collectionArray = [self.collectionDict objectForKey:@"collections"];
+
+    NSString *userImage = [self.collectionDict objectForKey:@"userImageName"];
+    self.profileImageView.image =[UIImage imageNamed:userImage];
+    self.userNameLabel.text = [self.collectionDict objectForKey:@"userName"];
+    self.followersCountLabel.text =[self.collectionDict objectForKey:@"numOfFollowers"];
+    self.followingCountLabel.text =[self.collectionDict objectForKey:@"numOfFollowing"];
 
 }
 
@@ -91,13 +97,6 @@
     ProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ProfileCollectionCell" forIndexPath:indexPath];
     NSString *cellImage = [self.collectionArray objectAtIndex:indexPath.row];
     cell.profileCellImage.image = [UIImage imageNamed:cellImage];
-    NSString *userImage = [self.collectionDict objectForKey:@"userImageName"];
-    self.profileImageView.image =[UIImage imageNamed:userImage];
-    self.userNameLabel.text = [self.collectionDict objectForKey:@"userName"];
-    self.followersCountLabel.text =[self.collectionDict objectForKey:@"numOfFollowers"];
-    self.followingCountLabel.text =[self.collectionDict objectForKey:@"numOfFollowing"];
-
-
 
     return cell;
 }
@@ -112,15 +111,8 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    //write code in here to pass currentUser name, username, email, password
 }
-
-
-- (IBAction)editImageTapGesture:(UITapGestureRecognizer *)sender
-{
-    //write code to show image picker
-}
-
 
 - (IBAction)followersTapGesture:(UITapGestureRecognizer *)sender
 {
@@ -138,4 +130,25 @@
     [self.navigationController pushViewController:likersVC animated:YES];
     //write code here to pass user to likersVC and show followings
 }
+
+- (IBAction)editImageTapGesture:(UITapGestureRecognizer *)sender
+{
+    [self showCamera];
+    //write code to show image picker
+}
+
+
+-(void)showCamera
+{
+    UIImagePickerController *imagePicker = [UIImagePickerController new];
+    imagePicker.delegate = self;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePicker.mediaTypes = @[(NSString *) kUTTypeImage, (NSString *) kUTTypeMovie];
+    imagePicker.allowsEditing = NO;
+    imagePicker.showsCameraControls = YES;
+//    imagePicker.cameraOverlayView = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+
+}
+
 @end

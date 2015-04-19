@@ -44,6 +44,8 @@
     return @"FDTransaction";
 }
 
+//RETRIEVE ALL LIKERS FOR DISH
+//need to add dishID and set it equal to recipeID.
 +(void) addTransaction:(UIImage *)userProfileImage userName:(NSString *)userName dishImage:(UIImage *)dishImage likedBy:(NSArray *)likedBy transactionType:(NSString *)transactionType{
 
     FDTransaction *xtran = [FDTransaction object];
@@ -71,6 +73,7 @@
 }
 
 
+//RETRIEVE ALL DISHES THAT HAVE BEEN LIKED
 // custom (^)block :-)
 + (void)retrieveFDTransactionWithCompletion:(void (^)(NSArray *))complete
 {

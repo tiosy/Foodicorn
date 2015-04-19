@@ -35,8 +35,7 @@
     NSURL *url = [NSURL URLWithString:string];
     [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
      {
-         NSError *error;
-         NSDictionary *recipeDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+         NSDictionary *recipeDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
          NSMutableArray *recipes = recipeDict[@"matches"];
          NSMutableArray *tempArray = [[NSMutableArray alloc]initWithCapacity:recipes.count];
          for (NSDictionary *dict in recipes) {
