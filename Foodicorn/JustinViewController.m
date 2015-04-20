@@ -38,9 +38,9 @@
     }];
 
 
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    testObject[@"foo"] = @"bar";
-    [testObject saveInBackground];
+//    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+//    testObject[@"foo"] = @"bar";
+//    [testObject saveInBackground];
 }
 
 -(void)showAlert
@@ -60,8 +60,6 @@
     _recipes = recipes;
     [self.tableView reloadData];
 }
-
-
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -103,7 +101,5 @@
     self.yummly = [self.recipes objectAtIndex:indexPath.row];
     detailVC.recipeID = self.yummly.recipeId;
 }
-
-
 @end
 

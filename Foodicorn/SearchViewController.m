@@ -35,7 +35,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    //need to add @"" to append string to something
     self.urlText = @"";
     self.stringsArray = [NSMutableArray new];
     self.cellSelectedArray = [NSMutableArray new];

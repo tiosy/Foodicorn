@@ -12,18 +12,16 @@
 @interface FDDish : PFObject<PFSubclassing>
 
 
-@property (nonatomic, strong) NSString *fid; //use FDDish's objectId
+@property (nonatomic, strong) NSString *fid; //use FDDish's recipeId
 @property (nonatomic, strong) PFFile *imagePFFile;
 @property (nonatomic, strong) NSData *imageThumbnailNSData;
 @property (nonatomic, strong) NSArray *comments; // mids
 @property (nonatomic, strong) NSArray *likedBy; // each element is FDUser
-@property (nonatomic, strong) NSString *user; //
 
 + (NSString *)parseClassName;
 
 +(void) addDish:(UIImage *) imageUIImage username: (NSString *) username;
 -(void) likeDish: (NSString *) username;
--(void) commentDish: (NSString *) uid comment:(NSString *) comment;
 
 + (void)retrieveFDDishWithCompletion:(void (^)(NSArray *))complete;
 

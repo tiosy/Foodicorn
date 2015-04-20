@@ -12,6 +12,7 @@
 #import "LikersViewController.h"
 #import "EditProfileViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "FDPFUser.h"
 
 @interface ProfileViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -26,6 +27,7 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *followingTapGesture;
 @property NSArray *collectionArray;
 @property NSDictionary *collectionDict;
+@property PFObject *userPhoto;
 @end
 
 @implementation ProfileViewController
@@ -62,23 +64,32 @@
     self.profileImageView.layer.borderWidth = 1.0f;
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2;
     self.profileImageView.layer.masksToBounds = YES;
-    self.profileImageView.clipsToBounds = YES;
 
-    self.collectionDict = @{ @"cell": @"Cell A",
-                              @"userImageName": @"person",
-                              @"userName": @"tylorswift",
-                              @"numOfFollowers": @"5",
-                              @"numOfFollowing": @"1",
-                              @"collections": @[@"food1", @"food2", @"food3", @"food4", @"food5", @"food7"]
-                           };
+    PFFile *userImageFile = self.userPhoto[@"profilePicture"];
+    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
+     {
+         if (!error) {
+             UIImage *image = [UIImage imageWithData:imageData];
+             self.profileImageView.image = image;
+         }
 
-     self.collectionArray = [self.collectionDict objectForKey:@"collections"];
-
-    NSString *userImage = [self.collectionDict objectForKey:@"userImageName"];
-    self.profileImageView.image =[UIImage imageNamed:userImage];
-    self.userNameLabel.text = [self.collectionDict objectForKey:@"userName"];
-    self.followersCountLabel.text =[self.collectionDict objectForKey:@"numOfFollowers"];
-    self.followingCountLabel.text =[self.collectionDict objectForKey:@"numOfFollowing"];
+     }];
+    
+//    self.collectionDict = @{ @"cell": @"Cell A",
+//                              @"userImageName": @"person",
+//                              @"userName": @"tylorswift",
+//                              @"numOfFollowers": @"5",
+//                              @"numOfFollowing": @"1",
+//                              @"collections": @[@"food1", @"food2", @"food3", @"food4", @"food5", @"food7"]
+//                           };
+//
+//     self.collectionArray = [self.collectionDict objectForKey:@"collections"];
+//
+//    NSString *userImage = [self.collectionDict objectForKey:@"userImageName"];
+//    self.profileImageView.image =[UIImage imageNamed:userImage];
+//    self.userNameLabel.text = [self.collectionDict objectForKey:@"userName"];
+//    self.followersCountLabel.text =[self.collectionDict objectForKey:@"numOfFollowers"];
+//    self.followingCountLabel.text =[self.collectionDict objectForKey:@"numOfFollowing"];
 
 }
 
@@ -97,6 +108,7 @@
     ProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ProfileCollectionCell" forIndexPath:indexPath];
     NSString *cellImage = [self.collectionArray objectAtIndex:indexPath.row];
     cell.profileCellImage.image = [UIImage imageNamed:cellImage];
+    //write code here to show a currentUser's likes
 
     return cell;
 }
@@ -133,23 +145,127 @@
 
 - (IBAction)editImageTapGesture:(UITapGestureRecognizer *)sender
 {
-    [self showCamera];
-    //write code to show image picker
+    [self showAlert];
 }
 
+#pragma mark - IMAGEPICKER CONTROLS
+
+-(void)showAlert
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Choose Image" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                              {
+                                  [self showCamera];
+                              }];
+
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"Choose From Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+
+        [self showLibrary];
+    }];
+
+    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+
+    [alertController addAction:action1];
+    [alertController addAction:action2];
+    [alertController addAction:action3];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 -(void)showCamera
 {
-    UIImagePickerController *imagePicker = [UIImagePickerController new];
-    imagePicker.delegate = self;
-    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    imagePicker.mediaTypes = @[(NSString *) kUTTypeImage, (NSString *) kUTTypeMovie];
-    imagePicker.allowsEditing = NO;
-    imagePicker.showsCameraControls = YES;
-    
-//    imagePicker.cameraOverlayView = UIImagePickerControllerSourceTypePhotoLibrary;
-    [self presentViewController:imagePicker animated:YES completion:nil];
 
+    UIImagePickerController *imagePicker = [UIImagePickerController new];
+
+    if (UIImagePickerControllerSourceTypeCamera)
+    {
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage, (NSString *) kUTTypeMovie];
+        imagePicker.allowsEditing = NO;
+        imagePicker.showsCameraControls = YES;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
+}
+
+
+-(void)showLibrary
+{
+    UIImagePickerController *imagePicker = [UIImagePickerController new];
+
+    if (!UIImagePickerControllerSourceTypePhotoLibrary)
+    {
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage, (NSString *) kUTTypeMovie];
+        imagePicker.allowsEditing = NO;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
+}
+
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    NSString *mediaType = info[UIImagePickerControllerMediaType];
+
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage])
+    {
+        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+
+        self.profileImageView.image = image;
+        //need to add code here to save photo to currentUser.
+
+        [self.profileImageView setAutoresizingMask:(UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth)];
+
+        //create a PFFile
+        NSData *imageData = UIImagePNGRepresentation(image);
+        PFFile *imageFile = [PFFile fileWithData:imageData];
+        self.userPhoto = [PFObject objectWithClassName:@"User"];
+//        self.userPhoto[@"imageName"] = @"Thumbnail Picture";
+        self.userPhoto[@"profilePicture"] = imageFile;
+        [self.userPhoto saveInBackground];
+        NSLog(@"The User photo is %@", self.userPhoto);
+
+        //associate the PFFile with Current User
+
+
+//        FDPFUser *user = [FDPFUser currentUser];
+//        PFRelation *relation = [user relationForKey:@"profileThumbnailImage"];
+//        user.profileThumbnailPFFile = imageFile;
+//        [relation addObject:self.userPhoto];
+//        NSLog(@"The pfile is %@", imageFile);
+//
+//        [user saveInBackground];
+    }
+    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
+    {
+        UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(mediaType);
+    }
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+-(void)image:(UIImage *)image finishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    if (error) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @"Save failed"
+                              message: @"Failed to save image/video"
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 @end

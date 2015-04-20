@@ -24,8 +24,6 @@
 @dynamic imageThumbnailNSData;
 @dynamic comments;
 @dynamic likedBy;
-@dynamic user;
-
 
 + (void)load {
     [self registerSubclass];

@@ -663,24 +663,24 @@
                                 <exclude reference="OBq-vb-oYx"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="LCv-um-Tkd"/>
+                                <exclude reference="hSV-ZX-GNl"/>
+                                <exclude reference="rEq-Cw-gRR"/>
+                                <exclude reference="1yB-ce-h0I"/>
                                 <exclude reference="dYD-If-paV"/>
                                 <exclude reference="oay-mM-rdw"/>
                                 <exclude reference="cqm-1b-byI"/>
+                                <exclude reference="cXH-a2-jOy"/>
+                                <exclude reference="oEN-UJ-RuM"/>
+                                <exclude reference="rGe-bW-7YJ"/>
                                 <exclude reference="S6G-84-7rZ"/>
                                 <exclude reference="eLs-fS-f23"/>
                                 <exclude reference="s9E-tx-5p8"/>
                                 <exclude reference="ufj-T6-ddB"/>
-                                <exclude reference="1yB-ce-h0I"/>
+                                <exclude reference="xFg-Q7-M6x"/>
                                 <exclude reference="nAo-95-EOb"/>
                                 <exclude reference="Rro-hA-y7Z"/>
                                 <exclude reference="VJZ-9E-zdy"/>
-                                <exclude reference="LCv-um-Tkd"/>
-                                <exclude reference="hSV-ZX-GNl"/>
-                                <exclude reference="rEq-Cw-gRR"/>
-                                <exclude reference="cXH-a2-jOy"/>
-                                <exclude reference="oEN-UJ-RuM"/>
-                                <exclude reference="rGe-bW-7YJ"/>
-                                <exclude reference="xFg-Q7-M6x"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -695,24 +695,24 @@
                                 <include reference="OBq-vb-oYx"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="LCv-um-Tkd"/>
+                                <include reference="hSV-ZX-GNl"/>
+                                <include reference="rEq-Cw-gRR"/>
+                                <include reference="1yB-ce-h0I"/>
                                 <include reference="dYD-If-paV"/>
                                 <include reference="oay-mM-rdw"/>
                                 <include reference="cqm-1b-byI"/>
+                                <include reference="cXH-a2-jOy"/>
+                                <include reference="oEN-UJ-RuM"/>
+                                <include reference="rGe-bW-7YJ"/>
                                 <include reference="S6G-84-7rZ"/>
                                 <include reference="eLs-fS-f23"/>
                                 <include reference="s9E-tx-5p8"/>
                                 <include reference="ufj-T6-ddB"/>
-                                <include reference="1yB-ce-h0I"/>
+                                <include reference="xFg-Q7-M6x"/>
                                 <include reference="nAo-95-EOb"/>
                                 <include reference="Rro-hA-y7Z"/>
                                 <include reference="VJZ-9E-zdy"/>
-                                <include reference="LCv-um-Tkd"/>
-                                <include reference="hSV-ZX-GNl"/>
-                                <include reference="rEq-Cw-gRR"/>
-                                <include reference="cXH-a2-jOy"/>
-                                <include reference="oEN-UJ-RuM"/>
-                                <include reference="rGe-bW-7YJ"/>
-                                <include reference="xFg-Q7-M6x"/>
                             </mask>
                         </variation>
                     </view>
