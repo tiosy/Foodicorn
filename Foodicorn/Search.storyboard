@@ -20,12 +20,12 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Wdr-Nz-Fu8">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" id="Lur-Rx-qNH">
-                                    <rect key="frame" x="0.0" y="64" width="0.0" height="44"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="hel-pA-3oH">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
-                                        <outlet property="delegate" destination="Xqb-GI-TJg" id="0d1-hN-KCu"/>
+                                        <outlet property="delegate" destination="Xqb-GI-TJg" id="2gf-zx-aZO"/>
                                     </connections>
                                 </searchBar>
                                 <prototypes>
@@ -80,7 +80,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchBar" destination="Lur-Rx-qNH" id="ouM-nA-bTE"/>
                         <outlet property="tableView" destination="Wdr-Nz-Fu8" id="2m8-hj-aED"/>
                     </connections>
                 </viewController>
