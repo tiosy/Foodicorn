@@ -12,7 +12,7 @@
 #import "DetailViewController.h"
 #import "Yummly.h"
 
-@interface FavView () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface FavView () <UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSArray *collectionData;
@@ -67,4 +67,7 @@
 //    NSLog(@"collection cell selected %ld", indexPath.row);
 
 }
+
+#pragma mark - UICollectionViewDelegateFlowLayout methods
+
 @end

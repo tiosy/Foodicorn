@@ -37,10 +37,6 @@
         NSLog(@"%@", self.recipes);
     }];
 
-
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    testObject[@"foo"] = @"bar";
-    [testObject saveInBackground];
 }
 
 -(void)showAlert
