@@ -8,6 +8,7 @@
 
 
 #import "LoginSignUpViewController.h"
+#import "Constants.h"
 #import <ParseUI/ParseUI.h>
 
 #import "FDPFUser.h"
@@ -23,8 +24,25 @@
    [super viewDidLoad];
 
 
-    //test ONLY.... remove after test
-    //[FDPFUser logOut];
+//    //test ONLY.... remove after test
+//    //[FDPFUser logOut];
+//
+//    // *me is tim
+//    //test followings
+//
+//
+//    //TESTING adding following
+//
+//    UIImage *person6 = [UIImage imageNamed:@"person6"];
+//    [FDPFUser addFollowingAndFollower:person6 username:@"taylorswift" fullname:@"Taylor Swift" followingNSString:@"Following"];
+//
+//    [FDPFUser addFollowingAndFollower:person6 username:@"jazz" fullname:@"Jazz Santiago" followingNSString:@"Following"];
+//
+//    [FDPFUser addFollowingAndFollower:person6 username:@"beegees" fullname:@"Bee Gees" followingNSString:@"Following"];
+
+
+
+
 
 
 }
@@ -66,10 +84,18 @@
                                       //   | PFLogInFieldsTwitter
                                       );
 
-        self.view.backgroundColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
-        logInViewController.logInView.backgroundColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
+        //Custom the Logo
+
+        
+        self.view.backgroundColor = kFoodiCornNavBarColor;
+        logInViewController.logInView.backgroundColor = kFoodiCornNavBarColor;
         UIImageView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"food2"]];
+
+        logoView.contentMode=UIViewContentModeScaleAspectFill;
         logInViewController.logInView.logo = logoView; // logo can be any UIView
+
+
+
         // Present the log in view controller
         [self presentViewController:logInViewController animated:YES completion:NULL];
     }

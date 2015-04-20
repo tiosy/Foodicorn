@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Constants.h"
 #import <Parse/Parse.h>
 #import "FDPFUser.h"
 #import "FDDish.h"
@@ -42,11 +43,11 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance]setBarTintColor:[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2]];
+    [[UINavigationBar appearance]setBarTintColor:kFoodiCornNavBarColor];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2]];
-    [[UIButton appearance] setTintColor:[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2]];
+    [[UITabBar appearance] setBarTintColor:kFoodiCornNavBarColor];
+    [[UIButton appearance] setTintColor:kFoodiCornNavBarColor];
 
 
     return YES;

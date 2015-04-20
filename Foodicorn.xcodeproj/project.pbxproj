@@ -91,6 +91,7 @@
 		336024411AE0DCB30058422B /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		33D857F41ADC99C5006EBEE0 /* Yummly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yummly.h; sourceTree = "<group>"; };
 		33D857F51ADC99C5006EBEE0 /* Yummly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Yummly.m; sourceTree = "<group>"; };
+		6E0FF5FB1AE4951900E199B8 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		6E5DB0341AE2DAF400D32036 /* LoginSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSignUpViewController.h; sourceTree = "<group>"; };
 		6E5DB0351AE2DAF400D32036 /* LoginSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginSignUpViewController.m; sourceTree = "<group>"; };
 		6E67B6F31AE2949F003CEAB6 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
@@ -279,6 +280,7 @@
 			children = (
 				6EA8A4171ADC5FA900C6BD62 /* AppDelegate.h */,
 				6EA8A4181ADC5FA900C6BD62 /* AppDelegate.m */,
+				6E0FF5FB1AE4951900E199B8 /* Constants.h */,
 				6EA8A41D1ADC5FA900C6BD62 /* Main.storyboard */,
 				6E5DB0341AE2DAF400D32036 /* LoginSignUpViewController.h */,
 				6E5DB0351AE2DAF400D32036 /* LoginSignUpViewController.m */,
