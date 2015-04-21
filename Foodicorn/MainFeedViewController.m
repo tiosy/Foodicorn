@@ -157,13 +157,19 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
     DetailViewController *detailVC= [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
     [self.navigationController pushViewController:detailVC animated:YES];
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+
+    CGPoint location = [sender locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
     FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
     detailVC.recipeID = transaction.dishID;
 }
 
 - (IBAction)userNameTapGestureOnTapped:(UITapGestureRecognizer *)sender
 {
+    FDPFUser *currentUser = [FDPFUser currentUser];
+    if (currentUser) {
+
+    }
     [self performSegueWithIdentifier:@"userprofile" sender:self];
     //write code to pass user information to userprofileVC
 }
