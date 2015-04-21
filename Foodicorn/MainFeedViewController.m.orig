@@ -14,7 +14,7 @@
 #import "ProfileViewController.h"
 #import "Yummly.h"
 #import "FDDish.h"
-
+#import "FDPFUser.h"
 #import <parse/PFObject+Subclass.h>
 #import "FDTransaction.h"
 
@@ -26,7 +26,6 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *likersTapGesture;
 @property (nonatomic)  NSArray *recipeArray;
 @property NSString *recipeId;
-
 @property Yummly *yummly;
 
 @property (nonatomic) CGFloat lastContentOffsetY;
@@ -34,7 +33,7 @@
 
 @implementation MainFeedViewController
 
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
     PFQuery *query = [FDTransaction query];
     [query orderByDescending:@"createdAt"];
@@ -75,7 +74,6 @@
     self.likersTapGesture.delegate = self;
     self.likersTapGesture.enabled = YES;
 
-<<<<<<< HEAD
 //    self.initialArray = @[ @{ @"cell": @"Cell A",
 //                           @"userImageName": @"person",
 //                           @"userName": @"tylorswift",
@@ -98,30 +96,6 @@
 //                           @"likes":@[@"1",@"2"]
 //                           }
 //                        ];
-=======
-    self.initialArray = @[ @{ @"cell": @"Cell A",
-                           @"userImageName": @"person",
-                           @"userName": @"tylorswift",
-                           @"dishImage": @"food1",
-                           @"timeSince":@"1d",
-                            @"likes":@[@"1",@"2"],
-                           },
-                        @{ @"cell": @"Cell B",
-                           @"userImageName": @"person2",
-                           @"userName": @"ladygaga",
-                           @"dishImage": @"food2",
-                           @"timeSince":@"2d",
-                           @"likes":@[@"1",@"2"],
-                           },
-                        @{ @"cell": @"Cell C",
-                           @"userImageName": @"person3",
-                           @"userName": @"U2",
-                           @"dishImage": @"food3",
-                           @"timeSince":@"4d",
-                           @"likes":@[@"1",@"2"],
-                           }
-                        ];
->>>>>>> mondaymerge
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -167,8 +141,13 @@
         }
     }];
     //have to work on getting count
-    cell.likesLabel.text = [NSString stringWithFormat:@"%ld",transaction.likedBy.count];
+<<<<<<< HEAD
+    cell.likesLabel.text = [NSString stringWithFormat:@"%ld",(unsigned long)transaction.likedBy.count];
     NSLog(@"The cell text is %lu", (unsigned long)transaction.likedBy.count);
+=======
+    cell.likesLabel.text = [NSString stringWithFormat:@"%ld",transaction.likedBy.count];
+//    NSLog(@"The cell text is %lu", (unsigned long)transaction.likedBy.count);
+>>>>>>> onatuesday
 
     PFFile *userImagePFile = transaction.userProfileImagePFFile;
     [userImagePFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error) {
@@ -181,17 +160,6 @@
     
     return cell;
 }
-
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
-//    DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
-//    [self.navigationController pushViewController:detailVC animated:YES];
-//    FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
-//    detailVC.recipeID = transaction.dishID;
-//
-//    NSLog(@"%d", indexPath.row);
-//}
 
 //This will segue to detailVC
 - (IBAction)imageViewTapGesture:(UITapGestureRecognizer *)sender
@@ -225,10 +193,6 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
         UserProfileViewController *userVC= [storyboard instantiateViewControllerWithIdentifier:@"UserVC"];
         [self.navigationController pushViewController:userVC animated:YES];
-    //    [self performSegueWithIdentifier:@"userprofile" sender:self];
-        //write code to pass user information to userprofileVC
-        //pass username to userprofileVC
-
 
     }
 }
@@ -248,13 +212,21 @@
         UIImage *img = [UIImage imageNamed:@"person"];
         NSData *imgData = UIImagePNGRepresentation(img);
         NSMutableArray *muteArray = [NSMutableArray new];
+
         NSMutableDictionary *dict = [NSMutableDictionary new];
+        NSMutableDictionary *dict2 = [NSMutableDictionary new];
 
         [dict setObject:imgData forKey:@"profileImage"];
         [dict setObject:@"lady g" forKey:@"username"];
         [dict setObject:@"Lady Gaga" forKey:@"fullname"];
         [dict setObject:@"+ Follow" forKey:@"followingNSString"];
+
+        [dict2 setObject:imgData forKey:@"profileImage"];
+        [dict2 setObject:@"fresh prince" forKey:@"username"];
+        [dict2 setObject:@"Will Smith" forKey:@"fullname"];
+        [dict2 setObject:@"Following" forKey:@"followingNSString"];
         [muteArray addObject:dict];
+        [muteArray addObject:dict2];
 
 
 //        NSArray *usersArray = @[ @{@"userName" : @"lady g",
@@ -274,7 +246,7 @@
 //                                   }
 //
 //                                ];
-        NSLog(@"%@", muteArray);
+//        NSLog(@"%@", muteArray);
         likersVC.usersArray = muteArray;
     }else
     {

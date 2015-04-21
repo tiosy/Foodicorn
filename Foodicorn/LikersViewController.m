@@ -11,8 +11,8 @@
 #import "FDPFUser.h"
 
 
-@interface LikersViewController ()<UITableViewDataSource, UITableViewDelegate>
-
+@interface LikersViewController ()<UITableViewDataSource, UITableViewDelegate, LikersTableViewCellDelegate>
+@property FDPFUser *me;
 @end
 
 @implementation LikersViewController
@@ -20,7 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"%@", self.usersArray);
+     self.me = [FDPFUser currentUser];
 
 //    self.usersArray = @[ @{@"userImageName" : @"person",
 //                           @"userName" : @"Taylor S.",
@@ -46,13 +46,17 @@
 {
     //code for likers of photo or followers of user or the people whom a user follows
     LikersTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserListCell"];
+    cell.delegate = self;
     NSDictionary *dict = [self.usersArray objectAtIndex:indexPath.row];
     NSData *imgData = [dict objectForKey:@"profileImage"];
+    NSString *username = [dict objectForKey:@"username"];
     UIImage *image = [UIImage imageWithData:imgData];
+//    NSLog(@"%@", username);
     cell.likersCellImageView.image = image;
-    cell.likersUsernameLabel.text = [dict objectForKey:@"username"];
+    cell.likersUsernameLabel.text = username;
     NSString *userFullName = [dict objectForKey:@"fullname"];
     cell.likersSubtitleLabel.text = userFullName;
+    cell.indexPath = indexPath;
 
     return cell;
 }
@@ -67,6 +71,31 @@
 
 }
 
+-(void)shouldFollowOrUnfollowOnFollowButtonTap:(NSIndexPath *)indexPath
+{
+        LikersTableViewCell *cell = [LikersTableViewCell new];
+        NSDictionary *dict = [self.usersArray objectAtIndex:indexPath.row];
+        NSData *imgData = [dict objectForKey:@"profileImage"];
+        UIImage *image = [UIImage imageWithData:imgData];
+    NSLog(@"%@", self.me.followings);
+//    NSLog(@"%lu", self.me.followings.count);
+
+    if ([self.me.followings containsObject:[dict objectForKey:@"username"]])
+    {
+        [FDPFUser removeFollowingAndFollower:[dict objectForKey:@"username"]];
+        [cell.followButton setTitle:@"+ Follow" forState:UIControlStateNormal];
+
+
+    }else
+    {
+        [FDPFUser addFollowingAndFollower:image username:[dict objectForKey:@"username"] fullname:[dict objectForKey:@"fullname"] followingNSString:[dict objectForKey:@"followingNSString"]];
+        [cell.followButton setTitle:@"Following" forState:UIControlStateNormal];
+    }
+
+//    NSLog(@"%lu", self.me.followings.count);
+
+
+}
 
 
 
