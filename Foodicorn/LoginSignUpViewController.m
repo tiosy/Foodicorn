@@ -14,31 +14,44 @@
 #import "FDPFUser.h"
 
 @interface LoginSignUpViewController () <PFLogInViewControllerDelegate , PFSignUpViewControllerDelegate>
-
-
 @end
 
+
+
 @implementation LoginSignUpViewController
+
+-(void)viewWillAppear:(BOOL)animated{
+
+
+}
 
 - (void)viewDidLoad {
    [super viewDidLoad];
 
 
-//    //test ONLY.... remove after test
-//    //[FDPFUser logOut];
-//
-//    // *me is tim
-//    //test followings
-//
-//
+
 //    //TESTING adding following
 //
-//    UIImage *person6 = [UIImage imageNamed:@"person6"];
+    FDPFUser *me = [FDPFUser currentUser];
+    NSLog(@"username %@", me.username);
+
+    for (NSDictionary *dic in me.followings) {
+        NSLog(@"%@", [dic objectForKey:@"username"]);
+         NSLog(@"%@", [dic objectForKey:@"fullname"]);
+         NSLog(@"%@", [dic objectForKey:@"followingNSString"]);
+    }
+    
+  //  UIImage *person6 = [UIImage imageNamed:@"person6"];
 //    [FDPFUser addFollowingAndFollower:person6 username:@"taylorswift" fullname:@"Taylor Swift" followingNSString:@"Following"];
 //
-//    [FDPFUser addFollowingAndFollower:person6 username:@"jazz" fullname:@"Jazz Santiago" followingNSString:@"Following"];
+//    [FDPFUser addFollowingAndFollower:person6 username:@"tim" fullname:@"Tim" followingNSString:@"Following"];
 //
 //    [FDPFUser addFollowingAndFollower:person6 username:@"beegees" fullname:@"Bee Gees" followingNSString:@"Following"];
+//
+//    [FDPFUser addFollowingAndFollower:person6 username:@"justin" fullname:@"Justin" followingNSString:@"Following"];
+//
+
+ //  [FDPFUser removeFollowingAndFollower:@"beegees"];
 
 
 
@@ -90,11 +103,15 @@
         self.view.backgroundColor = kFoodiCornNavBarColor;
         logInViewController.logInView.backgroundColor = kFoodiCornNavBarColor;
         UIImageView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"food2"]];
-
         logoView.contentMode=UIViewContentModeScaleAspectFill;
         logInViewController.logInView.logo = logoView; // logo can be any UIView
 
-
+        // Customize the Sign Up View Controller
+        signUpViewController.signUpView.backgroundColor = kFoodiCornNavBarColor;
+        UIImageView *logoView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"food2"]];
+        logoView2.contentMode=UIViewContentModeScaleAspectFill;
+        signUpViewController.signUpView.logo=logoView2;
+        logInViewController.signUpController = signUpViewController;
 
         // Present the log in view controller
         [self presentViewController:logInViewController animated:YES completion:NULL];
