@@ -19,7 +19,7 @@
 
 
 @implementation FDDish
-@dynamic fid;
+@dynamic recipeId;
 @dynamic imagePFFile;
 @dynamic imageThumbnailNSData;
 @dynamic comments;
@@ -33,30 +33,31 @@
     return @"FDDish";
 }
 
-+(void) addDish:(UIImage *) imageUIImage username: (NSString *) username{
-
++(void) addDish:(UIImage *)imageUIImage username: (NSString *) username recipeId:(NSString *)recipeId {
 
     FDDish *fddish = [FDDish object];
-    fddish.fid = fddish.objectId; //NSString
+    fddish.recipeId = recipeId; //NSString
 
-    //UIImage -> NSData -> PFFile
+    FDPFUser *me = [FDPFUser currentUser];
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+    //userProfileImage is thumbnailed already no need to shrink)
+    if([me.profileThumbnailNSData length] <128000){
+        [dict setValue:me.profileThumbnailNSData forKey:@"profileThumbnailNSData"];
+    }
+    [dict setValue:me.username forKey:@"username"];
+    [dict setValue:me.fullName forKey:@"fullname"];
+
+    //Parse only allows NSDictionary? not mutable dict?
+    NSDictionary *dict2 = [dict mutableCopy];
+    [fddish addUniqueObject:dict2 forKey:@"likedBy"];
+
+    //UIImage -> NSData -> PFFile -> this is the dish image
     NSData *imageNSData = UIImagePNGRepresentation(imageUIImage);
     PFFile *imagePFFile = [PFFile fileWithName:fddish.objectId data:imageNSData]; //use uniqe objectId as file name
     fddish.imagePFFile = imagePFFile;
-    //UIImage ->  to Thumbnail -> NSData -> PFFile
-    UIImage *imageThumbnail = [FDUtility imageWithImage:imageUIImage scaledToSize:CGSizeMake(60.0, 60.0)];
-    NSData *imageThumbnailNSData = UIImagePNGRepresentation(imageThumbnail);
-    fddish.imageThumbnailNSData = imageThumbnailNSData;
-
-//    fddish.uploadedBy = username;
 
     [fddish saveInBackground];
-
-
-    //add transaction
-   // [FDTransaction addTransaction:username
-
-
+    
 
 }
 

@@ -216,18 +216,15 @@
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage])
     {
         UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-
-        [self.profileImageView setAutoresizingMask:(UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth)];
-
-        FDPFUser *currentUser = [FDPFUser currentUser];
-
         UIImage *profImage = [FDUtility imageWithImage:image scaledToSize:CGSizeMake(30, 30)];
         NSData *imageData = UIImagePNGRepresentation(profImage);
 
-//        currentUser.profileThumbnailNSData = imageData;
-
+        FDPFUser *currentUser = [FDPFUser currentUser];
         PFFile *imageFile = [PFFile fileWithName:currentUser.objectId data:imageData];
+        [imageFile saveInBackground];
+
         currentUser.profileThumbnailPFFile = imageFile;
+        currentUser.fullName = @"Justin Haar";
         [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
          {
             if (error)
@@ -238,16 +235,6 @@
 
         [self.profileImageView setImage:[UIImage imageWithData:imageData]];
 
-        //associate the PFFile with Current User
-
-
-//        FDPFUser *user = [FDPFUser currentUser];
-//        PFRelation *relation = [user relationForKey:@"profileThumbnailImage"];
-//        user.profileThumbnailPFFile = imageFile;
-//        [relation addObject:self.userPhoto];
-//        NSLog(@"The pfile is %@", imageFile);
-//
-//        [user saveInBackground];
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
     {

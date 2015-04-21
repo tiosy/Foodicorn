@@ -13,18 +13,44 @@
 #import "UserProfileViewController.h"
 #import "Yummly.h"
 
+#import <parse/PFObject+Subclass.h>
+#import "FDTransaction.h"
+
 @interface MainFeedViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 @property NSArray *initialArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *imageViewTapGesture;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *userNameTapGesture;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *likersTapGesture;
+@property (nonatomic)  NSArray *recipeArray;
+
 @property Yummly *yummly;
 
 @property (nonatomic) CGFloat lastContentOffsetY;
 @end
 
 @implementation MainFeedViewController
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    PFQuery *query = [FDTransaction query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            self.recipeArray = objects;
+        } else
+        {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+-(void)setRecipeArray:(NSMutableArray *)recipeArray
+{
+    _recipeArray = recipeArray;
+    [self.tableView reloadData];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,28 +70,28 @@
     self.likersTapGesture.delegate = self;
     self.likersTapGesture.enabled = YES;
 
-    self.initialArray = @[ @{ @"cell": @"Cell A",
-                           @"userImageName": @"person",
-                           @"userName": @"tylorswift",
-                           @"dishImage": @"food1",
-                           @"timeSince":@"1d",
-                              @"likes":@[@"1",@"2"]
-                           },
-                        @{ @"cell": @"Cell B",
-                           @"userImageName": @"person2",
-                           @"userName": @"ladygaga",
-                           @"dishImage": @"food2",
-                           @"timeSince":@"2d",
-                           @"likes":@[@"1",@"2"]
-                           },
-                        @{ @"cell": @"Cell C",
-                           @"userImageName": @"person3",
-                           @"userName": @"U2",
-                           @"dishImage": @"food3",
-                           @"timeSince":@"4d",
-                           @"likes":@[@"1",@"2"]
-                           }
-                        ];
+//    self.initialArray = @[ @{ @"cell": @"Cell A",
+//                           @"userImageName": @"person",
+//                           @"userName": @"tylorswift",
+//                           @"dishImage": @"food1",
+//                           @"timeSince":@"1d",
+//                              @"likes":@[@"1",@"2"]
+//                           },
+//                        @{ @"cell": @"Cell B",
+//                           @"userImageName": @"person2",
+//                           @"userName": @"ladygaga",
+//                           @"dishImage": @"food2",
+//                           @"timeSince":@"2d",
+//                           @"likes":@[@"1",@"2"]
+//                           },
+//                        @{ @"cell": @"Cell C",
+//                           @"userImageName": @"person3",
+//                           @"userName": @"U2",
+//                           @"dishImage": @"food3",
+//                           @"timeSince":@"4d",
+//                           @"likes":@[@"1",@"2"]
+//                           }
+//                        ];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -76,13 +102,36 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MainFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainFeedCell"];
-    NSDictionary *dict = [self.initialArray objectAtIndex:indexPath.row];
-    cell.usernameLabel.text = [dict objectForKey:@"userName"];
-    cell.timeLabel.text = [dict objectForKey:@"timeSince"];
-    cell.mainFeedImageView.image = [UIImage imageNamed:[dict objectForKey:@"dishImage"]];
-    NSArray *likes = [dict objectForKey:@"likes"];
-    cell.likesLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)likes.count];
-    cell.userImage.image = [UIImage imageNamed:[dict objectForKey:@"userImageName"]];
+    FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
+    cell.usernameLabel.text = transaction.userName;
+
+    NSDate *now = [NSDate date];
+    //createdAt:"2011-06-10T18:33:42Z"
+    NSDate *date2 = transaction.createdAt;
+    NSTimeInterval distanceBetweenDates = [now timeIntervalSinceDate:date2];
+    double secondsInAnHour = 3600;
+    NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
+    cell.timeLabel.text = [NSString stringWithFormat:@"%ldh",(long)hoursBetweenDates];
+
+    PFFile *dishImagePFile = transaction.dishImagePFFile;
+    [dishImagePFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error) {
+        if (!error) {
+            UIImage *img = [UIImage imageWithData:imageNSData];
+            cell.mainFeedImageView.image = img;
+
+        }
+    }];
+
+    cell.likesLabel.text = [NSString stringWithFormat:@"%d",transaction.likedBy.count];
+
+    PFFile *userImagePFile = transaction.dishImagePFFile;
+    [userImagePFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error) {
+        if (!error) {
+            UIImage *img = [UIImage imageWithData:imageNSData];
+            cell.userImage.image = img;
+
+        }
+    }];
     
     return cell;
 }
