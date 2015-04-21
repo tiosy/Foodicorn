@@ -172,6 +172,7 @@
     NSLog(@"%@", string);
 
     [self.stringsArray addObject:string];
+    self.searchBar.returnKeyType = UIReturnKeyDone;
     [searchBar resignFirstResponder];
 }
 
