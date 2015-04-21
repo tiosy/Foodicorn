@@ -164,6 +164,8 @@
     }
 }
 
+
+
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSString *firstString = [searchBar.text mutableCopy];
@@ -172,7 +174,7 @@
     NSLog(@"%@", string);
 
     [self.stringsArray addObject:string];
-    self.searchBar.returnKeyType = UIReturnKeyDone;
+    self.searchBar.returnKeyType = UIReturnKeyNext;
     [searchBar resignFirstResponder];
 }
 

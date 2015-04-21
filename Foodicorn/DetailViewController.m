@@ -39,8 +39,8 @@
         NSData *data = [NSData dataWithContentsOfURL:url];
         self.imageView.image = [UIImage imageWithData:data];
         self.textView.text = self.yummly.detailIngredientsString;
-
     }];
+  
 }
 
 
@@ -57,7 +57,7 @@
         [FDTransaction addTransaction:me.profileThumbnailPFFile userName:me.username dishID:self.recipeID dishImage:self.imageView.image likedBy:nil transactionType:@"Current User liked dish"];
 
         [FDDish addDish:self.imageView.image username:me.username recipeId:self.recipeID];
-        
+
         //add like to photo add photo to liked photos array of current userlike
     } else
     {
@@ -72,8 +72,6 @@
 {
     WebViewController *webVC = segue.destinationViewController;
     webVC.yummly = self.yummly;
-    
-
 }
 
 

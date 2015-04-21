@@ -363,6 +363,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="U3q-LM-HIf"/>
                     <connections>
+                        <outlet property="collectionView" destination="DhA-6l-l6K" id="Q6b-Io-s5q"/>
                         <outlet property="followersCountLabel" destination="clK-rh-bV1" id="e69-Li-HaF"/>
                         <outlet property="followersLabel" destination="Sbd-Xh-Oo4" id="q09-Up-XO8"/>
                         <outlet property="followersTapGesture" destination="xtf-24-fYr" id="rTZ-1Q-t3N"/>
