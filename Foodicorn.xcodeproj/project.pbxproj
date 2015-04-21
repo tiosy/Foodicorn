@@ -57,6 +57,7 @@
 		E15A3C6D1ADE05F500F63159 /* FavView.m in Sources */ = {isa = PBXBuildFile; fileRef = E15A3C6C1ADE05F500F63159 /* FavView.m */; };
 		E186FFCC1ADEEFA600F1981F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E186FFCB1ADEEFA600F1981F /* ProfileViewController.m */; };
 		E186FFCF1ADEF11800F1981F /* ProfileCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E186FFCE1ADEF11800F1981F /* ProfileCollectionViewCell.m */; };
+		E1934B121AE5B2BD0028EC78 /* LikersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1934B111AE5B2BD0028EC78 /* LikersTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,8 @@
 		E186FFCB1ADEEFA600F1981F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		E186FFCD1ADEF11800F1981F /* ProfileCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCollectionViewCell.h; sourceTree = "<group>"; };
 		E186FFCE1ADEF11800F1981F /* ProfileCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCollectionViewCell.m; sourceTree = "<group>"; };
+		E1934B101AE5B2BD0028EC78 /* LikersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikersTableViewCell.h; sourceTree = "<group>"; };
+		E1934B111AE5B2BD0028EC78 /* LikersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikersTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +230,8 @@
 				3360243B1AE0BC350058422B /* UserProfileViewController.m */,
 				3360243D1AE0C1850058422B /* LikersViewController.h */,
 				3360243E1AE0C1850058422B /* LikersViewController.m */,
+				E1934B101AE5B2BD0028EC78 /* LikersTableViewCell.h */,
+				E1934B111AE5B2BD0028EC78 /* LikersTableViewCell.m */,
 			);
 			name = "MainFeed Group";
 			sourceTree = "<group>";
@@ -482,6 +487,7 @@
 				6EE7E77C1ADC6D6C00CF6B9D /* FDPFUser.m in Sources */,
 				336024391AE02E990058422B /* WebViewController.m in Sources */,
 				3360242F1AE014740058422B /* RootTabBarController.m in Sources */,
+				E1934B121AE5B2BD0028EC78 /* LikersTableViewCell.m in Sources */,
 				E15A3C6D1ADE05F500F63159 /* FavView.m in Sources */,
 				E15A3C6A1ADDF15200F63159 /* FavTableViewCell.m in Sources */,
 				33D857F61ADC99C5006EBEE0 /* Yummly.m in Sources */,

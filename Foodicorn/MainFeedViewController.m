@@ -212,9 +212,50 @@
 - (IBAction)likesTapGestureOnTapped:(UITapGestureRecognizer *)sender
 {
     [self performSegueWithIdentifier:@"picturelikes" sender:self];
-    //write code in here to pass people who liked the picture
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    LikersViewController *likersVC = segue.destinationViewController;
+
+    if ([segue.identifier isEqualToString:@"picturelikes"])
+    {
+        UIImage *img = [UIImage imageNamed:@"person"];
+        NSData *imgData = UIImagePNGRepresentation(img);
+        NSMutableArray *muteArray = [NSMutableArray new];
+        NSMutableDictionary *dict = [NSMutableDictionary new];
+
+        [dict setObject:imgData forKey:@"profileImage"];
+        [dict setObject:@"lady g" forKey:@"username"];
+        [dict setObject:@"Lady Gaga" forKey:@"fullname"];
+        [dict setObject:@"+ Follow" forKey:@"followingNSString"];
+        [muteArray addObject:dict];
+
+
+//        NSArray *usersArray = @[ @{@"userName" : @"lady g",
+//                                   @"userFullName" : @"Lady Gaga",
+//
+//                                   @"following" : @"Following"
+//                                   },
+//                                 @{@"userName" : @"fresh prince",
+//                                   @"userFullName" : @"Will Smith",
+//                                   @"profileImage" : userImage,
+//                                   @"following" : @"+ Follow"
+//                                   },
+//                                 @{@"userName" : @"Hannah Montana",
+//                                   @"userFullName" : @"Miley Cyrus",
+//                                   @"profileImage" : userImage,
+//                                   @"following" : @"Following"
+//                                   }
+//
+//                                ];
+        NSLog(@"%@", muteArray);
+        likersVC.usersArray = muteArray;
+    }else
+    {
+
+    }
+}
 //-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 //
 //{
