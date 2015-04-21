@@ -11,7 +11,7 @@
 #import "FDPFUser.h"
 
 
-@interface LikersViewController ()<UITableViewDataSource, UITableViewDelegate,>
+@interface LikersViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @end
 
