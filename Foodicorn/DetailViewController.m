@@ -40,7 +40,8 @@
         self.imageView.image = [UIImage imageWithData:data];
         self.textView.text = self.yummly.detailIngredientsString;
     }];
-  
+
+    //need to write code to verify if current user liked dish
 }
 
 
