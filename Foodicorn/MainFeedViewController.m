@@ -49,21 +49,21 @@
                            @"userName": @"tylorswift",
                            @"dishImage": @"food1",
                            @"timeSince":@"1d",
-                              @"likes":@[@"1",@"2"]
+                            @"likes":@[@"1",@"2"],
                            },
                         @{ @"cell": @"Cell B",
                            @"userImageName": @"person2",
                            @"userName": @"ladygaga",
                            @"dishImage": @"food2",
                            @"timeSince":@"2d",
-                           @"likes":@[@"1",@"2"]
+                           @"likes":@[@"1",@"2"],
                            },
                         @{ @"cell": @"Cell C",
                            @"userImageName": @"person3",
                            @"userName": @"U2",
                            @"dishImage": @"food3",
                            @"timeSince":@"4d",
-                           @"likes":@[@"1",@"2"]
+                           @"likes":@[@"1",@"2"],
                            }
                         ];
 }
@@ -117,9 +117,50 @@
 - (IBAction)likesTapGestureOnTapped:(UITapGestureRecognizer *)sender
 {
     [self performSegueWithIdentifier:@"picturelikes" sender:self];
-    //write code in here to pass people who liked the picture
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    LikersViewController *likersVC = segue.destinationViewController;
+
+    if ([segue.identifier isEqualToString:@"picturelikes"])
+    {
+        UIImage *img = [UIImage imageNamed:@"person"];
+        NSData *imgData = UIImagePNGRepresentation(img);
+        NSMutableArray *muteArray = [NSMutableArray new];
+        NSMutableDictionary *dict = [NSMutableDictionary new];
+
+        [dict setObject:imgData forKey:@"profileImage"];
+        [dict setObject:@"lady g" forKey:@"username"];
+        [dict setObject:@"Lady Gaga" forKey:@"fullname"];
+        [dict setObject:@"+ Follow" forKey:@"followingNSString"];
+        [muteArray addObject:dict];
+
+
+//        NSArray *usersArray = @[ @{@"userName" : @"lady g",
+//                                   @"userFullName" : @"Lady Gaga",
+//
+//                                   @"following" : @"Following"
+//                                   },
+//                                 @{@"userName" : @"fresh prince",
+//                                   @"userFullName" : @"Will Smith",
+//                                   @"profileImage" : userImage,
+//                                   @"following" : @"+ Follow"
+//                                   },
+//                                 @{@"userName" : @"Hannah Montana",
+//                                   @"userFullName" : @"Miley Cyrus",
+//                                   @"profileImage" : userImage,
+//                                   @"following" : @"Following"
+//                                   }
+//
+//                                ];
+        NSLog(@"%@", muteArray);
+        likersVC.usersArray = muteArray;
+    }else
+    {
+
+    }
+}
 //-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 //
 //{
