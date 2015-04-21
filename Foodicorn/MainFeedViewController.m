@@ -13,6 +13,7 @@
 #import "UserProfileViewController.h"
 #import "ProfileViewController.h"
 #import "Yummly.h"
+#import "FDDish.h"
 
 #import <parse/PFObject+Subclass.h>
 #import "FDTransaction.h"
@@ -47,6 +48,9 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+
+    PFQuery *dishQuery = [FDDish query];
+    [query r]
 }
 
 -(void)setRecipeArray:(NSMutableArray *)recipeArray
@@ -125,9 +129,9 @@
 
         }
     }];
-
+    //have to work on getting count
     cell.likesLabel.text = [NSString stringWithFormat:@"%d",transaction.likedBy.count];
-    NSLog(@"The cell text is %@", cell.likesLabel.text);
+    NSLog(@"The cell text is %lu", (unsigned long)transaction.likedBy.count);
 
     PFFile *userImagePFile = transaction.userProfileImagePFFile;
     [userImagePFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error) {
@@ -185,8 +189,11 @@
         UserProfileViewController *userVC= [storyboard instantiateViewControllerWithIdentifier:@"UserVC"];
         [self.navigationController pushViewController:userVC animated:YES];
     //    [self performSegueWithIdentifier:@"userprofile" sender:self];
+        //write code to pass user information to userprofileVC
+        //pass username to userprofileVC
+
+
     }
-    //write code to pass user information to userprofileVC
 }
 
 
