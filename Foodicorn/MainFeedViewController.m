@@ -23,6 +23,7 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *userNameTapGesture;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *likersTapGesture;
 @property (nonatomic)  NSArray *recipeArray;
+@property NSString *recipeId;
 
 @property Yummly *yummly;
 
@@ -34,6 +35,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     PFQuery *query = [FDTransaction query];
+    [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
         {
@@ -96,13 +98,14 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.initialArray.count;
+    return self.recipeArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MainFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainFeedCell"];
     FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
+    self.recipeId = transaction.dishID;
     cell.usernameLabel.text = transaction.userName;
 
     NSDate *now = [NSDate date];
@@ -123,8 +126,9 @@
     }];
 
     cell.likesLabel.text = [NSString stringWithFormat:@"%d",transaction.likedBy.count];
+    NSLog(@"The cell text is %@", cell.likesLabel.text);
 
-    PFFile *userImagePFile = transaction.dishImagePFFile;
+    PFFile *userImagePFile = transaction.userProfileImagePFFile;
     [userImagePFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error) {
         if (!error) {
             UIImage *img = [UIImage imageWithData:imageNSData];
@@ -141,6 +145,10 @@
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
 //    DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
 //    [self.navigationController pushViewController:detailVC animated:YES];
+//    FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
+//    detailVC.recipeID = transaction.dishID;
+//
+//    NSLog(@"%d", indexPath.row);
 //}
 
 //This will segue to detailVC
@@ -150,10 +158,8 @@
     DetailViewController *detailVC= [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
     [self.navigationController pushViewController:detailVC animated:YES];
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    //need to replace initial array with parse array
-    self.yummly = [self.initialArray objectAtIndex:indexPath.row];
-    //need to write code to pass a yummly object from an array
-    detailVC.recipeID = @"Melt-in-Your-Mouth-Chicken-1066441"  ;
+    FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
+    detailVC.recipeID = transaction.dishID;
 }
 
 - (IBAction)userNameTapGestureOnTapped:(UITapGestureRecognizer *)sender
