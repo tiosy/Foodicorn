@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *likersUsernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likersSubtitleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
+
 @property NSArray *userData;
 
 @end
