@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LikersTableViewCellDelegate <NSObject>
+
+@required
+-(void)shouldFollowOrUnfollowOnFollowButtonTap: (NSIndexPath *)indexPath;
+
+@end
+
 @interface LikersTableViewCell : UITableViewCell
+@property id<LikersTableViewCellDelegate>delegate;
+
 @property (weak, nonatomic) IBOutlet UIImageView *likersCellImageView;
 @property (weak, nonatomic) IBOutlet UILabel *likersUsernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likersSubtitleLabel;

@@ -143,7 +143,7 @@
     }];
     //have to work on getting count
     cell.likesLabel.text = [NSString stringWithFormat:@"%ld",transaction.likedBy.count];
-    NSLog(@"The cell text is %lu", (unsigned long)transaction.likedBy.count);
+//    NSLog(@"The cell text is %lu", (unsigned long)transaction.likedBy.count);
 
     PFFile *userImagePFile = transaction.userProfileImagePFFile;
     [userImagePFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error) {
@@ -223,13 +223,21 @@
         UIImage *img = [UIImage imageNamed:@"person"];
         NSData *imgData = UIImagePNGRepresentation(img);
         NSMutableArray *muteArray = [NSMutableArray new];
+
         NSMutableDictionary *dict = [NSMutableDictionary new];
+        NSMutableDictionary *dict2 = [NSMutableDictionary new];
 
         [dict setObject:imgData forKey:@"profileImage"];
         [dict setObject:@"lady g" forKey:@"username"];
         [dict setObject:@"Lady Gaga" forKey:@"fullname"];
         [dict setObject:@"+ Follow" forKey:@"followingNSString"];
+
+        [dict2 setObject:imgData forKey:@"profileImage"];
+        [dict2 setObject:@"fresh prince" forKey:@"username"];
+        [dict2 setObject:@"Will Smith" forKey:@"fullname"];
+        [dict2 setObject:@"Following" forKey:@"followingNSString"];
         [muteArray addObject:dict];
+        [muteArray addObject:dict2];
 
 
 //        NSArray *usersArray = @[ @{@"userName" : @"lady g",
@@ -249,7 +257,7 @@
 //                                   }
 //
 //                                ];
-        NSLog(@"%@", muteArray);
+//        NSLog(@"%@", muteArray);
         likersVC.usersArray = muteArray;
     }else
     {
