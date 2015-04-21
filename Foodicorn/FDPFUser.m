@@ -7,6 +7,7 @@
 //
 
 #import "FDPFUser.h"
+#import "FDUtility.h"
 
 @implementation FDPFUser
 
@@ -32,13 +33,18 @@
         // I am following this username
         NSMutableDictionary *dict = [NSMutableDictionary new];
         //userProfileImage is thumbnailed already no need to shrink)
-        NSData *imageNSData = UIImagePNGRepresentation(profileThumbnailUIImage);
-        if([imageNSData length] <128000){
-            [dict setValue:imageNSData forKey:@"profileThumbnailNSData"];
-        }
+
         [dict setValue:username forKey:@"username"];
         [dict setValue:fullname forKey:@"fullname"];
         [dict setValue:followingNSString forKey:@"followingNSString"]; //@"Following" or @"+ Follow"
+
+
+        NSData *imageNSData = UIImagePNGRepresentation(profileThumbnailUIImage);
+        PFFile *imagePFFile = [PFFile fileWithName:me.objectId data:imageNSData]; //use uniqe objectId as file name
+        [imagePFFile saveInBackground];
+        me.profileThumbnailPFFile = imagePFFile;
+
+        NSLog(@"%@",dict);
         
         //Parse only allows NSDictionary? not mutable dict?
         NSDictionary *dict2 = [dict mutableCopy];
@@ -46,27 +52,73 @@
         [me saveInBackground];
 
 
-        //This username has me as a follower
-        PFQuery *query = [FDPFUser query];
-     //   [query whereKey:@"username" equalTo:username];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                // The find succeeded.
-            
-                //retrieve the fduser
-                FDPFUser *fduser = [objects firstObject];
-                [fduser addUniqueObject:me.username forKey:@"followers"];
-                [fduser saveInBackground];
-            } else {
-                // Log details of the failure
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
-            }
-        }];
+//        //This username has me as a follower
+//        PFQuery *query = [FDPFUser query];
+//     //   [query whereKey:@"username" equalTo:username];
+//        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//            if (!error) {
+//                // The find succeeded.
+//            
+//                //retrieve the fduser
+//                FDPFUser *fduser = [objects firstObject];
+//                [fduser addUniqueObject:me.username forKey:@"followers"];
+//                [fduser saveInBackground];
+//            } else {
+//                // Log details of the failure
+//                NSLog(@"Error: %@ %@", error, [error userInfo]);
+//            }
+//        }];
 
 
     } //me
 
 }
+
+
+
++(void) removeFollowingAndFollower:(NSString *)username{
+
+
+    FDPFUser *me = [FDPFUser currentUser];
+
+    if(me){
+
+        for (NSDictionary *dict in me.followings) {
+
+            if([username isEqualToString:[dict objectForKey:@"username"]]){
+
+                [me removeObject:dict forKey:@"followings"];
+                [me saveInBackground];
+
+            }
+
+        }
+
+
+
+        //        //This username has me as a follower
+        //        PFQuery *query = [FDPFUser query];
+        //     //   [query whereKey:@"username" equalTo:username];
+        //        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        //            if (!error) {
+        //                // The find succeeded.
+        //
+        //                //retrieve the fduser
+        //                FDPFUser *fduser = [objects firstObject];
+        //                [fduser addUniqueObject:me.username forKey:@"followers"];
+        //                [fduser saveInBackground];
+        //            } else {
+        //                // Log details of the failure
+        //                NSLog(@"Error: %@ %@", error, [error userInfo]);
+        //            }
+        //        }];
+        
+        
+    } //me
+    
+}
+
+
 
 
 @end
