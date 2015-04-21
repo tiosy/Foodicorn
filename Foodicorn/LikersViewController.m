@@ -51,17 +51,12 @@
     NSData *imgData = [dict objectForKey:@"profileImage"];
     NSString *username = [dict objectForKey:@"username"];
     UIImage *image = [UIImage imageWithData:imgData];
+//    NSLog(@"%@", username);
     cell.likersCellImageView.image = image;
     cell.likersUsernameLabel.text = username;
     NSString *userFullName = [dict objectForKey:@"fullname"];
     cell.likersSubtitleLabel.text = userFullName;
-    if ([[dict objectForKey:@"followingNSString"] isEqualToString:@"+ Follow"])
-    {
-        [cell.followButton setTitle:@"+ Follow" forState:UIControlStateNormal];
-    }else
-    {
-        [cell.followButton setTitle:@"Following" forState:UIControlStateNormal];
-    }
+    cell.indexPath = indexPath;
 
     return cell;
 }
@@ -76,28 +71,26 @@
 
 }
 
--(void)shouldFollowOrUnfollowOnFollowButtonTap:(UIButton *)button
+-(void)shouldFollowOrUnfollowOnFollowButtonTap:(NSIndexPath *)indexPath
 {
         LikersTableViewCell *cell = [LikersTableViewCell new];
-        NSIndexPath *indexPath = [NSIndexPath ind]
         NSDictionary *dict = [self.usersArray objectAtIndex:indexPath.row];
         NSData *imgData = [dict objectForKey:@"profileImage"];
         UIImage *image = [UIImage imageWithData:imgData];
+    NSLog(@"%@", self.me.followings);
+//    NSLog(@"%lu", self.me.followings.count);
+
+    if ([self.me.followings containsObject:[dict objectForKey:@"username"]])
+    {
+        [FDPFUser removeFollowingAndFollower:[dict objectForKey:@"username"]];
+        [cell.followButton setTitle:@"+ Follow" forState:UIControlStateNormal];
 
 
+    }else
+    {
         [FDPFUser addFollowingAndFollower:image username:[dict objectForKey:@"username"] fullname:[dict objectForKey:@"fullname"] followingNSString:[dict objectForKey:@"followingNSString"]];
         [cell.followButton setTitle:@"Following" forState:UIControlStateNormal];
-// NSLog(@"%@", button.titleLabel.text);
-//    if ([cell.followButton.titleLabel.text  isEqual: @"+ Follow"])
-//    {
-//        [FDPFUser addFollowingAndFollower:image username:[dict objectForKey:@"username"] fullname:[dict objectForKey:@"fullname"] followingNSString:[dict objectForKey:@"followingNSString"]];
-//        [cell.followButton setTitle:@"Following" forState:UIControlStateNormal];
-//
-//    }else
-//    {
-//        [FDPFUser removeFollowingAndFollower:[dict objectForKey:@"username"]];
-//        [cell.followButton setTitle:@"+ Follow" forState:UIControlStateNormal];
-//    }
+    }
 
 //    NSLog(@"%lu", self.me.followings.count);
 

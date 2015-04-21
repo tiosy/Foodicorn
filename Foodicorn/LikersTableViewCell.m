@@ -23,27 +23,25 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)onFollowButtonTap:(NSIndexPath *)sender
+- (IBAction)onFollowButtonTap:(UIButton *)sender
 {
+    [self.delegate shouldFollowOrUnfollowOnFollowButtonTap:self.indexPath];
+
+    if (![self.followButton.backgroundColor isEqual:[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2]]) {
+        self.followButton.backgroundColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
+        [self.followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
+        //write code to show that current user followed another use
 
 
-    [self.delegate shouldFollowOrUnfollowOnFollowButtonTap:sender];
-
-//    if (![self.followButton.backgroundColor isEqual:[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2]]) {
-//        self.followButton.backgroundColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
-//        [self.followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//        [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
-//        //write code to show that current user followed another use
-//
-//
-//    }else
-//    {
-//        [self.followButton setTitleColor:[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2] forState:UIControlStateNormal];
-//        [self.followButton setTitle:@"+ Follow" forState:UIControlStateNormal];
-//        self.followButton.backgroundColor = [UIColor whiteColor];
-//        //write code to unfollow a user
-//        
-//    }
+    }else
+    {
+        [self.followButton setTitleColor:[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2] forState:UIControlStateNormal];
+        [self.followButton setTitle:@"+ Follow" forState:UIControlStateNormal];
+        self.followButton.backgroundColor = [UIColor whiteColor];
+        //write code to unfollow a user
+        
+    }
 
     //add code to add user at index to currentuser following array
 }
