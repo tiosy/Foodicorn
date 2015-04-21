@@ -156,17 +156,6 @@
     return cell;
 }
 
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
-//    DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
-//    [self.navigationController pushViewController:detailVC animated:YES];
-//    FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
-//    detailVC.recipeID = transaction.dishID;
-//
-//    NSLog(@"%d", indexPath.row);
-//}
-
 //This will segue to detailVC
 - (IBAction)imageViewTapGesture:(UITapGestureRecognizer *)sender
 {
@@ -199,14 +188,6 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
         UserProfileViewController *userVC= [storyboard instantiateViewControllerWithIdentifier:@"UserVC"];
         [self.navigationController pushViewController:userVC animated:YES];
-        
-
-
-
-    //    [self performSegueWithIdentifier:@"userprofile" sender:self];
-        //write code to pass user information to userprofileVC
-        //pass username to userprofileVC
-
 
     }
 }

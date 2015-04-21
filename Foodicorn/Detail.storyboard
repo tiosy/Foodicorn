@@ -234,7 +234,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="x7f-w5-Rr0">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="action" id="SOq-hZ-deJ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="action" id="SOq-hZ-deJ">
+                            <connections>
+                                <action selector="onShareButtonTapped:" destination="xmN-Yw-gzI" id="tO5-31-3pR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="JjV-nq-jZk" id="kyn-qJ-wk6"/>
