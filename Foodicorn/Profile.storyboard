@@ -527,12 +527,12 @@
                             <mask key="constraints">
                                 <exclude reference="4Sp-Xn-ts2"/>
                                 <exclude reference="4fc-yZ-UIH"/>
-                                <exclude reference="BsC-ns-AiK"/>
-                                <exclude reference="ctv-Jv-bYI"/>
-                                <exclude reference="7k9-nq-R1o"/>
-                                <exclude reference="VUP-17-mQw"/>
                                 <exclude reference="64R-me-Cyi"/>
                                 <exclude reference="Qci-SY-dSB"/>
+                                <exclude reference="7k9-nq-R1o"/>
+                                <exclude reference="VUP-17-mQw"/>
+                                <exclude reference="BsC-ns-AiK"/>
+                                <exclude reference="ctv-Jv-bYI"/>
                                 <exclude reference="lD2-Qj-DLo"/>
                                 <exclude reference="uBF-K7-6wl"/>
                             </mask>
@@ -548,12 +548,12 @@
                             <mask key="constraints">
                                 <include reference="4Sp-Xn-ts2"/>
                                 <include reference="4fc-yZ-UIH"/>
-                                <include reference="BsC-ns-AiK"/>
-                                <include reference="ctv-Jv-bYI"/>
-                                <include reference="7k9-nq-R1o"/>
-                                <include reference="VUP-17-mQw"/>
                                 <include reference="64R-me-Cyi"/>
                                 <include reference="Qci-SY-dSB"/>
+                                <include reference="7k9-nq-R1o"/>
+                                <include reference="VUP-17-mQw"/>
+                                <include reference="BsC-ns-AiK"/>
+                                <include reference="ctv-Jv-bYI"/>
                                 <include reference="lD2-Qj-DLo"/>
                                 <include reference="uBF-K7-6wl"/>
                             </mask>

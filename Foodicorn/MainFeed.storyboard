@@ -370,7 +370,6 @@
                 <tapGestureRecognizer id="hQj-ag-VRL">
                     <connections>
                         <action selector="userNameTapGestureOnTapped:" destination="VbL-jE-V9r" id="kQT-we-SV9"/>
-                        <segue destination="EmA-M7-nhF" kind="show" identifier="userprofile" id="GGX-wH-QTi"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="YM8-nW-uZU">
@@ -404,7 +403,7 @@
         <!--User Profile View Controller-->
         <scene sceneID="1Gt-XQ-tbm">
             <objects>
-                <viewController id="Hyj-2Y-U38" customClass="UserProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserVC" id="Hyj-2Y-U38" customClass="UserProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h6l-kr-iM8"/>
                         <viewControllerLayoutGuide type="bottom" id="o93-2U-Y86"/>
@@ -429,8 +428,7 @@
                                         <exclude reference="B5E-IJ-Rid"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="499" y="61" width="85" height="29"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="8XG-g8-Z08"/>
                                         <include reference="B5E-IJ-Rid"/>
@@ -456,8 +454,7 @@
                                         <exclude reference="vZe-w1-Jm0"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="406" y="61" width="85" height="29"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="HtW-mV-Xx3"/>
                                         <include reference="vZe-w1-Jm0"/>
@@ -483,8 +480,7 @@
                                         <exclude reference="jro-3Q-Z5O"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="427" y="32" width="42" height="21"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="5pR-lt-x5I"/>
                                         <include reference="jro-3Q-Z5O"/>
@@ -506,8 +502,7 @@
                                         <exclude reference="qRE-km-s6G"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="520" y="32" width="42" height="21"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="pV3-mP-mGX"/>
                                         <include reference="qRE-km-s6G"/>
@@ -555,9 +550,6 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yiQ-jR-gZp">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <gestureRecognizers/>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
-                                                    </variation>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -595,9 +587,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="157" width="600" height="443"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="Hyj-2Y-U38" id="lge-DU-ijC"/>
                                     <outlet property="delegate" destination="Hyj-2Y-U38" id="O5q-tu-PIn"/>
@@ -616,8 +605,7 @@
                                         <exclude reference="Zu8-oK-arO"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="458" y="92" width="75" height="30"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="Zu8-oK-arO"/>
                                     </mask>
@@ -846,6 +834,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="8K6-gS-dsB"/>
+        <segue reference="pPB-ac-YlA"/>
     </inferredMetricsTieBreakers>
 </document>

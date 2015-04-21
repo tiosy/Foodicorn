@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 #import "LikersViewController.h"
 #import "UserProfileViewController.h"
+#import "ProfileViewController.h"
 #import "Yummly.h"
 
 #import <parse/PFObject+Subclass.h>
@@ -166,11 +167,25 @@
 
 - (IBAction)userNameTapGestureOnTapped:(UITapGestureRecognizer *)sender
 {
+//    MainFeedTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MainFeedCell"];
+    CGPoint location = [sender locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
     FDPFUser *currentUser = [FDPFUser currentUser];
-    if (currentUser) {
+    FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
+    
+    if ([transaction.userName isEqualToString:currentUser.username])
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
+        ProfileViewController *profileVC= [storyboard instantiateViewControllerWithIdentifier:@"ProfileVC"];
+        [self.navigationController pushViewController:profileVC animated:YES];
 
+    }else
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
+        UserProfileViewController *userVC= [storyboard instantiateViewControllerWithIdentifier:@"UserVC"];
+        [self.navigationController pushViewController:userVC animated:YES];
+    //    [self performSegueWithIdentifier:@"userprofile" sender:self];
     }
-    [self performSegueWithIdentifier:@"userprofile" sender:self];
     //write code to pass user information to userprofileVC
 }
 
