@@ -73,7 +73,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="f6f-dz-76a">
-                        <barButtonItem key="rightBarButtonItem" title="Search" id="KAh-cX-7kS">
+                        <barButtonItem key="rightBarButtonItem" title="Get Recipes" id="KAh-cX-7kS">
                             <connections>
                                 <segue destination="YJg-gU-6t8" kind="show" id="DfV-nU-9Ig"/>
                             </connections>

@@ -49,8 +49,6 @@
         }
     }];
 
-    PFQuery *dishQuery = [FDDish query];
-    [query r]
 }
 
 -(void)setRecipeArray:(NSMutableArray *)recipeArray
