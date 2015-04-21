@@ -54,6 +54,39 @@
  //  [FDPFUser removeFollowingAndFollower:@"beegees"];
 
 
+//    //        //This username has me as a follower
+//            PFQuery *query = [FDPFUser query];
+//         [query whereKey:@"username" equalTo:@"justin"];
+//            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//                if (!error) {
+//                    // The find succeeded.
+//
+//
+//    
+//                    //retrieve the fduser
+//                    FDPFUser *fduser = [objects firstObject];
+//NSLog(@"pfuser query ok....%@",fduser.username);
+//                    // I am following this username
+//                    NSMutableDictionary *dict = [NSMutableDictionary new];
+//                    //userProfileImage is thumbnailed already no need to shrink)
+//
+//                    [dict setValue:me.username forKey:@"username"];
+//                    [dict setValue:me.fullName forKey:@"fullname"];
+//                    [dict setValue:@"UNKNOW" forKey:@"followingNSString"]; //@"Following" or @"+ Follow"
+//
+//                    NSLog(@"%@",dict);
+//                    
+//                    //Parse only allows NSDictionary? not mutable dict?
+//                    NSDictionary *dict2 = [dict mutableCopy];
+//                    [fduser addUniqueObject:dict2 forKey:@"followers"];
+//                    [fduser saveInBackground];
+//                    
+//                } else {
+//                    // Log details of the failure
+//                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+//                }
+//            }];
+//    
 
 
 

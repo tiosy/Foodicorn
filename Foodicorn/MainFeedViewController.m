@@ -49,8 +49,6 @@
         }
     }];
 
-    PFQuery *dishQuery = [FDDish query];
-    [query r]
 }
 
 -(void)setRecipeArray:(NSMutableArray *)recipeArray
@@ -118,8 +116,22 @@
     NSDate *date2 = transaction.createdAt;
     NSTimeInterval distanceBetweenDates = [now timeIntervalSinceDate:date2];
     double secondsInAnHour = 3600;
+    double minsInAnHour = 60;
+    NSInteger minsBetweenDates = distanceBetweenDates / minsInAnHour;
     NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
-    cell.timeLabel.text = [NSString stringWithFormat:@"%ldh",(long)hoursBetweenDates];
+    if (minsBetweenDates > 60) {
+        if(hoursBetweenDates>24){
+            NSInteger daysBetweenDates = hoursBetweenDates / 24;
+            cell.timeLabel.text = [NSString stringWithFormat:@"%ldd",(long)daysBetweenDates];
+        } else{
+            cell.timeLabel.text = [NSString stringWithFormat:@"%ldh",(long)hoursBetweenDates];
+        }
+    }else{
+        cell.timeLabel.text = [NSString stringWithFormat:@"%ldm",(long)minsBetweenDates];
+    }
+
+
+
 
     PFFile *dishImagePFile = transaction.dishImagePFFile;
     [dishImagePFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error) {
@@ -130,7 +142,7 @@
         }
     }];
     //have to work on getting count
-    cell.likesLabel.text = [NSString stringWithFormat:@"%d",transaction.likedBy.count];
+    cell.likesLabel.text = [NSString stringWithFormat:@"%ld",transaction.likedBy.count];
     NSLog(@"The cell text is %lu", (unsigned long)transaction.likedBy.count);
 
     PFFile *userImagePFile = transaction.userProfileImagePFFile;
