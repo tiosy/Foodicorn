@@ -11,7 +11,12 @@
 #import "DetailViewController.h"
 #import "LikersViewController.h"
 #import "UserProfileViewController.h"
+#import "ProfileViewController.h"
 #import "Yummly.h"
+#import "FDDish.h"
+
+#import <parse/PFObject+Subclass.h>
+#import "FDTransaction.h"
 
 @interface MainFeedViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 @property NSArray *initialArray;
@@ -19,12 +24,40 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *imageViewTapGesture;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *userNameTapGesture;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *likersTapGesture;
+@property (nonatomic)  NSArray *recipeArray;
+@property NSString *recipeId;
+
 @property Yummly *yummly;
 
 @property (nonatomic) CGFloat lastContentOffsetY;
 @end
 
 @implementation MainFeedViewController
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    PFQuery *query = [FDTransaction query];
+    [query orderByDescending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            self.recipeArray = objects;
+        } else
+        {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+
+    PFQuery *dishQuery = [FDDish query];
+    [query r]
+}
+
+-(void)setRecipeArray:(NSMutableArray *)recipeArray
+{
+    _recipeArray = recipeArray;
+    [self.tableView reloadData];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,45 +77,70 @@
     self.likersTapGesture.delegate = self;
     self.likersTapGesture.enabled = YES;
 
-    self.initialArray = @[ @{ @"cell": @"Cell A",
-                           @"userImageName": @"person",
-                           @"userName": @"tylorswift",
-                           @"dishImage": @"food1",
-                           @"timeSince":@"1d",
-                              @"likes":@[@"1",@"2"]
-                           },
-                        @{ @"cell": @"Cell B",
-                           @"userImageName": @"person2",
-                           @"userName": @"ladygaga",
-                           @"dishImage": @"food2",
-                           @"timeSince":@"2d",
-                           @"likes":@[@"1",@"2"]
-                           },
-                        @{ @"cell": @"Cell C",
-                           @"userImageName": @"person3",
-                           @"userName": @"U2",
-                           @"dishImage": @"food3",
-                           @"timeSince":@"4d",
-                           @"likes":@[@"1",@"2"]
-                           }
-                        ];
+//    self.initialArray = @[ @{ @"cell": @"Cell A",
+//                           @"userImageName": @"person",
+//                           @"userName": @"tylorswift",
+//                           @"dishImage": @"food1",
+//                           @"timeSince":@"1d",
+//                              @"likes":@[@"1",@"2"]
+//                           },
+//                        @{ @"cell": @"Cell B",
+//                           @"userImageName": @"person2",
+//                           @"userName": @"ladygaga",
+//                           @"dishImage": @"food2",
+//                           @"timeSince":@"2d",
+//                           @"likes":@[@"1",@"2"]
+//                           },
+//                        @{ @"cell": @"Cell C",
+//                           @"userImageName": @"person3",
+//                           @"userName": @"U2",
+//                           @"dishImage": @"food3",
+//                           @"timeSince":@"4d",
+//                           @"likes":@[@"1",@"2"]
+//                           }
+//                        ];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.initialArray.count;
+    return self.recipeArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MainFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainFeedCell"];
-    NSDictionary *dict = [self.initialArray objectAtIndex:indexPath.row];
-    cell.usernameLabel.text = [dict objectForKey:@"userName"];
-    cell.timeLabel.text = [dict objectForKey:@"timeSince"];
-    cell.mainFeedImageView.image = [UIImage imageNamed:[dict objectForKey:@"dishImage"]];
-    NSArray *likes = [dict objectForKey:@"likes"];
-    cell.likesLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)likes.count];
-    cell.userImage.image = [UIImage imageNamed:[dict objectForKey:@"userImageName"]];
+    FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
+    self.recipeId = transaction.dishID;
+    cell.usernameLabel.text = transaction.userName;
+
+    NSDate *now = [NSDate date];
+    //createdAt:"2011-06-10T18:33:42Z"
+    NSDate *date2 = transaction.createdAt;
+    NSTimeInterval distanceBetweenDates = [now timeIntervalSinceDate:date2];
+    double secondsInAnHour = 3600;
+    NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
+    cell.timeLabel.text = [NSString stringWithFormat:@"%ldh",(long)hoursBetweenDates];
+
+    PFFile *dishImagePFile = transaction.dishImagePFFile;
+    [dishImagePFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error) {
+        if (!error) {
+            UIImage *img = [UIImage imageWithData:imageNSData];
+            cell.mainFeedImageView.image = img;
+
+        }
+    }];
+    //have to work on getting count
+    cell.likesLabel.text = [NSString stringWithFormat:@"%d",transaction.likedBy.count];
+    NSLog(@"The cell text is %lu", (unsigned long)transaction.likedBy.count);
+
+    PFFile *userImagePFile = transaction.userProfileImagePFFile;
+    [userImagePFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error) {
+        if (!error) {
+            UIImage *img = [UIImage imageWithData:imageNSData];
+            cell.userImage.image = img;
+
+        }
+    }];
     
     return cell;
 }
@@ -92,6 +150,10 @@
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
 //    DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
 //    [self.navigationController pushViewController:detailVC animated:YES];
+//    FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
+//    detailVC.recipeID = transaction.dishID;
+//
+//    NSLog(@"%d", indexPath.row);
 //}
 
 //This will segue to detailVC
@@ -100,17 +162,38 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
     DetailViewController *detailVC= [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
     [self.navigationController pushViewController:detailVC animated:YES];
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    //need to replace initial array with parse array
-    self.yummly = [self.initialArray objectAtIndex:indexPath.row];
-    //need to write code to pass a yummly object from an array
-    detailVC.recipeID = @"Melt-in-Your-Mouth-Chicken-1066441"  ;
+
+    CGPoint location = [sender locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+    FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
+    detailVC.recipeID = transaction.dishID;
 }
 
 - (IBAction)userNameTapGestureOnTapped:(UITapGestureRecognizer *)sender
 {
-    [self performSegueWithIdentifier:@"userprofile" sender:self];
-    //write code to pass user information to userprofileVC
+//    MainFeedTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MainFeedCell"];
+    CGPoint location = [sender locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+    FDPFUser *currentUser = [FDPFUser currentUser];
+    FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
+    
+    if ([transaction.userName isEqualToString:currentUser.username])
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
+        ProfileViewController *profileVC= [storyboard instantiateViewControllerWithIdentifier:@"ProfileVC"];
+        [self.navigationController pushViewController:profileVC animated:YES];
+
+    }else
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
+        UserProfileViewController *userVC= [storyboard instantiateViewControllerWithIdentifier:@"UserVC"];
+        [self.navigationController pushViewController:userVC animated:YES];
+    //    [self performSegueWithIdentifier:@"userprofile" sender:self];
+        //write code to pass user information to userprofileVC
+        //pass username to userprofileVC
+
+
+    }
 }
 
 

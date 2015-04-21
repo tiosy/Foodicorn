@@ -13,6 +13,7 @@
 #import "EditProfileViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "FDPFUser.h"
+#import "FDUtility.h"
 
 @interface ProfileViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -65,7 +66,8 @@
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2;
     self.profileImageView.layer.masksToBounds = YES;
 
-    PFFile *userImageFile = self.userPhoto[@"profilePicture"];
+    FDPFUser *currentUser = [FDPFUser currentUser];
+    PFFile *userImageFile = currentUser.profileThumbnailPFFile;
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
      {
          if (!error) {
@@ -214,31 +216,25 @@
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage])
     {
         UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        UIImage *profImage = [FDUtility imageWithImage:image scaledToSize:CGSizeMake(30, 30)];
+        NSData *imageData = UIImagePNGRepresentation(profImage);
 
-        self.profileImageView.image = image;
-        //need to add code here to save photo to currentUser.
+        FDPFUser *currentUser = [FDPFUser currentUser];
+        PFFile *imageFile = [PFFile fileWithName:currentUser.objectId data:imageData];
+        [imageFile saveInBackground];
 
-        [self.profileImageView setAutoresizingMask:(UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth)];
+        currentUser.profileThumbnailPFFile = imageFile;
+        currentUser.fullName = @"Justin Haar";
+        [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+         {
+            if (error)
+             {
+                 NSLog(@"This is the %@", error);
+             }
+         }];
 
-        //create a PFFile
-        NSData *imageData = UIImagePNGRepresentation(image);
-        PFFile *imageFile = [PFFile fileWithData:imageData];
-        self.userPhoto = [PFObject objectWithClassName:@"User"];
-//        self.userPhoto[@"imageName"] = @"Thumbnail Picture";
-        self.userPhoto[@"profilePicture"] = imageFile;
-        [self.userPhoto saveInBackground];
-        NSLog(@"The User photo is %@", self.userPhoto);
+        [self.profileImageView setImage:[UIImage imageWithData:imageData]];
 
-        //associate the PFFile with Current User
-
-
-//        FDPFUser *user = [FDPFUser currentUser];
-//        PFRelation *relation = [user relationForKey:@"profileThumbnailImage"];
-//        user.profileThumbnailPFFile = imageFile;
-//        [relation addObject:self.userPhoto];
-//        NSLog(@"The pfile is %@", imageFile);
-//
-//        [user saveInBackground];
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
     {

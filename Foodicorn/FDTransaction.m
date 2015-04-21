@@ -46,24 +46,24 @@
 
 //RETRIEVE ALL LIKERS FOR DISH
 //need to add dishID and set it equal to recipeID.
-+(void) addTransaction:(UIImage *)userProfileImage userName:(NSString *)userName dishImage:(UIImage *)dishImage likedBy:(NSArray *)likedBy transactionType:(NSString *)transactionType{
++(void) addTransaction:(PFFile *)userProfilePFFile userName:(NSString *)userName dishID:(NSString *)dishID dishImage:(UIImage *)dishImage likedBy:(NSArray *)likedBy transactionType:(NSString *)transactionType{
 
     FDTransaction *xtran = [FDTransaction object];
 
     //UIImage-> NSData-> PFFile
-    NSData *imageNSData = UIImagePNGRepresentation(userProfileImage);
-    xtran.userProfileImageNSData = imageNSData;  // must be < 128KB
-    NSString *fileWithName = xtran.objectId;
-    PFFile *imagePFFile = [PFFile fileWithName:fileWithName data:imageNSData]; //use uniqe objectId as file name
-    xtran.userProfileImagePFFile = imagePFFile;
+//    NSData *imageNSData = UIImagePNGRepresentation(userProfileImage);
+//    xtran.userProfileImageNSData = imageNSData;  // must be < 128KB
+//    NSString *fileWithName = xtran.objectId;
+//    PFFile *imagePFFile = [PFFile fileWithName:fileWithName data:imageNSData]; //use uniqe objectId as file name
+    xtran.userProfileImagePFFile = userProfilePFFile;
 
     xtran.userName = userName;
-    xtran.dishID = xtran.objectId;
+    xtran.dishID = dishID;
 
     //UIImage-> NSData-> PFFile
     NSData *imageNSData2 = UIImagePNGRepresentation(dishImage);
-    NSString *fileWithName2 = [NSString stringWithFormat:@"dishImage%@",xtran.objectId];
-    PFFile *imagePFFile2 = [PFFile fileWithName:fileWithName2 data:imageNSData2]; //use uniqe objectId as file name
+    NSString *fileWithName2 = [NSString stringWithFormat:@"dishImage%@", dishID];
+    PFFile *imagePFFile2 = [PFFile fileWithName:fileWithName2 data:imageNSData2]; //use uniqe dishID as file name
     xtran.dishImagePFFile = imagePFFile2;
 
     xtran.likedBy= likedBy;
