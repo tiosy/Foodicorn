@@ -21,8 +21,11 @@
 + (NSString *)parseClassName;
 
 +(void) addDish:(UIImage *)imageUIImage username: (NSString *) username recipeId:(NSString *)recipeId;
--(void) likeDish: (NSString *) username;
-
 + (void)retrieveFDDishWithCompletion:(void (^)(NSArray *))complete;
++(void) addLike:(NSString *) receipeId;
+//a dish liked by users
++ (void) likedByUsersWithCompletion:(NSString *) receipeId completionHandler:(void (^)(NSArray *))complete;
+//a user likes dishes
++ (void) likeDishesWithCompletion:(void (^)(NSArray *))complete;
 
 @end

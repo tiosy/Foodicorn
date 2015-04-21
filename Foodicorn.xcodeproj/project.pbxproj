@@ -31,6 +31,7 @@
 		6EA8A4211ADC5FA900C6BD62 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EA8A4201ADC5FA900C6BD62 /* Images.xcassets */; };
 		6EA8A4241ADC5FA900C6BD62 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EA8A4221ADC5FA900C6BD62 /* LaunchScreen.xib */; };
 		6EA8A4301ADC5FA900C6BD62 /* FoodicornTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A42F1ADC5FA900C6BD62 /* FoodicornTests.m */; };
+		6EBC8CCD1AE7021900DD6E4B /* FDLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EBC8CCC1AE7021900DD6E4B /* FDLike.m */; };
 		6EE7E7601ADC640C00CF6B9D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7E75F1ADC640C00CF6B9D /* Parse.framework */; };
 		6EE7E7621ADC641D00CF6B9D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7E7611ADC641D00CF6B9D /* Bolts.framework */; };
 		6EE7E7641ADC646B00CF6B9D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7E7631ADC646B00CF6B9D /* AudioToolbox.framework */; };
@@ -111,6 +112,8 @@
 		6EA8A4291ADC5FA900C6BD62 /* FoodicornTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodicornTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EA8A42E1ADC5FA900C6BD62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EA8A42F1ADC5FA900C6BD62 /* FoodicornTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodicornTests.m; sourceTree = "<group>"; };
+		6EBC8CCB1AE7021900DD6E4B /* FDLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDLike.h; path = ../FDLike.h; sourceTree = "<group>"; };
+		6EBC8CCC1AE7021900DD6E4B /* FDLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDLike.m; path = ../FDLike.m; sourceTree = "<group>"; };
 		6EE7E75F1ADC640C00CF6B9D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		6EE7E7611ADC641D00CF6B9D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		6EE7E7631ADC646B00CF6B9D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -366,6 +369,8 @@
 				6EE7E7851ADC70B500CF6B9D /* FDDish.m */,
 				6EE7E7871ADC727B00CF6B9D /* FDTransaction.h */,
 				6EE7E7881ADC727B00CF6B9D /* FDTransaction.m */,
+				6EBC8CCB1AE7021900DD6E4B /* FDLike.h */,
+				6EBC8CCC1AE7021900DD6E4B /* FDLike.m */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -492,6 +497,7 @@
 				E15A3C6A1ADDF15200F63159 /* FavTableViewCell.m in Sources */,
 				33D857F61ADC99C5006EBEE0 /* Yummly.m in Sources */,
 				334846691ADD8984003B0296 /* SearchViewController.m in Sources */,
+				6EBC8CCD1AE7021900DD6E4B /* FDLike.m in Sources */,
 				3360243C1AE0BC350058422B /* UserProfileViewController.m in Sources */,
 				6EE7E7821ADC6F4E00CF6B9D /* FDUtility.m in Sources */,
 				6EE7E7891ADC727B00CF6B9D /* FDTransaction.m in Sources */,

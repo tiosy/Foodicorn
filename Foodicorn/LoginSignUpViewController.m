@@ -12,8 +12,14 @@
 #import <ParseUI/ParseUI.h>
 
 #import "FDPFUser.h"
+#import "FDUser.h"
+
+#import "FDLike.h"
 
 @interface LoginSignUpViewController () <PFLogInViewControllerDelegate , PFSignUpViewControllerDelegate>
+
+@property NSMutableArray *usersMutArray;
+@property NSMutableArray *dishesMutArray;
 @end
 
 
@@ -28,6 +34,10 @@
 - (void)viewDidLoad {
    [super viewDidLoad];
 
+//
+    self.usersMutArray = [NSMutableArray new];
+    self.dishesMutArray = [NSMutableArray new];
+//
 
 
 //    //TESTING adding following
@@ -39,9 +49,10 @@
         NSLog(@"%@", [dic objectForKey:@"username"]);
          NSLog(@"%@", [dic objectForKey:@"fullname"]);
          NSLog(@"%@", [dic objectForKey:@"followingNSString"]);
+        NSLog(@"%@", [dic objectForKey:@"followings"]);
     }
     
-  //  UIImage *person6 = [UIImage imageNamed:@"person6"];
+//  UIImage *person6 = [UIImage imageNamed:@"person6"];
 //    [FDPFUser addFollowingAndFollower:person6 username:@"taylorswift" fullname:@"Taylor Swift" followingNSString:@"Following"];
 //
 //    [FDPFUser addFollowingAndFollower:person6 username:@"tim" fullname:@"Tim" followingNSString:@"Following"];
@@ -51,44 +62,130 @@
 //    [FDPFUser addFollowingAndFollower:person6 username:@"justin" fullname:@"Justin" followingNSString:@"Following"];
 //
 
- //  [FDPFUser removeFollowingAndFollower:@"beegees"];
+ //[FDPFUser removeFollowingAndFollower:@"beegees"];
+
+//
+//    [FDUser addFollower:@"tim" followerUsername: @"beegees"];
+//
 
 
-//    //        //This username has me as a follower
-//            PFQuery *query = [FDPFUser query];
-//         [query whereKey:@"username" equalTo:@"justin"];
-//            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//                if (!error) {
-//                    // The find succeeded.
+
+//==============================================
+
+//    // suppose we have a user we want to follow
+//    PFUser *otherUser = ...
+//
+//    // create an entry in the Follow table
+//    PFObject *follow = [PFObject objectWithClassName:@"Follow"];
+//    [follow setObject:[PFUser currentUser]  forKey:@"from"];
+//    [follow setObject:otherUser forKey:@"to"];
+//    [follow setObject:[NSDate date] forKey@"date"];
+//    [follow saveInBackground];
 //
 //
+//    // set up the query on the Follow table
+//    PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
+//    [query whereKey:@"from" equalTo:[PFUser currentUser]];
+//
+//    // execute the query
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        for(PFObject *o in objects) {
+//            // o is an entry in the Follow table
+//            // to get the user, we get the object with the to key
+//            PFUser *otherUser = [o objectForKey@"to"];
+//
+//            // to get the time when we followed this user, get the date key
+//            PFObject *when = [o objectForKey@"date"];
+//        }
+//    }];
+//
+//    // set up the query on the Follow table
+//    PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
+//    [query whereKey:@"to" equalTo:[PFUser currentUser]];
+//
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        for(PFObject *o in objects) {
+//            // o is an entry in the Follow table
+//            // to get the user, we get the object with the from key
+//            PFUser *otherUser = [o objectForKey@"from"];
+//
+//            // to get the time the user was followed, get the date key
+//            PFObject *when = [o objectForKey@"date"];
+//        }
+//    }];
+
+//==============================================
+
+//    NSString *rId = @"123";
+// NSString *receipeId = @"123";
+//    PFObject *like = [PFObject objectWithClassName:@"Like"];
+//
+//    [like setObject:receipeId forKey:@"from"];
+//    [like setObject:[PFUser currentUser]  forKey:@"to"];
+//    [like saveInBackground];
+//
+
+
+
+//
+//
+//    NSString *rId = @"123";
+//   [FDLike addLike:rId];
+//    [FDLike likedByUsersWithCompletion:rId completionHandler:^(NSArray *array) {
+//        self.usersMutArray = [array mutableCopy];
+//
+//        NSLog(@"%@", self.usersMutArray);
+//
+//    }];
+//
+//    [FDLike likeDishesWithCompletion:^(NSArray *array) {
+//        self.dishesMutArray = [array mutableCopy];
+//         NSLog(@"%@", self.dishesMutArray);
+//
+//    }];
 //    
-//                    //retrieve the fduser
-//                    FDPFUser *fduser = [objects firstObject];
-//NSLog(@"pfuser query ok....%@",fduser.username);
-//                    // I am following this username
-//                    NSMutableDictionary *dict = [NSMutableDictionary new];
-//                    //userProfileImage is thumbnailed already no need to shrink)
 //
-//                    [dict setValue:me.username forKey:@"username"];
-//                    [dict setValue:me.fullName forKey:@"fullname"];
-//                    [dict setValue:@"UNKNOW" forKey:@"followingNSString"]; //@"Following" or @"+ Follow"
+
+
+
+//    //==============================================
+////
+////        // suppose we have a Dish we want to follow [FDPFUser currentUser]
+////    
 //
-//                    NSLog(@"%@",dict);
-//                    
-//                    //Parse only allows NSDictionary? not mutable dict?
-//                    NSDictionary *dict2 = [dict mutableCopy];
-//                    [fduser addUniqueObject:dict2 forKey:@"followers"];
-//                    [fduser saveInBackground];
-//                    
-//                } else {
-//                    // Log details of the failure
-//                    NSLog(@"Error: %@ %@", error, [error userInfo]);
-//                }
-//            }];
+//
+////        // set up the query on the Like table
+//        PFQuery *query = [PFQuery queryWithClassName:@"Like"];
+//        [query whereKey:@"from" equalTo:receipeId];
 //    
-
-
+//        // execute the query
+//        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//            for(PFObject *o in objects) {
+//                // o is an entry in the Like table
+//                // to get the user, we get the object with the to key
+//                PFUser *otherUser = [o objectForKey@"to"];
+//    
+//                // to get the time when we followed this user, get the date key
+//                PFObject *when = [o objectForKey@"date"];
+//            }
+//        }];
+////
+//        // set up the query on the Follow table
+//        PFQuery *query = [PFQuery queryWithClassName:@"Follow"];
+//        [query whereKey:@"to" equalTo:[PFUser currentUser]];
+//    
+//        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//            for(PFObject *o in objects) {
+//                // o is an entry in the Follow table
+//                // to get the user, we get the object with the from key
+//                PFUser *otherUser = [o objectForKey@"from"];
+//    
+//                // to get the time the user was followed, get the date key
+//                PFObject *when = [o objectForKey@"date"];
+//            }
+//        }];
+//    
+//    //==============================================
 
 
 }

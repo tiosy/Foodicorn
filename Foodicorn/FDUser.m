@@ -17,14 +17,9 @@
 
 @implementation FDUser
 
-@dynamic uid;
 @dynamic username;
-@dynamic fullName;
-@dynamic profileThumbnailPFFile;
-@dynamic profileThumbnailNSData;
 @dynamic followers;
-@dynamic followings;
-@dynamic likes;
+
 
 + (void)load {
     [self registerSubclass];
@@ -36,92 +31,38 @@
 
 
 
-//add a user
--(void) addUser:(FDUser *) user  username:(NSString *)username fullname:(NSString *) fullname{
++(void) addFollower:(NSString *)username followerUsername:(NSString *)followerUSername {
 
-    //FDUser *user = [FDUser object];
-    user.uid = user.objectId;
-    user.username   =   username;
-    user.fullName   =   fullname;
+    
+        //retrieve the FDUser
+        PFQuery *query = [FDUser query];
+        [query whereKey:@"username" equalTo:username];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
-    [user saveInBackground];
+            NSLog(@"====%ld",objects.count);
+            if (objects.count == 0) //no such username
+            {
+                //if user is nill, create one
+                FDUser *user = [FDUser object];
+                user.username = username;
+                [user addObject:followerUSername forKey:@"followers"];
+                [user saveInBackground];
+                
+            } else {
+
+                //retrieve the fduser
+                FDUser *fduser = [objects firstObject];
+                [fduser addUniqueObject:followerUSername forKey:@"followers"];
+                [fduser saveInBackground];
+
+            }
+
+        }];
+        
+        
 }
+    
 
-//add user profile image
-+(void) addUserProfileImage:(NSString *)username userProfileImage: (UIImage *) userProfileImage {
-
-    //retrieve the FDUser first
-    PFQuery *query = [FDUser query];
-    [query whereKey:@"username" equalTo:username];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // The find succeeded.
-
-            //retrieve the FDUser
-            FDUser *fduser = [objects firstObject];
-
-            NSLog(@"%@", fduser.username);
-
-            //UIImage ->  to Thumbnail -> NSData -> PFFile
-            UIImage *imageThumbnail = [FDUtility imageWithImage:userProfileImage scaledToSize:CGSizeMake(30.0, 30.0)];
-            NSData *imageNSData = UIImagePNGRepresentation(imageThumbnail);
-            fduser.profileThumbnailNSData = imageNSData;
-            PFFile *imagePFFile = [PFFile fileWithName:fduser.objectId data:imageNSData]; //use uniqe objectId as file name
-            fduser.profileThumbnailPFFile = imagePFFile;
-
-            [fduser saveInBackground];
-
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
-
-}
-
-
-
-
--(void) addFollowing: (FDUser *) followingFDUser{
-
-}
-
-
-//-(void) addFollowing: (NSString *) currentUID followingUID:(NSString *) uid{
-//
-//    if(self)
-//    {
-//        [self addUniqueObject:uid forKey:@"followings"];
-//        [self saveInBackground];
-//
-//        //now write follower(aka currentUID) to uid
-//        //retrieve the FDUser
-//        PFQuery *query = [FDUser query];
-//        [query whereKey:@"uid" equalTo:uid];
-//        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//            if (!error) {
-//                // The find succeeded.
-//
-//                //retrieve the fduser
-//                FDUser *fduser = [objects firstObject];
-//                [fduser addUniqueObject:currentUID forKey:@"followers"];
-//                [fduser saveInBackground];
-//
-//                //add transaction
-//
-//
-//
-//
-//            } else {
-//                // Log details of the failure
-//                NSLog(@"Error: %@ %@", error, [error userInfo]);
-//            }
-//        }];
-//        
-//        
-//    }
-//    
-//}
 
 
 
