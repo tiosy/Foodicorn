@@ -14,7 +14,7 @@
 #import "ProfileViewController.h"
 #import "Yummly.h"
 #import "FDDish.h"
-
+#import "FDPFUser.h"
 #import <parse/PFObject+Subclass.h>
 #import "FDTransaction.h"
 
