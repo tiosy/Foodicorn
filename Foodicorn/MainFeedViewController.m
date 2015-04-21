@@ -26,7 +26,6 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *likersTapGesture;
 @property (nonatomic)  NSArray *recipeArray;
 @property NSString *recipeId;
-
 @property Yummly *yummly;
 
 @property (nonatomic) CGFloat lastContentOffsetY;
@@ -34,7 +33,7 @@
 
 @implementation MainFeedViewController
 
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
     PFQuery *query = [FDTransaction query];
     [query orderByDescending:@"createdAt"];
@@ -142,7 +141,7 @@
         }
     }];
     //have to work on getting count
-    cell.likesLabel.text = [NSString stringWithFormat:@"%ld",transaction.likedBy.count];
+    cell.likesLabel.text = [NSString stringWithFormat:@"%ld",(unsigned long)transaction.likedBy.count];
     NSLog(@"The cell text is %lu", (unsigned long)transaction.likedBy.count);
 
     PFFile *userImagePFile = transaction.userProfileImagePFFile;
@@ -156,17 +155,6 @@
     
     return cell;
 }
-
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
-//    DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
-//    [self.navigationController pushViewController:detailVC animated:YES];
-//    FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
-//    detailVC.recipeID = transaction.dishID;
-//
-//    NSLog(@"%d", indexPath.row);
-//}
 
 //This will segue to detailVC
 - (IBAction)imageViewTapGesture:(UITapGestureRecognizer *)sender
@@ -200,10 +188,6 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
         UserProfileViewController *userVC= [storyboard instantiateViewControllerWithIdentifier:@"UserVC"];
         [self.navigationController pushViewController:userVC animated:YES];
-    //    [self performSegueWithIdentifier:@"userprofile" sender:self];
-        //write code to pass user information to userprofileVC
-        //pass username to userprofileVC
-
 
     }
 }

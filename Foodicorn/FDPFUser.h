@@ -23,6 +23,7 @@
 
 +(void) addFollowingAndFollower:(UIImage *) profileThumbnailUIImage username:(NSString *)username fullname:(NSString *)fullname followingNSString:(NSString *) followingNSString;
 +(void) removeFollowingAndFollower:(NSString *)username;
+
 @end
 
 

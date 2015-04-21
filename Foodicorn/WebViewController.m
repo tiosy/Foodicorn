@@ -26,22 +26,6 @@
     NSURL *url = [NSURL URLWithString:self.yummly.detailInstructionsUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareToSocialMedia)];
-    shareButton.style = UIBarButtonSystemItemAction;
-    self.navigationController.navigationItem.rightBarButtonItem = shareButton;
-}
-
-
--(void)shareToSocialMedia
-{
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Sharing on Social Media" message:@"In order to share Recipe on your own Facebook account or other social media accounts, you must be logged in to your social media accounts via the device settings." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles: nil];
-    [alert show];
-
-    NSArray *activityItems = @[@"Hey check out this great recipe I found! %@", self.yummly.detailInstructionsUrl];
-
-    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-
-    [self presentViewController:activityController animated:YES completion:nil];
 }
 
 -(void)webViewDidStartLoad:(UIWebView *)webView
@@ -54,4 +38,26 @@
     [self.activityIndicator stopAnimating];
 }
 
+- (IBAction)onShareButtonTapped:(UIBarButtonItem *)sender
+{
+    NSMutableArray *sharingItems = [NSMutableArray new];
+    NSString *message = @"Hey, checkout this recipe I found using FoodiCorn, the app I made at Mobile Makers Academy. Foodicorn allows you to search your favorite recipes with many unique filters like keywords, diets, cuisines, courses, holidays, and allergies. Checkout the recipe and the app below.";
+    NSURL *url = [NSURL URLWithString:self.yummly.detailInstructionsUrl];
+    NSURL *imageUrl = [NSURL URLWithString:self.yummly.urlString360];
+    NSData *data = [NSData dataWithContentsOfURL:imageUrl];
+    UIImage *image = [UIImage imageWithData:data];
+
+    if (message) {
+        [sharingItems addObject:message];
+    }
+    if (image) {
+        [sharingItems addObject:image];
+    }
+    if (url) {
+        [sharingItems addObject:url];
+    }
+
+    UIActivityViewController *activityController = [[UIActivityViewController alloc]initWithActivityItems:sharingItems applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
+}
 @end

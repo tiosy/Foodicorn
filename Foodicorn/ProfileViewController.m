@@ -14,9 +14,12 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "FDPFUser.h"
 #import "FDUtility.h"
+#import "FDTransaction.h"
+#import "FDDish.h"
 
 @interface ProfileViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followersCountLabel;
@@ -26,9 +29,9 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *imageViewTapGesture;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *followersTapGesture;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *followingTapGesture;
-@property NSArray *collectionArray;
+@property (nonatomic)  NSArray *collectionArray;
 @property NSDictionary *collectionDict;
-@property PFObject *userPhoto;
+
 @end
 
 @implementation ProfileViewController
@@ -76,7 +79,20 @@
          }
 
      }];
-    
+
+    PFQuery *query = [FDTransaction query];
+    [query whereKey:@"userName" equalTo:currentUser.username];
+    [query orderByDescending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            self.collectionArray = objects;
+        } else
+        {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 //    self.collectionDict = @{ @"cell": @"Cell A",
 //                              @"userImageName": @"person",
 //                              @"userName": @"tylorswift",
@@ -95,6 +111,12 @@
 
 }
 
+-(void)setCollectionArray:(NSArray *)collectionArray
+{
+    _collectionArray = collectionArray;
+    [self.collectionView reloadData];
+}
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
@@ -108,8 +130,17 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ProfileCollectionCell" forIndexPath:indexPath];
-    NSString *cellImage = [self.collectionArray objectAtIndex:indexPath.row];
-    cell.profileCellImage.image = [UIImage imageNamed:cellImage];
+    FDTransaction *transaction = [self.collectionArray objectAtIndex:indexPath.row];
+
+    PFFile *dishImageFile = transaction.dishImagePFFile;
+    [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error)
+    {
+        if (!error) {
+            UIImage *img = [UIImage imageWithData:imageNSData];
+            cell.profileCellImage.image = img;
+        }
+    }];
+
     //write code here to show a currentUser's likes
 
     return cell;
@@ -120,6 +151,11 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
     DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
     [self.navigationController pushViewController:detailVC animated:YES];
+
+//    CGPoint location = [sender locationInView:self.tableView];
+//    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+    FDTransaction *transaction = [self.collectionArray objectAtIndex:indexPath.row];
+    detailVC.recipeID = transaction.dishID;
     //write code here to pass yummly recipe to detail
 }
 
