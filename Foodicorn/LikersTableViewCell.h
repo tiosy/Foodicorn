@@ -22,8 +22,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *likersUsernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likersSubtitleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
+@property (strong, nonatomic) NSDictionary *dictData;
 @property NSIndexPath *indexPath;
 
 @property NSArray *userData;
+
+- (void)setDictData:(NSDictionary *)dictData;
+
 
 @end
