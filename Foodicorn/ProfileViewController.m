@@ -70,7 +70,7 @@
     self.profileImageView.userInteractionEnabled = YES;
     self.profileImageView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
     self.profileImageView.layer.borderWidth = 1.0f;
-    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2;
+    self.profileImageView.layer.cornerRadius = 39.0;
     self.profileImageView.layer.masksToBounds = YES;
 
     PFFile *userImageFile = currentUser.profileThumbnailPFFile;
@@ -119,6 +119,7 @@
     _collectionArray = collectionArray;
     [self.collectionView reloadData];
 }
+
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {

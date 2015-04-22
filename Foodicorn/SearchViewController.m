@@ -181,22 +181,27 @@
         if (indexPath.section == 0)
         {
             cell.textLabel.text = self.allowedAllergies[indexPath.row];
+            cell.imageView.image = nil;
 
         } else if (indexPath.section == 1)
         {
             cell.textLabel.text = self.allowedDiets[indexPath.row];
+            cell.imageView.image = nil;
 
         } else if (indexPath.section == 2)
         {
             cell.textLabel.text = self.allowedCuisines[indexPath.row];
+            cell.imageView.image = nil;
 
         } else if (indexPath.section == 3)
         {
             cell.textLabel.text = self.allowedCourses[indexPath.row];
+            cell.imageView.image = nil;
 
         } else
         {
             cell.textLabel.text = self.allowedHolidays[indexPath.row];
+            cell.imageView.image = nil;
         }
     } else if (self.segmentedControl.selectedSegmentIndex == 1)
     {
