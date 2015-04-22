@@ -40,6 +40,8 @@
     self.cellSelectedArray = [NSMutableArray new];
     self.searchBar.placeholder = @"Enter Any Food Keyword";
     self.title = @"Search Recipes";
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+
 
 
     //TODO: Cut down number of arrays. Very difficult to manage multiple arrays in this fashion, would be better off using array of arrays. EX: NSArray *someArray = @[@[], @[], @[]];
@@ -72,11 +74,23 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     [self.stringsArray removeAllObjects];
-    self.searchBar.text = nil;
+    [self.cellSelectedArray removeAllObjects];
+    [self.tableView reloadData];
+
+    //still need to figure this search bar out
+    [self.searchBar.text isEqualToString:@""];
+    NSLog(@"The search bar is %@", self.searchBar.text);
+
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+
     NSLog(@"the array is %@", self.stringsArray);
+    NSLog(@"The cell selected array is %@", self.cellSelectedArray);
 
 }
+
+
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (section == 0){
@@ -178,6 +192,8 @@
     [self.stringsArray addObject:string];
     self.searchBar.returnKeyType = UIReturnKeyNext;
     [searchBar resignFirstResponder];
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+
 }
 
 
@@ -186,6 +202,9 @@
     //TODO: Instead of checking the cell's accessoryType, check to see if the object has been selected or not, and then change it accordingly. Then reload the selected cell.
 
     //SomeObject *object = self.someArray[indexPath.section][indexPath.row];
+
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
