@@ -39,12 +39,14 @@
     [follow saveInBackground];
 }
 
++(void) removeFollow:(FDPFUser *) following{
 
+}
 
 //followings
 + (void) followingsWithCompletion:(FDPFUser *)user completionHandler:(void (^)(NSArray *))complete
 {
-    //        // set up the query on the Like table
+    // set up the query on the Follow table
     PFQuery *query = [FDFollow query];
     [query whereKey:@"from" equalTo:user];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -56,7 +58,7 @@
 //user's followers
 + (void) followersWithCompletion:(FDPFUser *)user completionHandler:(void (^)(NSArray *))complete
 {
-    //        // set up the query on the Follow table
+    // set up the query on the Follow table
     PFQuery *query = [FDFollow query];
     [query whereKey:@"to" equalTo:user];
 

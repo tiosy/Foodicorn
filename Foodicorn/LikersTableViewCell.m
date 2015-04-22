@@ -30,7 +30,7 @@
     if (![self.followButton.backgroundColor isEqual:[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2]]) {
         self.followButton.backgroundColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
 
-        FDPFUser *me = [FDPFUser currentUser];
+  //      FDPFUser *me = [FDPFUser currentUser];
         
         [self.followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
@@ -41,8 +41,9 @@
         [FDPFUser addFollowingAndFollower:image username:[dict objectForKey:@"username"] fullname:[dict objectForKey:@"fullname"] followingNSString:[dict objectForKey:@"followingNSString"]];
 //        NSLog(@"%lu", me.followings.count);
 
-    }else
-    {   FDPFUser *me = [FDPFUser currentUser];
+    }else{
+
+        //FDPFUser *me = [FDPFUser currentUser];
 
         [self.followButton setTitleColor:[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2] forState:UIControlStateNormal];
         NSDictionary *dict = self.dictData;

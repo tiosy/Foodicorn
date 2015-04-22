@@ -65,17 +65,15 @@
 //Dish liked by users
 + (void) likedByUsersWithCompletion:(NSString *) recipeId completionHandler:(void (^)(NSArray *))complete
 {
-    //        // set up the query on the Like table
+    //set up the query on the Like table
     PFQuery *query = [FDLike query];
     [query whereKey:@"from" equalTo:recipeId];
-
-    // execute the query
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
         NSMutableArray *mutArray = [NSMutableArray new];
         for(FDLike *o in objects) {
 
-            //            // to get the user, we get the object with the to key
+            //to get the user, we get the object with the 'to key'
             FDPFUser *user = [o objectForKey:@"to"];
             [mutArray addObject:user];
         };
@@ -87,21 +85,11 @@
 // I like Dishes
 + (void) likeDishesWithCompletion:(void (^)(NSArray *))complete
 {
-    //        // set up the query on the Follow table
+    //set up the query on the Like table
     PFQuery *query = [FDLike query];
     [query whereKey:@"to" equalTo:[FDPFUser currentUser]];
-
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-
-        NSLog(@"===%ld",(unsigned long)objects.count);
-        
-        NSMutableArray *mutArray = [NSMutableArray new];
-        for(FDLike *o in objects) {
-            NSString *str = [o objectForKey:@"from"];
-            [mutArray addObject:str];
-        };
-        NSArray *array = [mutArray mutableCopy];
-        complete(array);
+        complete(objects);
     }];
 }
 
