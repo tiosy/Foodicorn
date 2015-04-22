@@ -9,6 +9,7 @@
 #import "UserProfileViewController.h"
 #import "LikersViewController.h"
 #import "DetailViewController.h"
+#import "FDFollow.h"
 #import "FDPFUser.h"
 
 @interface UserProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate>
@@ -98,6 +99,7 @@
         [self.followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
         //write code to show that current user followed another user
+        [FDFollow addFollow:self.user];
 
     }else
     {
@@ -111,14 +113,24 @@
 
 - (IBAction)followingTapGesture:(UITapGestureRecognizer *)sender
 {
-    [self performSegueWithIdentifier:@"following" sender:self];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
+    LikersViewController *likersVC = [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
+    [FDFollow followingsWithCompletion:self.user completionHandler:^(NSArray *array) {
+        likersVC.usersArray = array;
+    }];
+//    [self performSegueWithIdentifier:@"following" sender:self];
     //write code to pass a the array of people that a user follows
 }
 
 
 - (IBAction)followersTapGesture:(UITapGestureRecognizer *)sender
 {
-    [self performSegueWithIdentifier:@"followers" sender:self];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
+    LikersViewController *likersVC = [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
+    [FDFollow followersWithCompletion:self.user completionHandler:^(NSArray *array) {
+        likersVC.usersArray = array;
+    }];
+//    [self performSegueWithIdentifier:@"followers" sender:self];
     //write code to pass a user's followers array to followersVC
 }
 

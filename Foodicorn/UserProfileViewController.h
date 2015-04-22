@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FDPFUser.h"
 @interface UserProfileViewController : UIViewController
 
 @property NSString *username;
+@property FDPFUser *user;
 
 @end

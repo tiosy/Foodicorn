@@ -11,6 +11,8 @@
 #import "LikersTableViewCell.h"
 #import "LikersViewController.h"
 #import "FDPFUser.h"
+#import "FDFollow.h"
+#import "Constants.h"
 
 @implementation LikersTableViewCell
 
@@ -27,39 +29,38 @@
 {
     [self.delegate shouldFollowOrUnfollowOnFollowButtonTap:self.indexPath];
 
-    if (![self.followButton.backgroundColor isEqual:[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2]]) {
-        self.followButton.backgroundColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
+    if (![self.followButton.backgroundColor isEqual:kFoodiCornNavBarColor]) {
+        self.followButton.backgroundColor = kFoodiCornNavBarColor;
 
-        FDPFUser *me = [FDPFUser currentUser];
-        
+
         [self.followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
         //write code to show that current user followed another use
-        NSDictionary *dict = self.dictData;
-        NSData *imgData = [dict objectForKey:@"profileImage"];
-        UIImage *image = [UIImage imageWithData:imgData];
-        [FDPFUser addFollowingAndFollower:image username:[dict objectForKey:@"username"] fullname:[dict objectForKey:@"fullname"] followingNSString:[dict objectForKey:@"followingNSString"]];
+        FDPFUser *cellUser = self.cellUser;
+
+
+        [FDFollow addFollow:cellUser];
+
 //        NSLog(@"%lu", me.followings.count);
 
     }else
-    {   FDPFUser *me = [FDPFUser currentUser];
+    { 
 
-        [self.followButton setTitleColor:[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2] forState:UIControlStateNormal];
-        NSDictionary *dict = self.dictData;
+        [self.followButton setTitleColor:kFoodiCornNavBarColor forState:UIControlStateNormal];
+        FDPFUser *cellUser = self.cellUser;
         [self.followButton setTitle:@"+ Follow" forState:UIControlStateNormal];
         self.followButton.backgroundColor = [UIColor whiteColor];
         //write code to unfollow a user
-        [FDPFUser removeFollowingAndFollower:[dict objectForKey:@"username"]];
+//        [FDPFUser removeFollowingAndFollower:cell];
 //        NSLog(@"%lu", me.followings.count);
     }
 
     //add code to add user at index to currentuser following array
 }
 
--(void) setDictData:(NSDictionary *)dictData
+-(void)setCellUser:(FDPFUser *)cellUser
 {
-    _dictData = dictData;
-//    NSLog(@"%@", _dictData);
+    _cellUser = cellUser;
 }
 
 
