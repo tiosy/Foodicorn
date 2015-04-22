@@ -39,7 +39,7 @@
         [query whereKey:@"username" equalTo:username];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
-            NSLog(@"====%ld",objects.count);
+            NSLog(@"====%ld",(unsigned long)objects.count);
             if (objects.count == 0) //no such username
             {
                 //if user is nill, create one
