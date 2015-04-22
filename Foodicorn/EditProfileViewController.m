@@ -10,11 +10,10 @@
 #import "FDPFUser.h"
 #import "LoginSignUpViewController.h"
 
-@interface EditProfileViewController () <UIAlertViewDelegate>
+@interface EditProfileViewController () <UIAlertViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *editNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *editUserNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *editEmailTextField;
-@property (weak, nonatomic) IBOutlet UITextField *editPasswordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *logOffButton;
 
 @end
@@ -27,10 +26,36 @@
     self.editNameTextField.placeholder = @"Edit Name";
     self.editUserNameTextField.placeholder = @"Edit User Name";
     self.editEmailTextField.placeholder = @"Edit Email";
-    self.editPasswordTextField.placeholder = @"Edit Password";
 
     self.logOffButton.backgroundColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
     self.logOffButton.tintColor = [UIColor whiteColor];
+
+    self.editNameTextField.text = self.user.fullName;
+    self.editUserNameTextField.text = self.user.username;
+    self.editEmailTextField.text = self.user.email;
+//    [self.editPasswordTextField setSecureTextEntry:YES];
+}
+
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return YES;
+}
+
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    FDPFUser *currentUser = [FDPFUser currentUser];
+    currentUser.fullName = self.editNameTextField.text;
+    currentUser.username = self.editUserNameTextField.text;
+    currentUser.email = self.editEmailTextField.text;
+//    currentUser.password = self.editPasswordTextField.text;
+    [self.editNameTextField resignFirstResponder];
+    [self.editUserNameTextField resignFirstResponder];
+    [self.editEmailTextField resignFirstResponder];
+    [currentUser saveInBackground];
+
+    return YES;
 }
 
 - (IBAction)logOffButtonTapped:(UIButton *)sender

@@ -40,7 +40,11 @@
 {
     [super viewDidLoad];
     //will change title to user.username
-    self.title = @"My Profile";
+
+    FDPFUser *currentUser = [FDPFUser currentUser];
+    self.title = currentUser.username;
+
+    self.userNameLabel.text = currentUser.fullName;
 
     self.followersTapGesture = [UITapGestureRecognizer new];
     self.followersTapGesture.delegate = self;
@@ -69,7 +73,6 @@
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2;
     self.profileImageView.layer.masksToBounds = YES;
 
-    FDPFUser *currentUser = [FDPFUser currentUser];
     PFFile *userImageFile = currentUser.profileThumbnailPFFile;
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
      {
@@ -161,6 +164,8 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    EditProfileViewController *editVC = segue.destinationViewController;
+    editVC.user = [FDPFUser currentUser];
     //write code in here to pass currentUser name, username, email, password
 }
 
@@ -260,7 +265,6 @@
         [imageFile saveInBackground];
 
         currentUser.profileThumbnailPFFile = imageFile;
-        currentUser.fullName = @"Justin Haar";
         [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
          {
             if (error)
