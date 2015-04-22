@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FDPFUser.h"
+
 
 @protocol LikersTableViewCellDelegate <NSObject>
 
@@ -22,12 +24,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *likersUsernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likersSubtitleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
-@property (strong, nonatomic) NSDictionary *dictData;
+@property (strong, nonatomic) FDPFUser *cellUser;
 @property NSIndexPath *indexPath;
 
 @property NSArray *userData;
 
-- (void)setDictData:(NSDictionary *)dictData;
+- (void)setCellUser:(FDPFUser *)cellUser;
 
 
 @end

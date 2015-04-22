@@ -14,6 +14,7 @@
 #import "ProfileViewController.h"
 #import "Yummly.h"
 #import "FDDish.h"
+#import "FDLike.h"
 #import "FDPFUser.h"
 #import <parse/PFObject+Subclass.h>
 #import "FDTransaction.h"
@@ -109,7 +110,8 @@
         cell.timeLabel.text = [NSString stringWithFormat:@"%ldm",(long)minsBetweenDates];
     }
 
-    NSLog(@"%li, %li", (long)self.cellIndexPath.row, (long)self.cellIndexPath.section);
+//    self.cellIndexPath = indexPath;
+//    NSLog(@"%li, %li", (long)self.cellIndexPath.row, (long)self.cellIndexPath.section);
 
 
 
@@ -172,8 +174,9 @@
     {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
         UserProfileViewController *userVC= [storyboard instantiateViewControllerWithIdentifier:@"UserVC"];
-        [self.navigationController pushViewController:userVC animated:YES];
         userVC.user = transaction.user;
+        [self.navigationController pushViewController:userVC animated:YES];
+
         //What are we passing onUsernameTapped
 
     }
@@ -188,10 +191,15 @@
 {
     CGPoint location = [sender locationInView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
-    NSLog(@"%li", (long)indexPath.row);
+//    NSLog(@"%li", (long)indexPath.row);
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
     LikersViewController *likersVC = [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
+    FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
+    [FDLike likedByUsersWithCompletion:transaction.dishID completionHandler:^(NSArray *array) {
+        likersVC.usersArray = array;
+    }];
+    
     [self.navigationController pushViewController:likersVC animated:YES];
 
 //    [self performSegueWithIdentifier:@"picturelikes" sender:self];

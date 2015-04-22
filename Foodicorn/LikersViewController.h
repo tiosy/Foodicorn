@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LikersViewController : UIViewController
-@property NSArray *usersArray;
+@property (nonatomic) NSArray *usersArray;
 @property (weak, nonatomic) IBOutlet UITableView *likersTableView;
 
 @end

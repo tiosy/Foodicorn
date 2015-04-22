@@ -9,18 +9,24 @@
 #import "LikersViewController.h"
 #import "LikersTableViewCell.h"
 #import "FDPFUser.h"
-
-
 @interface LikersViewController ()<UITableViewDataSource, UITableViewDelegate, LikersTableViewCellDelegate>
 @property FDPFUser *me;
 @end
 
 @implementation LikersViewController
 
+-(void)setUsersArray:(NSArray *)usersArray
+{
+    _usersArray = usersArray;
+    NSLog(@"%@", usersArray);
+    [self.likersTableView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
      self.me = [FDPFUser currentUser];
+
 
 //    self.usersArray = @[ @{@"userImageName" : @"person",
 //                           @"userName" : @"Taylor S.",
@@ -47,18 +53,18 @@
     //code for likers of photo or followers of user or the people whom a user follows
     LikersTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserListCell"];
     cell.delegate = self;
-    NSDictionary *dict = [self.usersArray objectAtIndex:indexPath.row];
-    NSData *imgData = [dict objectForKey:@"profileImage"];
-    NSString *username = [dict objectForKey:@"username"];
+    FDPFUser *cellUser = [self.usersArray objectAtIndex:indexPath.row];
+    NSData *imgData = cellUser.profileThumbnailNSData;
+    NSString *username = cellUser.username;
     UIImage *image = [UIImage imageWithData:imgData];
 //    NSLog(@"%@", username);
     cell.likersCellImageView.image = image;
     cell.likersUsernameLabel.text = username;
-    NSString *userFullName = [dict objectForKey:@"fullname"];
+    NSString *userFullName = cellUser.fullName;
     cell.likersSubtitleLabel.text = userFullName;
     cell.indexPath = indexPath;
 
-    [cell setDictData:dict];
+    [cell setCellUser:cellUser];
 
 
     return cell;
