@@ -76,24 +76,11 @@
 
 -(void)shouldFollowOrUnfollowOnFollowButtonTap:(NSIndexPath *)indexPath
 {
-//        LikersTableViewCell *cell = [LikersTableViewCell new];
-//        NSDictionary *dict = [self.usersArray objectAtIndex:indexPath.row];
-//        NSData *imgData = [dict objectForKey:@"profileImage"];
-//        UIImage *image = [UIImage imageWithData:imgData];
-//    NSLog(@"%@", self.me.followings);
-////    NSLog(@"%lu", self.me.followings.count);
-//
-//    if ([self.me.followings containsObject:[dict objectForKey:@"username"]])
-//    {
-//        [FDPFUser removeFollowingAndFollower:[dict objectForKey:@"username"]];
-//        [cell.followButton setTitle:@"+ Follow" forState:UIControlStateNormal];
-//
-//
-//    }else
-//    {
-//        [FDPFUser addFollowingAndFollower:image username:[dict objectForKey:@"username"] fullname:[dict objectForKey:@"fullname"] followingNSString:[dict objectForKey:@"followingNSString"]];
-//        [cell.followButton setTitle:@"Following" forState:UIControlStateNormal];
-//    }
+        LikersTableViewCell *cell = [LikersTableViewCell new];
+        NSDictionary *dict = [self.usersArray objectAtIndex:indexPath.row];
+        NSData *imgData = [dict objectForKey:@"profileImage"];
+        UIImage *image = [UIImage imageWithData:imgData];
+        NSLog(@"%@", self.me.followings);
 
 //    NSLog(@"%lu", self.me.followings.count);
 

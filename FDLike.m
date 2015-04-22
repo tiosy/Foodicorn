@@ -13,12 +13,14 @@
 #import <Parse/PFObject+Subclass.h>
 
 #import "FDPFUser.h"
+#import "FDDish.h"
 
 
 
 @implementation FDLike
 @dynamic from;
 @dynamic to;
+@dynamic imagePFfile;
 
 + (void)load {
     [self registerSubclass];
@@ -29,27 +31,43 @@
 }
 
 
-+(void) addLike:(NSString *) receipeId{
 
-    //or FDDish
-    // create an entry in the Follow table
+
+//+(void) addLike:(FDDish *) fdDish{
+//
+//    FDLike *like = [FDLike object];
+//
+//    [like setObject:fdDish forKey:@"from"];
+//    [like setObject:[PFUser currentUser]  forKey:@"to"];
+//
+//    [like saveInBackground];
+//}
+
++(void) addLike:(NSString *) recipeId image:(UIImage *)imageUIImage{
+
     FDLike *like = [FDLike object];
 
-//    like.from = receipeId;
-//    like.to = [FDPFUser currentUser];
-
-    [like setObject:receipeId forKey:@"from"];
+    [like setObject:recipeId forKey:@"from"];
     [like setObject:[PFUser currentUser]  forKey:@"to"];
+
+    //UIImage -> NSData -> PFFile -> this is the dish image
+    NSData *imageNSData = UIImagePNGRepresentation(imageUIImage);
+    PFFile *imagePFFile = [PFFile fileWithName:like.objectId data:imageNSData]; //use uniqe objectId as file name
+
+    [like setObject:imagePFFile forKey:@"imagePFFile"];
+
 
     [like saveInBackground];
 }
 
+
+
 //Dish liked by users
-+ (void) likedByUsersWithCompletion:(NSString *) receipeId completionHandler:(void (^)(NSArray *))complete
++ (void) likedByUsersWithCompletion:(NSString *) recipeId completionHandler:(void (^)(NSArray *))complete
 {
     //        // set up the query on the Like table
     PFQuery *query = [FDLike query];
-    [query whereKey:@"from" equalTo:receipeId];
+    [query whereKey:@"from" equalTo:recipeId];
 
     // execute the query
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -70,11 +88,13 @@
 + (void) likeDishesWithCompletion:(void (^)(NSArray *))complete
 {
     //        // set up the query on the Follow table
-    PFQuery *query = [PFQuery queryWithClassName:@"Like"];
+    PFQuery *query = [FDLike query];
     [query whereKey:@"to" equalTo:[FDPFUser currentUser]];
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
+        NSLog(@"===%ld",objects.count);
+        
         NSMutableArray *mutArray = [NSMutableArray new];
         for(FDLike *o in objects) {
             NSString *str = [o objectForKey:@"from"];

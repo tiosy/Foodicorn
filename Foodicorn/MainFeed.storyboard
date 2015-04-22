@@ -142,29 +142,6 @@
                                                         <outletCollection property="gestureRecognizers" destination="hQj-ag-VRL" appends="YES" id="vf8-Q1-5Nd"/>
                                                     </connections>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jkr-1y-32z">
-                                                    <rect key="frame" x="262" y="0.0" width="51" height="49"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="49" id="68a-GX-tYx">
-                                                            <variation key="widthClass=compact" constant="50"/>
-                                                        </constraint>
-                                                        <constraint firstAttribute="width" constant="51" id="AAY-eu-K9Q">
-                                                            <variation key="widthClass=compact" constant="50"/>
-                                                        </constraint>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="68a-GX-tYx"/>
-                                                            <exclude reference="AAY-eu-K9Q"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <variation key="widthClass=compact">
-                                                        <mask key="constraints">
-                                                            <include reference="68a-GX-tYx"/>
-                                                            <include reference="AAY-eu-K9Q"/>
-                                                        </mask>
-                                                    </variation>
-                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vES-8n-mp0">
                                                     <rect key="frame" x="0.0" y="57" width="261" height="350"/>
                                                     <gestureRecognizers/>
@@ -248,6 +225,29 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jkr-1y-32z">
+                                                    <rect key="frame" x="262" y="0.0" width="51" height="49"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="49" id="68a-GX-tYx">
+                                                            <variation key="widthClass=compact" constant="50"/>
+                                                        </constraint>
+                                                        <constraint firstAttribute="width" constant="51" id="AAY-eu-K9Q">
+                                                            <variation key="widthClass=compact" constant="50"/>
+                                                        </constraint>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="68a-GX-tYx"/>
+                                                            <exclude reference="AAY-eu-K9Q"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="68a-GX-tYx"/>
+                                                            <include reference="AAY-eu-K9Q"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="FuK-dQ-YrT" firstAttribute="leading" secondItem="5vu-tB-fdU" secondAttribute="trailing" constant="8" id="5BB-pD-xvC"/>
@@ -947,6 +947,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="65" width="600" height="535"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="gtU-Tr-S8K" id="DcX-DB-Qkp"/>
                                     <outlet property="delegate" destination="gtU-Tr-S8K" id="etW-au-4m4"/>

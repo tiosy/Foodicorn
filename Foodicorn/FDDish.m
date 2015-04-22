@@ -21,9 +21,6 @@
 @implementation FDDish
 @dynamic recipeId;
 @dynamic imagePFFile;
-@dynamic imageThumbnailNSData;
-@dynamic comments;
-@dynamic likedBy;
 
 + (void)load {
     [self registerSubclass];
@@ -33,30 +30,21 @@
     return @"FDDish";
 }
 
-+(void) addDish:(UIImage *)imageUIImage username: (NSString *) username recipeId:(NSString *)recipeId {
+/////////
+/////////
 
-    FDDish *fddish = [FDDish object];
-    fddish.recipeId = recipeId; //NSString
++(void) addDish:(UIImage *)imageUIImage recipeId:(NSString *)recipeId {
 
-    FDPFUser *me = [FDPFUser currentUser];
-    NSMutableDictionary *dict = [NSMutableDictionary new];
-    //userProfileImage is thumbnailed already no need to shrink)
-    if([me.profileThumbnailNSData length] <128000){
-        [dict setValue:me.profileThumbnailNSData forKey:@"profileThumbnailNSData"];
-    }
-    [dict setValue:me.username forKey:@"username"];
-    [dict setValue:me.fullName forKey:@"fullname"];
-
-    //Parse only allows NSDictionary? not mutable dict?
-    NSDictionary *dict2 = [dict mutableCopy];
-    [fddish addUniqueObject:dict2 forKey:@"likedBy"];
+    FDDish *dish = [FDDish object];
 
     //UIImage -> NSData -> PFFile -> this is the dish image
     NSData *imageNSData = UIImagePNGRepresentation(imageUIImage);
-    PFFile *imagePFFile = [PFFile fileWithName:fddish.objectId data:imageNSData]; //use uniqe objectId as file name
-    fddish.imagePFFile = imagePFFile;
+    PFFile *imagePFFile = [PFFile fileWithName:dish.objectId data:imageNSData]; //use uniqe objectId as file name
 
-    [fddish saveInBackground];
+    [dish setObject:recipeId forKey:@"recipeId"];
+    [dish setObject:imagePFFile  forKey:@"imagePFFile"];
+
+    [dish saveInBackground];
 
 }
 
@@ -71,7 +59,6 @@
         if (!error) {
             // The find succeeded.
 
-
             NSMutableArray *superDishes = [NSMutableArray arrayWithCapacity:objects.count];
             superDishes = [objects mutableCopy];
             complete(superDishes);
@@ -85,43 +72,23 @@
 
 
 
-+(void) addLike:(NSString *) receipeId{
-
-   //or FDDish
-    // create an entry in the Follow table
-    PFObject *like = [PFObject objectWithClassName:@"Like"];
-   
-    [like setObject:receipeId forKey:@"from"];
-    [like setObject:[PFUser currentUser]  forKey:@"to"];
-    [like setObject:[NSDate date] forKey:@"date"];
-    [like saveInBackground];
-}
-
-//Dish liked by users
-+ (void) likedByUsersWithCompletion:(NSString *) receipeId completionHandler:(void (^)(NSArray *))complete
++ (void)retrieveOneFDDishWithCompletion:(NSString *)recipeId completionHandler:(void (^)(FDDish *))complete
 {
-    //        // set up the query on the Like table
-    PFQuery *query = [PFQuery queryWithClassName:@"Like"];
-    [query whereKey:@"from" equalTo:receipeId];
+    PFQuery *query = [FDDish query];
+    [query whereKey:@"recipeId" equalTo:recipeId];
 
-    // execute the query
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        complete(objects);
+        if (!error) {
+            // The find succeeded.
+
+            FDDish *fdDish = [objects firstObject];
+            complete(fdDish);
+
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
     }];
-}
-
-// I like Dishes
-+ (void) likeDishesWithCompletion:(void (^)(NSArray *))complete
-{
-    //        // set up the query on the Follow table
-            PFQuery *query = [PFQuery queryWithClassName:@"Like"];
-            [query whereKey:@"to" equalTo:[FDPFUser currentUser]];
-    
-            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-
-                complete(objects);
-
-            }];
 }
 
 
