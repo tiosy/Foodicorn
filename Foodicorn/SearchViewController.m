@@ -8,6 +8,8 @@
 
 #import "SearchViewController.h"
 #import "JustinViewController.h"
+#import "UserProfileViewController.h"
+#import "FDPFUser.h"
 #import "Yummly.h"
 
 @interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
@@ -26,8 +28,11 @@
 @property NSMutableArray *stringsArray;
 @property NSString *urlText;
 @property NSMutableArray *cellSelectedArray;
+@property NSArray *usersArray;
+@property (nonatomic)  NSMutableArray *filteredUsersArray;
 @property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic) CGFloat lastContentOffsetY;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @end
 
 @implementation SearchViewController
@@ -38,8 +43,10 @@
     self.urlText = @"";
     self.stringsArray = [NSMutableArray new];
     self.cellSelectedArray = [NSMutableArray new];
-    self.searchBar.placeholder = @"Enter Any Food Keyword";
+    self.searchBar.placeholder = @"Enter Keyword";
     self.title = @"Search Recipes";
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+
 
 
     //TODO: Cut down number of arrays. Very difficult to manage multiple arrays in this fashion, would be better off using array of arrays. EX: NSArray *someArray = @[@[], @[], @[]];
@@ -67,16 +74,49 @@
     self.allowedHolidays = [NSArray arrayWithObjects:@"Christmas", @"Summer", @"Thanksgiving", @"New Year", @"Super Bowl / Game+Day", @"Halloween", @"Hanukkah", @"4th of July", nil];
     self.allowedHolidaysStringsArray = [NSArray arrayWithObjects:@"&allowedHoliday[]=holiday^holiday-christmas", @"&allowedholiday[]=holiday^holiday-summer", @"&allowedHoliday[]=holiday^holiday-thanksgiving", @"&allowedHoliday[]=holiday^holiday-new+year", @"&allowedHoliday[]=holiday^holiday-super-bowl", @"&allowedHoliday[]=holiday^holiday-halloween", @"&allowedHoliday[]=holiday^holiday-hanukkah", @"&allowedHoliday[]=holiday^holiday-4th+of+july", nil];
 
+//    self.filteredUsersArray = [NSMutableArray arrayWithObjects:@"Test1", @"Test2", @"Test3", nil];
 }
 
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self.stringsArray removeAllObjects];
-    self.searchBar.text = nil;
+    if (self.segmentedControl.selectedSegmentIndex == 0)
+    {
+        [super viewDidAppear:animated];
+        [self.stringsArray removeAllObjects];
+        [self.cellSelectedArray removeAllObjects];
+        [self.tableView reloadData];
+
+        //still need to figure this search bar out
+        [self.searchBar.text isEqualToString:@""];
+        NSLog(@"The search bar is %@", self.searchBar.text);
+
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }else if (self.segmentedControl.selectedSegmentIndex == 1)
+    {
+        [super viewDidAppear:animated];
+        [self.filteredUsersArray removeAllObjects];
+        [self.tableView reloadData];
+        self.searchBar.text = nil;
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+
     NSLog(@"the array is %@", self.stringsArray);
+    NSLog(@"The cell selected array is %@", self.cellSelectedArray);
 
 }
+
+-(void)setFilteredUsersArray:(NSMutableArray *)filteredUsersArray
+{
+    _filteredUsersArray = filteredUsersArray;
+    [self.tableView reloadData];
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.searchBar resignFirstResponder];
+}
+
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (section == 0){
@@ -99,7 +139,27 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 60.0f;
+    if (self.segmentedControl.selectedSegmentIndex == 0)
+    {
+        return 60.0f;
+    }else
+    {
+        return 0;
+    }
+}
+
+
+- (IBAction)segmentedControlIndexChanged:(UISegmentedControl *)sender
+{
+    switch (self.segmentedControl.selectedSegmentIndex) {
+        case 0:
+            [self.tableView reloadData];
+            break;
+        case 1:
+            [self.tableView reloadData];
+        default:
+            break;
+    }
 }
 
 
@@ -107,34 +167,59 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
 
-    if ([self.cellSelectedArray containsObject:indexPath])
-    {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    } else
-    {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
+    if (self.segmentedControl.selectedSegmentIndex == 0) {
+
+        if ([self.cellSelectedArray containsObject:indexPath])
+        {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else
+        {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
 
 
-    if (indexPath.section == 0)
-    {
-        cell.textLabel.text = self.allowedAllergies[indexPath.row];
+        if (indexPath.section == 0)
+        {
+            cell.textLabel.text = self.allowedAllergies[indexPath.row];
+            cell.imageView.image = nil;
 
-    } else if (indexPath.section == 1)
-    {
-        cell.textLabel.text = self.allowedDiets[indexPath.row];
+        } else if (indexPath.section == 1)
+        {
+            cell.textLabel.text = self.allowedDiets[indexPath.row];
+            cell.imageView.image = nil;
 
-    } else if (indexPath.section == 2)
-    {
-        cell.textLabel.text = self.allowedCuisines[indexPath.row];
+        } else if (indexPath.section == 2)
+        {
+            cell.textLabel.text = self.allowedCuisines[indexPath.row];
+            cell.imageView.image = nil;
 
-    } else if (indexPath.section == 3)
-    {
-        cell.textLabel.text = self.allowedCourses[indexPath.row];
+        } else if (indexPath.section == 3)
+        {
+            cell.textLabel.text = self.allowedCourses[indexPath.row];
+            cell.imageView.image = nil;
 
-    } else
+        } else
+        {
+            cell.textLabel.text = self.allowedHolidays[indexPath.row];
+            cell.imageView.image = nil;
+        }
+    } else if (self.segmentedControl.selectedSegmentIndex == 1)
     {
-        cell.textLabel.text = self.allowedHolidays[indexPath.row];
+        FDPFUser *user = self.filteredUsersArray[indexPath.row];
+        cell.textLabel.text = user.username;
+
+        PFFile *userImageFile = user.profileThumbnailPFFile;
+        [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
+         {
+             if (!error) {
+                 UIImage *userImage = [UIImage imageWithData:imageData];
+                 cell.imageView.image = userImage;
+                 cell.imageView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
+                 cell.imageView.layer.borderWidth = 1.0f;
+                 cell.imageView.layer.cornerRadius = cell.imageView.frame.size.width/2;
+                 cell.imageView.layer.masksToBounds = YES;
+             }
+         }];
     }
 
     //TODO: if object should be selected/checked then show the check in the cell. else it should not show the detail disclosure.
@@ -143,26 +228,38 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    if (self.segmentedControl.selectedSegmentIndex == 0)
+    {
+        return 5;
+    } else
+    {
+        return 1;
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0)
+    if (self.segmentedControl.selectedSegmentIndex == 0)
     {
-        return self.allowedAllergies.count;
-    } else if (section == 1)
-    {
-        return self.allowedDiets.count;
-    }else if (section == 2)
-    {
-        return self.allowedCuisines.count;
-    }else if (section == 3)
-    {
-        return self.allowedCourses.count;
+        if (section == 0)
+        {
+            return self.allowedAllergies.count;
+        } else if (section == 1)
+        {
+            return self.allowedDiets.count;
+        }else if (section == 2)
+        {
+            return self.allowedCuisines.count;
+        }else if (section == 3)
+        {
+            return self.allowedCourses.count;
+        }else
+        {
+            return self.allowedHolidays.count;
+        }
     }else
     {
-        return self.allowedHolidays.count;
+        return  self.filteredUsersArray.count;
     }
 }
 
@@ -170,14 +267,21 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSString *firstString = [searchBar.text mutableCopy];
-    NSMutableString *searchString = [[firstString stringByReplacingOccurrencesOfString:@" " withString:@"+"]mutableCopy];
-    NSString *string = [NSString stringWithFormat:@"&q=%@", searchString];
-    NSLog(@"%@", string);
+    if (self.segmentedControl.selectedSegmentIndex == 0)
+    {
+        NSString *firstString = [searchBar.text mutableCopy];
+        NSMutableString *searchString = [[firstString stringByReplacingOccurrencesOfString:@" " withString:@"+"]mutableCopy];
+        NSString *string = [NSString stringWithFormat:@"&q=%@", searchString];
+        NSLog(@"%@", string);
 
-    [self.stringsArray addObject:string];
-    self.searchBar.returnKeyType = UIReturnKeyNext;
-    [searchBar resignFirstResponder];
+        [self.stringsArray addObject:string];
+        self.searchBar.returnKeyType = UIReturnKeyNext;
+        [searchBar resignFirstResponder];
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    }else
+    {
+        [searchBar resignFirstResponder];
+    }
 }
 
 
@@ -187,60 +291,99 @@
 
     //SomeObject *object = self.someArray[indexPath.section][indexPath.row];
 
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if ([self.cellSelectedArray containsObject:indexPath]) {
-        [self.cellSelectedArray removeObject:indexPath];
-    } else
+    if (self.segmentedControl.selectedSegmentIndex == 0)
     {
-        [self.cellSelectedArray addObject:indexPath];
+
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+
+
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        if ([self.cellSelectedArray containsObject:indexPath]) {
+            [self.cellSelectedArray removeObject:indexPath];
+        } else
+        {
+            [self.cellSelectedArray addObject:indexPath];
+        }
+        [self.tableView reloadData];
+
+        if (indexPath.section == 0 && cell.accessoryType == UITableViewCellAccessoryNone)
+        {
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            NSString *string = self.allowedAllergiesStringsArray[indexPath.row];
+            [self.stringsArray addObject:string];
+
+
+        } else if (indexPath.section == 1 && cell.accessoryType == UITableViewCellAccessoryNone)
+        {
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            NSString *string = self.allowedDietsStringsArray[indexPath.row];
+            [self.stringsArray addObject:string];
+
+
+        } else if (indexPath.section == 2 && cell.accessoryType == UITableViewCellAccessoryNone)
+        {
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            NSString *string = self.allowedCuisinesStringsArray[indexPath.row];
+            [self.stringsArray addObject:string];
+
+
+        } else if (indexPath.section == 3 && cell.accessoryType == UITableViewCellAccessoryNone)
+        {
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            NSString *string = self.allowedCoursesStringsArray[indexPath.row];
+            [self.stringsArray addObject:string];
+
+
+        } else if (indexPath.section == 4 && cell.accessoryType == UITableViewCellAccessoryNone)
+        {
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            NSString *string = self.allowedHolidaysStringsArray[indexPath.row];
+            [self.stringsArray addObject:string];
+
+        } else
+        {
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+            [self.stringsArray removeLastObject];
+        }
+
+        [self.tableView reloadData];
+    }else
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
+        UserProfileViewController *userVC= [storyboard instantiateViewControllerWithIdentifier:@"UserVC"];
+        [self.navigationController pushViewController:userVC animated:YES];
+        FDPFUser *user = self.filteredUsersArray[indexPath.row];
+        userVC.username = user.username;
     }
-    [self.tableView reloadData];
+}
 
-    if (indexPath.section == 0 && cell.accessoryType == UITableViewCellAccessoryNone)
-    {
-        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-        NSString *string = self.allowedAllergiesStringsArray[indexPath.row];
-        [self.stringsArray addObject:string];
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    PFQuery *query = [FDPFUser query];
+    [query orderByDescending:@"username"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            self.usersArray = objects;
+        }
+    }];
 
+    self.filteredUsersArray = [self.usersArray mutableCopy];
 
-    } else if (indexPath.section == 1 && cell.accessoryType == UITableViewCellAccessoryNone)
-    {
-        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-        NSString *string = self.allowedDietsStringsArray[indexPath.row];
-        [self.stringsArray addObject:string];
-
-
-    } else if (indexPath.section == 2 && cell.accessoryType == UITableViewCellAccessoryNone)
-    {
-        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-        NSString *string = self.allowedCuisinesStringsArray[indexPath.row];
-        [self.stringsArray addObject:string];
-
-
-    } else if (indexPath.section == 3 && cell.accessoryType == UITableViewCellAccessoryNone)
-    {
-        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-        NSString *string = self.allowedCoursesStringsArray[indexPath.row];
-        [self.stringsArray addObject:string];
-
-
-    } else if (indexPath.section == 4 && cell.accessoryType == UITableViewCellAccessoryNone)
-    {
-        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-        NSString *string = self.allowedHolidaysStringsArray[indexPath.row];
-        [self.stringsArray addObject:string];
-
-    } else
-    {
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
-        [self.stringsArray removeLastObject];
+    if (searchText.length != 0) {
+        [self.filteredUsersArray removeAllObjects];
+        for (FDPFUser *user in self.usersArray) {
+            NSRange nameRange = [user.username rangeOfString:self.searchBar.text options:NSCaseInsensitiveSearch];
+            if (nameRange.location != NSNotFound) {
+                [self.filteredUsersArray addObject:user];
+            }
+        }
     }
-
     [self.tableView reloadData];
 }
 
-
+//When "Get Recipes" Bar Button Item pressed
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     JustinViewController *justinVC = segue.destinationViewController;

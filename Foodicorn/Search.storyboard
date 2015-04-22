@@ -75,6 +75,18 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="f6f-dz-76a">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Qii-AF-cbM">
+                            <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Search Recipes"/>
+                                <segment title="Search Users"/>
+                            </segments>
+                            <connections>
+                                <action selector="segmentedControlIndexChanged:" destination="Xqb-GI-TJg" eventType="valueChanged" id="HdP-Po-dIb"/>
+                            </connections>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" title="Get Recipes" id="KAh-cX-7kS">
                             <connections>
                                 <segue destination="YJg-gU-6t8" kind="show" id="DfV-nU-9Ig"/>
@@ -82,6 +94,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="hel-pA-3oH" id="kL3-c1-tgI"/>
+                        <outlet property="segmentedControl" destination="Qii-AF-cbM" id="RYf-HX-an5"/>
                         <outlet property="tableView" destination="Wdr-Nz-Fu8" id="2m8-hj-aED"/>
                     </connections>
                 </viewController>

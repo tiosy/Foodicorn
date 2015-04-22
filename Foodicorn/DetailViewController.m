@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property NSDictionary *detailDictionary;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property Yummly *yummly;
 
 @end
@@ -30,6 +31,7 @@
     [Yummly detailDictionaryFromDictionary:self.recipeID completeHandler:^(Yummly *yummly) {
         self.yummly = yummly;
         self.title = self.yummly.detailRecipeName;
+        self.textView.text = self.yummly.detailIngredientsString;
         self.textView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:1].CGColor;
         self.textView.layer.borderWidth = 2.0f;
         NSLog(@"RecipeId is %@", self.recipeID);
@@ -38,7 +40,13 @@
         NSURL *url = [NSURL URLWithString:self.yummly.urlString360];
         NSData *data = [NSData dataWithContentsOfURL:url];
         self.imageView.image = [UIImage imageWithData:data];
-        self.textView.text = self.yummly.detailIngredientsString;
+
+        //Converting Logo Image
+        NSURL *logoUrl = [NSURL URLWithString:self.yummly.detailLogoUrl];
+        NSData *logoData = [NSData dataWithContentsOfURL:logoUrl];
+        self.logoImageView.image = [UIImage imageWithData:logoData];
+        self.logoImageView.layer.borderColor = [UIColor blueColor].CGColor;
+        
     }];
 
     //need to write code to verify if current user liked dish

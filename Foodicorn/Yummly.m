@@ -64,7 +64,7 @@
         self.detailIngredients = [dictionary objectForKey:@"ingredientLines"];
         self.detailIngredientsString = [[self.detailIngredients valueForKey:@"description"] componentsJoinedByString:@"\n"];
 
-        self.detailRecipeName = [dictionary objectForKey:@"name"];
+        self.detailRecipeName = [[dictionary objectForKey:@"source"] objectForKey:@"sourceDisplayName"];
         self.detailInstructionsUrl = [[dictionary objectForKey:@"source"] objectForKey:@"sourceRecipeUrl"];
         self.detailLogoUrl = [[dictionary objectForKey:@"attribution"] objectForKey:@"logo"];
     }

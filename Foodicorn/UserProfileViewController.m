@@ -9,6 +9,7 @@
 #import "UserProfileViewController.h"
 #import "LikersViewController.h"
 #import "DetailViewController.h"
+#import "FDPFUser.h"
 
 @interface UserProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
@@ -50,10 +51,18 @@
 
     self.profileImageView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
     self.profileImageView.layer.borderWidth  = 1.0;
-    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width/2;
+    self.profileImageView.layer.cornerRadius = 39.0;
+//    self.profileImageView.frame.size.width/2;
     self.profileImageView.layer.masksToBounds = YES;
-    self.profileImageView.clipsToBounds = YES;
-    
+
+    NSLog(@"The userProfile username is %@", self.username);
+
+    //NEED TO QUERY IN USER PROFILE IMAGE, USERNAME, FOLLOWERS, FOLLOWINGS, AND LIKED DISHES
+
+
+//    FDPFUser *user = [FDPFUser ];
+//    user.username = self.username;
+//    self.title = user.username;
 
     //self.userNameLabel.text = passed user's username
     //self.followersCountLabel = passed user's followers
