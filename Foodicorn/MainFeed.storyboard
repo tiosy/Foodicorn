@@ -876,8 +876,7 @@
                                                             <exclude reference="67S-Up-prl"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="232" y="7" width="80" height="30"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="1qE-wX-0gC"/>
                                                             <include reference="67S-Up-prl"/>

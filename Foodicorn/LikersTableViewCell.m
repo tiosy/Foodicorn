@@ -47,7 +47,7 @@
     { 
 
         [self.followButton setTitleColor:kFoodiCornNavBarColor forState:UIControlStateNormal];
-        FDPFUser *cellUser = self.cellUser;
+//        FDPFUser *cellUser = self.cellUser;
         [self.followButton setTitle:@"+ Follow" forState:UIControlStateNormal];
         self.followButton.backgroundColor = [UIColor whiteColor];
         //write code to unfollow a user

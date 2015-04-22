@@ -10,7 +10,6 @@
 #import "LikersTableViewCell.h"
 #import "FDPFUser.h"
 @interface LikersViewController ()<UITableViewDataSource, UITableViewDelegate, LikersTableViewCellDelegate>
-@property FDPFUser *me;
 @end
 
 @implementation LikersViewController
@@ -25,7 +24,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     self.me = [FDPFUser currentUser];
 
 }
 
@@ -35,6 +33,18 @@
     LikersTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserListCell"];
     cell.delegate = self;
     FDPFUser *cellUser = [self.usersArray objectAtIndex:indexPath.row];
+    PFFile *imageFile = cellUser.profileThumbnailPFFile;
+    [imageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
+     {
+         if (!error) {
+             UIImage *image = [UIImage imageWithData:imageData];
+             cell.likersCellImageView.image = image;
+         }
+     }];
+
+    cell.likersUsernameLabel.text = cellUser.username;
+    cell.likersSubtitleLabel.text = cellUser.fullName;
+    cell.indexPath = indexPath;
 
     PFFile *imageFile = cellUser.profileThumbnailPFFile;
     [imageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)

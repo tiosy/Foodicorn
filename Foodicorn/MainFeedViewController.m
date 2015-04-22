@@ -182,10 +182,6 @@
     }
 }
 
--(void)getIndexPathFromLabel: (NSIndexPath *)indexPath
-{
-
-}
 
 - (IBAction)likesTapGestureOnTapped:(UITapGestureRecognizer *)sender
 {
@@ -202,59 +198,8 @@
     
     [self.navigationController pushViewController:likersVC animated:YES];
 
-//    [self performSegueWithIdentifier:@"picturelikes" sender:self];
 }
 
-//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    LikersViewController *likersVC = segue.destinationViewController;
-//
-//    if ([segue.identifier isEqualToString:@"picturelikes"])
-//    {
-//        UIImage *img = [UIImage imageNamed:@"person"];
-//        NSData *imgData = UIImagePNGRepresentation(img);
-//        NSMutableArray *muteArray = [NSMutableArray new];
-//
-//        NSMutableDictionary *dict = [NSMutableDictionary new];
-//        NSMutableDictionary *dict2 = [NSMutableDictionary new];
-//
-//        [dict setObject:imgData forKey:@"profileImage"];
-//        [dict setObject:@"lady g" forKey:@"username"];
-//        [dict setObject:@"Lady Gaga" forKey:@"fullname"];
-//        [dict setObject:@"+ Follow" forKey:@"followingNSString"];
-//
-//        [dict2 setObject:imgData forKey:@"profileImage"];
-//        [dict2 setObject:@"fresh prince" forKey:@"username"];
-//        [dict2 setObject:@"Will Smith" forKey:@"fullname"];
-//        [dict2 setObject:@"Following" forKey:@"followingNSString"];
-//        [muteArray addObject:dict];
-//        [muteArray addObject:dict2];
-
-
-//        NSArray *usersArray = @[ @{@"userName" : @"lady g",
-//                                   @"userFullName" : @"Lady Gaga",
-//
-//                                   @"following" : @"Following"
-//                                   },
-//                                 @{@"userName" : @"fresh prince",
-//                                   @"userFullName" : @"Will Smith",
-//                                   @"profileImage" : userImage,
-//                                   @"following" : @"+ Follow"
-//                                   },
-//                                 @{@"userName" : @"Hannah Montana",
-//                                   @"userFullName" : @"Miley Cyrus",
-//                                   @"profileImage" : userImage,
-//                                   @"following" : @"Following"
-//                                   }
-//
-//                                ];
-//        NSLog(@"%@", muteArray);
-//        likersVC.usersArray = muteArray;
-//    }else
-//    {
-//
-//    }
-//}
 //-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 //
 //{

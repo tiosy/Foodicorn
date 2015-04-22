@@ -141,6 +141,7 @@
     LikersViewController *likersVC = [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
     [FDFollow followersWithCompletion:self.user completionHandler:^(NSArray *array) {
         likersVC.usersArray = array;
+        NSLog(@"%@", array);
     }];
 //    [self performSegueWithIdentifier:@"followers" sender:self];
     //write code to pass a user's followers array to followersVC
