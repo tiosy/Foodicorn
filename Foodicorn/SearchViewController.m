@@ -73,7 +73,7 @@
     self.allowedHolidays = [NSArray arrayWithObjects:@"Christmas", @"Summer", @"Thanksgiving", @"New Year", @"Super Bowl / Game+Day", @"Halloween", @"Hanukkah", @"4th of July", nil];
     self.allowedHolidaysStringsArray = [NSArray arrayWithObjects:@"&allowedHoliday[]=holiday^holiday-christmas", @"&allowedholiday[]=holiday^holiday-summer", @"&allowedHoliday[]=holiday^holiday-thanksgiving", @"&allowedHoliday[]=holiday^holiday-new+year", @"&allowedHoliday[]=holiday^holiday-super-bowl", @"&allowedHoliday[]=holiday^holiday-halloween", @"&allowedHoliday[]=holiday^holiday-hanukkah", @"&allowedHoliday[]=holiday^holiday-4th+of+july", nil];
 
-    self.filteredUsersArray = [NSMutableArray arrayWithObjects:@"Test1", @"Test2", @"Test3", nil];
+//    self.filteredUsersArray = [NSMutableArray arrayWithObjects:@"Test1", @"Test2", @"Test3", nil];
 }
 
 
@@ -198,6 +198,10 @@
              if (!error) {
                  UIImage *userImage = [UIImage imageWithData:imageData];
                  cell.imageView.image = userImage;
+                 cell.imageView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
+                 cell.imageView.layer.borderWidth = 1.0f;
+                 cell.imageView.layer.cornerRadius = cell.imageView.frame.size.width/2;
+                 cell.imageView.layer.masksToBounds = YES;
              }
          }];
     }
@@ -337,7 +341,12 @@
     }
 }
 
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    
+}
 
+//When "Get Recipes" Bar Button Item pressed
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     JustinViewController *justinVC = segue.destinationViewController;
