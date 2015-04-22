@@ -9,6 +9,7 @@
 #import "SearchViewController.h"
 #import "JustinViewController.h"
 #import "UserProfileViewController.h"
+#import "ProfileViewController.h"
 #import "FDPFUser.h"
 #import "Yummly.h"
 
@@ -220,9 +221,9 @@
                  cell.imageView.layer.masksToBounds = YES;
              }
          }];
+
     }
 
-    //TODO: if object should be selected/checked then show the check in the cell. else it should not show the detail disclosure.
     return cell;
 }
 
@@ -350,11 +351,21 @@
         [self.tableView reloadData];
     }else
     {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
-        UserProfileViewController *userVC= [storyboard instantiateViewControllerWithIdentifier:@"UserVC"];
-        [self.navigationController pushViewController:userVC animated:YES];
+        FDPFUser *currentUser = [FDPFUser currentUser];
         FDPFUser *user = self.filteredUsersArray[indexPath.row];
-        userVC.username = user.username;
+        if ([user.username isEqualToString:currentUser.username])
+        {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
+            ProfileViewController *profileVC= [storyboard instantiateViewControllerWithIdentifier:@"ProfileVC"];
+            [self.navigationController pushViewController:profileVC animated:YES];
+
+        }else
+        {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
+            UserProfileViewController *userVC= [storyboard instantiateViewControllerWithIdentifier:@"UserVC"];
+            [self.navigationController pushViewController:userVC animated:YES];
+            userVC.user = user;
+        }
     }
 }
 
@@ -379,6 +390,9 @@
                 [self.filteredUsersArray addObject:user];
             }
         }
+    }else
+    {
+        [self.filteredUsersArray removeAllObjects];
     }
     [self.tableView reloadData];
 }

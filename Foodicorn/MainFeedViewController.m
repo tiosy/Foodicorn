@@ -192,6 +192,7 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
         UserProfileViewController *userVC= [storyboard instantiateViewControllerWithIdentifier:@"UserVC"];
         [self.navigationController pushViewController:userVC animated:YES];
+        userVC.user = transaction.user;
         //What are we passing onUsernameTapped
 
     }
