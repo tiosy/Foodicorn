@@ -9,18 +9,20 @@
 
 #import <Parse/Parse.h>
 #import "FDPFUser.h"
+#import "FDDish.h"
 
 @interface FDLike : PFObject<PFSubclassing>
 
 
-@property (nonatomic, strong) NSString *from; //use FDDish's recipeId
-@property (nonatomic, strong) FDPFUser *to;
+@property (nonatomic, strong) NSString *from; //recipeId
+@property (nonatomic, strong) PFFile *imagePFfile;
+@property (nonatomic, strong) FDPFUser *to;   //user
 
 + (NSString *)parseClassName;
 
-+(void) addLike:(NSString *) receipeId;
++(void) addLike:(NSString *) recipeId image:(UIImage *)imageUIImage;
 //a dish liked by users
-+ (void) likedByUsersWithCompletion:(NSString *) receipeId completionHandler:(void (^)(NSArray *))complete;
++ (void) likedByUsersWithCompletion:(NSString *)recipeId completionHandler:(void (^)(NSArray *))complete;
 //a user likes dishes
 + (void) likeDishesWithCompletion:(void (^)(NSArray *))complete;
 

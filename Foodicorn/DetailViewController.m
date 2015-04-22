@@ -57,7 +57,7 @@
 
         [FDTransaction addTransaction:me.profileThumbnailPFFile userName:me.username dishID:self.recipeID dishImage:self.imageView.image likedBy:nil transactionType:@"Current User liked dish"];
 
-        [FDDish addDish:self.imageView.image username:me.username recipeId:self.recipeID];
+     //   [FDDish addDish:self.imageView.image username:me.username recipeId:self.recipeID];
 
         //add like to photo add photo to liked photos array of current userlike
     } else

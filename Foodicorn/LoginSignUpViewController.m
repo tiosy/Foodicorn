@@ -13,7 +13,7 @@
 
 #import "FDPFUser.h"
 #import "FDUser.h"
-
+#import "FDDish.h"
 #import "FDLike.h"
 
 @interface LoginSignUpViewController () <PFLogInViewControllerDelegate , PFSignUpViewControllerDelegate>
@@ -34,23 +34,18 @@
 - (void)viewDidLoad {
    [super viewDidLoad];
 
-//
-    self.usersMutArray = [NSMutableArray new];
-    self.dishesMutArray = [NSMutableArray new];
+////
+//    self.usersMutArray = [NSMutableArray new];
+//    self.dishesMutArray = [NSMutableArray new];
+////
 //
 
+    //TESTING adding following
 
-//    //TESTING adding following
+//    FDPFUser *me = [FDPFUser currentUser];
+//    NSLog(@"username %@", me.username);
 //
-    FDPFUser *me = [FDPFUser currentUser];
-    NSLog(@"username %@", me.username);
 
-    for (NSDictionary *dic in me.followings) {
-        NSLog(@"%@", [dic objectForKey:@"username"]);
-         NSLog(@"%@", [dic objectForKey:@"fullname"]);
-         NSLog(@"%@", [dic objectForKey:@"followingNSString"]);
-        NSLog(@"%@", [dic objectForKey:@"followings"]);
-    }
     
 //  UIImage *person6 = [UIImage imageNamed:@"person6"];
 //    [FDPFUser addFollowingAndFollower:person6 username:@"taylorswift" fullname:@"Taylor Swift" followingNSString:@"Following"];
@@ -116,35 +111,47 @@
 
 //==============================================
 
-//    NSString *rId = @"123";
-// NSString *receipeId = @"123";
-//    PFObject *like = [PFObject objectWithClassName:@"Like"];
-//
-//    [like setObject:receipeId forKey:@"from"];
-//    [like setObject:[PFUser currentUser]  forKey:@"to"];
-//    [like saveInBackground];
-//
-
-
 
 //
+//    UIImage *imageUIImage;
+//    NSString *rId;
 //
-//    NSString *rId = @"123";
-//   [FDLike addLike:rId];
-//    [FDLike likedByUsersWithCompletion:rId completionHandler:^(NSArray *array) {
+//    imageUIImage= [UIImage imageNamed:@"food1"];
+//    rId = @"111";
+//    [FDDish addDish:imageUIImage recipeId:rId];
+//    [FDLike addLike:rId image:imageUIImage];
+//
+//    imageUIImage= [UIImage imageNamed:@"food2"];
+//    rId = @"222";
+//    [FDDish addDish:imageUIImage recipeId:rId];
+//    [FDLike addLike:rId image:imageUIImage];
+//    imageUIImage= [UIImage imageNamed:@"food3"];
+//    rId = @"333";
+//    [FDDish addDish:imageUIImage recipeId:rId];
+//    [FDLike addLike:rId image:imageUIImage];
+//
+//    imageUIImage= [UIImage imageNamed:@"food4"];
+//    rId = @"444";
+//    [FDDish addDish:imageUIImage recipeId:rId];
+//    [FDLike addLike:rId image:imageUIImage];
+
+
+//
+//
+//    [FDLike likedByUsersWithCompletion:@"111" completionHandler:^(NSArray *array) {
 //        self.usersMutArray = [array mutableCopy];
 //
-//        NSLog(@"%@", self.usersMutArray);
+//        NSLog(@"-user-------%ld--", self.usersMutArray.count);
 //
 //    }];
-//
+
 //    [FDLike likeDishesWithCompletion:^(NSArray *array) {
 //        self.dishesMutArray = [array mutableCopy];
-//         NSLog(@"%@", self.dishesMutArray);
+//         NSLog(@"-dish-------%ld-", self.dishesMutArray.count);
 //
 //    }];
 //    
-//
+
 
 
 
@@ -188,9 +195,18 @@
 //    //==============================================
 
 
+
+
+
+
+
+
+
+
+
 }
 
-
+//////////////////////////////////////////////////////////////
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
