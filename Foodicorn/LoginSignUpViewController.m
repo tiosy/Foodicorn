@@ -34,6 +34,11 @@
 - (void)viewDidLoad {
    [super viewDidLoad];
 
+
+    [FDLike likeDishesWithCompletion:^(NSArray *array) {
+        NSLog(@"%@",array);
+    }];
+
 ////
 //    self.usersMutArray = [NSMutableArray new];
 //    self.dishesMutArray = [NSMutableArray new];
