@@ -26,6 +26,7 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *likersTapGesture;
 @property (nonatomic)  NSArray *recipeArray;
 @property NSString *recipeId;
+@property NSIndexPath *cellIndexPath;
 @property Yummly *yummly;
 
 @property (nonatomic) CGFloat lastContentOffsetY;
@@ -129,6 +130,9 @@
         cell.timeLabel.text = [NSString stringWithFormat:@"%ldm",(long)minsBetweenDates];
     }
 
+//    self.cellIndexPath = indexPath;
+    NSLog(@"%li, %li", (long)self.cellIndexPath.row, (long)self.cellIndexPath.section);
+
 
 
 
@@ -142,7 +146,7 @@
     }];
     //have to work on getting count
     cell.likesLabel.text = [NSString stringWithFormat:@"%ld",(unsigned long)transaction.likedBy.count];
-    NSLog(@"The cell text is %lu", (unsigned long)transaction.likedBy.count);
+//    NSLog(@"The cell text is %lu", (unsigned long)transaction.likedBy.count);
 
     PFFile *userImagePFile = transaction.userProfileImagePFFile;
     [userImagePFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error) {
@@ -176,7 +180,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
     FDPFUser *currentUser = [FDPFUser currentUser];
     FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
-    
+
     if ([transaction.userName isEqualToString:currentUser.username])
     {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
@@ -193,36 +197,48 @@
     }
 }
 
+-(void)getIndexPathFromLabel: (NSIndexPath *)indexPath
+{
+
+}
 
 - (IBAction)likesTapGestureOnTapped:(UITapGestureRecognizer *)sender
 {
-    [self performSegueWithIdentifier:@"picturelikes" sender:self];
+    CGPoint location = [sender locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+    NSLog(@"%li", (long)indexPath.row);
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
+    LikersViewController *likersVC = [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
+    [self.navigationController pushViewController:likersVC animated:YES];
+
+//    [self performSegueWithIdentifier:@"picturelikes" sender:self];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    LikersViewController *likersVC = segue.destinationViewController;
-
-    if ([segue.identifier isEqualToString:@"picturelikes"])
-    {
-        UIImage *img = [UIImage imageNamed:@"person"];
-        NSData *imgData = UIImagePNGRepresentation(img);
-        NSMutableArray *muteArray = [NSMutableArray new];
-
-        NSMutableDictionary *dict = [NSMutableDictionary new];
-        NSMutableDictionary *dict2 = [NSMutableDictionary new];
-
-        [dict setObject:imgData forKey:@"profileImage"];
-        [dict setObject:@"lady g" forKey:@"username"];
-        [dict setObject:@"Lady Gaga" forKey:@"fullname"];
-        [dict setObject:@"+ Follow" forKey:@"followingNSString"];
-
-        [dict2 setObject:imgData forKey:@"profileImage"];
-        [dict2 setObject:@"fresh prince" forKey:@"username"];
-        [dict2 setObject:@"Will Smith" forKey:@"fullname"];
-        [dict2 setObject:@"Following" forKey:@"followingNSString"];
-        [muteArray addObject:dict];
-        [muteArray addObject:dict2];
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    LikersViewController *likersVC = segue.destinationViewController;
+//
+//    if ([segue.identifier isEqualToString:@"picturelikes"])
+//    {
+//        UIImage *img = [UIImage imageNamed:@"person"];
+//        NSData *imgData = UIImagePNGRepresentation(img);
+//        NSMutableArray *muteArray = [NSMutableArray new];
+//
+//        NSMutableDictionary *dict = [NSMutableDictionary new];
+//        NSMutableDictionary *dict2 = [NSMutableDictionary new];
+//
+//        [dict setObject:imgData forKey:@"profileImage"];
+//        [dict setObject:@"lady g" forKey:@"username"];
+//        [dict setObject:@"Lady Gaga" forKey:@"fullname"];
+//        [dict setObject:@"+ Follow" forKey:@"followingNSString"];
+//
+//        [dict2 setObject:imgData forKey:@"profileImage"];
+//        [dict2 setObject:@"fresh prince" forKey:@"username"];
+//        [dict2 setObject:@"Will Smith" forKey:@"fullname"];
+//        [dict2 setObject:@"Following" forKey:@"followingNSString"];
+//        [muteArray addObject:dict];
+//        [muteArray addObject:dict2];
 
 
 //        NSArray *usersArray = @[ @{@"userName" : @"lady g",
@@ -243,12 +259,12 @@
 //
 //                                ];
 //        NSLog(@"%@", muteArray);
-        likersVC.usersArray = muteArray;
-    }else
-    {
-
-    }
-}
+//        likersVC.usersArray = muteArray;
+//    }else
+//    {
+//
+//    }
+//}
 //-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 //
 //{
