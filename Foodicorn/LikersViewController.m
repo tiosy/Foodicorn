@@ -27,25 +27,6 @@
     [super viewDidLoad];
      self.me = [FDPFUser currentUser];
 
-
-//    self.usersArray = @[ @{@"userImageName" : @"person",
-//                           @"userName" : @"Taylor S.",
-//                           @"userFullName" : @"Taylor Swift",
-//                           @"following" : @"YES"
-//                           },
-//                         @{@"userImageName" : @"person2",
-//                           @"userName" : @"Lady G",
-//                           @"userFullName" : @"Lady Gaga",
-//                           @"following" : @"YES"
-//                           },
-//                         @{@"userImageName" : @"person3",
-//                           @"userName" : @"Hannah Montana",
-//                           @"userFullName" : @"Miley Cyrus",
-//                           @"following" : @"NO"
-//                           }
-//                        ];
-
-
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -54,18 +35,21 @@
     LikersTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserListCell"];
     cell.delegate = self;
     FDPFUser *cellUser = [self.usersArray objectAtIndex:indexPath.row];
-    NSData *imgData = cellUser.profileThumbnailNSData;
-    NSString *username = cellUser.username;
-    UIImage *image = [UIImage imageWithData:imgData];
-//    NSLog(@"%@", username);
-    cell.likersCellImageView.image = image;
-    cell.likersUsernameLabel.text = username;
-    NSString *userFullName = cellUser.fullName;
-    cell.likersSubtitleLabel.text = userFullName;
+
+    PFFile *imageFile = cellUser.profileThumbnailPFFile;
+    [imageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
+     {
+         if (!error)
+         {
+             UIImage *image = [UIImage imageWithData:imageData];
+             cell.likersCellImageView.image = image;
+         }
+     }];
+
     cell.indexPath = indexPath;
 
-    [cell setCellUser:cellUser];
-
+    cell.likersUsernameLabel.text = cellUser.username;
+    cell.likersSubtitleLabel.text = cellUser.fullName;
 
     return cell;
 }

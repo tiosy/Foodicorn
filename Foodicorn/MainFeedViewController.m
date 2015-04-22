@@ -89,7 +89,7 @@
     MainFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainFeedCell"];
     FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
     self.recipeId = transaction.dishID;
-    cell.usernameLabel.text = transaction.userName;
+    cell.usernameLabel.text = transaction.user.username;
 
     NSDate *now = [NSDate date];
     //createdAt:"2011-06-10T18:33:42Z"
