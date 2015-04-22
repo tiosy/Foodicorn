@@ -12,6 +12,7 @@
 #import "FDTransaction.h"
 #import "FDPFUser.h"
 #import "FDDish.h"
+#import "FDLike.h"
 
 @interface DetailViewController ()
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *imageView;
@@ -64,6 +65,8 @@
         FDPFUser *me = [FDPFUser currentUser];
 
         [FDTransaction addTransaction:me.profileThumbnailPFFile userName:me.username fdPFUser:me dishID:self.recipeID dishImage:self.imageView.image likedBy:nil transactionType:@"Current User liked dish"];
+
+        [FDLike addLike:self.recipeID image:self.imageView.image];
 
      //   [FDDish addDish:self.imageView.image username:me.username recipeId:self.recipeID];
 

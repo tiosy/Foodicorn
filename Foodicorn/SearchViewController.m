@@ -281,6 +281,31 @@
         self.navigationItem.rightBarButtonItem.enabled = YES;
     }else
     {
+        PFQuery *query = [FDPFUser query];
+        [query orderByDescending:@"username"];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            self.usersArray = objects;
+            self.filteredUsersArray = [self.usersArray mutableCopy];
+//
+//                if (searchBar.searchText.length != 0) {
+                [self.filteredUsersArray removeAllObjects];
+                for (FDPFUser *user in self.usersArray) {
+                    NSRange nameRange = [user.username rangeOfString:self.searchBar.text options:NSCaseInsensitiveSearch];
+                    if (nameRange.location != NSNotFound) {
+                        [self.filteredUsersArray addObject:user];
+                    }
+
+//            }else
+//            {
+//                [self.filteredUsersArray removeAllObjects];
+//            }
+                }
+        }
+        [self.tableView reloadData];
+        }];
+
         [searchBar resignFirstResponder];
     }
 }
@@ -369,33 +394,36 @@
     }
 }
 
--(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    PFQuery *query = [FDPFUser query];
-    [query orderByDescending:@"username"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error)
-        {
-            self.usersArray = objects;
-        }
-    }];
 
-    self.filteredUsersArray = [self.usersArray mutableCopy];
 
-    if (searchText.length != 0) {
-        [self.filteredUsersArray removeAllObjects];
-        for (FDPFUser *user in self.usersArray) {
-            NSRange nameRange = [user.username rangeOfString:self.searchBar.text options:NSCaseInsensitiveSearch];
-            if (nameRange.location != NSNotFound) {
-                [self.filteredUsersArray addObject:user];
-            }
-        }
-    }else
-    {
-        [self.filteredUsersArray removeAllObjects];
-    }
-    [self.tableView reloadData];
-}
+//-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+//{
+//    PFQuery *query = [FDPFUser query];
+//    [query orderByDescending:@"username"];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error)
+//        {
+//            self.usersArray = objects;
+//            self.filteredUsersArray = [self.usersArray mutableCopy];
+//
+//            if (searchText.length != 0) {
+//                [self.filteredUsersArray removeAllObjects];
+//                for (FDPFUser *user in self.usersArray) {
+//                    NSRange nameRange = [user.username rangeOfString:self.searchBar.text options:NSCaseInsensitiveSearch];
+//                    if (nameRange.location != NSNotFound) {
+//                        [self.filteredUsersArray addObject:user];
+//                    }
+//                }
+//            }else
+//            {
+//                [self.filteredUsersArray removeAllObjects];
+//            }
+//        }
+//        [self.tableView reloadData];
+//    }];
+//
+//
+//}
 
 //When "Get Recipes" Bar Button Item pressed
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
