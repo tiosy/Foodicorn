@@ -93,7 +93,7 @@
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
-        NSLog(@"===%ld",objects.count);
+        NSLog(@"===%ld",(unsigned long)objects.count);
         
         NSMutableArray *mutArray = [NSMutableArray new];
         for(FDLike *o in objects) {
