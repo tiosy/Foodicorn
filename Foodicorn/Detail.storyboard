@@ -46,7 +46,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eyF-Y5-7Tv">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="336" id="6GC-e2-KLH">
-                                        <variation key="widthClass=compact" constant="250"/>
+                                        <variation key="widthClass=compact" constant="280"/>
                                     </constraint>
                                     <constraint firstAttribute="height" constant="400" id="GGr-RH-unF">
                                         <variation key="widthClass=compact" constant="336"/>
@@ -103,10 +103,14 @@
                             <constraint firstItem="0Jg-CW-97I" firstAttribute="top" secondItem="fNU-ib-uHU" secondAttribute="bottom" constant="8" id="5Jb-b0-H2J"/>
                             <constraint firstItem="fNU-ib-uHU" firstAttribute="trailing" secondItem="ob1-6B-EkX" secondAttribute="trailingMargin" id="9e1-zG-xCy"/>
                             <constraint firstItem="3AU-1T-2H3" firstAttribute="top" secondItem="eyF-Y5-7Tv" secondAttribute="bottom" constant="8" id="VOI-d9-Jfu">
-                                <variation key="widthClass=compact" constant="0.0"/>
+                                <variation key="widthClass=compact" constant="8"/>
                             </constraint>
-                            <constraint firstItem="fNU-ib-uHU" firstAttribute="top" secondItem="3AU-1T-2H3" secondAttribute="bottom" constant="20" id="bPo-hI-DAB"/>
-                            <constraint firstItem="3AU-1T-2H3" firstAttribute="top" secondItem="eyF-Y5-7Tv" secondAttribute="bottom" id="bcK-eI-5qE"/>
+                            <constraint firstItem="fNU-ib-uHU" firstAttribute="top" secondItem="3AU-1T-2H3" secondAttribute="bottom" constant="20" id="bPo-hI-DAB">
+                                <variation key="widthClass=compact" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="3AU-1T-2H3" firstAttribute="top" secondItem="eyF-Y5-7Tv" secondAttribute="bottom" id="bcK-eI-5qE">
+                                <variation key="widthClass=compact" constant="8"/>
+                            </constraint>
                             <constraint firstItem="eyF-Y5-7Tv" firstAttribute="top" secondItem="X4N-jG-3w1" secondAttribute="bottom" id="c1H-1f-ghS"/>
                             <constraint firstItem="0Jg-CW-97I" firstAttribute="top" secondItem="kjJ-L2-OJz" secondAttribute="bottom" constant="8" id="dgz-dG-nfr"/>
                             <constraint firstItem="3AU-1T-2H3" firstAttribute="leading" secondItem="ob1-6B-EkX" secondAttribute="leadingMargin" constant="-16" id="fRH-Jl-lAB"/>
@@ -287,6 +291,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jpP-vv-p5t"/>
+        <segue reference="D58-hh-rxd"/>
     </inferredMetricsTieBreakers>
 </document>

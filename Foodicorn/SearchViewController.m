@@ -28,6 +28,7 @@
 @property NSMutableArray *stringsArray;
 @property NSString *urlText;
 @property NSMutableArray *cellSelectedArray;
+@property NSArray *usersArray;
 @property (nonatomic)  NSMutableArray *filteredUsersArray;
 @property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic) CGFloat lastContentOffsetY;
@@ -79,16 +80,26 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
-    [self.stringsArray removeAllObjects];
-    [self.cellSelectedArray removeAllObjects];
-    [self.tableView reloadData];
+    if (self.segmentedControl.selectedSegmentIndex == 0)
+    {
+        [super viewDidAppear:animated];
+        [self.stringsArray removeAllObjects];
+        [self.cellSelectedArray removeAllObjects];
+        [self.tableView reloadData];
 
-    //still need to figure this search bar out
-    [self.searchBar.text isEqualToString:@""];
-    NSLog(@"The search bar is %@", self.searchBar.text);
+        //still need to figure this search bar out
+        [self.searchBar.text isEqualToString:@""];
+        NSLog(@"The search bar is %@", self.searchBar.text);
 
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }else if (self.segmentedControl.selectedSegmentIndex == 1)
+    {
+        [super viewDidAppear:animated];
+        [self.filteredUsersArray removeAllObjects];
+        [self.tableView reloadData];
+        self.searchBar.text = nil;
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
 
     NSLog(@"the array is %@", self.stringsArray);
     NSLog(@"The cell selected array is %@", self.cellSelectedArray);
@@ -187,7 +198,7 @@
         {
             cell.textLabel.text = self.allowedHolidays[indexPath.row];
         }
-    } else
+    } else if (self.segmentedControl.selectedSegmentIndex == 1)
     {
         FDPFUser *user = self.filteredUsersArray[indexPath.row];
         cell.textLabel.text = user.username;
@@ -337,13 +348,34 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
         UserProfileViewController *userVC= [storyboard instantiateViewControllerWithIdentifier:@"UserVC"];
         [self.navigationController pushViewController:userVC animated:YES];
-        userVC.username = self.filteredUsersArray[indexPath.row];
+        FDPFUser *user = self.filteredUsersArray[indexPath.row];
+        userVC.username = user.username;
     }
 }
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    
+    PFQuery *query = [FDPFUser query];
+    [query orderByDescending:@"username"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            self.usersArray = objects;
+        }
+    }];
+
+    self.filteredUsersArray = [self.usersArray mutableCopy];
+
+    if (searchText.length != 0) {
+        [self.filteredUsersArray removeAllObjects];
+        for (FDPFUser *user in self.usersArray) {
+            NSRange nameRange = [user.username rangeOfString:self.searchBar.text options:NSCaseInsensitiveSearch];
+            if (nameRange.location != NSNotFound) {
+                [self.filteredUsersArray addObject:user];
+            }
+        }
+    }
+    [self.tableView reloadData];
 }
 
 //When "Get Recipes" Bar Button Item pressed
