@@ -10,6 +10,7 @@
 #import "LikersViewController.h"
 #import "DetailViewController.h"
 #import "FDPFUser.h"
+#import "FDFollow.h"
 
 @interface UserProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
@@ -30,6 +31,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.title = self.user.username;
+    self.userNameLabel.text = self.user.fullName;
 
     self.followersTapGesture = [UITapGestureRecognizer new];
     self.followersTapGesture.delegate = self;
@@ -55,7 +59,15 @@
 //    self.profileImageView.frame.size.width/2;
     self.profileImageView.layer.masksToBounds = YES;
 
-    NSLog(@"The userProfile username is %@", self.username);
+    PFFile *userImageFile = self.user.profileThumbnailPFFile;
+    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
+     {
+         if (!error) {
+             UIImage *image = [UIImage imageWithData:imageData];
+             self.profileImageView.image = image;
+
+         }
+     }];
 
     //NEED TO QUERY IN USER PROFILE IMAGE, USERNAME, FOLLOWERS, FOLLOWINGS, AND LIKED DISHES
 

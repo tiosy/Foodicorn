@@ -16,6 +16,7 @@
 #import "FDUtility.h"
 #import "FDTransaction.h"
 #import "FDDish.h"
+#import "FDLike.h"
 
 @interface ProfileViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -83,34 +84,23 @@
 
      }];
 
-    PFQuery *query = [FDTransaction query];
-    [query whereKey:@"userName" equalTo:currentUser.username];
-    [query orderByDescending:@"createdAt"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error)
-        {
-            self.collectionArray = objects;
-        } else
-        {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
+    [FDLike likeDishesWithCompletion:^(NSArray *array) {
+        self.collectionArray = array;
     }];
-//    self.collectionDict = @{ @"cell": @"Cell A",
-//                              @"userImageName": @"person",
-//                              @"userName": @"tylorswift",
-//                              @"numOfFollowers": @"5",
-//                              @"numOfFollowing": @"1",
-//                              @"collections": @[@"food1", @"food2", @"food3", @"food4", @"food5", @"food7"]
-//                           };
-//
-//     self.collectionArray = [self.collectionDict objectForKey:@"collections"];
-//
-//    NSString *userImage = [self.collectionDict objectForKey:@"userImageName"];
-//    self.profileImageView.image =[UIImage imageNamed:userImage];
-//    self.userNameLabel.text = [self.collectionDict objectForKey:@"userName"];
-//    self.followersCountLabel.text =[self.collectionDict objectForKey:@"numOfFollowers"];
-//    self.followingCountLabel.text =[self.collectionDict objectForKey:@"numOfFollowing"];
+
+//    PFQuery *query = [FDLike query];
+//    [query whereKey:@"to" equalTo:currentUser.objectId];
+//    [query orderByDescending:@"createdAt"];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error)
+//        {
+//            self.collectionArray = objects;
+//        } else
+//        {
+//            // Log details of the failure
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//    }];
 
 }
 
@@ -134,9 +124,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ProfileCollectionCell" forIndexPath:indexPath];
-    FDTransaction *transaction = [self.collectionArray objectAtIndex:indexPath.row];
+    FDLike *like = [self.collectionArray objectAtIndex:indexPath.row];
 
-    PFFile *dishImageFile = transaction.dishImagePFFile;
+    PFFile *dishImageFile = like.imagePFfile;
     [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error)
     {
         if (!error) {
@@ -145,7 +135,7 @@
         }
     }];
 
-    //write code here to show a currentUser's likes
+    //NEED TO CHANGE EVERYTHING FROM TRANSACTION TO LIKE
 
     return cell;
 }
@@ -158,8 +148,10 @@
 
 //    CGPoint location = [sender locationInView:self.tableView];
 //    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+
     FDTransaction *transaction = [self.collectionArray objectAtIndex:indexPath.row];
     detailVC.recipeID = transaction.dishID;
+    //NEED TO CHANGE FROM TRANSACTION TO LIKE
     //write code here to pass yummly recipe to detail
 }
 

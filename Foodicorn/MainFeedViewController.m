@@ -17,6 +17,7 @@
 #import "FDPFUser.h"
 #import <parse/PFObject+Subclass.h>
 #import "FDTransaction.h"
+#import "FDLike.h"
 
 @interface MainFeedViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 @property NSArray *initialArray;
@@ -75,28 +76,6 @@
     self.likersTapGesture.delegate = self;
     self.likersTapGesture.enabled = YES;
 
-//    self.initialArray = @[ @{ @"cell": @"Cell A",
-//                           @"userImageName": @"person",
-//                           @"userName": @"tylorswift",
-//                           @"dishImage": @"food1",
-//                           @"timeSince":@"1d",
-//                              @"likes":@[@"1",@"2"]
-//                           },
-//                        @{ @"cell": @"Cell B",
-//                           @"userImageName": @"person2",
-//                           @"userName": @"ladygaga",
-//                           @"dishImage": @"food2",
-//                           @"timeSince":@"2d",
-//                           @"likes":@[@"1",@"2"]
-//                           },
-//                        @{ @"cell": @"Cell C",
-//                           @"userImageName": @"person3",
-//                           @"userName": @"U2",
-//                           @"dishImage": @"food3",
-//                           @"timeSince":@"4d",
-//                           @"likes":@[@"1",@"2"]
-//                           }
-//                        ];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -130,7 +109,6 @@
         cell.timeLabel.text = [NSString stringWithFormat:@"%ldm",(long)minsBetweenDates];
     }
 
-//    self.cellIndexPath = indexPath;
     NSLog(@"%li, %li", (long)self.cellIndexPath.row, (long)self.cellIndexPath.section);
 
 
@@ -144,9 +122,12 @@
 
         }
     }];
-    //have to work on getting count
-    cell.likesLabel.text = [NSString stringWithFormat:@"%ld",(unsigned long)transaction.likedBy.count];
-//    NSLog(@"The cell text is %lu", (unsigned long)transaction.likedBy.count);
+
+    //HAVE TO IMPORT THE AMOUNT OF LIKES A DISH HAS
+    [FDLike likedByUsersWithCompletion:transaction.dishID completionHandler:^(NSArray *array) {
+        cell.likesLabel.text = [NSString stringWithFormat:@"%ld Likes", (unsigned long)array.count];
+
+    }];
 
     PFFile *userImagePFile = transaction.userProfileImagePFFile;
     [userImagePFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error) {
@@ -192,6 +173,7 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
         UserProfileViewController *userVC= [storyboard instantiateViewControllerWithIdentifier:@"UserVC"];
         [self.navigationController pushViewController:userVC animated:YES];
+        userVC.user = transaction.user;
         //What are we passing onUsernameTapped
 
     }
