@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+#import "FDPFUser.h"
 
 
 @interface FDTransaction : PFObject<PFSubclassing>
@@ -16,6 +17,7 @@
 @property NSData *userProfileImageNSData;
 @property PFFile *userProfileImagePFFile;
 @property NSString *userName;
+@property FDPFUser *user;
 @property NSString *dishID;
 @property PFFile *dishImagePFFile;
 @property NSArray *likedBy;  //each element is FDUser
@@ -24,8 +26,7 @@
 
 + (NSString *)parseClassName;
 
-+(void) addTransaction:(PFFile *)userProfilePFFile userName:(NSString *)userName dishID:(NSString *)dishID dishImage:(UIImage *)dishImage likedBy:(NSArray *)likedBy transactionType:(NSString *)transactionType;
-
++(void) addTransaction:(PFFile *)userProfilePFFile userName:(NSString *)userName fdPFUser:(FDPFUser *)fdPFUser dishID:(NSString *)dishID dishImage:(UIImage *)dishImage likedBy:(NSArray *)likedBy transactionType:(NSString *)transactionType;
 + (void)retrieveFDTransactionWithCompletion:(void (^)(NSArray *))complete;
 
 @end

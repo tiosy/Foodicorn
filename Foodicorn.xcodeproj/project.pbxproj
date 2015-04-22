@@ -32,6 +32,7 @@
 		6EA8A4241ADC5FA900C6BD62 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EA8A4221ADC5FA900C6BD62 /* LaunchScreen.xib */; };
 		6EA8A4301ADC5FA900C6BD62 /* FoodicornTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA8A42F1ADC5FA900C6BD62 /* FoodicornTests.m */; };
 		6EBC8CCD1AE7021900DD6E4B /* FDLike.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EBC8CCC1AE7021900DD6E4B /* FDLike.m */; };
+		6EBC8CD01AE8120000DD6E4B /* FDFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EBC8CCF1AE8120000DD6E4B /* FDFollow.m */; };
 		6EE7E7601ADC640C00CF6B9D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7E75F1ADC640C00CF6B9D /* Parse.framework */; };
 		6EE7E7621ADC641D00CF6B9D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7E7611ADC641D00CF6B9D /* Bolts.framework */; };
 		6EE7E7641ADC646B00CF6B9D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7E7631ADC646B00CF6B9D /* AudioToolbox.framework */; };
@@ -114,6 +115,8 @@
 		6EA8A42F1ADC5FA900C6BD62 /* FoodicornTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodicornTests.m; sourceTree = "<group>"; };
 		6EBC8CCB1AE7021900DD6E4B /* FDLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDLike.h; path = ../FDLike.h; sourceTree = "<group>"; };
 		6EBC8CCC1AE7021900DD6E4B /* FDLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDLike.m; path = ../FDLike.m; sourceTree = "<group>"; };
+		6EBC8CCE1AE8120000DD6E4B /* FDFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDFollow.h; sourceTree = "<group>"; };
+		6EBC8CCF1AE8120000DD6E4B /* FDFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDFollow.m; sourceTree = "<group>"; };
 		6EE7E75F1ADC640C00CF6B9D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		6EE7E7611ADC641D00CF6B9D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		6EE7E7631ADC646B00CF6B9D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -371,6 +374,8 @@
 				6EE7E7881ADC727B00CF6B9D /* FDTransaction.m */,
 				6EBC8CCB1AE7021900DD6E4B /* FDLike.h */,
 				6EBC8CCC1AE7021900DD6E4B /* FDLike.m */,
+				6EBC8CCE1AE8120000DD6E4B /* FDFollow.h */,
+				6EBC8CCF1AE8120000DD6E4B /* FDFollow.m */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -515,6 +520,7 @@
 				336024421AE0DCB30058422B /* EditProfileViewController.m in Sources */,
 				E15A3C671ADDF01D00F63159 /* FavCollectionViewCell.m in Sources */,
 				6EA8A4161ADC5FA900C6BD62 /* main.m in Sources */,
+				6EBC8CD01AE8120000DD6E4B /* FDFollow.m in Sources */,
 				6EE7E77F1ADC6E2400CF6B9D /* FDUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

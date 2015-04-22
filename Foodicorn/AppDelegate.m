@@ -13,6 +13,7 @@
 #import "FDDish.h"
 #import "FDTransaction.h"
 #import "FDLike.h"
+#import "FDFollow.h"
 
 @interface AppDelegate ()
 
@@ -35,6 +36,7 @@
     [FDDish load];
     [FDTransaction load];
     [FDLike load];
+    [FDFollow load];
 
 
     // Initialize Parse.

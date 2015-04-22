@@ -55,7 +55,7 @@
 
         FDPFUser *me = [FDPFUser currentUser];
 
-        [FDTransaction addTransaction:me.profileThumbnailPFFile userName:me.username dishID:self.recipeID dishImage:self.imageView.image likedBy:nil transactionType:@"Current User liked dish"];
+        [FDTransaction addTransaction:me.profileThumbnailPFFile userName:me.username fdPFUser:me dishID:self.recipeID dishImage:self.imageView.image likedBy:nil transactionType:@"Current User liked dish"];
 
      //   [FDDish addDish:self.imageView.image username:me.username recipeId:self.recipeID];
 
