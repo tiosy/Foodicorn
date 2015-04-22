@@ -69,18 +69,18 @@
     return self.usersArray.count;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-}
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//
+//}
 
 -(void)shouldFollowOrUnfollowOnFollowButtonTap:(NSIndexPath *)indexPath
 {
-        LikersTableViewCell *cell = [LikersTableViewCell new];
-        NSDictionary *dict = [self.usersArray objectAtIndex:indexPath.row];
-        NSData *imgData = [dict objectForKey:@"profileImage"];
-        UIImage *image = [UIImage imageWithData:imgData];
-        NSLog(@"%@", self.me.followings);
+//        LikersTableViewCell *cell = [LikersTableViewCell new];
+//        NSDictionary *dict = [self.usersArray objectAtIndex:indexPath.row];
+//        NSData *imgData = [dict objectForKey:@"profileImage"];
+//        UIImage *image = [UIImage imageWithData:imgData];
+//        NSLog(@"%@", self.me.followings);
 
 //    NSLog(@"%lu", self.me.followings.count);
 

@@ -39,7 +39,7 @@
         NSData *imgData = [dict objectForKey:@"profileImage"];
         UIImage *image = [UIImage imageWithData:imgData];
         [FDPFUser addFollowingAndFollower:image username:[dict objectForKey:@"username"] fullname:[dict objectForKey:@"fullname"] followingNSString:[dict objectForKey:@"followingNSString"]];
-        NSLog(@"%lu", me.followings.count);
+//        NSLog(@"%lu", me.followings.count);
 
     }else
     {   FDPFUser *me = [FDPFUser currentUser];
@@ -50,7 +50,7 @@
         self.followButton.backgroundColor = [UIColor whiteColor];
         //write code to unfollow a user
         [FDPFUser removeFollowingAndFollower:[dict objectForKey:@"username"]];
-        NSLog(@"%lu", me.followings.count);
+//        NSLog(@"%lu", me.followings.count);
     }
 
     //add code to add user at index to currentuser following array
@@ -59,7 +59,7 @@
 -(void) setDictData:(NSDictionary *)dictData
 {
     _dictData = dictData;
-    NSLog(@"%@", _dictData);
+//    NSLog(@"%@", _dictData);
 }
 
 

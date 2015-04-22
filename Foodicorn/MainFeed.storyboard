@@ -387,7 +387,6 @@
                 <tapGestureRecognizer id="YM8-nW-uZU">
                     <connections>
                         <action selector="likesTapGestureOnTapped:" destination="VbL-jE-V9r" id="fIr-0b-07J"/>
-                        <segue destination="gtU-Tr-S8K" kind="show" identifier="picturelikes" id="8K6-gS-dsB"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -880,8 +879,7 @@
                                                             <exclude reference="67S-Up-prl"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="232" y="7" width="80" height="30"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="1qE-wX-0gC"/>
                                                             <include reference="67S-Up-prl"/>
@@ -947,9 +945,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="65" width="600" height="535"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="gtU-Tr-S8K" id="DcX-DB-Qkp"/>
                                     <outlet property="delegate" destination="gtU-Tr-S8K" id="etW-au-4m4"/>
@@ -1014,6 +1009,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="8K6-gS-dsB"/>
+        <segue reference="pPB-ac-YlA"/>
     </inferredMetricsTieBreakers>
 </document>
