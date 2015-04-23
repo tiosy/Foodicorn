@@ -75,6 +75,8 @@
 
             //to get the user, we get the object with the 'to key'
             FDPFUser *user = [o objectForKey:@"to"];
+            //JUSTIN HAAR ADDES THIS
+            [user fetchIfNeeded];
             [mutArray addObject:user];
         };
         NSArray *array = [mutArray mutableCopy];
@@ -90,6 +92,7 @@
     
 
     [query whereKey:@"to" equalTo:[FDPFUser currentUser]];
+    [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         complete(objects);
     }];

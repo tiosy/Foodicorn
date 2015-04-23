@@ -17,7 +17,7 @@
 -(void)setUsersArray:(NSArray *)usersArray
 {
     _usersArray = usersArray;
-    NSLog(@"%@", usersArray);
+//    NSLog(@"%@", usersArray);
     [self.likersTableView reloadData];
 }
 

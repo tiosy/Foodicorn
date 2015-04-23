@@ -21,6 +21,7 @@
 @property NSDictionary *detailDictionary;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property Yummly *yummly;
+@property NSMutableArray *likedDishesArray;
 
 @end
 
@@ -28,6 +29,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    FDPFUser *currentUser = [FDPFUser currentUser];
 
     [Yummly detailDictionaryFromDictionary:self.recipeID completeHandler:^(Yummly *yummly) {
         self.yummly = yummly;
@@ -48,6 +51,17 @@
         self.logoImageView.image = [UIImage imageWithData:logoData];
         self.logoImageView.layer.borderColor = [UIColor blueColor].CGColor;
         
+    }];
+
+    [FDLike likedByUsersWithCompletion:self.recipeID completionHandler:^(NSArray *array) {
+        self.likedDishesArray = [array mutableCopy];
+        for (FDPFUser *user in self.likedDishesArray) {
+            if ([user.username isEqualToString:currentUser.username]) {
+                self.likeButton.backgroundColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:1];
+                [self.likeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                [self.likeButton setTitle:@"Liked" forState:UIControlStateNormal];
+            }
+        }
     }];
 
     //need to write code to verify if current user liked dish
@@ -76,6 +90,24 @@
         [self.likeButton setTitleColor:[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2] forState:UIControlStateNormal];
         [self.likeButton setTitle:@"Like" forState:UIControlStateNormal];
         self.likeButton.backgroundColor = [UIColor whiteColor];
+
+        [FDLike likeDishesWithCompletion:^(NSArray *array) {
+            NSMutableArray *dishesArray = [array mutableCopy];
+            for (FDLike *likedDish in dishesArray) {
+                if ([likedDish.from isEqualToString:self.recipeID]) {
+                    [likedDish deleteInBackground];
+                }
+            }
+        }];
+
+        [FDTransaction retrieveFDTransactionWithCompletion:^(NSArray *array) {
+            NSMutableArray *transactionsArray = [array mutableCopy];
+            for (FDTransaction *transaction in transactionsArray) {
+                if ([transaction.dishID isEqualToString:self.recipeID] && [transaction.user isEqual:[FDPFUser currentUser]]) {
+                    [transaction deleteInBackground];
+                }
+            }
+        }];
     }
 }
 

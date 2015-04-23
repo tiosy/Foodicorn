@@ -83,7 +83,7 @@
 
     //user in the followings[] ?
 
-    //[query whereKey:@"username" equalTo:username];
+    [query whereKey:@"user" equalTo:[FDPFUser currentUser]];
 
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -92,6 +92,13 @@
 
             NSMutableArray *superTransactions = [NSMutableArray arrayWithCapacity:objects.count];
             superTransactions = [objects mutableCopy];
+
+            for (FDTransaction *transaction in objects) {
+                FDPFUser *user = [transaction objectForKey:@"user"];
+                [user fetchIfNeeded];
+                [superTransactions addObject:user];
+            }
+
             complete(superTransactions);
 
         } else {
