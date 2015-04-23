@@ -33,6 +33,8 @@
 @property (nonatomic)  NSArray *collectionArray;
 @property NSDictionary *collectionDict;
 
+@property UIRefreshControl *refreshControl;
+
 @end
 
 @implementation ProfileViewController
@@ -88,23 +90,19 @@
         self.collectionArray = array;
     }];
 
-    
-
-//    PFQuery *query = [FDLike query];
-//    [query whereKey:@"to" equalTo:currentUser.objectId];
-//    [query orderByDescending:@"createdAt"];
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error)
-//        {
-//            self.collectionArray = objects;
-//        } else
-//        {
-//            // Log details of the failure
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//        }
-//    }];
+    self.refreshControl = [UIRefreshControl new];
+    [self.collectionView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+    self.collectionView.alwaysBounceVertical = YES;
 
 }
+
+-(void)refreshTable
+{
+    [self.refreshControl endRefreshing];
+    [self.collectionView reloadData];
+}
+
 
 -(void)setCollectionArray:(NSArray *)collectionArray
 {

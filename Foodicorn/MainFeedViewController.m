@@ -38,6 +38,8 @@
 @property NSIndexPath *cellIndexPath;
 @property Yummly *yummly;
 
+@property UIRefreshControl *refreshControl;
+
 @property (nonatomic) CGFloat lastContentOffsetY;
 @end
 
@@ -85,6 +87,18 @@
     self.likersTapGesture.delegate = self;
     self.likersTapGesture.enabled = YES;
 
+    self.refreshControl = [UIRefreshControl new];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+
+
+}
+
+
+-(void)refreshTable
+{
+    [self.refreshControl endRefreshing];
+    [self.tableView reloadData];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
