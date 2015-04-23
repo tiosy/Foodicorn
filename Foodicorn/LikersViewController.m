@@ -46,21 +46,7 @@
     cell.likersSubtitleLabel.text = cellUser.fullName;
     cell.indexPath = indexPath;
 
-    PFFile *imageFile = cellUser.profileThumbnailPFFile;
-    [imageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
-     {
-         if (!error)
-         {
-             UIImage *image = [UIImage imageWithData:imageData];
-             cell.likersCellImageView.image = image;
-         }
-     }];
-
-    cell.indexPath = indexPath;
-
-    cell.likersUsernameLabel.text = cellUser.username;
-    cell.likersSubtitleLabel.text = cellUser.fullName;
-
+    
     return cell;
 }
 
