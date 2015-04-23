@@ -33,8 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = self.user.username;
-    self.userNameLabel.text = self.user.fullName;
+    self.title = [self.user objectForKey:@"username"];
+    self.userNameLabel.text = [self.user objectForKey:@"fullName"];
 
     self.followersTapGesture = [UITapGestureRecognizer new];
     self.followersTapGesture.delegate = self;

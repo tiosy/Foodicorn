@@ -88,6 +88,8 @@
         self.collectionArray = array;
     }];
 
+    
+
 //    PFQuery *query = [FDLike query];
 //    [query whereKey:@"to" equalTo:currentUser.objectId];
 //    [query orderByDescending:@"createdAt"];
@@ -126,7 +128,8 @@
     ProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ProfileCollectionCell" forIndexPath:indexPath];
     FDLike *like = [self.collectionArray objectAtIndex:indexPath.row];
 
-    PFFile *dishImageFile = like.imagePFfile;
+    PFFile *dishImageFile = [like objectForKey:@"imagePFFile"];
+    NSLog(@"%@", [like objectForKey:@"imagePFFile"]);
     [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error)
     {
         if (!error) {
@@ -149,8 +152,8 @@
 //    CGPoint location = [sender locationInView:self.tableView];
 //    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
 
-    FDTransaction *transaction = [self.collectionArray objectAtIndex:indexPath.row];
-    detailVC.recipeID = transaction.dishID;
+    FDLike *like = [self.collectionArray objectAtIndex:indexPath.row];
+    detailVC.recipeID = like.from;
     //NEED TO CHANGE FROM TRANSACTION TO LIKE
     //write code here to pass yummly recipe to detail
 }

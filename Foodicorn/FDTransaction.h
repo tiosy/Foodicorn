@@ -26,7 +26,7 @@
 
 + (NSString *)parseClassName;
 
-+(void) addTransaction:(PFFile *)userProfilePFFile userName:(NSString *)userName fdPFUser:(FDPFUser *)fdPFUser dishID:(NSString *)dishID dishImage:(UIImage *)dishImage likedBy:(NSArray *)likedBy transactionType:(NSString *)transactionType;
++(void) addTransaction:(PFFile *)userProfilePFFile userName:(NSString *)userName dishID:(NSString *)dishID dishImage:(UIImage *)dishImage likedBy:(NSArray *)likedBy transactionType:(NSString *)transactionType;
 + (void)retrieveFDTransactionWithCompletion:(void (^)(NSArray *))complete;
 
 @end

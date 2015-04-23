@@ -47,7 +47,7 @@
 
 //RETRIEVE ALL LIKERS FOR DISH
 //need to add dishID and set it equal to recipeID.
-+(void) addTransaction:(PFFile *)userProfilePFFile userName:(NSString *)userName fdPFUser:(FDPFUser *)fdPFUser dishID:(NSString *)dishID dishImage:(UIImage *)dishImage likedBy:(NSArray *)likedBy transactionType:(NSString *)transactionType{
++(void) addTransaction:(PFFile *)userProfilePFFile userName:(NSString *)userName dishID:(NSString *)dishID dishImage:(UIImage *)dishImage likedBy:(NSArray *)likedBy transactionType:(NSString *)transactionType{
 
     FDTransaction *xtran = [FDTransaction object];
 
@@ -59,7 +59,7 @@
     xtran.userProfileImagePFFile = userProfilePFFile;
 
     xtran.userName = userName;
-    xtran.user = fdPFUser;
+    xtran.user = [FDPFUser currentUser];
     xtran.dishID = dishID;
 
     //UIImage-> NSData-> PFFile

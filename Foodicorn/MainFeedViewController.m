@@ -89,7 +89,7 @@
     MainFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainFeedCell"];
     FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
     self.recipeId = transaction.dishID;
-    cell.usernameLabel.text = transaction.user.username;
+    cell.usernameLabel.text = transaction.userName;
 
     NSDate *now = [NSDate date];
     //createdAt:"2011-06-10T18:33:42Z"
@@ -174,7 +174,7 @@
     {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
         UserProfileViewController *userVC= [storyboard instantiateViewControllerWithIdentifier:@"UserVC"];
-        userVC.user = transaction.user;
+        userVC.user = [transaction objectForKey:@"user"];
         [self.navigationController pushViewController:userVC animated:YES];
 
         //What are we passing onUsernameTapped
