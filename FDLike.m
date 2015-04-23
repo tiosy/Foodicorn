@@ -87,6 +87,8 @@
 {
     //set up the query on the Like table
     PFQuery *query = [FDLike query];
+    
+
     [query whereKey:@"to" equalTo:[FDPFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         complete(objects);
