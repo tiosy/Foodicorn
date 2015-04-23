@@ -18,20 +18,39 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UILabel *followersLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followingsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *followersCountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *followingsCountLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *followersTapGesture;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *followingTapGesture;
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
+@property (weak, nonatomic) IBOutlet UILabel *followersCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
 
+@property NSMutableArray *followingsArray;
+@property NSMutableArray *followersArray;
 
 @end
 
 @implementation UserProfileViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+
+    [FDFollow followingsWithCompletion:self.user completionHandler:^(NSArray *array) {
+        self.followingsArray = [array mutableCopy];
+        self.followingCountLabel.text = [NSString stringWithFormat:@"%ld", self.followingsArray.count];
+    }];
+
+    [FDFollow followersWithCompletion:self.user completionHandler:^(NSArray *array) {
+        self.followersArray = [array mutableCopy];
+        self.followersCountLabel.text = [NSString stringWithFormat:@"%ld", self.followersArray.count];
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.followingsArray = [NSMutableArray new];
+    self.followersArray = [NSMutableArray new];
 
     self.title = [self.user objectForKey:@"username"];
     self.userNameLabel.text = [self.user objectForKey:@"fullName"];
@@ -127,9 +146,9 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
     LikersViewController *likersVC = [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
-    [FDFollow followingsWithCompletion:self.user completionHandler:^(NSArray *array) {
-        likersVC.usersArray = array;
-    }];
+    likersVC.usersArray = self.followingsArray;
+    [self.navigationController pushViewController:likersVC animated:YES];
+
 //    [self performSegueWithIdentifier:@"following" sender:self];
     //write code to pass a the array of people that a user follows
 }
@@ -139,10 +158,9 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
     LikersViewController *likersVC = [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
-    [FDFollow followersWithCompletion:self.user completionHandler:^(NSArray *array) {
-        likersVC.usersArray = array;
-        NSLog(@"%@", array);
-    }];
+    likersVC.usersArray = self.followersArray;
+    [self.navigationController pushViewController:likersVC animated:YES];
+
 //    [self performSegueWithIdentifier:@"followers" sender:self];
     //write code to pass a user's followers array to followersVC
 }

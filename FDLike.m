@@ -75,7 +75,6 @@
 
             //to get the user, we get the object with the 'to key'
             FDPFUser *user = [o objectForKey:@"to"];
-            //JUSTIN HAAR ADDES THIS
             [user fetchIfNeeded];
             [mutArray addObject:user];
         };
