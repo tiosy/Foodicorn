@@ -22,4 +22,32 @@
 
 }
 
++(NSString *) timeSince:(NSDate *) dateCreatedAt{
+
+    NSDate *now = [NSDate date];
+    //createdAt:"2011-06-10T18:33:42Z"
+    //NSDate *date2 = transaction.createdAt;
+    NSString *timeSinceString;
+    NSTimeInterval distanceBetweenDates = [now timeIntervalSinceDate:dateCreatedAt];
+    double secondsInAnHour = 3600;
+    double minsInAnHour = 60;
+    NSInteger minsBetweenDates = distanceBetweenDates / minsInAnHour;
+    NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
+    if (minsBetweenDates >= 60) {
+        if(hoursBetweenDates>=24){
+            NSInteger daysBetweenDates = hoursBetweenDates / 24;
+            timeSinceString = [NSString stringWithFormat:@"%ldd",(long)daysBetweenDates];
+        } else{
+            timeSinceString = [NSString stringWithFormat:@"%ldh",(long)hoursBetweenDates];
+        }
+    }else{
+        timeSinceString = [NSString stringWithFormat:@"%ldm",(long)minsBetweenDates];
+    }
+
+    return timeSinceString;
+
+
+}
+
+
 @end

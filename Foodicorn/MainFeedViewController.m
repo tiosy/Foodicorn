@@ -12,10 +12,13 @@
 #import "LikersViewController.h"
 #import "UserProfileViewController.h"
 #import "ProfileViewController.h"
+
 #import "Yummly.h"
 #import "FDDish.h"
 #import "FDLike.h"
 #import "FDPFUser.h"
+#import "FDUtility.h"
+
 #import <parse/PFObject+Subclass.h>
 #import "FDTransaction.h"
 #import "FDLike.h"
@@ -27,6 +30,7 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *userNameTapGesture;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *likersTapGesture;
 @property (nonatomic)  NSArray *recipeArray;
+@property (nonatomic)  NSMutableArray *likersArray;
 @property NSString *recipeId;
 @property NSIndexPath *cellIndexPath;
 @property Yummly *yummly;
@@ -63,6 +67,7 @@
     [super viewDidLoad];
     self.tableView.allowsSelection = NO;
     self.title = @"FoodiCorn";
+    self.likersArray = [NSMutableArray new];
 
 //    self.title = @"FOODiCORN";
     self.imageViewTapGesture = [UITapGestureRecognizer new];
@@ -91,30 +96,8 @@
     self.recipeId = transaction.dishID;
     cell.usernameLabel.text = transaction.userName;
 
-    NSDate *now = [NSDate date];
-    //createdAt:"2011-06-10T18:33:42Z"
-    NSDate *date2 = transaction.createdAt;
-    NSTimeInterval distanceBetweenDates = [now timeIntervalSinceDate:date2];
-    double secondsInAnHour = 3600;
-    double minsInAnHour = 60;
-    NSInteger minsBetweenDates = distanceBetweenDates / minsInAnHour;
-    NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
-    if (minsBetweenDates > 60) {
-        if(hoursBetweenDates>24){
-            NSInteger daysBetweenDates = hoursBetweenDates / 24;
-            cell.timeLabel.text = [NSString stringWithFormat:@"%ldd",(long)daysBetweenDates];
-        } else{
-            cell.timeLabel.text = [NSString stringWithFormat:@"%ldh",(long)hoursBetweenDates];
-        }
-    }else{
-        cell.timeLabel.text = [NSString stringWithFormat:@"%ldm",(long)minsBetweenDates];
-    }
-
-//    self.cellIndexPath = indexPath;
-//    NSLog(@"%li, %li", (long)self.cellIndexPath.row, (long)self.cellIndexPath.section);
-
-
-
+    //calculate time Since... (for example 1m or 2h or 2d)
+    cell.timeLabel.text = [FDUtility timeSince:transaction.createdAt];
 
     PFFile *dishImagePFile = transaction.dishImagePFFile;
     [dishImagePFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error) {
@@ -126,8 +109,9 @@
     }];
 
     //HAVE TO IMPORT THE AMOUNT OF LIKES A DISH HAS
-    [FDLike likedByUsersWithCompletion:transaction.dishID completionHandler:^(NSArray *array) {
+    [FDLike likedByUsersWithCompletion:[transaction objectForKey:@"dishID"]  completionHandler:^(NSArray *array) {
         cell.likesLabel.text = [NSString stringWithFormat:@"%ld Likes", (unsigned long)array.count];
+        self.likersArray[indexPath.row] = [array mutableCopy];
 
     }];
 
@@ -191,11 +175,8 @@
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
     LikersViewController *likersVC = [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
-    FDTransaction *transaction = [self.recipeArray objectAtIndex:indexPath.row];
-    [FDLike likedByUsersWithCompletion:transaction.dishID completionHandler:^(NSArray *array) {
-        likersVC.usersArray = array;
-    }];
-    
+
+    likersVC.usersArray = self.likersArray[indexPath.row];
     [self.navigationController pushViewController:likersVC animated:YES];
 
 }

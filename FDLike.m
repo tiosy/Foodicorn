@@ -48,7 +48,7 @@
     FDLike *like = [FDLike object];
 
     [like setObject:recipeId forKey:@"from"];
-    [like setObject:[PFUser currentUser]  forKey:@"to"];
+    [like setObject:[FDPFUser currentUser]  forKey:@"to"];
 
     //UIImage -> NSData -> PFFile -> this is the dish image
     NSData *imageNSData = UIImagePNGRepresentation(imageUIImage);

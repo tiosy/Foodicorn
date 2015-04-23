@@ -10,4 +10,5 @@
 #import <UIKit/UIKit.h>
 @interface FDUtility : NSObject
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
++(NSString *) timeSince:(NSDate *) dateCreatedAt;
 @end
