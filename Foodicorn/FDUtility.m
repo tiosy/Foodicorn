@@ -36,12 +36,12 @@
     if (minsBetweenDates >= 60) {
         if(hoursBetweenDates>=24){
             NSInteger daysBetweenDates = hoursBetweenDates / 24;
-            timeSinceString = [NSString stringWithFormat:@"%ldd",(long)daysBetweenDates];
+            timeSinceString = [NSString stringWithFormat:@"%dd",(int)ceilf(daysBetweenDates)];
         } else{
-            timeSinceString = [NSString stringWithFormat:@"%ldh",(long)hoursBetweenDates];
+            timeSinceString = [NSString stringWithFormat:@"%dh",(int)ceilf(hoursBetweenDates)];
         }
     }else{
-        timeSinceString = [NSString stringWithFormat:@"%ldm",(long)minsBetweenDates];
+        timeSinceString = [NSString stringWithFormat:@"%dm",(int)minsBetweenDates];
     }
 
     return timeSinceString;

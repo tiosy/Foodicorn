@@ -13,13 +13,16 @@
 #import "UserProfileViewController.h"
 #import "ProfileViewController.h"
 
-#import "Yummly.h"
-#import "FDDish.h"
-#import "FDLike.h"
-#import "FDPFUser.h"
+//Utilities
 #import "FDUtility.h"
 
+//API
+#import "Yummly.h"
+
+//Parse
 #import <parse/PFObject+Subclass.h>
+#import "FDDish.h"
+#import "FDPFUser.h"
 #import "FDTransaction.h"
 #import "FDLike.h"
 
@@ -111,7 +114,7 @@
     //HAVE TO IMPORT THE AMOUNT OF LIKES A DISH HAS
     [FDLike likedByUsersWithCompletion:[transaction objectForKey:@"dishID"]  completionHandler:^(NSArray *array) {
         cell.likesLabel.text = [NSString stringWithFormat:@"%ld Likes", (unsigned long)array.count];
-        self.likersArray[indexPath.row] = [array mutableCopy];
+        self.likersArray[indexPath.row] = array;
 
     }];
 
@@ -171,13 +174,19 @@
 {
     CGPoint location = [sender locationInView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
-//    NSLog(@"%li", (long)indexPath.row);
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
     LikersViewController *likersVC = [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
+    NSLog(@"%ld",indexPath.row);
 
-    likersVC.usersArray = self.likersArray[indexPath.row];
+//    //test
+//    NSArray *arr =[self.likersArray objectAtIndex:indexPath.row];
+//    FDPFUser *u = arr[0];
+
+    likersVC.usersArray = [self.likersArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:likersVC animated:YES];
+
+
 
 }
 

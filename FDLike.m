@@ -68,6 +68,7 @@
     //set up the query on the Like table
     PFQuery *query = [FDLike query];
     [query whereKey:@"from" equalTo:recipeId];
+    //[query includeKey:@"to"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
         NSMutableArray *mutArray = [NSMutableArray new];
@@ -75,6 +76,7 @@
 
             //to get the user, we get the object with the 'to key'
             FDPFUser *user = [o objectForKey:@"to"];
+           [user fetchIfNeeded];
             [mutArray addObject:user];
         };
         NSArray *array = [mutArray mutableCopy];

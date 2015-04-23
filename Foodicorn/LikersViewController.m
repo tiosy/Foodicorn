@@ -16,8 +16,7 @@
 
 -(void)setUsersArray:(NSArray *)usersArray
 {
-    _usersArray = usersArray;
-    NSLog(@"%@", usersArray);
+    _usersArray = [usersArray mutableCopy];
     [self.likersTableView reloadData];
 }
 
