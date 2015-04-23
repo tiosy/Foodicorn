@@ -58,7 +58,7 @@
             [user fetchIfNeeded];
             [array addObject:user];
         }
-        complete(objects); //(it is a FDPFUser array)
+        complete(array); //(it is a FDPFUser array)
     }];
 }
 
@@ -78,8 +78,7 @@
             [array addObject:user];
         }
 
-        NSLog(@"===%ld",array.count);
-        complete(objects); //(it is a FDPFUser array)
+        complete(array); //(it is a FDPFUser array)
 
     }];
 }
