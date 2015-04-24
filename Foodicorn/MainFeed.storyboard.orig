@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
-=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
->>>>>>> detail21
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -506,7 +502,6 @@
                                 </variation>
                             </label>
 <<<<<<< HEAD
-=======
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e33-8W-6bV">
                                 <color key="backgroundColor" red="0.46510022099999998" green="0.46510022099999998" blue="0.46510022099999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eCR-43-MgP">
@@ -571,7 +566,8 @@
                                     <outlet property="delegate" destination="Hyj-2Y-U38" id="O5q-tu-PIn"/>
                                 </connections>
                             </collectionView>
->>>>>>> detail21
+=======
+>>>>>>> 0e36949265aca282feee328662c420dbb6d58cac
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pY3-cl-fEf">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
@@ -933,15 +929,9 @@
                                                     <state key="normal" title="+ Follow">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-<<<<<<< HEAD
                                                     <variation key="widthClass=compact" fixedFrame="YES">
                                                         <rect key="frame" x="232" y="7" width="80" height="30"/>
-=======
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="1qE-wX-0gC"/>
-                                                            <exclude reference="67S-Up-prl"/>
-                                                        </mask>
+<<<<<<< HEAD
                                                     </variation>
                                                     <variation key="widthClass=compact" misplaced="YES">
                                                         <rect key="frame" x="232" y="7" width="80" height="30"/>
@@ -949,7 +939,8 @@
                                                             <include reference="1qE-wX-0gC"/>
                                                             <include reference="67S-Up-prl"/>
                                                         </mask>
->>>>>>> detail21
+=======
+>>>>>>> 0e36949265aca282feee328662c420dbb6d58cac
                                                     </variation>
                                                     <connections>
                                                         <action selector="onFollowButtonTap:" destination="5MG-bH-KyI" eventType="touchUpInside" id="eqV-j1-4tW"/>

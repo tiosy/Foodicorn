@@ -108,13 +108,6 @@
     }];
 }
 
--(void)setCollectionArray:(NSArray *)collectionArray
-{
-    _collectionArray = collectionArray;
-    [self.collectionView reloadData];
-}
-
-
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
