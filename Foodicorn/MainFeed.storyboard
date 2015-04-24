@@ -395,7 +395,7 @@
         <!--Navigation Controller-->
         <scene sceneID="bvd-Wy-MMo">
             <objects>
-                <navigationController storyboardIdentifier="MainfeedNavVC" automaticallyAdjustsScrollViewInsets="NO" id="wIU-GO-sW2" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainfeedNavVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wIU-GO-sW2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" id="cdq-2C-iRf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ghO-ID-fWr">
@@ -414,7 +414,7 @@
         <!--User Profile View Controller-->
         <scene sceneID="1Gt-XQ-tbm">
             <objects>
-                <viewController storyboardIdentifier="UserVC" id="Hyj-2Y-U38" customClass="UserProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hyj-2Y-U38" customClass="UserProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h6l-kr-iM8"/>
                         <viewControllerLayoutGuide type="bottom" id="o93-2U-Y86"/>
@@ -772,7 +772,7 @@
         <!--Likers View Controller-->
         <scene sceneID="F6w-A0-wMl">
             <objects>
-                <viewController storyboardIdentifier="likersVC" id="gtU-Tr-S8K" customClass="LikersViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="likersVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gtU-Tr-S8K" customClass="LikersViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="94u-Vd-q8a"/>
                         <viewControllerLayoutGuide type="bottom" id="vae-mT-vhQ"/>
@@ -966,7 +966,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Gpp-O3-6Ix">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EmA-M7-nhF" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="UserProfileNavVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EmA-M7-nhF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4ht-5W-fF4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
