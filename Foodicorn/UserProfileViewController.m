@@ -35,15 +35,28 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 
+    //# of followings
     [FDFollow followingsWithCompletion:self.user completionHandler:^(NSArray *array) {
-        self.followingsArray = [array mutableCopy];
+        for (FDFollow *f in array) {
+            [self.followersArray addObject:[f objectForKey:@"to"]];
+        }
         self.followingCountLabel.text = [NSString stringWithFormat:@"%ld", self.followingsArray.count];
     }];
 
+    //# of followers
     [FDFollow followersWithCompletion:self.user completionHandler:^(NSArray *array) {
-        self.followersArray = [array mutableCopy];
+
+        for (FDFollow *f in array) {
+            [self.followersArray addObject:[f objectForKey:@"from"]];
+        }
         self.followersCountLabel.text = [NSString stringWithFormat:@"%ld", self.followersArray.count];
+
     }];
+
+
+
+
+
 }
 
 - (void)viewDidLoad {
