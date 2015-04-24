@@ -98,6 +98,17 @@
     }];
 }
 
++ (void) likeDishesWithCompletion:(FDPFUser *)user completionHandler:(void (^)(NSArray *))complete {
 
+    //set up the query on the Like table
+    PFQuery *query = [FDLike query];
+
+    [query whereKey:@"to" equalTo: user];
+    [query orderByDescending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        complete(objects);
+    }];
+
+}
 
 @end

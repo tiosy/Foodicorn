@@ -19,6 +19,7 @@
 		3360243F1AE0C1850058422B /* LikersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3360243E1AE0C1850058422B /* LikersViewController.m */; };
 		336024421AE0DCB30058422B /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 336024411AE0DCB30058422B /* EditProfileViewController.m */; };
 		33D857F61ADC99C5006EBEE0 /* Yummly.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D857F51ADC99C5006EBEE0 /* Yummly.m */; };
+		6E36339B1AEA7196007C1512 /* UserProfileCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E36339A1AEA7196007C1512 /* UserProfileCollectionViewCell.m */; };
 		6E5DB0361AE2DAF400D32036 /* LoginSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5DB0351AE2DAF400D32036 /* LoginSignUpViewController.m */; };
 		6E67B6F41AE2949F003CEAB6 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E67B6F31AE2949F003CEAB6 /* ParseUI.framework */; };
 		6E67B6FF1AE2A17A003CEAB6 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E67B6FE1AE2A17A003CEAB6 /* Social.framework */; };
@@ -94,6 +95,8 @@
 		33D857F41ADC99C5006EBEE0 /* Yummly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yummly.h; sourceTree = "<group>"; };
 		33D857F51ADC99C5006EBEE0 /* Yummly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Yummly.m; sourceTree = "<group>"; };
 		6E0FF5FB1AE4951900E199B8 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		6E3633991AEA7196007C1512 /* UserProfileCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileCollectionViewCell.h; sourceTree = "<group>"; };
+		6E36339A1AEA7196007C1512 /* UserProfileCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileCollectionViewCell.m; sourceTree = "<group>"; };
 		6E5DB0341AE2DAF400D32036 /* LoginSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSignUpViewController.h; sourceTree = "<group>"; };
 		6E5DB0351AE2DAF400D32036 /* LoginSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginSignUpViewController.m; sourceTree = "<group>"; };
 		6E67B6F31AE2949F003CEAB6 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
@@ -234,6 +237,8 @@
 				E11A42F11ADD88EB0051FB83 /* MainFeedTableViewCell.m */,
 				3360243A1AE0BC350058422B /* UserProfileViewController.h */,
 				3360243B1AE0BC350058422B /* UserProfileViewController.m */,
+				6E3633991AEA7196007C1512 /* UserProfileCollectionViewCell.h */,
+				6E36339A1AEA7196007C1512 /* UserProfileCollectionViewCell.m */,
 				3360243D1AE0C1850058422B /* LikersViewController.h */,
 				3360243E1AE0C1850058422B /* LikersViewController.m */,
 				E1934B101AE5B2BD0028EC78 /* LikersTableViewCell.h */,
@@ -497,6 +502,7 @@
 				6EE7E77C1ADC6D6C00CF6B9D /* FDPFUser.m in Sources */,
 				336024391AE02E990058422B /* WebViewController.m in Sources */,
 				3360242F1AE014740058422B /* RootTabBarController.m in Sources */,
+				6E36339B1AEA7196007C1512 /* UserProfileCollectionViewCell.m in Sources */,
 				E1934B121AE5B2BD0028EC78 /* LikersTableViewCell.m in Sources */,
 				E15A3C6D1ADE05F500F63159 /* FavView.m in Sources */,
 				E15A3C6A1ADDF15200F63159 /* FavTableViewCell.m in Sources */,

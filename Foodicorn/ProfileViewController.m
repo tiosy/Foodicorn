@@ -39,6 +39,21 @@
 
 @implementation ProfileViewController
 
+//load collection array
+-(void)viewWillAppear:(BOOL)animated{
+
+    [FDLike likeDishesWithCompletion:^(NSArray *array) {
+        self.collectionArray = array;
+    }];
+
+}
+//setter collection array
+-(void)setCollectionArray:(NSArray *)collectionArray
+{
+    _collectionArray = collectionArray;
+    [self.collectionView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -86,29 +101,23 @@
 
      }];
 
-    [FDLike likeDishesWithCompletion:^(NSArray *array) {
-        self.collectionArray = array;
-    }];
 
-    self.refreshControl = [UIRefreshControl new];
-    [self.collectionView addSubview:self.refreshControl];
-    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
-    self.collectionView.alwaysBounceVertical = YES;
+
+//    self.refreshControl = [UIRefreshControl new];
+//    [self.collectionView addSubview:self.refreshControl];
+//    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+//    self.collectionView.alwaysBounceVertical = YES;
 
 }
 
--(void)refreshTable
-{
-    [self.refreshControl endRefreshing];
-    [self.collectionView reloadData];
-}
+//-(void)refreshTable
+//{
+//    [self.refreshControl endRefreshing];
+//    [self.collectionView reloadData];
+//}
+//
 
 
--(void)setCollectionArray:(NSArray *)collectionArray
-{
-    _collectionArray = collectionArray;
-    [self.collectionView reloadData];
-}
 
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
