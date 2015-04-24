@@ -75,8 +75,9 @@
 
             //to get the user, we get the object with the 'to key'
             FDPFUser *user = [o objectForKey:@"to"];
-            [user fetchIfNeeded];
+            [user fetchIfNeededInBackground];
             [mutArray addObject:user];
+
         };
         NSArray *array = [mutArray mutableCopy];
         complete(array);
@@ -97,6 +98,17 @@
     }];
 }
 
++ (void) likeDishesWithCompletion:(FDPFUser *)user completionHandler:(void (^)(NSArray *))complete {
 
+    //set up the query on the Like table
+    PFQuery *query = [FDLike query];
+
+    [query whereKey:@"to" equalTo: user];
+    [query orderByDescending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        complete(objects);
+    }];
+
+}
 
 @end

@@ -10,13 +10,13 @@
 #import "FavCollectionViewCell.h"
 #import "FavTableViewCell.h"
 #import "DetailViewController.h"
-#import "JustinViewController.h"
-#import "FDTransaction.h"
+#import "FDLike.h"
+#import "FDUtility.h"
+#import "FDPFUser.h"
 
 @interface FavoriteViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *favTableView;
-@property (nonatomic)  NSArray *initialArray;
-
+@property (nonatomic)  NSMutableArray *likesArray;
+@property (nonatomic)  NSMutableArray *filteredLikesArray;
 @property (nonatomic) CGFloat lastContentOffsetY;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -29,19 +29,7 @@
     [super viewDidLoad];
 
     self.title = @"Like Activity";
-
-    PFQuery *query = [FDTransaction query];
-    [query orderByDescending:@"createdAt"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error)
-        {
-            self.initialArray = objects;
-        } else
-        {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+    self.likesArray = [NSMutableArray new];
 
 //    self.initialArray = @[ @{ @"cell": @"Cell A",
 //                           @"userImageName": @"person",
@@ -79,9 +67,10 @@
 //                                              @{ @"dishImageName": @"food7"},
 //                                              @{ @"dishImageName": @"food8"}
 //                                              ],
-////                           @"recipeID" : @"Melt-in-Your-Mouth-Chicken-1066441",
-////                                           @"Yaki-Udon-With-Beef-571964",
-////                                           @"Vegetable-Sushi-Martha-Stewart"
+//                           @"recipeID" : @[@"Melt-in-Your-Mouth-Chicken-1066441",
+//                                           @"Yaki-Udon-With-Beef-571964",
+//                                           @"Vegetable-Sushi-Martha-Stewart",
+//                                           ]
 //
 //
 //                           }
@@ -89,11 +78,40 @@
 
 }
 
--(void)setInitialArray:(NSArray *)initialArray
+-(void)setFilteredLikesArray:(NSMutableArray *)filteredLikesArray
 {
-    _initialArray = initialArray;
+    _filteredLikesArray = filteredLikesArray;
     [self.tableView reloadData];
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    PFQuery *likesQuery = [FDLike query];
+    [likesQuery orderByDescending:@"createdAt"];
+    [likesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            self.likesArray = [objects mutableCopy];
+            NSMutableSet *set = [NSMutableSet set];
+            for (FDLike *like in self.likesArray)
+            {
+                FDPFUser *user = [like objectForKey:@"to"];
+                [user fetchIfNeededInBackground];
+                if (![set containsObject:user]) {
+                    [set addObject:user];
+                    self.filteredLikesArray = [[set allObjects]mutableCopy];
+                }
+            }
+        } else
+        {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+
+
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -102,22 +120,30 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.initialArray.count;
+    return self.filteredLikesArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FavTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteTableCell"];
-    NSDictionary *dict = [self.initialArray objectAtIndex:indexPath.row];
-    NSString *imageName = [dict objectForKey:@"userImageName"];
-    cell.favUserImageView.image = [UIImage imageNamed:imageName];
-    cell.favUsernameLabel.text = [dict objectForKey:@"userName"];
-    cell.favLikeLabel.text = [dict objectForKey:@"numOfPosts"];
-    cell.favTimeLabel.text  = [dict objectForKey:@"timeSince"];
+    FDLike *like = [self.filteredLikesArray objectAtIndex:indexPath.row];
+
+    PFFile *imageFile = [[like objectForKey:@"to"]profileThumbnailPFFile];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
+        if (!error) {
+            UIImage *image = [UIImage imageWithData:data];
+            cell.favUserImageView.image = image;
+        }
+    }];
+
+    cell.favUsernameLabel.text = [[like objectForKey:@"to"]username];
+
+//    cell.favLikeLabel.text = STILL WORKING ON THIS
+    cell.favTimeLabel.text  = [FDUtility timeSince:like.createdAt];
 
 
-    NSArray *collectionData = [dict objectForKey:@"collections"];
-    [cell setCollectionData:collectionData];
+    //NSCollectionData
+//    [cell setCollectionData:collectionData];
 
 
     [cell setParentVC:self];

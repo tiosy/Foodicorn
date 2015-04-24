@@ -144,6 +144,7 @@
     return cell;
 }
 
+
 //This will segue to detailVC
 - (IBAction)imageViewTapGesture:(UITapGestureRecognizer *)sender
 {
@@ -191,7 +192,6 @@
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
     LikersViewController *likersVC = [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
-    NSLog(@"%ld",indexPath.row);
 
 //    //test
 //    NSArray *arr =[self.likersArray objectAtIndex:indexPath.row];

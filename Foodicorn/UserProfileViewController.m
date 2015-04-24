@@ -7,15 +7,18 @@
 //
 
 #import "UserProfileViewController.h"
+#import "UserProfileCollectionViewCell.h"
+
 #import "LikersViewController.h"
 #import "DetailViewController.h"
+
 #import "FDFollow.h"
 #import "FDPFUser.h"
 #import "FDFollow.h"
+#import "FDLike.h"
 
 @interface UserProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UILabel *followersLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followingsLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -24,6 +27,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
 @property (weak, nonatomic) IBOutlet UILabel *followersCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
+
+//collection view
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic)  NSArray *collectionArray;
+
+
+
+
+
+
 
 @property NSMutableArray *followingsArray;
 @property NSMutableArray *followersArray;
@@ -35,16 +48,34 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 
+    //# of followings
     [FDFollow followingsWithCompletion:self.user completionHandler:^(NSArray *array) {
         self.followingsArray = [array mutableCopy];
-        self.followingCountLabel.text = [NSString stringWithFormat:@"%ld", self.followingsArray.count];
+        self.followingCountLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)self.followingsArray.count];
     }];
 
+    //# of followers
     [FDFollow followersWithCompletion:self.user completionHandler:^(NSArray *array) {
         self.followersArray = [array mutableCopy];
-        self.followersCountLabel.text = [NSString stringWithFormat:@"%ld", self.followersArray.count];
+        self.followersCountLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)self.followersArray.count];
     }];
+
+
+    //collection array
+    [FDLike likeDishesWithCompletion:self.user completionHandler:^(NSArray *array) {
+        self.collectionArray = array;
+    }];
+
 }
+
+//Setter collection array
+-(void)setCollectionArray:(NSArray *)collectionArray
+{
+    _collectionArray = collectionArray;
+    [self.collectionView reloadData];
+}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -89,28 +120,34 @@
          }
      }];
 
-    //NEED TO QUERY IN USER PROFILE IMAGE, USERNAME, FOLLOWERS, FOLLOWINGS, AND LIKED DISHES
 
 
-//    FDPFUser *user = [FDPFUser ];
-//    user.username = self.username;
-//    self.title = user.username;
-
-    //self.userNameLabel.text = passed user's username
-    //self.followersCountLabel = passed user's followers
-    //self.followingsCountLabel = passed user's followings
 }
 
 #pragma mark - UICollectionView Delegate Methods
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 0;
+    return self.collectionArray.count;
 }
 
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    UserProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UserProfileCollectionCell" forIndexPath:indexPath];
+    FDLike *like = [self.collectionArray objectAtIndex:indexPath.row];
+
+    PFFile *dishImageFile = [like objectForKey:@"imagePFFile"];
+    NSLog(@"%@", [like objectForKey:@"imagePFFile"]);
+    [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error)
+     {
+         if (!error) {
+             UIImage *img = [UIImage imageWithData:imageNSData];
+            cell.userProfileCellImage.image = img;
+         }
+     }];
+
+
+    return cell;
 }
 
 

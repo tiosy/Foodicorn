@@ -31,7 +31,7 @@
                                         <variation key="widthClass=compact" constant="29"/>
                                     </constraint>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -69,7 +69,7 @@
                                     </constraint>
                                     <constraint firstAttribute="width" constant="79" id="fp8-Ub-Iy5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -102,7 +102,7 @@
                                     <constraint firstAttribute="width" constant="42" id="Ph7-Gn-sJA"/>
                                     <constraint firstAttribute="height" constant="21" id="a1a-8x-Ml2"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -124,7 +124,7 @@
                                     <constraint firstAttribute="height" constant="21" id="cRw-zv-9Ta"/>
                                     <constraint firstAttribute="width" constant="42" id="txh-hr-ymp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -146,7 +146,7 @@
                                     <constraint firstAttribute="width" constant="100" id="5qS-uP-zBt"/>
                                     <constraint firstAttribute="height" constant="21" id="Wur-4J-IAo"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -168,6 +168,7 @@
                                     <constraint firstAttribute="width" constant="75" id="q3c-gX-uXg"/>
                                     <constraint firstAttribute="height" constant="30" id="s3k-QF-S1O"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Edit Profile">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>

@@ -39,10 +39,24 @@
 
 @implementation ProfileViewController
 
+//load collection array
+-(void)viewWillAppear:(BOOL)animated{
+
+    [FDLike likeDishesWithCompletion:^(NSArray *array) {
+        self.collectionArray = array;
+    }];
+
+}
+//setter collection array
+-(void)setCollectionArray:(NSArray *)collectionArray
+{
+    _collectionArray = collectionArray;
+    [self.collectionView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //will change title to user.username
 
     FDPFUser *currentUser = [FDPFUser currentUser];
     self.title = currentUser.username;
@@ -53,19 +67,15 @@
     self.followersTapGesture.delegate = self;
     self.followersTapGesture.enabled = YES;
     self.followersLabel.userInteractionEnabled = YES;
-    self.followersLabel.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
-    self.followersLabel.layer.borderWidth = 1.0;
-    self.followersLabel.layer.cornerRadius = 10;
-    self.followersLabel.clipsToBounds = YES;
+    self.followersLabel.textColor =[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
+    self.followersLabel.layer.borderColor = [UIColor whiteColor].CGColor;
 
     self.followingTapGesture = [UITapGestureRecognizer new];
     self.followingTapGesture.delegate = self;
     self.followingTapGesture.enabled = YES;
     self.followingsLabel.userInteractionEnabled = YES;
-    self.followingsLabel.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
-    self.followingsLabel.layer.borderWidth = 1.0;
-    self.followingsLabel.layer.cornerRadius = 10;
-    self.followingsLabel.clipsToBounds = YES;
+    self.followingsLabel.textColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
+    self.followingsLabel.layer.borderColor = [UIColor whiteColor].CGColor;
 
     self.imageViewTapGesture = [UITapGestureRecognizer new];
     self.imageViewTapGesture.delegate = self;
@@ -76,6 +86,8 @@
     self.profileImageView.layer.cornerRadius = 39.0;
     self.profileImageView.layer.masksToBounds = YES;
 
+    self.collectionView.alwaysBounceVertical = YES;
+
     PFFile *userImageFile = currentUser.profileThumbnailPFFile;
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
      {
@@ -85,30 +97,23 @@
          }
 
      }];
+}
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
 
     [FDLike likeDishesWithCompletion:^(NSArray *array) {
-        self.collectionArray = array;
+        self.collectionArray = [array mutableCopy];
     }];
-
-    self.refreshControl = [UIRefreshControl new];
-    [self.collectionView addSubview:self.refreshControl];
-    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
-    self.collectionView.alwaysBounceVertical = YES;
-
 }
-
--(void)refreshTable
-{
-    [self.refreshControl endRefreshing];
-    [self.collectionView reloadData];
-}
-
 
 -(void)setCollectionArray:(NSArray *)collectionArray
 {
     _collectionArray = collectionArray;
     [self.collectionView reloadData];
 }
+
 
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

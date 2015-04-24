@@ -9,6 +9,8 @@
 #import "LikersViewController.h"
 #import "LikersTableViewCell.h"
 #import "FDPFUser.h"
+#import "FDFollow.h"
+
 @interface LikersViewController ()<UITableViewDataSource, UITableViewDelegate, LikersTableViewCellDelegate>
 @end
 
@@ -26,13 +28,15 @@
 
 }
 
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //code for likers of photo or followers of user or the people whom a user follows
     LikersTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserListCell"];
     cell.delegate = self;
-    FDPFUser *cellUser = [self.usersArray objectAtIndex:indexPath.row];
-    PFFile *imageFile = cellUser.profileThumbnailPFFile;
+    FDPFUser *theUser= [self.usersArray objectAtIndex:indexPath.row];
+
+    PFFile *imageFile = theUser.profileThumbnailPFFile;
     [imageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
      {
          if (!error) {
@@ -41,14 +45,20 @@
          }
      }];
 
-    cell.likersUsernameLabel.text = cellUser.username;
-    cell.likersSubtitleLabel.text = cellUser.fullName;
+    cell.likersUsernameLabel.text = theUser.username;
+    cell.likersSubtitleLabel.text = theUser.fullName;
     cell.indexPath = indexPath;
 
-    [cell setCellUser:cellUser];
+    [cell setCellUser:theUser];
 
     return cell;
 }
+
+
+
+
+
+
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
