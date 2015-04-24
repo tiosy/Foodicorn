@@ -29,6 +29,7 @@
 
     self.title = @"Like Activity";
 
+
 //    self.initialArray = @[ @{ @"cell": @"Cell A",
 //                           @"userImageName": @"person",
 //                           @"userName": @"tylorswift",
@@ -142,31 +143,31 @@
 
     //pass the yummly object here
 }
-
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-
-{
-
-    self.lastContentOffsetY = scrollView.contentOffset.y;
-
-}
-
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
-
-{
-
-    if (self.lastContentOffsetY > scrollView.contentOffset.y) {
-
-        [self.navigationController setNavigationBarHidden:NO animated:YES];
-
-    } else if (self.lastContentOffsetY < scrollView.contentOffset.y) {
-
-        [self.navigationController setNavigationBarHidden:YES animated:YES];
-        
-    }
-    
-}
+//
+//-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+//
+//{
+//
+//    self.lastContentOffsetY = scrollView.contentOffset.y;
+//
+//}
+//
+//
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+//
+//{
+//
+//    if (self.lastContentOffsetY > scrollView.contentOffset.y) {
+//
+//        [self.navigationController setNavigationBarHidden:NO animated:YES];
+//
+//    } else if (self.lastContentOffsetY < scrollView.contentOffset.y) {
+//
+//        [self.navigationController setNavigationBarHidden:YES animated:YES];
+//        
+//    }
+//    
+//}
 
 
 
