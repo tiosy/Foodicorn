@@ -75,7 +75,7 @@
 
             //to get the user, we get the object with the 'to key'
             FDPFUser *user = [o objectForKey:@"to"];
-            [user fetchIfNeeded];
+            [user fetchIfNeededInBackground];
             [mutArray addObject:user];
         };
         NSArray *array = [mutArray mutableCopy];

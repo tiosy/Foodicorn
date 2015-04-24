@@ -71,6 +71,8 @@
     self.profileImageView.layer.cornerRadius = 39.0;
     self.profileImageView.layer.masksToBounds = YES;
 
+    self.collectionView.alwaysBounceVertical = YES;
+
     PFFile *userImageFile = currentUser.profileThumbnailPFFile;
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
      {

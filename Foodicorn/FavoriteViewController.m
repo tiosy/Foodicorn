@@ -96,7 +96,7 @@
             for (FDLike *like in self.likesArray)
             {
                 FDPFUser *user = [like objectForKey:@"to"];
-                [user fetchIfNeeded];
+                [user fetchIfNeededInBackground];
                 if (![set containsObject:user]) {
                     [set addObject:user];
                     self.filteredLikesArray = [[set allObjects]mutableCopy];
