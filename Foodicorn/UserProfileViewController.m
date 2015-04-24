@@ -50,20 +50,14 @@
 
     //# of followings
     [FDFollow followingsWithCompletion:self.user completionHandler:^(NSArray *array) {
-        for (FDFollow *f in array) {
-            [self.followersArray addObject:[f objectForKey:@"to"]];
-        }
-        self.followingCountLabel.text = [NSString stringWithFormat:@"%ld", self.followingsArray.count];
+        self.followingsArray = [array mutableCopy];
+        self.followingCountLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)self.followingsArray.count];
     }];
 
     //# of followers
     [FDFollow followersWithCompletion:self.user completionHandler:^(NSArray *array) {
-
-        for (FDFollow *f in array) {
-            [self.followersArray addObject:[f objectForKey:@"from"]];
-        }
-        self.followersCountLabel.text = [NSString stringWithFormat:@"%ld", self.followersArray.count];
-
+        self.followersArray = [array mutableCopy];
+        self.followersCountLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)self.followersArray.count];
     }];
 
 
