@@ -109,6 +109,7 @@
         }
     }];
 
+
 }
 
 
@@ -126,7 +127,6 @@
 {
     FavTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteTableCell"];
     FDLike *like = [self.filteredLikesArray objectAtIndex:indexPath.row];
-    NSLog(@"%@", self.filteredLikesArray);
 
     PFFile *imageFile = [[like objectForKey:@"to"]profileThumbnailPFFile];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
