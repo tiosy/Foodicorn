@@ -12,5 +12,9 @@
 @interface WebViewController : UIViewController
 
 @property Yummly *yummly;
+@property NSString *name;
+@property NSString *webUrl;
+@property NSString *imageUrl;
+
 
 @end

@@ -8,6 +8,8 @@
 
 #import "LikersViewController.h"
 #import "LikersTableViewCell.h"
+#import "ProfileViewController.h"
+#import "UserProfileViewController.h"
 #import "FDPFUser.h"
 #import "FDFollow.h"
 
@@ -55,11 +57,6 @@
 }
 
 
-
-
-
-
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.usersArray.count;
@@ -69,6 +66,26 @@
 //{
 //
 //}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FDPFUser *currentUser = [FDPFUser currentUser];
+    FDPFUser *user = self.usersArray[indexPath.row];
+    if ([user.username isEqualToString:currentUser.username])
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Profile" bundle:nil];
+        ProfileViewController *profileVC= [storyboard instantiateViewControllerWithIdentifier:@"ProfileVC"];
+        [self.navigationController pushViewController:profileVC animated:YES];
+
+    }else
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
+        UserProfileViewController *userVC= [storyboard instantiateViewControllerWithIdentifier:@"UserVC"];
+        [self.navigationController pushViewController:userVC animated:YES];
+        userVC.user = user;
+    }
+}
+
 
 -(void)shouldFollowOrUnfollowOnFollowButtonTap:(NSIndexPath *)indexPath
 {

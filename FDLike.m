@@ -108,7 +108,30 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         complete(objects);
     }];
-
 }
+
++(void)allUsersWithCompletion:(void (^)(NSArray *))complete
+{
+    PFQuery *query = [FDLike query];
+
+    [query orderByDescending:@"to"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+
+        NSMutableArray *mutArray = [NSMutableArray new];
+        for(FDLike *like in objects) {
+
+            //to get the user, we get the object with the 'to key'
+            FDPFUser *user = [like objectForKey:@"to"];
+            [user fetchIfNeededInBackground];
+            [mutArray addObject:user];
+
+        };
+        NSArray *array = [mutArray mutableCopy];
+        complete(array);
+    }];
+}
+
+
+
 
 @end

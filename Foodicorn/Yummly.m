@@ -67,6 +67,9 @@
         self.detailRecipeName = [[dictionary objectForKey:@"source"] objectForKey:@"sourceDisplayName"];
         self.detailInstructionsUrl = [[dictionary objectForKey:@"source"] objectForKey:@"sourceRecipeUrl"];
         self.detailLogoUrl = [[dictionary objectForKey:@"attribution"] objectForKey:@"logo"];
+        self.detailYummlySourceUrl = [[dictionary objectForKey:@"attribution"] objectForKey:@"url"];
+        self.detailYummlySourceName = [[dictionary objectForKey:@"attribution"] objectForKey:@"text"];
+        
     }
     return self;
 }

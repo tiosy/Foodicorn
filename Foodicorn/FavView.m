@@ -10,6 +10,7 @@
 #import "FavoriteViewController.h"
 #import "FavCollectionViewCell.h"
 #import "DetailViewController.h"
+#import "FDLike.h"
 #import "Yummly.h"
 
 @interface FavView () <UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -29,8 +30,8 @@
 
     self.collectionView.delegate = self;
     self.collectionView.backgroundColor = [UIColor whiteColor];
-    self.collectionView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:1].CGColor;
-    self.collectionView.layer.borderWidth = 2.0f;
+//    self.collectionView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:1].CGColor;
+//    self.collectionView.layer.borderWidth = 2.0f;
 }
 
 #pragma mark - UICollectionViewDataSource methods
@@ -45,9 +46,13 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     FavCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cvCell" forIndexPath:indexPath];
-    NSDictionary *cellData = [self.collectionData objectAtIndex:[indexPath row]];
-    NSString *imageName = [cellData objectForKey:@"dishImageName"];
-    cell.favFoodImageView.image =  [UIImage imageNamed:imageName];
+    FDLike *like = [self.collectionData objectAtIndex:[indexPath row]];
+
+    PFFile *imageFile = [like objectForKey:@"imagePFFile"];
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
+        UIImage *image = [UIImage imageWithData:data];
+        cell.favFoodImageView.image = image;
+    }];
     return cell;
 }
 
@@ -58,10 +63,11 @@
     DetailViewController *detailVC = [detailStoryboard instantiateViewControllerWithIdentifier:@"DetailVC"];
     [self.parentVC showViewController:detailVC sender:self];
 
+    FDLike *like = [self.collectionData objectAtIndex:indexPath.row];
     NSDictionary *cellData = [self.collectionData objectAtIndex:[indexPath row]];
     NSString *imageName = [cellData objectForKey:@"dishImageName"];
     NSLog(@"%@", imageName);
-    detailVC.recipeID = @"Vegetable-Sushi-Martha-Stewart";
+    detailVC.recipeID = like.from;
 
 
 //    NSLog(@"collection cell selected %ld", indexPath.row);

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<<<<<<< HEAD
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+>>>>>>> b13ea2dad1b033488f26655dde8e4d2d2c1dec79
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -501,73 +505,6 @@
                                     </mask>
                                 </variation>
                             </label>
-<<<<<<< HEAD
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e33-8W-6bV">
-                                <color key="backgroundColor" red="0.46510022099999998" green="0.46510022099999998" blue="0.46510022099999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eCR-43-MgP">
-                                    <size key="itemSize" width="100" height="100"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileCollectionCell" id="DhZ-wt-Izq" customClass="ProfileCollectionViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yiQ-jR-gZp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                    <gestureRecognizers/>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
-                                                    </variation>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="yiQ-jR-gZp" secondAttribute="trailing" id="aYe-Xy-IY9"/>
-                                            <constraint firstItem="yiQ-jR-gZp" firstAttribute="top" secondItem="DhZ-wt-Izq" secondAttribute="top" id="dIN-Nl-g1v"/>
-                                            <constraint firstAttribute="bottom" secondItem="yiQ-jR-gZp" secondAttribute="bottom" id="nuF-pZ-hMx"/>
-                                            <constraint firstItem="yiQ-jR-gZp" firstAttribute="leading" secondItem="DhZ-wt-Izq" secondAttribute="leading" id="yzZ-1E-mhY"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="subviews">
-                                                <exclude reference="yiQ-jR-gZp"/>
-                                            </mask>
-                                            <mask key="constraints">
-                                                <exclude reference="aYe-Xy-IY9"/>
-                                                <exclude reference="dIN-Nl-g1v"/>
-                                                <exclude reference="nuF-pZ-hMx"/>
-                                                <exclude reference="yzZ-1E-mhY"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="widthClass=compact">
-                                            <mask key="subviews">
-                                                <include reference="yiQ-jR-gZp"/>
-                                            </mask>
-                                            <mask key="constraints">
-                                                <include reference="aYe-Xy-IY9"/>
-                                                <include reference="dIN-Nl-g1v"/>
-                                                <include reference="nuF-pZ-hMx"/>
-                                                <include reference="yzZ-1E-mhY"/>
-                                            </mask>
-                                        </variation>
-                                        <connections>
-                                            <outlet property="profileCellImage" destination="yiQ-jR-gZp" id="9Aw-Yu-mOI"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="Hyj-2Y-U38" id="lge-DU-ijC"/>
-                                    <outlet property="delegate" destination="Hyj-2Y-U38" id="O5q-tu-PIn"/>
-                                </connections>
-                            </collectionView>
-=======
->>>>>>> 0e36949265aca282feee328662c420dbb6d58cac
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pY3-cl-fEf">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
@@ -816,8 +753,6 @@
                         <outlet property="followingCountLabel" destination="vc8-2s-QRL" id="GOy-oy-p0g"/>
                         <outlet property="followingTapGesture" destination="vcH-me-0Mc" id="y84-QA-njd"/>
                         <outlet property="followingsLabel" destination="7Kh-1o-HL7" id="cKO-7G-1Zj"/>
-                        <outlet property="imageView" destination="e33-8W-6bV" id="72R-dG-Aa5"/>
-                        <outlet property="profileCellImage" destination="e33-8W-6bV" id="FNR-jH-SQt"/>
                         <outlet property="profileImageView" destination="OBq-vb-oYx" id="Y6H-ES-tAK"/>
                         <outlet property="userNameLabel" destination="PUh-DC-BHJ" id="QXP-Vs-ad4"/>
                     </connections>
@@ -931,16 +866,6 @@
                                                     </state>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
                                                         <rect key="frame" x="232" y="7" width="80" height="30"/>
-<<<<<<< HEAD
-                                                    </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="232" y="7" width="80" height="30"/>
-                                                        <mask key="constraints">
-                                                            <include reference="1qE-wX-0gC"/>
-                                                            <include reference="67S-Up-prl"/>
-                                                        </mask>
-=======
->>>>>>> 0e36949265aca282feee328662c420dbb6d58cac
                                                     </variation>
                                                     <connections>
                                                         <action selector="onFollowButtonTap:" destination="5MG-bH-KyI" eventType="touchUpInside" id="eqV-j1-4tW"/>

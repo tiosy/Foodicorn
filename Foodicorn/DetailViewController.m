@@ -14,7 +14,7 @@
 #import "FDDish.h"
 #import "FDLike.h"
 
-@interface DetailViewController ()
+@interface DetailViewController () <UIGestureRecognizerDelegate>
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property Yummly *yummly;
 @property NSMutableArray *likedDishesArray;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *logoTapGesture;
 
 @end
 
@@ -50,7 +51,7 @@
         NSData *logoData = [NSData dataWithContentsOfURL:logoUrl];
         self.logoImageView.image = [UIImage imageWithData:logoData];
         self.logoImageView.layer.borderColor = [UIColor blueColor].CGColor;
-        
+
     }];
 
     [FDLike likedByUsersWithCompletion:self.recipeID completionHandler:^(NSArray *array) {
@@ -64,6 +65,9 @@
         }
     }];
 
+    self.logoTapGesture = [UITapGestureRecognizer new];
+    self.logoTapGesture.delegate = self;
+    self.logoTapGesture.enabled = YES;
     //need to write code to verify if current user liked dish
 }
 
@@ -114,9 +118,20 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    WebViewController *webVC = segue.destinationViewController;
-    webVC.yummly = self.yummly;
+    if ([segue.identifier isEqualToString:@"instructions"]) {
+        WebViewController *webVC = segue.destinationViewController;
+        webVC.name = self.yummly.detailRecipeName;
+        webVC.webUrl = self.yummly.detailInstructionsUrl;
+        webVC.imageUrl = self.yummly.urlString360;
+    }
+    else if ([segue.identifier isEqualToString:@"logo"])
+    {
+        WebViewController *logoWebVC = segue.destinationViewController;
+        logoWebVC.name = self.yummly.detailYummlySourceName;
+        logoWebVC.webUrl = self.yummly.detailYummlySourceUrl;
+        logoWebVC.imageUrl = self.yummly.urlString360;
+        
+    }
 }
-
 
 @end

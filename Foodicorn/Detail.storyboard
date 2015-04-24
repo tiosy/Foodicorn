@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -71,11 +71,12 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="xmN-Yw-gzI" kind="show" id="D58-hh-rxd"/>
+                                    <segue destination="xmN-Yw-gzI" kind="show" identifier="instructions" id="D58-hh-rxd"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BVE-WK-BCo">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7Yv-rp-PZa">
                                         <variation key="widthClass=compact" constant="20"/>
@@ -96,6 +97,9 @@
                                         <include reference="uz3-eX-Sez"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Tu9-hm-zDV" appends="YES" id="X5c-ml-6mu"/>
+                                </connections>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eyF-Y5-7Tv">
                                 <constraints>
@@ -206,10 +210,17 @@
                         <outlet property="imageView" destination="eyF-Y5-7Tv" id="v6j-5b-D6Y"/>
                         <outlet property="likeButton" destination="kjJ-L2-OJz" id="j0x-5l-9mp"/>
                         <outlet property="logoImageView" destination="BVE-WK-BCo" id="wFE-iM-f1E"/>
+                        <outlet property="logoTapGesture" destination="Tu9-hm-zDV" id="Uq4-7v-ltp"/>
                         <outlet property="textView" destination="3AU-1T-2H3" id="jZO-Qx-8ac"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABA-kU-YQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Tu9-hm-zDV">
+                    <connections>
+                        <outlet property="delegate" destination="kEq-iw-IZC" id="Hio-Y9-z9A"/>
+                        <segue destination="xmN-Yw-gzI" kind="show" id="qjS-SB-eUU"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5068.5" y="1152"/>
         </scene>
