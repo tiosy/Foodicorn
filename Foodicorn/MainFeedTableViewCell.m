@@ -14,20 +14,16 @@
     // Initialization code
 
     self.usernameLabel.userInteractionEnabled = YES;
-    self.usernameLabel.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
-    self.usernameLabel.layer.borderWidth = 1.0f;
-    self.usernameLabel.layer.cornerRadius = 10;
-    self.usernameLabel.clipsToBounds = YES;
+    self.usernameLabel.textColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
+    self.usernameLabel.layer.borderColor = [UIColor whiteColor].CGColor;
 
     self.likesLabel.userInteractionEnabled = YES;
-    self.likesLabel.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
-    self.likesLabel.layer.borderWidth = 1.0f;
-    self.likesLabel.layer.cornerRadius = 10;
-    self.likesLabel.clipsToBounds = YES;
+    self.likesLabel.textColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
+    self.likesLabel.layer.borderColor = [UIColor whiteColor].CGColor;
 
     self.mainFeedImageView.userInteractionEnabled = YES;
     self.mainFeedImageView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
-    self.mainFeedImageView.layer.borderWidth = 2.0f;
+    self.mainFeedImageView.layer.borderWidth = 4.0f;
 
     self.userImage.layer.borderColor = [UIColor whiteColor].CGColor;
     self.userImage.layer.cornerRadius = self.userImage.frame.size.width/2;

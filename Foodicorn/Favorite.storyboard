@@ -32,7 +32,7 @@
                                                         <constraint firstAttribute="width" constant="42" id="EP1-LT-j6Z"/>
                                                         <constraint firstAttribute="height" constant="21" id="ZhE-Th-6V3"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -171,7 +171,7 @@
                                                         <constraint firstAttribute="width" constant="128" id="8Li-vW-EIz"/>
                                                         <constraint firstAttribute="height" constant="21" id="cEh-WJ-PDN"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -199,7 +199,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="a1h-eS-eZy"/>
                                                         <constraint firstAttribute="width" constant="82" id="tVJ-Ia-lBL"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -336,7 +336,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="8jA-oS-uG4"/>
                     <connections>
-                        <outlet property="favTableView" destination="d1h-LA-PfK" id="cfA-bg-4FX"/>
                         <outlet property="tableView" destination="d1h-LA-PfK" id="fB4-VS-RUT"/>
                     </connections>
                 </viewController>

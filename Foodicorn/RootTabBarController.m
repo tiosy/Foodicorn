@@ -11,6 +11,8 @@
 
 @interface RootTabBarController ()
 
+
+
 @end
 
 @implementation RootTabBarController
@@ -43,7 +45,5 @@
     profileNavVC.tabBarItem.title = @"Profile";
 
 }
-
-
 
 @end

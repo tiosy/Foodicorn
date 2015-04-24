@@ -95,7 +95,7 @@
 
             for (FDTransaction *transaction in objects) {
                 FDPFUser *user = [transaction objectForKey:@"user"];
-                [user fetchIfNeeded];
+                [user fetchIfNeededInBackground];
                 [superTransactions addObject:user];
             }
 
