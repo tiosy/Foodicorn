@@ -19,11 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = self.yummly.detailRecipeName;
+    self.title = self.name;
 
     self.activityIndicator.hidesWhenStopped = YES;
 
-    NSURL *url = [NSURL URLWithString:self.yummly.detailInstructionsUrl];
+    NSURL *url = [NSURL URLWithString:self.webUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
 }
@@ -42,8 +42,8 @@
 {
     NSMutableArray *sharingItems = [NSMutableArray new];
     NSString *message = @"Hey, checkout this recipe I found using FoodiCorn, the app I made at Mobile Makers Academy. Foodicorn allows you to search your favorite recipes with many unique filters like keywords, diets, cuisines, courses, holidays, and allergies. Checkout the recipe and the app below.";
-    NSURL *url = [NSURL URLWithString:self.yummly.detailInstructionsUrl];
-    NSURL *imageUrl = [NSURL URLWithString:self.yummly.urlString360];
+    NSURL *url = [NSURL URLWithString:self.webUrl];
+    NSURL *imageUrl = [NSURL URLWithString:self.imageUrl];
     NSData *data = [NSData dataWithContentsOfURL:imageUrl];
     UIImage *image = [UIImage imageWithData:data];
 

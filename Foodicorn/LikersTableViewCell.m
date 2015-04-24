@@ -17,7 +17,12 @@
 @implementation LikersTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+
+    self.likersCellImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.likersCellImageView.layer.cornerRadius = 20;
+    self.likersCellImageView.layer.borderWidth = 1.0;
+    self.likersCellImageView.layer.masksToBounds = YES;
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

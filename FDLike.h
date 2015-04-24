@@ -26,5 +26,6 @@
 //a user likes dishes
 + (void) likeDishesWithCompletion:(void (^)(NSArray *))complete;
 + (void) likeDishesWithCompletion:(FDPFUser *)user completionHandler:(void (^)(NSArray *))complete;
++(void)allUsersWithCompletion:(void (^)(NSArray *))complete;
 
 @end

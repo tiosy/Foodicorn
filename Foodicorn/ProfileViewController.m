@@ -145,13 +145,8 @@
     DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
     [self.navigationController pushViewController:detailVC animated:YES];
 
-//    CGPoint location = [sender locationInView:self.tableView];
-//    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
-
     FDLike *like = [self.collectionArray objectAtIndex:indexPath.row];
     detailVC.recipeID = like.from;
-    //NEED TO CHANGE FROM TRANSACTION TO LIKE
-    //write code here to pass yummly recipe to detail
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

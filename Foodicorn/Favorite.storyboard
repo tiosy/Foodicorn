@@ -109,8 +109,8 @@
                                                                 </collectionViewCell>
                                                             </cells>
                                                             <connections>
-                                                                <outlet property="dataSource" destination="82e-9d-4Eo" id="8GP-Ao-nad"/>
-                                                                <outlet property="delegate" destination="82e-9d-4Eo" id="Vzf-ZU-2c5"/>
+                                                                <outlet property="dataSource" destination="82e-9d-4Eo" id="sNe-ac-tJA"/>
+                                                                <outlet property="delegate" destination="82e-9d-4Eo" id="DX3-Pg-F54"/>
                                                             </connections>
                                                         </collectionView>
                                                     </subviews>
@@ -143,6 +143,9 @@
                                                             <include reference="YQB-5o-HD8"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <outlet property="collectionView" destination="aSc-ot-4ac" id="84u-D2-MVA"/>
+                                                    </connections>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pdV-k7-B3W">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
