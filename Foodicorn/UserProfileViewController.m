@@ -90,25 +90,24 @@
     self.followersTapGesture.delegate = self;
     self.followersTapGesture.enabled = YES;
     self.followersLabel.userInteractionEnabled = YES;
-    self.followersLabel.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
-    self.followersLabel.layer.borderWidth = 1.0;
-    self.followersLabel.layer.cornerRadius = 10;
-    self.followersLabel.clipsToBounds = YES;
+    self.followersLabel.textColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
+    self.followersLabel.layer.borderColor = [UIColor whiteColor].CGColor;
 
     self.followingTapGesture = [UITapGestureRecognizer new];
     self.followingTapGesture.delegate = self;
     self.followingTapGesture.enabled = YES;
     self.followingsLabel.userInteractionEnabled = YES;
-    self.followingsLabel.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
-    self.followingsLabel.layer.borderWidth = 1.0;
-    self.followingsLabel.layer.cornerRadius = 10;
-    self.followingsLabel.clipsToBounds = YES;
+    self.followingsLabel.textColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
+    self.followingsLabel.layer.borderColor = [UIColor whiteColor].CGColor;
 
     self.profileImageView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
     self.profileImageView.layer.borderWidth  = 1.0;
     self.profileImageView.layer.cornerRadius = 39.0;
 //    self.profileImageView.frame.size.width/2;
     self.profileImageView.layer.masksToBounds = YES;
+
+    self.collectionView.alwaysBounceVertical = YES;
+
 
     PFFile *userImageFile = self.user.profileThumbnailPFFile;
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
@@ -150,12 +149,14 @@
     return cell;
 }
 
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
     DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
     [self.navigationController pushViewController:detailVC animated:YES];
+
+    FDLike *like = [self.collectionArray objectAtIndex:indexPath.row];
+    detailVC.recipeID = like.from;
 }
 
 

@@ -749,8 +749,6 @@
                         <outlet property="followingCountLabel" destination="vc8-2s-QRL" id="GOy-oy-p0g"/>
                         <outlet property="followingTapGesture" destination="vcH-me-0Mc" id="y84-QA-njd"/>
                         <outlet property="followingsLabel" destination="7Kh-1o-HL7" id="cKO-7G-1Zj"/>
-                        <outlet property="imageView" destination="e33-8W-6bV" id="72R-dG-Aa5"/>
-                        <outlet property="profileCellImage" destination="e33-8W-6bV" id="FNR-jH-SQt"/>
                         <outlet property="profileImageView" destination="OBq-vb-oYx" id="Y6H-ES-tAK"/>
                         <outlet property="userNameLabel" destination="PUh-DC-BHJ" id="QXP-Vs-ad4"/>
                     </connections>

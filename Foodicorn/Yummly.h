@@ -25,6 +25,7 @@
 @property NSArray *detailIngredients;
 @property NSString *detailIngredientsString;
 @property NSString *detailLogoUrl;
+@property NSString *detailYummlySourceUrl;
 
 
 

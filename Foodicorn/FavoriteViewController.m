@@ -15,8 +15,7 @@
 #import "FDPFUser.h"
 
 @interface FavoriteViewController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
-@property (nonatomic)  NSMutableArray *likesArray;
-@property (nonatomic)  NSMutableArray *filteredLikesArray;
+@property (nonatomic)  NSMutableArray *usersArray;
 @property (nonatomic) CGFloat lastContentOffsetY;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -29,7 +28,6 @@
     [super viewDidLoad];
 
     self.title = @"Like Activity";
-    self.likesArray = [NSMutableArray new];
 
 //    self.initialArray = @[ @{ @"cell": @"Cell A",
 //                           @"userImageName": @"person",
@@ -78,37 +76,19 @@
 
 }
 
--(void)setFilteredLikesArray:(NSMutableArray *)filteredLikesArray
+-(void)setUsersArray:(NSMutableArray *)usersArray
 {
-    _filteredLikesArray = filteredLikesArray;
+    _usersArray = usersArray;
     [self.tableView reloadData];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    PFQuery *likesQuery = [FDLike query];
-    [likesQuery orderByDescending:@"createdAt"];
-    [likesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error)
-        {
-            self.likesArray = [objects mutableCopy];
-            NSMutableSet *set = [NSMutableSet set];
-            for (FDLike *like in self.likesArray)
-            {
-                FDPFUser *user = [like objectForKey:@"to"];
-                [user fetchIfNeededInBackground];
-                if (![set containsObject:user]) {
-                    [set addObject:user];
-                    self.filteredLikesArray = [[set allObjects]mutableCopy];
-                }
-            }
-        } else
-        {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
+    [FDLike allUsersWithCompletion:^(NSArray *array) {
+        NSMutableArray *tempArray = [array mutableCopy];
+        NSSet *set = [NSSet setWithArray:tempArray];
+        self.usersArray = [[set allObjects]mutableCopy];
     }];
-
 
 }
 
@@ -120,15 +100,15 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.filteredLikesArray.count;
+    return self.usersArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FavTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteTableCell"];
-    FDLike *like = [self.filteredLikesArray objectAtIndex:indexPath.row];
+    FDPFUser *user = [self.usersArray objectAtIndex:indexPath.row];
 
-    PFFile *imageFile = [[like objectForKey:@"to"]profileThumbnailPFFile];
+    PFFile *imageFile = user.profileThumbnailPFFile;
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
         if (!error) {
             UIImage *image = [UIImage imageWithData:data];
@@ -136,14 +116,16 @@
         }
     }];
 
-    cell.favUsernameLabel.text = [[like objectForKey:@"to"]username];
+    cell.favUsernameLabel.text = user.username;
 
 //    cell.favLikeLabel.text = STILL WORKING ON THIS
-    cell.favTimeLabel.text  = [FDUtility timeSince:like.createdAt];
+    cell.favTimeLabel.text  = [FDUtility timeSince:user.createdAt];
+
+    [FDLike likeDishesWithCompletion:user completionHandler:^(NSArray *array) {
+        [cell setCollectionData:array];
+    }];
 
 
-    //NSCollectionData
-//    [cell setCollectionData:collectionData];
 
 
     [cell setParentVC:self];

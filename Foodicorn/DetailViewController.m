@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property Yummly *yummly;
 @property NSMutableArray *likedDishesArray;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *logoTapGesture;
 
 @end
 
@@ -114,8 +115,15 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    WebViewController *webVC = segue.destinationViewController;
-    webVC.yummly = self.yummly;
+    if ([segue.identifier isEqualToString:@"instructions"]) {
+        WebViewController *webVC = segue.destinationViewController;
+        webVC.yummly = self.yummly;
+    }
+//    else
+//    {
+//        WebViewController *logoWebVC = segue.destinationViewController
+//        
+//    }
 }
 
 
