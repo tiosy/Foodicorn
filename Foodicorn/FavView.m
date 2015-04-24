@@ -63,10 +63,11 @@
     DetailViewController *detailVC = [detailStoryboard instantiateViewControllerWithIdentifier:@"DetailVC"];
     [self.parentVC showViewController:detailVC sender:self];
 
+    FDLike *like = [self.collectionData objectAtIndex:indexPath.row];
     NSDictionary *cellData = [self.collectionData objectAtIndex:[indexPath row]];
     NSString *imageName = [cellData objectForKey:@"dishImageName"];
     NSLog(@"%@", imageName);
-    detailVC.recipeID = @"Vegetable-Sushi-Martha-Stewart";
+    detailVC.recipeID = like.from;
 
 
 //    NSLog(@"collection cell selected %ld", indexPath.row);

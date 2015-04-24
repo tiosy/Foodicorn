@@ -139,6 +139,7 @@
     [self.navigationController pushViewController:detailVC animated:YES];
 
 
+
     //pass the yummly object here
 }
 
