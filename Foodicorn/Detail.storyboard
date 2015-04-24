@@ -98,7 +98,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Kdr-jD-lf3" appends="YES" id="Ner-yY-BzP"/>
+                                    <outletCollection property="gestureRecognizers" destination="Tu9-hm-zDV" appends="YES" id="X5c-ml-6mu"/>
                                 </connections>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eyF-Y5-7Tv">
@@ -210,14 +210,15 @@
                         <outlet property="imageView" destination="eyF-Y5-7Tv" id="v6j-5b-D6Y"/>
                         <outlet property="likeButton" destination="kjJ-L2-OJz" id="j0x-5l-9mp"/>
                         <outlet property="logoImageView" destination="BVE-WK-BCo" id="wFE-iM-f1E"/>
-                        <outlet property="logoTapGesture" destination="Kdr-jD-lf3" id="Hee-OD-6BR"/>
+                        <outlet property="logoTapGesture" destination="Tu9-hm-zDV" id="Uq4-7v-ltp"/>
                         <outlet property="textView" destination="3AU-1T-2H3" id="jZO-Qx-8ac"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABA-kU-YQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Kdr-jD-lf3">
+                <tapGestureRecognizer id="Tu9-hm-zDV">
                     <connections>
-                        <segue destination="xmN-Yw-gzI" kind="show" identifier="logo" id="3pA-al-uFt"/>
+                        <outlet property="delegate" destination="kEq-iw-IZC" id="Hio-Y9-z9A"/>
+                        <segue destination="xmN-Yw-gzI" kind="show" id="qjS-SB-eUU"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -340,6 +341,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3pA-al-uFt"/>
+        <segue reference="D58-hh-rxd"/>
     </inferredMetricsTieBreakers>
 </document>
