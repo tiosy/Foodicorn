@@ -33,24 +33,22 @@
 @property (nonatomic)  NSArray *collectionArray;
 
 
-
-
-
-
-
-@property NSMutableArray *followingsArray;
-@property NSMutableArray *followersArray;
+@property (nonatomic) NSMutableArray *followingsArray;
+@property (nonatomic) NSMutableArray *followersArray;
 
 @end
 
 @implementation UserProfileViewController
 
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
 
     //# of followings
     [FDFollow followingsWithCompletion:self.user completionHandler:^(NSArray *array) {
+
         self.followingsArray = [array mutableCopy];
+
+
         self.followingCountLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)self.followingsArray.count];
     }];
 
@@ -66,6 +64,18 @@
         self.collectionArray = array;
     }];
 
+}
+
+//setter
+-(void)setFollowersArray:(NSMutableArray *)followersArray{
+    _followersArray = followersArray;
+    [self.view setNeedsDisplay];
+}
+
+//setter
+-(void)setFollowingsArray:(NSMutableArray *)followingsArray{
+    _followersArray = followingsArray;
+    [self.view setNeedsDisplay];
 }
 
 //Setter collection array

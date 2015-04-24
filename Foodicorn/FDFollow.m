@@ -51,13 +51,14 @@
     [query whereKey:@"from" equalTo:user];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
-        NSMutableArray *array = [objects mutableCopy];
+        NSMutableArray *mutArray = [NSMutableArray new];
 
-        for (FDFollow *following in array) {
+        for (FDFollow *following in objects) {
             FDPFUser *user = [following objectForKey:@"to"];
             [user fetchIfNeededInBackground];
-            [array addObject:user];
+            [mutArray addObject:user];
         }
+        NSArray *array = [mutArray mutableCopy];
         complete(array); //(it is a FDPFUser array)
     }];
 }
@@ -71,17 +72,16 @@
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
-        NSMutableArray *array = [objects mutableCopy];
-        for (FDFollow *follower in array) {
-            FDPFUser *user = [follower objectForKey:@"from"];
+        NSMutableArray *mutArray = [NSMutableArray new];
+
+        for (FDFollow *following in objects) {
+            FDPFUser *user = [following objectForKey:@"from"];
             [user fetchIfNeededInBackground];
-            [array addObject:user];
+            [mutArray addObject:user];
         }
-
+        NSArray *array = [mutArray mutableCopy];
         complete(array); //(it is a FDPFUser array)
-
-    }];
-}
+    }];}
 
 
 
