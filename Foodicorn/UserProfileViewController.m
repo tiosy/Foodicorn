@@ -37,12 +37,12 @@
 
     [FDFollow followingsWithCompletion:self.user completionHandler:^(NSArray *array) {
         self.followingsArray = [array mutableCopy];
-        self.followingCountLabel.text = [NSString stringWithFormat:@"%ld", self.followingsArray.count];
+        self.followingCountLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)self.followingsArray.count];
     }];
 
     [FDFollow followersWithCompletion:self.user completionHandler:^(NSArray *array) {
         self.followersArray = [array mutableCopy];
-        self.followersCountLabel.text = [NSString stringWithFormat:@"%ld", self.followersArray.count];
+        self.followersCountLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)self.followersArray.count];
     }];
 }
 

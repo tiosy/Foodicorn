@@ -336,7 +336,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="8jA-oS-uG4"/>
                     <connections>
-                        <outlet property="favTableView" destination="d1h-LA-PfK" id="cfA-bg-4FX"/>
                         <outlet property="tableView" destination="d1h-LA-PfK" id="fB4-VS-RUT"/>
                     </connections>
                 </viewController>

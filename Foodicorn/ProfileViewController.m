@@ -42,7 +42,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //will change title to user.username
 
     FDPFUser *currentUser = [FDPFUser currentUser];
     self.title = currentUser.username;
@@ -85,24 +84,16 @@
          }
 
      }];
+}
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
 
     [FDLike likeDishesWithCompletion:^(NSArray *array) {
-        self.collectionArray = array;
+        self.collectionArray = [array mutableCopy];
     }];
-
-    self.refreshControl = [UIRefreshControl new];
-    [self.collectionView addSubview:self.refreshControl];
-    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
-    self.collectionView.alwaysBounceVertical = YES;
-
 }
-
--(void)refreshTable
-{
-    [self.refreshControl endRefreshing];
-    [self.collectionView reloadData];
-}
-
 
 -(void)setCollectionArray:(NSArray *)collectionArray
 {
