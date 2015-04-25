@@ -47,15 +47,6 @@
 //
 
     
-//  UIImage *person6 = [UIImage imageNamed:@"person6"];
-//    [FDPFUser addFollowingAndFollower:person6 username:@"taylorswift" fullname:@"Taylor Swift" followingNSString:@"Following"];
-//
-//    [FDPFUser addFollowingAndFollower:person6 username:@"tim" fullname:@"Tim" followingNSString:@"Following"];
-//
-//    [FDPFUser addFollowingAndFollower:person6 username:@"beegees" fullname:@"Bee Gees" followingNSString:@"Following"];
-//
-//    [FDPFUser addFollowingAndFollower:person6 username:@"justin" fullname:@"Justin" followingNSString:@"Following"];
-//
 
  //[FDPFUser removeFollowingAndFollower:@"beegees"];
 
@@ -213,7 +204,7 @@
 
     FDPFUser *me = [FDPFUser currentUser];
     if(me){
-        //logged-in already
+        //logged-in already, pass login view and display mainfeed
 
         UITabBarController *rootTabBarVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RootTabBarController"];
 
@@ -330,8 +321,20 @@
 
 // Sent to the delegate when a PFUser is signed up.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+
+    //create default profile image
+    FDPFUser *me = [FDPFUser currentUser];
+    UIImage *img = [UIImage imageNamed:@"person.unisex"];
+    NSData *imageNSData = UIImagePNGRepresentation(img);
+    PFFile *imagePFFile = [PFFile fileWithName:me.objectId data:imageNSData]; //use uniqe objectId as file name
+    [imagePFFile saveInBackground];
+    me.profileThumbnailPFFile = imagePFFile;
+    [me saveInBackground];
+
     // Dismiss the PFSignUpViewController
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self dismissViewControllerAnimated:YES completion:^{
+        //
+    }];
 }
 
 // Sent to the delegate when the sign up attempt fails.

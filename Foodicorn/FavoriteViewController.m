@@ -29,6 +29,15 @@
 
     self.title = @"Like Activity";
 
+    [FDLike allUsersWithCompletion:^(NSArray *array) {
+        NSMutableArray *tempArray = [array mutableCopy];
+        NSSet *set = [NSSet setWithArray:tempArray];
+        self.usersArray = [[set allObjects]mutableCopy];
+    }];
+
+
+
+
 //    self.initialArray = @[ @{ @"cell": @"Cell A",
 //                           @"userImageName": @"person",
 //                           @"userName": @"tylorswift",
@@ -84,11 +93,13 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [FDLike allUsersWithCompletion:^(NSArray *array) {
-        NSMutableArray *tempArray = [array mutableCopy];
-        NSSet *set = [NSSet setWithArray:tempArray];
-        self.usersArray = [[set allObjects]mutableCopy];
-    }];
+    //run in vidDidLoad to avoid flickering
+    
+//    [FDLike allUsersWithCompletion:^(NSArray *array) {
+//        NSMutableArray *tempArray = [array mutableCopy];
+//        NSSet *set = [NSSet setWithArray:tempArray];
+//        self.usersArray = [[set allObjects]mutableCopy];
+//    }];
 
 }
 

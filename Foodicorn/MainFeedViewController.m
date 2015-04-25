@@ -47,26 +47,24 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    PFQuery *query = [FDTransaction query];
-    [query orderByDescending:@"createdAt"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error)
-        {
-            self.recipeArray = objects;
-        } else
-        {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+//    FDPFUser *me = [FDPFUser currentUser];
+//    NSLog(@"%@",me.username);
+//
+//    PFQuery *query = [FDTransaction query];
+//    [query orderByDescending:@"createdAt"];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error)
+//        {
+//            self.recipeArray = objects;
+//        } else
+//        {
+//            // Log details of the failure
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//    }];
 
 }
 
--(void)setRecipeArray:(NSMutableArray *)recipeArray
-{
-    _recipeArray = recipeArray;
-    [self.tableView reloadData];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -87,19 +85,40 @@
     self.likersTapGesture.delegate = self;
     self.likersTapGesture.enabled = YES;
 
-    self.refreshControl = [UIRefreshControl new];
-    [self.tableView addSubview:self.refreshControl];
-    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+//    self.refreshControl = [UIRefreshControl new];
+//    [self.tableView addSubview:self.refreshControl];
+//    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+//
 
+        FDPFUser *me = [FDPFUser currentUser];
+        NSLog(@"%@",me.username);
+    
+        PFQuery *query = [FDTransaction query];
+        [query orderByDescending:@"createdAt"];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error)
+            {
+                self.recipeArray = objects;
+            } else
+            {
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
 
 }
-
-
--(void)refreshTable
+-(void)setRecipeArray:(NSMutableArray *)recipeArray
 {
-    [self.refreshControl endRefreshing];
+    _recipeArray = recipeArray;
     [self.tableView reloadData];
 }
+
+
+//-(void)refreshTable
+//{
+//    [self.refreshControl endRefreshing];
+//    [self.tableView reloadData];
+//}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -193,35 +212,10 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
     LikersViewController *likersVC = [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
 
-//    //test
-//    NSArray *arr =[self.likersArray objectAtIndex:indexPath.row];
-//    FDPFUser *u = arr[0];
-
     likersVC.usersArray = [self.likersArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:likersVC animated:YES];
-
-
-
 }
 
-//-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-//
-//{
-//
-//    self.lastContentOffsetY = scrollView.contentOffset.y;
-//
-//}
-//
-//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//    if (self.lastContentOffsetY > scrollView.contentOffset.y)
-//    {
-//        [self.navigationController setNavigationBarHidden:NO animated:YES];
-//    } else if (self.lastContentOffsetY < scrollView.contentOffset.y)
-//    {
-//        [self.navigationController setNavigationBarHidden:YES animated:YES];
-//    }
-//}
 
 
 @end

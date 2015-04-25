@@ -43,10 +43,8 @@
     [Parse setApplicationId:@"cvUotZUxRQ2x3IBqzH5B0WtSlGhxPMqoO1mXMKnW"
                   clientKey:@"riwIEjDVAJPXerKgs9d8wFFlIyxBCYoOub5ZGacH"];
 
-
-    //
-     [PFUser enableRevocableSessionInBackground];
-    //
+    //revocable token
+    [FDPFUser enableRevocableSessionInBackground];
 
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
