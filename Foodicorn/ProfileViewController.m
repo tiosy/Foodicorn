@@ -12,41 +12,49 @@
 #import "LikersViewController.h"
 #import "EditProfileViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "FDPFUser.h"
+
+#import "Constants.h"
 #import "FDUtility.h"
-#import "FDTransaction.h"
-#import "FDDish.h"
+
+#import "FDPFUser.h"
+#import "FDFollow.h"
 #import "FDLike.h"
 
 @interface ProfileViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *followersCountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *followersLabel;
-@property (weak, nonatomic) IBOutlet UILabel *followingsLabel;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *imageViewTapGesture;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *followersTapGesture;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *followingTapGesture;
-@property (nonatomic)  NSArray *collectionArray;
-@property NSDictionary *collectionDict;
 
-@property UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIButton *followersCount;
+@property (weak, nonatomic) IBOutlet UIButton *followingsCount;
+
+//user profile image
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *imageViewTapGesture;
+
+//collection view
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic)  NSArray *collectionArray;
+
+@property (nonatomic) NSMutableArray *followingsArray;
+@property (nonatomic) NSMutableArray *followersArray;
 
 @end
 
 @implementation ProfileViewController
 
-//load collection array
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewDidAppear:(BOOL)animated
+{
+
+    [self calculateNumFollowers];
+    [self calculateNumFollowings];
 
     [FDLike likeDishesWithCompletion:^(NSArray *array) {
-        self.collectionArray = array;
+        self.collectionArray = [array mutableCopy];
     }];
-
 }
+
+
 //setter collection array
 -(void)setCollectionArray:(NSArray *)collectionArray
 {
@@ -58,30 +66,23 @@
 {
     [super viewDidLoad];
 
+    //load my favorite dishes
+    [FDLike likeDishesWithCompletion:^(NSArray *array) {
+        self.collectionArray = array;
+    }];
+
     FDPFUser *currentUser = [FDPFUser currentUser];
     self.title = currentUser.username;
 
     self.userNameLabel.text = currentUser.fullName;
 
-    self.followersTapGesture = [UITapGestureRecognizer new];
-    self.followersTapGesture.delegate = self;
-    self.followersTapGesture.enabled = YES;
-    self.followersLabel.userInteractionEnabled = YES;
-    self.followersLabel.textColor =[UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
-    self.followersLabel.layer.borderColor = [UIColor whiteColor].CGColor;
 
-    self.followingTapGesture = [UITapGestureRecognizer new];
-    self.followingTapGesture.delegate = self;
-    self.followingTapGesture.enabled = YES;
-    self.followingsLabel.userInteractionEnabled = YES;
-    self.followingsLabel.textColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2];
-    self.followingsLabel.layer.borderColor = [UIColor whiteColor].CGColor;
 
     self.imageViewTapGesture = [UITapGestureRecognizer new];
     self.imageViewTapGesture.delegate = self;
     self.imageViewTapGesture.enabled = YES;
     self.profileImageView.userInteractionEnabled = YES;
-    self.profileImageView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
+    self.profileImageView.layer.borderColor = kFoodiCornNavBarColor.CGColor;
     self.profileImageView.layer.borderWidth = 1.0f;
     self.profileImageView.layer.cornerRadius = 39.0;
     self.profileImageView.layer.masksToBounds = YES;
@@ -101,14 +102,7 @@
 }
 
 
--(void)viewDidAppear:(BOOL)animated
-{
-
-    [FDLike likeDishesWithCompletion:^(NSArray *array) {
-        self.collectionArray = [array mutableCopy];
-    }];
-}
-
+#pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -156,22 +150,23 @@
     //write code in here to pass currentUser name, username, email, password
 }
 
-- (IBAction)followersTapGesture:(UITapGestureRecognizer *)sender
-{
+- (IBAction)followersButton:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
     LikersViewController *likersVC= [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
     [self.navigationController pushViewController:likersVC animated:YES];
     //write code here to pass user to likersVC and show followers
+
 }
 
+- (IBAction)followingButton:(id)sender {
 
-- (IBAction)followingTapGesture:(UITapGestureRecognizer *)sender
-{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
     LikersViewController *likersVC= [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
     [self.navigationController pushViewController:likersVC animated:YES];
     //write code here to pass user to likersVC and show followings
+
 }
+
 
 - (IBAction)editImageTapGesture:(UITapGestureRecognizer *)sender
 {
@@ -290,5 +285,53 @@
         [alert show];
     }
 }
+
+
+
+#pragma mark - helper methods
+
+//calulate my followers
+-(void) calculateNumFollowers{
+
+    FDPFUser *me = [FDPFUser currentUser];
+    //# of followers
+    [FDFollow followersWithCompletion:me completionHandler:^(NSArray *array) {
+        self.followersArray = [array mutableCopy];
+
+        NSString *count = [NSString stringWithFormat:@"%ld", (unsigned long)self.followersArray.count];
+
+        self.followersCount.titleLabel.textColor=kFoodiCornNavBarColor;
+        self.followersCount.titleLabel.numberOfLines=0;
+        self.followersCount.titleLabel.textAlignment=NSTextAlignmentCenter;
+        [self.followersCount setTitle:[NSString stringWithFormat:@"%@\nfollowers",count] forState:UIControlStateNormal];
+
+    }];
+}
+
+-(void) calculateNumFollowings{
+
+    FDPFUser *me = [FDPFUser currentUser];
+
+    //# of followings
+    [FDFollow followingsWithCompletion:me completionHandler:^(NSArray *array) {
+        self.followingsArray = [array mutableCopy];
+
+        NSString *count = [NSString stringWithFormat:@"%ld", (unsigned long)self.followingsArray.count];
+
+        self.followingsCount.titleLabel.textColor=kFoodiCornNavBarColor;
+        self.followingsCount.titleLabel.numberOfLines=0;
+        self.followingsCount.titleLabel.textAlignment=NSTextAlignmentCenter;
+        [self.followingsCount setTitle:[NSString stringWithFormat:@"%@\nfollowing",count] forState:UIControlStateNormal];
+    }];
+    
+}
+
+
+
+
+
+
+
+
 
 @end

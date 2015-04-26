@@ -14,7 +14,6 @@
 #import "LikersViewController.h"
 #import "DetailViewController.h"
 
-#import "FDFollow.h"
 #import "FDPFUser.h"
 #import "FDFollow.h"
 #import "FDLike.h"

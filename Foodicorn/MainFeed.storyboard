@@ -634,13 +634,13 @@
                                 <exclude reference="S6G-84-7rZ"/>
                                 <exclude reference="eLs-fS-f23"/>
                                 <exclude reference="ufj-T6-ddB"/>
+                                <exclude reference="xFg-Q7-M6x"/>
                                 <exclude reference="Q2D-Vq-8gn"/>
                                 <exclude reference="LmJ-OC-jSg"/>
                                 <exclude reference="ndA-PG-xqr"/>
                                 <exclude reference="CeJ-s8-qHx"/>
                                 <exclude reference="FvJ-Ia-mWv"/>
                                 <exclude reference="vHY-Ef-aF9"/>
-                                <exclude reference="xFg-Q7-M6x"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -662,13 +662,13 @@
                                 <include reference="S6G-84-7rZ"/>
                                 <exclude reference="eLs-fS-f23"/>
                                 <include reference="ufj-T6-ddB"/>
+                                <include reference="xFg-Q7-M6x"/>
                                 <include reference="Q2D-Vq-8gn"/>
                                 <include reference="LmJ-OC-jSg"/>
                                 <include reference="ndA-PG-xqr"/>
                                 <include reference="CeJ-s8-qHx"/>
                                 <include reference="FvJ-Ia-mWv"/>
                                 <include reference="vHY-Ef-aF9"/>
-                                <include reference="xFg-Q7-M6x"/>
                             </mask>
                         </variation>
                     </view>
