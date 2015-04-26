@@ -719,14 +719,15 @@
                                                             <exclude reference="Lj7-HX-Idr"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="3" width="40" height="40"/>
                                                         <mask key="constraints">
                                                             <include reference="JoW-Uh-zi9"/>
                                                             <include reference="Lj7-HX-Idr"/>
                                                         </mask>
                                                     </variation>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lady g" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TF6-tO-T9e">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TF6-tO-T9e">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75" id="QVk-gy-H7m">
@@ -743,14 +744,15 @@
                                                             <exclude reference="iRo-LH-Zv5"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="56" y="8" width="115" height="21"/>
                                                         <mask key="constraints">
                                                             <include reference="QVk-gy-H7m"/>
                                                             <include reference="iRo-LH-Zv5"/>
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ofd-k7-dRX">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fullname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ofd-k7-dRX">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="54" id="N9g-kb-gK8">
@@ -767,7 +769,8 @@
                                                             <exclude reference="Z0s-tE-FKT"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="56" y="29" width="115" height="15"/>
                                                         <mask key="constraints">
                                                             <include reference="N9g-kb-gK8"/>
                                                             <include reference="Z0s-tE-FKT"/>
@@ -776,19 +779,30 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biH-U3-vzS">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                    <state key="normal" title="+ Follow">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="103" id="bsL-Qp-3hh"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <state key="normal" title="+Follow">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="232" y="7" width="80" height="30"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="bsL-Qp-3hh"/>
+                                                        </mask>
                                                     </variation>
-                                                    <connections>
-                                                        <action selector="onFollowButtonTap:" destination="5MG-bH-KyI" eventType="touchUpInside" id="eqV-j1-4tW"/>
-                                                    </connections>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="bsL-Qp-3hh"/>
+                                                        </mask>
+                                                    </variation>
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="biH-U3-vzS" firstAttribute="bottom" secondItem="eY1-Kx-DMz" secondAttribute="bottomMargin" id="3fU-9f-8np"/>
                                                 <constraint firstItem="TF6-tO-T9e" firstAttribute="leading" secondItem="bzU-az-x4O" secondAttribute="trailing" constant="8" id="40L-Rk-QkM"/>
+                                                <constraint firstItem="biH-U3-vzS" firstAttribute="top" secondItem="eY1-Kx-DMz" secondAttribute="topMargin" id="9hp-hG-Zv4"/>
+                                                <constraint firstItem="biH-U3-vzS" firstAttribute="trailing" secondItem="eY1-Kx-DMz" secondAttribute="trailingMargin" id="R8X-pU-Zfj"/>
                                                 <constraint firstItem="bzU-az-x4O" firstAttribute="leading" secondItem="eY1-Kx-DMz" secondAttribute="leadingMargin" id="aXh-X0-PQW"/>
                                                 <constraint firstItem="bzU-az-x4O" firstAttribute="top" secondItem="eY1-Kx-DMz" secondAttribute="topMargin" constant="-6" id="fPP-5I-LyZ"/>
                                                 <constraint firstItem="Ofd-k7-dRX" firstAttribute="top" secondItem="TF6-tO-T9e" secondAttribute="bottom" id="iMf-08-YA0"/>
@@ -803,12 +817,15 @@
                                                     <exclude reference="biH-U3-vzS"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="iMf-08-YA0"/>
-                                                    <exclude reference="zwT-eE-Ghh"/>
-                                                    <exclude reference="40L-Rk-QkM"/>
-                                                    <exclude reference="xyy-MU-0bJ"/>
                                                     <exclude reference="aXh-X0-PQW"/>
                                                     <exclude reference="fPP-5I-LyZ"/>
+                                                    <exclude reference="40L-Rk-QkM"/>
+                                                    <exclude reference="xyy-MU-0bJ"/>
+                                                    <exclude reference="iMf-08-YA0"/>
+                                                    <exclude reference="zwT-eE-Ghh"/>
+                                                    <exclude reference="3fU-9f-8np"/>
+                                                    <exclude reference="9hp-hG-Zv4"/>
+                                                    <exclude reference="R8X-pU-Zfj"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -819,12 +836,15 @@
                                                     <include reference="biH-U3-vzS"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="iMf-08-YA0"/>
-                                                    <include reference="zwT-eE-Ghh"/>
-                                                    <include reference="40L-Rk-QkM"/>
-                                                    <include reference="xyy-MU-0bJ"/>
                                                     <include reference="aXh-X0-PQW"/>
                                                     <include reference="fPP-5I-LyZ"/>
+                                                    <include reference="40L-Rk-QkM"/>
+                                                    <include reference="xyy-MU-0bJ"/>
+                                                    <include reference="iMf-08-YA0"/>
+                                                    <include reference="zwT-eE-Ghh"/>
+                                                    <include reference="3fU-9f-8np"/>
+                                                    <include reference="9hp-hG-Zv4"/>
+                                                    <include reference="R8X-pU-Zfj"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -878,7 +898,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ilb-z0-ijE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2598" y="-263"/>
+            <point key="canvasLocation" x="2598" y="-266"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gpp-O3-6Ix">

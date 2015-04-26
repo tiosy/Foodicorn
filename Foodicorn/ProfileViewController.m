@@ -73,16 +73,15 @@
 
     FDPFUser *currentUser = [FDPFUser currentUser];
     self.title = currentUser.username;
-
+    self.userNameLabel.textColor=kFoodiCornNavBarColor;
     self.userNameLabel.text = currentUser.fullName;
-
-
 
     self.imageViewTapGesture = [UITapGestureRecognizer new];
     self.imageViewTapGesture.delegate = self;
     self.imageViewTapGesture.enabled = YES;
     self.profileImageView.userInteractionEnabled = YES;
     self.profileImageView.layer.borderColor = kFoodiCornNavBarColor.CGColor;
+    //round profile image
     self.profileImageView.layer.borderWidth = 1.0f;
     self.profileImageView.layer.cornerRadius = 39.0;
     self.profileImageView.layer.masksToBounds = YES;
@@ -153,8 +152,9 @@
 - (IBAction)followersButton:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
     LikersViewController *likersVC= [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
+    likersVC.usersArray = self.followersArray;
     [self.navigationController pushViewController:likersVC animated:YES];
-    //write code here to pass user to likersVC and show followers
+
 
 }
 
@@ -162,18 +162,18 @@
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainFeed" bundle:nil];
     LikersViewController *likersVC= [storyboard instantiateViewControllerWithIdentifier:@"likersVC"];
+    likersVC.usersArray = self.followingsArray;
     [self.navigationController pushViewController:likersVC animated:YES];
-    //write code here to pass user to likersVC and show followings
 
 }
 
 
+
+#pragma mark - IMAGEPICKER CONTROLS
 - (IBAction)editImageTapGesture:(UITapGestureRecognizer *)sender
 {
     [self showAlert];
 }
-
-#pragma mark - IMAGEPICKER CONTROLS
 
 -(void)showAlert
 {

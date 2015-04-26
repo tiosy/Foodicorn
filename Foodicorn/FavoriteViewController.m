@@ -29,59 +29,12 @@
 
     self.title = @"Like Activity";
 
+    //get all unique users (remove duplicates)
     [FDLike allUsersWithCompletion:^(NSArray *array) {
         NSMutableArray *tempArray = [array mutableCopy];
         NSSet *set = [NSSet setWithArray:tempArray];
         self.usersArray = [[set allObjects]mutableCopy];
     }];
-
-
-
-
-//    self.initialArray = @[ @{ @"cell": @"Cell A",
-//                           @"userImageName": @"person",
-//                           @"userName": @"tylorswift",
-//                           @"numOfPosts": @"liked 5 posts",
-//                           @"timeSince":@"1d",
-//                           @"collections": @[ @{ @"dishImageName": @"food1" },
-//                                              @{ @"dishImageName": @"food2"},
-//                                              @{ @"dishImageName": @"food3"},
-//                                              @{ @"dishImageName": @"food4"},
-//                                              @{ @"dishImageName": @"food5"},
-//                                              @{ @"dishImageName": @"food7"}
-//                                              ]
-//                           },
-//                        @{ @"cell": @"Cell B",
-//                           @"userImageName": @"person2",
-//                           @"userName": @"ladygaga",
-//                           @"numOfPosts": @"liked 6 posts",
-//                           @"timeSince":@"2d",
-//                           @"collections": @[ @{ @"dishImageName": @"food6"},
-//                                              @{ @"dishImageName": @"food7"},
-//                                              @{ @"dishImageName": @"food8"},
-//                                              @{ @"dishImageName": @"food10"},
-//                                              @{ @"dishImageName": @"food9"},
-//                                              @{ @"dishImageName": @"food2"}
-//                                              ]
-//                           },
-//                        @{ @"cell": @"Cell C",
-//                           @"userImageName": @"person3",
-//                           @"userName": @"U2",
-//                           @"numOfPosts": @"liked 4 posts",
-//                           @"timeSince":@"4d",
-//                           @"collections": @[ @{ @"dishImageName": @"food3"},
-//                                              @{ @"dishImageName": @"food5"},
-//                                              @{ @"dishImageName": @"food7"},
-//                                              @{ @"dishImageName": @"food8"}
-//                                              ],
-//                           @"recipeID" : @[@"Melt-in-Your-Mouth-Chicken-1066441",
-//                                           @"Yaki-Udon-With-Beef-571964",
-//                                           @"Vegetable-Sushi-Martha-Stewart",
-//                                           ]
-//
-//
-//                           }
-//                        ];
 
 }
 
@@ -94,13 +47,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     //run in vidDidLoad to avoid flickering
-    
-//    [FDLike allUsersWithCompletion:^(NSArray *array) {
-//        NSMutableArray *tempArray = [array mutableCopy];
-//        NSSet *set = [NSSet setWithArray:tempArray];
-//        self.usersArray = [[set allObjects]mutableCopy];
-//    }];
-
 }
 
 

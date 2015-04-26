@@ -183,19 +183,6 @@
         [self.followersCount setTitle:[NSString stringWithFormat:@"%d\nfollowers",self.totalFollowers] forState:UIControlStateNormal];
 
 
-
-
-
-//        //add following
-//        [FDFollow addFollowWithCompletion:self.user completionHandler:^{
-//            //set color
-//            self.followButton.backgroundColor = kFoodiCornNavBarColor;
-//            [self.followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//            [self.followButton setTitle:kFollowing forState:UIControlStateNormal];
-//
-//            [self calculateNumFollowers];
-//        }];
-
     }else{ //unfollow
 
             [self.followButton setTitleColor:kFoodiCornNavBarColor forState:UIControlStateNormal];
@@ -213,16 +200,6 @@
         [self.followersCount setTitle:[NSString stringWithFormat:@"%d\nfollowers",self.totalFollowers] forState:UIControlStateNormal];
 
 
-
-//         //unfollow
-//        [FDFollow removeFollowingWithCompletion:self.user completionHandler:^{
-//            //reset color
-//            [self.followButton setTitleColor:kFoodiCornNavBarColor forState:UIControlStateNormal];
-//            [self.followButton setTitle:kFollow forState:UIControlStateNormal];
-//            self.followButton.backgroundColor = [UIColor whiteColor];
-//
-//            [self calculateNumFollowers];
-//        }];
     }
 
 

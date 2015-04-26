@@ -32,35 +32,35 @@
 
 - (IBAction)onFollowButtonTap:(UIButton *)sender
 {
-    [self.delegate shouldFollowOrUnfollowOnFollowButtonTap:self.indexPath];
-
-    if (![self.followButton.backgroundColor isEqual:kFoodiCornNavBarColor]) {
-        self.followButton.backgroundColor = kFoodiCornNavBarColor;
-
-
-        [self.followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
-        //write code to show that current user followed another use
-        FDPFUser *cellUser = self.cellUser;
-
-
-        [FDFollow addFollow:cellUser];
-
-//        NSLog(@"%lu", me.followings.count);
-
-    }else
-    { 
-
-        [self.followButton setTitleColor:kFoodiCornNavBarColor forState:UIControlStateNormal];
+//    [self.delegate shouldFollowOrUnfollowOnFollowButtonTap:self.indexPath];
+//
+//    if (![self.followButton.backgroundColor isEqual:kFoodiCornNavBarColor]) {
+//        self.followButton.backgroundColor = kFoodiCornNavBarColor;
+//
+//
+//        [self.followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        [self.followButton setTitle:@"Following" forState:UIControlStateNormal];
+//        //write code to show that current user followed another use
 //        FDPFUser *cellUser = self.cellUser;
-        [self.followButton setTitle:@"+ Follow" forState:UIControlStateNormal];
-        self.followButton.backgroundColor = [UIColor whiteColor];
-        //write code to unfollow a user
-//        [FDPFUser removeFollowingAndFollower:cell];
-//        NSLog(@"%lu", me.followings.count);
-    }
-
-    //add code to add user at index to currentuser following array
+//
+//
+//        [FDFollow addFollow:cellUser];
+//
+////        NSLog(@"%lu", me.followings.count);
+//
+//    }else
+//    { 
+//
+//        [self.followButton setTitleColor:kFoodiCornNavBarColor forState:UIControlStateNormal];
+////        FDPFUser *cellUser = self.cellUser;
+//        [self.followButton setTitle:@"+ Follow" forState:UIControlStateNormal];
+//        self.followButton.backgroundColor = [UIColor whiteColor];
+//        //write code to unfollow a user
+////        [FDPFUser removeFollowingAndFollower:cell];
+////        NSLog(@"%lu", me.followings.count);
+//    }
+//
+//    //add code to add user at index to currentuser following array
 }
 
 -(void)setCellUser:(FDPFUser *)cellUser
