@@ -48,14 +48,6 @@
 
     
 
- //[FDPFUser removeFollowingAndFollower:@"beegees"];
-
-//
-//    [FDUser addFollower:@"tim" followerUsername: @"beegees"];
-//
-
-
-
 //==============================================
 
 //    // suppose we have a user we want to follow
@@ -148,7 +140,7 @@
 
 //    //==============================================
 ////
-////        // suppose we have a Dish we want to follow [FDPFUser currentUser]
+////        // suppose we are in Dish detail and we want to follow [FDPFUser currentUser]
 ////    
 //
 //
@@ -205,14 +197,12 @@
     FDPFUser *me = [FDPFUser currentUser];
     if(me){
         //logged-in already, pass login view and display mainfeed
-
         UITabBarController *rootTabBarVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RootTabBarController"];
-
         [rootTabBarVC setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
         [self presentViewController:rootTabBarVC animated:YES completion:nil];
 
     }
-    else { // No user logged in
+    else { // has not loggin yet, display login view
         // Create the log in view controller
         PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
         [logInViewController setDelegate:self]; // Set ourselves as the delegate
@@ -236,7 +226,6 @@
 
         //Custom the Logo
 
-        
         self.view.backgroundColor = kFoodiCornNavBarColor;
         logInViewController.logInView.backgroundColor = kFoodiCornNavBarColor;
         UIImageView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"food2"]];
@@ -276,10 +265,13 @@
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
 
-    [self dismissViewControllerAnimated:YES completion:NULL];
-    [self performSegueWithIdentifier:@"SegueToRoot" sender:self];
-
-
+   [self dismissViewControllerAnimated:YES completion:^{
+        //[self performSegueWithIdentifier:@"SegueToRoot" sender:self];
+       //logged-in sucessfully, display RootTabBar VC
+       UITabBarController *rootTabBarVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RootTabBarController"];
+       [rootTabBarVC setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+       [self presentViewController:rootTabBarVC animated:YES completion:nil];
+   }];
 }
 
 // Sent to the delegate when the log in attempt fails.
@@ -324,7 +316,7 @@
 
     //create default profile image
     FDPFUser *me = [FDPFUser currentUser];
-    UIImage *img = [UIImage imageNamed:@"person.unisex"];
+    UIImage *img = [UIImage imageNamed:@"person"];
     NSData *imageNSData = UIImagePNGRepresentation(img);
     PFFile *imagePFFile = [PFFile fileWithName:me.objectId data:imageNSData]; //use uniqe objectId as file name
     [imagePFFile saveInBackground];

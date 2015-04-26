@@ -118,8 +118,11 @@
 {
     FavTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteTableCell"];
     FDPFUser *user = [self.usersArray objectAtIndex:indexPath.row];
+    [user fetchIfNeededInBackground];
 
-    PFFile *imageFile = user.profileThumbnailPFFile;
+    //PFFile *imageFile = user.profileThumbnailPFFile;
+    PFFile *imageFile = [user objectForKey:@"profileThumbnailPFFile"];
+    [user fetchIfNeededInBackground];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
         if (!error) {
             UIImage *image = [UIImage imageWithData:data];
@@ -128,10 +131,9 @@
     }];
 
     cell.favUsernameLabel.text = user.username;
-
-//    cell.favLikeLabel.text = STILL WORKING ON THIS
     cell.favTimeLabel.text  = [FDUtility timeSince:user.createdAt];
 
+    //get all dishes for this user
     [FDLike likeDishesWithCompletion:user completionHandler:^(NSArray *array) {
         [cell setCollectionData:array];
     }];

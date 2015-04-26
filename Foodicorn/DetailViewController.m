@@ -82,8 +82,8 @@
         [self.likeButton setTitle:@"Liked" forState:UIControlStateNormal];
 
         FDPFUser *me = [FDPFUser currentUser];
-
-        [FDTransaction addTransaction:me.profileThumbnailPFFile userName:me.username  dishID:self.recipeID dishImage:self.imageView.image likedBy:nil transactionType:@"Current User liked dish"];
+        PFFile *profileThumbnailPFFile = [me objectForKey:@"profileThumbnailPFFile"];
+        [FDTransaction addTransaction: profileThumbnailPFFile userName:me.username  dishID:self.recipeID dishImage:self.imageView.image likedBy:nil transactionType:@"Current User liked dish"];
 
         [FDLike addLike:self.recipeID image:self.imageView.image];
 

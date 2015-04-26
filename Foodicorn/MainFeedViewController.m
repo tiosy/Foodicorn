@@ -13,6 +13,8 @@
 #import "UserProfileViewController.h"
 #import "ProfileViewController.h"
 
+#import "Constants.h"
+
 //Utilities
 #import "FDUtility.h"
 
@@ -45,23 +47,14 @@
 
 @implementation MainFeedViewController
 
+
 -(void)viewDidAppear:(BOOL)animated
 {
-//    FDPFUser *me = [FDPFUser currentUser];
-//    NSLog(@"%@",me.username);
-//
-//    PFQuery *query = [FDTransaction query];
-//    [query orderByDescending:@"createdAt"];
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error)
-//        {
-//            self.recipeArray = objects;
-//        } else
-//        {
-//            // Log details of the failure
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//        }
-//    }];
+
+    //move load to viewDidLoad to avoid flicking
+    //reload if needed ...How?
+
+
 
 }
 
@@ -90,21 +83,21 @@
 //    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
 //
 
-        FDPFUser *me = [FDPFUser currentUser];
-        NSLog(@"%@",me.username);
-    
-        PFQuery *query = [FDTransaction query];
-        [query orderByDescending:@"createdAt"];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error)
-            {
-                self.recipeArray = objects;
-            } else
-            {
-                // Log details of the failure
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
-            }
-        }];
+
+    //Load Transansactions into Mainfeed
+    FDPFUser *me = [FDPFUser currentUser];
+    NSLog(@"%@",me.username);
+
+    PFQuery *query = [FDTransaction query];
+    [query orderByDescending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if (!error){
+            self.recipeArray = objects;
+        } else{
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 
 }
 -(void)setRecipeArray:(NSMutableArray *)recipeArray
@@ -133,6 +126,7 @@
     cell.usernameLabel.text = transaction.userName;
 
     //calculate time Since... (for example 1m or 2h or 2d)
+    cell.timeLabel.textColor=kFoodiCornNavBarColor;
     cell.timeLabel.text = [FDUtility timeSince:transaction.createdAt];
 
     PFFile *dishImagePFile = transaction.dishImagePFFile;

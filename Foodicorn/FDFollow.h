@@ -19,8 +19,11 @@
 + (NSString *)parseClassName;
 
 +(void) addFollow:(FDPFUser *) following;
-+(void) removeFollow:(FDPFUser *) following;
-//followings
++ (void) addFollowWithCompletion:(FDPFUser *)user completionHandler:(void (^)(void))complete;
++ (void) removeFollowingWithCompletion:(FDPFUser *)user completionHandler:(void (^)(void))complete;
+
+
+//user's followings
 + (void) followingsWithCompletion:(FDPFUser *)user completionHandler:(void (^)(NSArray *))complete;
 //user's followers
 + (void) followersWithCompletion:(FDPFUser *)user completionHandler:(void (^)(NSArray *))complete;

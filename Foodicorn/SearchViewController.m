@@ -90,7 +90,7 @@
 
         //still need to figure this search bar out
         [self.searchBar.text isEqualToString:@""];
-        NSLog(@"The search bar is %@", self.searchBar.text);
+    
 
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }else if (self.segmentedControl.selectedSegmentIndex == 1)
@@ -102,8 +102,6 @@
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }
 
-    NSLog(@"the array is %@", self.stringsArray);
-    NSLog(@"The cell selected array is %@", self.cellSelectedArray);
 
 }
 

@@ -38,7 +38,8 @@
     cell.delegate = self;
     FDPFUser *theUser= [self.usersArray objectAtIndex:indexPath.row];
 
-    PFFile *imageFile = theUser.profileThumbnailPFFile;
+    //PFFile *imageFile = theUser.profileThumbnailPFFile; // crashing sometimes...not sure why...use objectForKey instead
+    PFFile *imageFile = [theUser objectForKey:@"profileThumbnailPFFile"];
     [imageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
      {
          if (!error) {

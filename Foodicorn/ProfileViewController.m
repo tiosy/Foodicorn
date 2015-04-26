@@ -88,7 +88,8 @@
 
     self.collectionView.alwaysBounceVertical = YES;
 
-    PFFile *userImageFile = currentUser.profileThumbnailPFFile;
+    //PFFile *userImageFile = currentUser.profileThumbnailPFFile;
+    PFFile *userImageFile =[currentUser objectForKey:@"profileThumbnailPFFile"];
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error)
      {
          if (!error) {
@@ -125,7 +126,6 @@
     FDLike *like = [self.collectionArray objectAtIndex:indexPath.row];
 
     PFFile *dishImageFile = [like objectForKey:@"imagePFFile"];
-    NSLog(@"%@", [like objectForKey:@"imagePFFile"]);
     [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageNSData, NSError *error)
     {
         if (!error) {

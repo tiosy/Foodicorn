@@ -29,7 +29,7 @@
 
 
 
-+(void) addFollow:(FDPFUser *) following{
++(void) addFollow:(FDPFUser *)following{
 
     FDFollow *follow = [FDFollow object];
 
@@ -39,9 +39,38 @@
     [follow saveInBackground];
 }
 
-+(void) removeFollow:(FDPFUser *) following{
++ (void) addFollowWithCompletion:(FDPFUser *)following completionHandler:(void (^)(void))complete{
+
+    FDFollow *follow = [FDFollow object];
+
+    [follow setObject:[FDPFUser currentUser] forKey:@"from"];
+    [follow setObject:following  forKey:@"to"];
+
+    [follow saveInBackground];
 
 }
+
+//remove current user's following
++ (void) removeFollowingWithCompletion:(FDPFUser *)user completionHandler:(void (^)(void))complete
+{
+    FDPFUser *me = [FDPFUser currentUser];
+    // set up the query on the Follow table
+    PFQuery *query = [FDFollow query];
+    [query whereKey:@"to" equalTo:user];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+
+        for (FDFollow *following in objects) {
+            FDPFUser *theUser = [following objectForKey:@"from"];
+
+            if([theUser isEqual:me]){
+
+                [following deleteInBackground];
+            }
+        }
+    }];
+}
+
 
 //followings
 + (void) followingsWithCompletion:(FDPFUser *)user completionHandler:(void (^)(NSArray *))complete
