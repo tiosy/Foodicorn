@@ -21,6 +21,7 @@
 
 @implementation FavView
 
+
 #pragma mark - Getter/Setter overrides
 - (void)setCollectionData:(NSArray *)collectionData {
 
@@ -30,6 +31,12 @@
 
     self.collectionView.delegate = self;
     self.collectionView.backgroundColor = [UIColor whiteColor];
+
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+    flowLayout.minimumInteritemSpacing = 1.0;
+    flowLayout.minimumLineSpacing = 1.0;
+
+    
 //    self.collectionView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:1].CGColor;
 //    self.collectionView.layer.borderWidth = 2.0f;
 }
@@ -64,14 +71,17 @@
     [self.parentVC showViewController:detailVC sender:self];
 
     FDLike *like = [self.collectionData objectAtIndex:indexPath.row];
-    NSDictionary *cellData = [self.collectionData objectAtIndex:[indexPath row]];
-    NSString *imageName = [cellData objectForKey:@"dishImageName"];
-    NSLog(@"%@", imageName);
     detailVC.recipeID = like.from;
 
 
 //    NSLog(@"collection cell selected %ld", indexPath.row);
 
+}
+
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake((self.collectionView.frame.size.width - 2)/2.5, (self.collectionView.frame.size.width - 2)/2.5);
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout methods
