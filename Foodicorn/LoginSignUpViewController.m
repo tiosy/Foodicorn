@@ -327,6 +327,13 @@
     [self dismissViewControllerAnimated:YES completion:^{
         //
     }];
+
+    [FDPFUser logOut];
+    //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    //    LoginSignUpViewController *loginVC= [storyboard instantiateViewControllerWithIdentifier:@"LoginSignUpVC"];
+    //    [self.navigationController presentViewController:loginVC animated:YES completion:nil];
+
+
 }
 
 // Sent to the delegate when the sign up attempt fails.
@@ -337,6 +344,8 @@
 // Sent to the delegate when the sign up screen is dismissed.
 - (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
     NSLog(@"User dismissed the signUpViewController");
+
+
 }
 
 @end
