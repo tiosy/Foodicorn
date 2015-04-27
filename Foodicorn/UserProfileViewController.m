@@ -193,19 +193,30 @@
 
     }else{ //unfollow
 
+
+
+        UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"Unfollow" message:@"Are you sure you want to unfollow this user?" preferredStyle:UIAlertControllerStyleActionSheet];
+
+        UIAlertAction *unfollowAction =[UIAlertAction actionWithTitle:@"Unfollow" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self.followButton setTitleColor:kFoodiCornNavBarColor forState:UIControlStateNormal];
             [self.followButton setTitle:kFollow forState:UIControlStateNormal];
             self.followButton.backgroundColor = [UIColor whiteColor];
 
-        //-1
-        self.isAddFollower = NO;
-        self.totalFollowers--;
-        if(self.totalFollowers<0){self.totalFollowers=0;};
+            //-1
+            self.isAddFollower = NO;
+            self.totalFollowers--;
+            if(self.totalFollowers<0){self.totalFollowers=0;};
 
-        self.followersCount.titleLabel.textColor=kFoodiCornNavBarColor;
-        self.followersCount.titleLabel.numberOfLines=0;
-        self.followersCount.titleLabel.textAlignment=NSTextAlignmentCenter;
-        [self.followersCount setTitle:[NSString stringWithFormat:@"%d\nfollowers",self.totalFollowers] forState:UIControlStateNormal];
+            self.followersCount.titleLabel.textColor=kFoodiCornNavBarColor;
+            self.followersCount.titleLabel.numberOfLines=0;
+            self.followersCount.titleLabel.textAlignment=NSTextAlignmentCenter;
+            [self.followersCount setTitle:[NSString stringWithFormat:@"%d\nfollowers",self.totalFollowers] forState:UIControlStateNormal];
+        }];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+        
+        [alertView addAction:cancel];
+        [alertView addAction:unfollowAction];
+        [self presentViewController:alertView animated:YES completion:nil];
 
 
     }
