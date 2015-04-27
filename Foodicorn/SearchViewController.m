@@ -34,6 +34,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic) CGFloat lastContentOffsetY;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+
 @end
 
 @implementation SearchViewController
@@ -46,7 +47,6 @@
     self.cellSelectedArray = [NSMutableArray new];
     self.title = @"Search";
     self.navigationItem.rightBarButtonItem.enabled = NO;
-
 
 
     //TODO: Cut down number of arrays. Very difficult to manage multiple arrays in this fashion, would be better off using array of arrays. EX: NSArray *someArray = @[@[], @[], @[]];
@@ -396,7 +396,6 @@
         }
     }
 }
-
 
 
 //-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText

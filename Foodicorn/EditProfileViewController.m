@@ -47,7 +47,7 @@
 {
     FDPFUser *currentUser = [FDPFUser currentUser];
     currentUser.fullName = self.editNameTextField.text;
-    currentUser.username = self.editUserNameTextField.text;
+//    currentUser.username = self.editUserNameTextField.text;
     currentUser.email = self.editEmailTextField.text;
 //    currentUser.password = self.editPasswordTextField.text;
     [self.editNameTextField resignFirstResponder];

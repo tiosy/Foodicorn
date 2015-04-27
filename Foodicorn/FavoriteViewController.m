@@ -68,7 +68,6 @@
 
 
     PFFile *imageFile = [user objectForKey:@"profileThumbnailPFFile"];
-    [user fetchIfNeededInBackground];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
         if (!error) {
             UIImage *image = [UIImage imageWithData:data];
