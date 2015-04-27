@@ -80,7 +80,7 @@
     cell.likersSubtitleLabel.text = theUser.fullName;
     cell.indexPath = indexPath;
 
-    //if following...
+    //if following...change Button title and color
     if([self.followingsArray containsObject:theUser]){
 
         cell.followButton.backgroundColor = kFoodiCornNavBarColor;

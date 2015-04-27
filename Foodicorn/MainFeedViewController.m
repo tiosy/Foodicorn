@@ -62,7 +62,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.allowsSelection = NO;
-    self.title = @"FoodiCorn";
+    //self.title = @"Food🍓🍦Corn";
+    self.title = @"Food🍦Corn";
     self.likersArray = [NSMutableArray new];
 
 //    self.title = @"FOODiCORN";
