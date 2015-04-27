@@ -228,13 +228,13 @@
 
         self.view.backgroundColor = kFoodiCornNavBarColor;
         logInViewController.logInView.backgroundColor = kFoodiCornNavBarColor;
-        UIImageView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"food2"]];
+        UIImageView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"loginimage"]];
         logoView.contentMode=UIViewContentModeScaleAspectFill;
         logInViewController.logInView.logo = logoView; // logo can be any UIView
 
         // Customize the Sign Up View Controller
         signUpViewController.signUpView.backgroundColor = kFoodiCornNavBarColor;
-        UIImageView *logoView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"food2"]];
+        UIImageView *logoView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"loginimage"]];
         logoView2.contentMode=UIViewContentModeScaleAspectFill;
         signUpViewController.signUpView.logo=logoView2;
         logInViewController.signUpController = signUpViewController;
