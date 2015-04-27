@@ -86,8 +86,11 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    //run in vidDidLoad to avoid flickering
-}
+    [FDLike allUsersWithCompletion:^(NSArray *array) {
+        NSMutableArray *tempArray = [array mutableCopy];
+        NSSet *set = [NSSet setWithArray:tempArray];
+        self.usersArray = [[set allObjects]mutableCopy];
+    }];}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -104,9 +107,7 @@
 {
     FavTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteTableCell"];
     FDPFUser *user = [self.usersArray objectAtIndex:indexPath.row];
-    [user fetchIfNeededInBackground];
-
-    //PFFile *imageFile = user.profileThumbnailPFFile;
+    
     PFFile *imageFile = [user objectForKey:@"profileThumbnailPFFile"];
     [user fetchIfNeededInBackground];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
