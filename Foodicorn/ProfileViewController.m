@@ -87,6 +87,9 @@
     self.profileImageView.layer.masksToBounds = YES;
 
     self.collectionView.alwaysBounceVertical = YES;
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+    flowLayout.minimumInteritemSpacing = 1.0;
+    flowLayout.minimumLineSpacing = 5.0;
 
     //PFFile *userImageFile = currentUser.profileThumbnailPFFile;
     PFFile *userImageFile =[currentUser objectForKey:@"profileThumbnailPFFile"];
@@ -140,6 +143,12 @@
 
     FDLike *like = [self.collectionArray objectAtIndex:indexPath.row];
     detailVC.recipeID = like.from;
+}
+
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake((self.collectionView.frame.size.width - 10)/3, (self.collectionView.frame.size.width - 10)/3);
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

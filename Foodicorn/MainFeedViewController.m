@@ -65,7 +65,6 @@
     self.title = @"FoodiCorn";
     self.likersArray = [NSMutableArray new];
 
-//    self.title = @"FOODiCORN";
     self.imageViewTapGesture = [UITapGestureRecognizer new];
     self.imageViewTapGesture.delegate = self;
     self.imageViewTapGesture.enabled = YES;
@@ -78,10 +77,10 @@
     self.likersTapGesture.delegate = self;
     self.likersTapGesture.enabled = YES;
 
-//    self.refreshControl = [UIRefreshControl new];
-//    [self.tableView addSubview:self.refreshControl];
-//    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
-//
+    self.refreshControl = [UIRefreshControl new];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+
 
 
     //Load Transansactions into Mainfeed
@@ -107,11 +106,11 @@
 }
 
 
-//-(void)refreshTable
-//{
-//    [self.refreshControl endRefreshing];
-//    [self.tableView reloadData];
-//}
+-(void)refreshTable
+{
+    [self.refreshControl endRefreshing];
+    [self.tableView reloadData];
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
