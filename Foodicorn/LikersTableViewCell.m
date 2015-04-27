@@ -80,7 +80,7 @@
 
         //+1
         [self.addFDFollowArray addObject:self.cellUser];
-        NSLog(@"%li", self.addFDFollowArray.count);
+        NSLog(@"%li", (unsigned long)self.addFDFollowArray.count);
 
     }else{ //unfollow
 
@@ -90,7 +90,7 @@
 
         //-1
         [self.removeFDFollowArray addObject:self.cellUser];
-        NSLog(@"%li", self.removeFDFollowArray.count);
+        NSLog(@"%li", (unsigned long)self.removeFDFollowArray.count);
 
     }
 
