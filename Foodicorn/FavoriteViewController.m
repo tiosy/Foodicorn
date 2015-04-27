@@ -83,6 +83,7 @@
     [self.tableView reloadData];
 }
 
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [FDLike allUsersWithCompletion:^(NSArray *array) {
@@ -119,7 +120,13 @@
 
     cell.favUsernameLabel.text = user.username;
 
-//    cell.favLikeLabel.text = STILL WORKING ON THIS
+    [FDLike likeDishesWithCompletion:user completionHandler:^(NSArray *array) {
+        NSMutableArray *muteArray = [array mutableCopy];
+        NSString *string = [NSString stringWithFormat:@"%lu", (unsigned long)muteArray.count];
+        cell.favLikeLabel.text = string;
+
+    }];
+
     cell.favTimeLabel.text  = [FDUtility timeSince:user.createdAt];
 
     [FDLike likeDishesWithCompletion:user completionHandler:^(NSArray *array) {
