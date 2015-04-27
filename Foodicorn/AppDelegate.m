@@ -56,6 +56,10 @@
     [[UITabBar appearance] setBarTintColor:kFoodiCornNavBarColor];
     [[UIButton appearance] setTintColor:kFoodiCornNavBarColor];
 
+    [[UISegmentedControl appearance] setTintColor:kFoodiCornNavBarColor];
+    [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:kFoodiCornNavBarColor} forState:UIControlStateNormal];
+
+
 
     //from tim
     NSShadow *shadow = [[NSShadow alloc] init];
