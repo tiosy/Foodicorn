@@ -28,53 +28,7 @@
     [super viewDidLoad];
 
     self.title = @"Like Activity";
-
-
-//    self.initialArray = @[ @{ @"cell": @"Cell A",
-//                           @"userImageName": @"person",
-//                           @"userName": @"tylorswift",
-//                           @"numOfPosts": @"liked 5 posts",
-//                           @"timeSince":@"1d",
-//                           @"collections": @[ @{ @"dishImageName": @"food1" },
-//                                              @{ @"dishImageName": @"food2"},
-//                                              @{ @"dishImageName": @"food3"},
-//                                              @{ @"dishImageName": @"food4"},
-//                                              @{ @"dishImageName": @"food5"},
-//                                              @{ @"dishImageName": @"food7"}
-//                                              ]
-//                           },
-//                        @{ @"cell": @"Cell B",
-//                           @"userImageName": @"person2",
-//                           @"userName": @"ladygaga",
-//                           @"numOfPosts": @"liked 6 posts",
-//                           @"timeSince":@"2d",
-//                           @"collections": @[ @{ @"dishImageName": @"food6"},
-//                                              @{ @"dishImageName": @"food7"},
-//                                              @{ @"dishImageName": @"food8"},
-//                                              @{ @"dishImageName": @"food10"},
-//                                              @{ @"dishImageName": @"food9"},
-//                                              @{ @"dishImageName": @"food2"}
-//                                              ]
-//                           },
-//                        @{ @"cell": @"Cell C",
-//                           @"userImageName": @"person3",
-//                           @"userName": @"U2",
-//                           @"numOfPosts": @"liked 4 posts",
-//                           @"timeSince":@"4d",
-//                           @"collections": @[ @{ @"dishImageName": @"food3"},
-//                                              @{ @"dishImageName": @"food5"},
-//                                              @{ @"dishImageName": @"food7"},
-//                                              @{ @"dishImageName": @"food8"}
-//                                              ],
-//                           @"recipeID" : @[@"Melt-in-Your-Mouth-Chicken-1066441",
-//                                           @"Yaki-Udon-With-Beef-571964",
-//                                           @"Vegetable-Sushi-Martha-Stewart",
-//                                           ]
-//
-//
-//                           }
-//                        ];
-
+    self.tableView.allowsSelection = NO;
 }
 
 -(void)setUsersArray:(NSMutableArray *)usersArray
@@ -87,10 +41,13 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [FDLike allUsersWithCompletion:^(NSArray *array) {
-        NSMutableArray *tempArray = [array mutableCopy];
-        NSSet *set = [NSSet setWithArray:tempArray];
-        self.usersArray = [[set allObjects]mutableCopy];
-    }];}
+//        NSMutableArray *tempArray = [array mutableCopy];
+        NSOrderedSet *orderedSet = [NSOrderedSet orderedSetWithArray:array];
+//        NSSet *set = [NSSet setWithArray:tempArray];
+        self.usersArray = [[orderedSet array]mutableCopy];
+//        self.usersArray = [[set allObjects]mutableCopy];
+    }];
+}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -107,7 +64,9 @@
 {
     FavTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteTableCell"];
     FDPFUser *user = [self.usersArray objectAtIndex:indexPath.row];
-    
+    cell.favUsernameLabel.text = user.username;
+
+
     PFFile *imageFile = [user objectForKey:@"profileThumbnailPFFile"];
     [user fetchIfNeededInBackground];
     [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
@@ -119,29 +78,20 @@
 
     [FDLike likeDishesWithCompletion:user completionHandler:^(NSArray *array) {
         NSMutableArray *muteArray = [array mutableCopy];
-        NSString *string = [NSString stringWithFormat:@"%lu", (unsigned long)muteArray.count];
+        FDLike *like = [array objectAtIndex:indexPath.row];
+        NSString *string = [NSString stringWithFormat:@"%lu Likes", (unsigned long)muteArray.count];
         cell.favLikeLabel.text = string;
+        cell.favTimeLabel.text  = [FDUtility timeSince:like.updatedAt];
 
-        [cell setCollectionData:array];
+        [cell setCollectionData:muteArray];
     }];
-
-    cell.favUsernameLabel.text = user.username;
-    cell.favTimeLabel.text  = [FDUtility timeSince:user.createdAt];
 
     [cell setParentVC:self];
     
     return cell;
 }
-- (IBAction)onTapGestureTapped:(UITapGestureRecognizer *)sender
-{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
-    DetailViewController *detailVC = [storyboard instantiateViewControllerWithIdentifier:@"DetailVC"];
-    [self.navigationController pushViewController:detailVC animated:YES];
 
 
-
-    //pass the yummly object here
-}
 //
 //-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 //

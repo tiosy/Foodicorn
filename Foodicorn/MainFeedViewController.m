@@ -50,6 +50,16 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    PFQuery *query = [FDTransaction query];
+    [query orderByDescending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if (!error){
+            self.recipeArray = objects;
+        } else{
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 
     //move load to viewDidLoad to avoid flicking
     //reload if needed ...How?
@@ -63,7 +73,7 @@
     [super viewDidLoad];
     self.tableView.allowsSelection = NO;
     //self.title = @"Food🍓🍦Corn";
-    self.title = @"Food🍦Corn";
+    self.title = @"Food🍭Corn";
     self.likersArray = [NSMutableArray new];
 
     self.imageViewTapGesture = [UITapGestureRecognizer new];
@@ -81,23 +91,10 @@
     self.refreshControl = [UIRefreshControl new];
     [self.tableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
-
-
-
+    
     //Load Transansactions into Mainfeed
     FDPFUser *me = [FDPFUser currentUser];
     NSLog(@"%@",me.username);
-
-    PFQuery *query = [FDTransaction query];
-    [query orderByDescending:@"createdAt"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
-        if (!error){
-            self.recipeArray = objects;
-        } else{
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
 
 }
 -(void)setRecipeArray:(NSMutableArray *)recipeArray

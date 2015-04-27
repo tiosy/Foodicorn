@@ -8,6 +8,7 @@
 
 #import "FavTableViewCell.h"
 #import "FavView.h"
+#import "Constants.h"
 
 @interface FavTableViewCell ()
 
@@ -22,6 +23,10 @@
     self.favUserImageView.layer.borderColor = [UIColor whiteColor].CGColor;
     self.favUserImageView.layer.cornerRadius = 20;
     self.favUserImageView.layer.masksToBounds = YES;
+
+    self.favUsernameLabel.textColor = kFoodiCornNavBarColor;
+    self.favLikeLabel.textColor = kFoodiCornNavBarColor;
+    self.favTimeLabel.textColor = kFoodiCornNavBarColor;
 
     
 }
