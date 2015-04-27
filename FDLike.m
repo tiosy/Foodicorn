@@ -114,7 +114,7 @@
 {
     PFQuery *query = [FDLike query];
 
-    [query orderByDescending:@"to"];
+    [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
         NSMutableArray *mutArray = [NSMutableArray new];
@@ -123,11 +123,18 @@
             //to get the user, we get the object with the 'to key'
             FDPFUser *user = [like objectForKey:@"to"];
             [user fetchIfNeeded];
+
+
+            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]initWithKey:[NSString stringWithFormat:@"%@", like.createdAt] ascending:NO];
+            NSArray *sortedDescriptors = [NSArray arrayWithObject:sortDescriptor];
+            NSArray *sortedArray;
+            sortedArray = [mutArray sortedArrayUsingDescriptors:sortedDescriptors];
+            mutArray = [sortedArray mutableCopy];
             [mutArray addObject:user];
 
         };
-        NSArray *array = [mutArray mutableCopy];
-        complete(array);
+
+        complete(mutArray);
     }];
 }
 

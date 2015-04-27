@@ -18,13 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="hel-pA-3oH">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Xqb-GI-TJg" id="2gf-zx-aZO"/>
-                                </connections>
-                            </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Qii-AF-cbM">
                                 <rect key="frame" x="-61" y="-14" width="123" height="29"/>
                                 <segments>
@@ -51,6 +44,13 @@
                                     <outlet property="delegate" destination="Xqb-GI-TJg" id="veS-Sm-Fak"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="hel-pA-3oH">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Xqb-GI-TJg" id="2gf-zx-aZO"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -74,44 +74,44 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="hel-pA-3oH"/>
                                 <exclude reference="Qii-AF-cbM"/>
                                 <exclude reference="Wdr-Nz-Fu8"/>
+                                <exclude reference="hel-pA-3oH"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="VSv-0B-7fl"/>
+                                <exclude reference="CTG-Oi-a6y"/>
+                                <exclude reference="Nwr-H5-9aV"/>
+                                <exclude reference="cRP-7S-Pio"/>
+                                <exclude reference="dKj-Jw-7rF"/>
+                                <exclude reference="rCB-L8-vD1"/>
                                 <exclude reference="8bb-nZ-Dxe"/>
                                 <exclude reference="V3z-MZ-ANJ"/>
                                 <exclude reference="xGm-Id-OKA"/>
                                 <exclude reference="cg2-jH-Pke"/>
                                 <exclude reference="mbb-I9-iBd"/>
                                 <exclude reference="sXp-Il-gMO"/>
-                                <exclude reference="CTG-Oi-a6y"/>
-                                <exclude reference="Nwr-H5-9aV"/>
-                                <exclude reference="cRP-7S-Pio"/>
-                                <exclude reference="dKj-Jw-7rF"/>
-                                <exclude reference="rCB-L8-vD1"/>
-                                <exclude reference="VSv-0B-7fl"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="hel-pA-3oH"/>
                                 <include reference="Qii-AF-cbM"/>
                                 <include reference="Wdr-Nz-Fu8"/>
+                                <include reference="hel-pA-3oH"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="VSv-0B-7fl"/>
+                                <include reference="CTG-Oi-a6y"/>
+                                <include reference="Nwr-H5-9aV"/>
+                                <exclude reference="cRP-7S-Pio"/>
+                                <include reference="dKj-Jw-7rF"/>
+                                <include reference="rCB-L8-vD1"/>
                                 <include reference="8bb-nZ-Dxe"/>
                                 <include reference="V3z-MZ-ANJ"/>
                                 <include reference="xGm-Id-OKA"/>
                                 <include reference="cg2-jH-Pke"/>
                                 <include reference="mbb-I9-iBd"/>
                                 <include reference="sXp-Il-gMO"/>
-                                <include reference="CTG-Oi-a6y"/>
-                                <include reference="Nwr-H5-9aV"/>
-                                <exclude reference="cRP-7S-Pio"/>
-                                <include reference="dKj-Jw-7rF"/>
-                                <include reference="rCB-L8-vD1"/>
-                                <include reference="VSv-0B-7fl"/>
                             </mask>
                         </variation>
                     </view>
