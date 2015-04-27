@@ -18,17 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="hel-pA-3oH">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Xqb-GI-TJg" id="2gf-zx-aZO"/>
+                                </connections>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Qii-AF-cbM">
+                                <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                                <segments>
+                                    <segment title="Search Recipes"/>
+                                    <segment title="Search Users"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlIndexChanged:" destination="Xqb-GI-TJg" eventType="valueChanged" id="HdP-Po-dIb"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Wdr-Nz-Fu8">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" id="hel-pA-3oH">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="Xqb-GI-TJg" id="2gf-zx-aZO"/>
-                                    </connections>
-                                </searchBar>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellID" id="8Mp-SS-XSh">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -46,47 +55,68 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="hel-pA-3oH" firstAttribute="top" secondItem="WVh-x3-MQI" secondAttribute="bottom" id="8bb-nZ-Dxe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wdr-Nz-Fu8" secondAttribute="trailing" constant="-16" id="CTG-Oi-a6y"/>
+                            <constraint firstItem="Wdr-Nz-Fu8" firstAttribute="top" secondItem="Qii-AF-cbM" secondAttribute="bottom" constant="8" id="Nwr-H5-9aV"/>
+                            <constraint firstItem="hel-pA-3oH" firstAttribute="leading" secondItem="Qii-AF-cbM" secondAttribute="leading" id="V3z-MZ-ANJ"/>
                             <constraint firstItem="U5y-Ix-TzI" firstAttribute="top" secondItem="Wdr-Nz-Fu8" secondAttribute="bottom" id="VSv-0B-7fl"/>
-                            <constraint firstItem="Wdr-Nz-Fu8" firstAttribute="top" secondItem="1vd-2A-xUi" secondAttribute="topMargin" id="cRP-7S-Pio"/>
+                            <constraint firstItem="Wdr-Nz-Fu8" firstAttribute="top" secondItem="1vd-2A-xUi" secondAttribute="topMargin" id="cRP-7S-Pio">
+                                <variation key="widthClass=compact" constant="144"/>
+                            </constraint>
+                            <constraint firstItem="Qii-AF-cbM" firstAttribute="top" secondItem="hel-pA-3oH" secondAttribute="bottom" id="cg2-jH-Pke"/>
+                            <constraint firstItem="Wdr-Nz-Fu8" firstAttribute="top" secondItem="Qii-AF-cbM" secondAttribute="bottom" constant="8" id="dKj-Jw-7rF">
+                                <variation key="widthClass=compact" constant="8"/>
+                            </constraint>
+                            <constraint firstItem="Qii-AF-cbM" firstAttribute="leading" secondItem="1vd-2A-xUi" secondAttribute="leadingMargin" constant="-16" id="mbb-I9-iBd"/>
                             <constraint firstItem="Wdr-Nz-Fu8" firstAttribute="leading" secondItem="1vd-2A-xUi" secondAttribute="leadingMargin" constant="-16" id="rCB-L8-vD1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qii-AF-cbM" secondAttribute="trailing" constant="-16" id="sXp-Il-gMO"/>
+                            <constraint firstItem="hel-pA-3oH" firstAttribute="trailing" secondItem="Qii-AF-cbM" secondAttribute="trailing" id="xGm-Id-OKA"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="hel-pA-3oH"/>
+                                <exclude reference="Qii-AF-cbM"/>
                                 <exclude reference="Wdr-Nz-Fu8"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="VSv-0B-7fl"/>
+                                <exclude reference="8bb-nZ-Dxe"/>
+                                <exclude reference="V3z-MZ-ANJ"/>
+                                <exclude reference="xGm-Id-OKA"/>
+                                <exclude reference="cg2-jH-Pke"/>
+                                <exclude reference="mbb-I9-iBd"/>
+                                <exclude reference="sXp-Il-gMO"/>
                                 <exclude reference="CTG-Oi-a6y"/>
+                                <exclude reference="Nwr-H5-9aV"/>
                                 <exclude reference="cRP-7S-Pio"/>
+                                <exclude reference="dKj-Jw-7rF"/>
                                 <exclude reference="rCB-L8-vD1"/>
+                                <exclude reference="VSv-0B-7fl"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
+                                <include reference="hel-pA-3oH"/>
+                                <include reference="Qii-AF-cbM"/>
                                 <include reference="Wdr-Nz-Fu8"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="VSv-0B-7fl"/>
+                                <include reference="8bb-nZ-Dxe"/>
+                                <include reference="V3z-MZ-ANJ"/>
+                                <include reference="xGm-Id-OKA"/>
+                                <include reference="cg2-jH-Pke"/>
+                                <include reference="mbb-I9-iBd"/>
+                                <include reference="sXp-Il-gMO"/>
                                 <include reference="CTG-Oi-a6y"/>
-                                <include reference="cRP-7S-Pio"/>
+                                <include reference="Nwr-H5-9aV"/>
+                                <exclude reference="cRP-7S-Pio"/>
+                                <include reference="dKj-Jw-7rF"/>
                                 <include reference="rCB-L8-vD1"/>
+                                <include reference="VSv-0B-7fl"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="f6f-dz-76a">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Qii-AF-cbM">
-                            <rect key="frame" x="-61" y="-14" width="123" height="29"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Search Recipes"/>
-                                <segment title="Search Users"/>
-                            </segments>
-                            <connections>
-                                <action selector="segmentedControlIndexChanged:" destination="Xqb-GI-TJg" eventType="valueChanged" id="HdP-Po-dIb"/>
-                            </connections>
-                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" title="Get Recipes" id="KAh-cX-7kS">
                             <connections>
                                 <segue destination="YJg-gU-6t8" kind="show" id="DfV-nU-9Ig"/>
