@@ -118,23 +118,16 @@
         }
     }];
 
-    cell.favUsernameLabel.text = user.username;
-
     [FDLike likeDishesWithCompletion:user completionHandler:^(NSArray *array) {
         NSMutableArray *muteArray = [array mutableCopy];
         NSString *string = [NSString stringWithFormat:@"%lu", (unsigned long)muteArray.count];
         cell.favLikeLabel.text = string;
 
-    }];
-
-    cell.favTimeLabel.text  = [FDUtility timeSince:user.createdAt];
-
-    [FDLike likeDishesWithCompletion:user completionHandler:^(NSArray *array) {
         [cell setCollectionData:array];
     }];
 
-
-
+    cell.favUsernameLabel.text = user.username;
+    cell.favTimeLabel.text  = [FDUtility timeSince:user.createdAt];
 
     [cell setParentVC:self];
     
