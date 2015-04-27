@@ -12,8 +12,8 @@
 
 @protocol LikersTableViewCellDelegate <NSObject>
 
-@required
--(void)shouldFollowOrUnfollowOnFollowButtonTap: (NSIndexPath *)indexPath;
+
+//-(void)shouldFollowOrUnfollowOnFollowButtonTap: (NSIndexPath *)indexPath;
 
 @end
 
@@ -23,13 +23,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *likersCellImageView;
 @property (weak, nonatomic) IBOutlet UILabel *likersUsernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likersSubtitleLabel;
-@property (weak, nonatomic) IBOutlet UIButton *followButton;
 @property (strong, nonatomic) FDPFUser *cellUser;
 @property NSIndexPath *indexPath;
 
 @property NSArray *userData;
 
-- (void)setCellUser:(FDPFUser *)cellUser;
+
+@property (weak, nonatomic) IBOutlet UIButton *followButton;
 
 
 @end

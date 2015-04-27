@@ -264,7 +264,7 @@
 
         self.isAddFollower = self.isAddFollowerOriginal;
 
-        }];
+    }];
 }
 
 -(void) calculateNumFollowings{

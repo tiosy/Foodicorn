@@ -63,12 +63,17 @@
 //    //add code to add user at index to currentuser following array
 }
 
--(void)setCellUser:(FDPFUser *)cellUser
-{
-    _cellUser = cellUser;
+
+
+- (IBAction)FollowButtonFromCell:(id)sender {
+
+    NSLog(@"cell follow pressed");
+
+    //add object / remove object locally.....
+    //update Parse when view disappear
+
+
 }
-
-
 
 
 

@@ -8,15 +8,43 @@
 
 #import "LikersViewController.h"
 #import "LikersTableViewCell.h"
+
 #import "ProfileViewController.h"
 #import "UserProfileViewController.h"
+
+#import "Constants.h"   
+
 #import "FDPFUser.h"
 #import "FDFollow.h"
 
+
+
+
 @interface LikersViewController ()<UITableViewDataSource, UITableViewDelegate, LikersTableViewCellDelegate>
+
+@property (nonatomic) NSArray *followingsArray;
+
 @end
 
 @implementation LikersViewController
+
+-(void)viewDidAppear:(BOOL)animated
+{
+
+    //followings
+    FDPFUser *me = [FDPFUser currentUser];
+    [FDFollow followingsWithCompletion:me completionHandler:^(NSArray *array) {
+        self.followingsArray = array;
+    }];
+
+    
+}
+
+
+-(void)setFollowingsArray:(NSArray *)followingsArray{
+    _followingsArray = followingsArray;
+    [self.likersTableView reloadData];
+}
 
 -(void)setUsersArray:(NSArray *)usersArray
 {
@@ -52,8 +80,14 @@
     cell.likersSubtitleLabel.text = theUser.fullName;
     cell.indexPath = indexPath;
 
-    [cell setCellUser:theUser];
+    //if following...
+    if([self.followingsArray containsObject:theUser]){
 
+        cell.followButton.backgroundColor = kFoodiCornNavBarColor;
+        [cell.followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [cell.followButton setTitle:kFollowing forState:UIControlStateNormal];
+        
+    }
     return cell;
 }
 

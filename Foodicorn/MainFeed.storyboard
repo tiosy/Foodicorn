@@ -719,8 +719,7 @@
                                                             <exclude reference="Lj7-HX-Idr"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="8" y="3" width="40" height="40"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="JoW-Uh-zi9"/>
                                                             <include reference="Lj7-HX-Idr"/>
@@ -744,8 +743,7 @@
                                                             <exclude reference="iRo-LH-Zv5"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="56" y="8" width="115" height="21"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="QVk-gy-H7m"/>
                                                             <include reference="iRo-LH-Zv5"/>
@@ -769,8 +767,7 @@
                                                             <exclude reference="Z0s-tE-FKT"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="56" y="29" width="115" height="15"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="N9g-kb-gK8"/>
                                                             <include reference="Z0s-tE-FKT"/>
@@ -791,11 +788,15 @@
                                                             <exclude reference="bsL-Qp-3hh"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="209" y="8" width="103" height="27"/>
                                                         <mask key="constraints">
                                                             <include reference="bsL-Qp-3hh"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="FollowButtonFromCell:" destination="5MG-bH-KyI" eventType="touchUpInside" id="EiB-ku-mGy"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -817,15 +818,15 @@
                                                     <exclude reference="biH-U3-vzS"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="aXh-X0-PQW"/>
-                                                    <exclude reference="fPP-5I-LyZ"/>
-                                                    <exclude reference="40L-Rk-QkM"/>
-                                                    <exclude reference="xyy-MU-0bJ"/>
                                                     <exclude reference="iMf-08-YA0"/>
                                                     <exclude reference="zwT-eE-Ghh"/>
+                                                    <exclude reference="40L-Rk-QkM"/>
+                                                    <exclude reference="xyy-MU-0bJ"/>
                                                     <exclude reference="3fU-9f-8np"/>
                                                     <exclude reference="9hp-hG-Zv4"/>
                                                     <exclude reference="R8X-pU-Zfj"/>
+                                                    <exclude reference="aXh-X0-PQW"/>
+                                                    <exclude reference="fPP-5I-LyZ"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -836,20 +837,20 @@
                                                     <include reference="biH-U3-vzS"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="aXh-X0-PQW"/>
-                                                    <include reference="fPP-5I-LyZ"/>
-                                                    <include reference="40L-Rk-QkM"/>
-                                                    <include reference="xyy-MU-0bJ"/>
                                                     <include reference="iMf-08-YA0"/>
                                                     <include reference="zwT-eE-Ghh"/>
+                                                    <include reference="40L-Rk-QkM"/>
+                                                    <include reference="xyy-MU-0bJ"/>
                                                     <include reference="3fU-9f-8np"/>
                                                     <include reference="9hp-hG-Zv4"/>
                                                     <include reference="R8X-pU-Zfj"/>
+                                                    <include reference="aXh-X0-PQW"/>
+                                                    <include reference="fPP-5I-LyZ"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="followButton" destination="biH-U3-vzS" id="k6A-ku-9CW"/>
+                                            <outlet property="followButton" destination="biH-U3-vzS" id="bSo-Lr-Bvf"/>
                                             <outlet property="likersCellImageView" destination="bzU-az-x4O" id="xfX-dZ-wHN"/>
                                             <outlet property="likersSubtitleLabel" destination="Ofd-k7-dRX" id="2xO-dl-D7S"/>
                                             <outlet property="likersUsernameLabel" destination="TF6-tO-T9e" id="WlG-d0-99d"/>
