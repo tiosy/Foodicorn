@@ -89,7 +89,7 @@
     self.collectionView.alwaysBounceVertical = YES;
     UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
     flowLayout.minimumInteritemSpacing = 1.0;
-    flowLayout.minimumLineSpacing = 5.0;
+    flowLayout.minimumLineSpacing = 1.0;
 
     //PFFile *userImageFile = currentUser.profileThumbnailPFFile;
     PFFile *userImageFile =[currentUser objectForKey:@"profileThumbnailPFFile"];
@@ -148,7 +148,7 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake((self.collectionView.frame.size.width - 10)/3, (self.collectionView.frame.size.width - 10)/3);
+    return CGSizeMake((self.collectionView.frame.size.width - 2)/3, (self.collectionView.frame.size.width - 2)/3);
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
