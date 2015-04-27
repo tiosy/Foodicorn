@@ -17,6 +17,8 @@
 @implementation FavTableViewCell
 - (void)awakeFromNib {
 
+    self.favUserImageView.image = nil;
+
     
 }
 

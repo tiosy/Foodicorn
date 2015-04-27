@@ -122,7 +122,7 @@
 
             //to get the user, we get the object with the 'to key'
             FDPFUser *user = [like objectForKey:@"to"];
-            [user fetchIfNeededInBackground];
+            [user fetchIfNeeded];
             [mutArray addObject:user];
 
         };

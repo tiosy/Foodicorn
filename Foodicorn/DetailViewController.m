@@ -69,6 +69,7 @@
     self.logoTapGesture = [UITapGestureRecognizer new];
     self.logoTapGesture.delegate = self;
     self.logoTapGesture.enabled = YES;
+    self.logoImageView.userInteractionEnabled = YES;
     //need to write code to verify if current user liked dish
 }
 
@@ -124,15 +125,15 @@
         webVC.name = self.yummly.detailRecipeName;
         webVC.webUrl = self.yummly.detailInstructionsUrl;
         webVC.imageUrl = self.yummly.urlString360;
-    }
-    else if ([segue.identifier isEqualToString:@"logo"])
+    }else
     {
         WebViewController *logoWebVC = segue.destinationViewController;
         logoWebVC.name = self.yummly.detailYummlySourceName;
         logoWebVC.webUrl = self.yummly.detailYummlySourceUrl;
         logoWebVC.imageUrl = self.yummly.urlString360;
-        
+
     }
+
 }
 
 @end

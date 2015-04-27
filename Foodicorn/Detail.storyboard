@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -218,7 +218,7 @@
                 <tapGestureRecognizer id="Tu9-hm-zDV">
                     <connections>
                         <outlet property="delegate" destination="kEq-iw-IZC" id="Hio-Y9-z9A"/>
-                        <segue destination="xmN-Yw-gzI" kind="show" id="qjS-SB-eUU"/>
+                        <segue destination="xmN-Yw-gzI" kind="show" identifier="logo" id="qjS-SB-eUU"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -227,7 +227,7 @@
         <!--Web View Controller-->
         <scene sceneID="xmk-bZ-m2Z">
             <objects>
-                <viewController id="xmN-Yw-gzI" customClass="WebViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebVC" id="xmN-Yw-gzI" customClass="WebViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xvp-7m-fQP"/>
                         <viewControllerLayoutGuide type="bottom" id="qZI-cK-uIw"/>
@@ -337,10 +337,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SNx-5K-vNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5749.5" y="1535"/>
+            <point key="canvasLocation" x="5767.5" y="1607"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="D58-hh-rxd"/>
+        <segue reference="qjS-SB-eUU"/>
     </inferredMetricsTieBreakers>
 </document>
