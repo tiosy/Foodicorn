@@ -44,8 +44,7 @@
     self.urlText = @"";
     self.stringsArray = [NSMutableArray new];
     self.cellSelectedArray = [NSMutableArray new];
-    self.searchBar.placeholder = @"Enter Keyword";
-    self.title = @"Search Recipes";
+    self.title = @"Search";
     self.navigationItem.rightBarButtonItem.enabled = NO;
 
 
@@ -86,10 +85,12 @@
         [super viewDidAppear:animated];
         [self.stringsArray removeAllObjects];
         [self.cellSelectedArray removeAllObjects];
+        self.searchBar.placeholder = @"Enter Recipe Keyword";
+
         [self.tableView reloadData];
 
         //still need to figure this search bar out
-        [self.searchBar.text isEqualToString:@""];
+        [self.searchBar.text isEqualToString:nil];
     
 
         self.navigationItem.rightBarButtonItem.enabled = NO;
@@ -97,6 +98,7 @@
     {
         [super viewDidAppear:animated];
         [self.filteredUsersArray removeAllObjects];
+        self.searchBar.placeholder = @"Search Users";
         [self.tableView reloadData];
         self.searchBar.text = nil;
         self.navigationItem.rightBarButtonItem.enabled = NO;
@@ -152,9 +154,12 @@
 {
     switch (self.segmentedControl.selectedSegmentIndex) {
         case 0:
+            self.searchBar.placeholder = @"Enter Recipe Keyword";
             [self.tableView reloadData];
             break;
         case 1:
+            self.searchBar.placeholder = @"Search Users";
+
             [self.tableView reloadData];
         default:
             break;

@@ -26,7 +26,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zdN-R2-55Q" id="zvc-74-WbD">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0g-mZ-cyt">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0g-mZ-cyt">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="42" id="EP1-LT-j6Z"/>
@@ -147,25 +147,6 @@
                                                         <outlet property="collectionView" destination="aSc-ot-4ac" id="84u-D2-MVA"/>
                                                     </connections>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pdV-k7-B3W">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="1Vg-SX-bmf"/>
-                                                        <constraint firstAttribute="height" constant="40" id="oXA-EI-COd"/>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="1Vg-SX-bmf"/>
-                                                            <exclude reference="oXA-EI-COd"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <variation key="widthClass=compact">
-                                                        <mask key="constraints">
-                                                            <include reference="1Vg-SX-bmf"/>
-                                                            <include reference="oXA-EI-COd"/>
-                                                        </mask>
-                                                    </variation>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Like" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d48-jp-dhj">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <constraints>
@@ -222,23 +203,42 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pdV-k7-B3W">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="1Vg-SX-bmf"/>
+                                                        <constraint firstAttribute="height" constant="40" id="oXA-EI-COd"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="1Vg-SX-bmf"/>
+                                                            <exclude reference="oXA-EI-COd"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="1Vg-SX-bmf"/>
+                                                            <include reference="oXA-EI-COd"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="82e-9d-4Eo" firstAttribute="top" secondItem="pdV-k7-B3W" secondAttribute="bottom" constant="1" id="2Y4-3a-s7k"/>
                                                 <constraint firstItem="W0g-mZ-cyt" firstAttribute="top" secondItem="zvc-74-WbD" secondAttribute="topMargin" constant="12" id="2sp-PI-ukq">
-                                                    <variation key="widthClass=compact" constant="0.0"/>
+                                                    <variation key="widthClass=compact" constant="9"/>
                                                 </constraint>
                                                 <constraint firstItem="W0g-mZ-cyt" firstAttribute="trailing" secondItem="zvc-74-WbD" secondAttribute="trailingMargin" id="7QN-jI-nIZ"/>
                                                 <constraint firstItem="pdV-k7-B3W" firstAttribute="leading" secondItem="zvc-74-WbD" secondAttribute="leadingMargin" id="8Ca-yg-Ge8"/>
                                                 <constraint firstItem="d48-jp-dhj" firstAttribute="top" secondItem="zvc-74-WbD" secondAttribute="topMargin" constant="9" id="OMG-j9-9Hp">
-                                                    <variation key="widthClass=compact" constant="0.0"/>
+                                                    <variation key="widthClass=compact" constant="9"/>
                                                 </constraint>
                                                 <constraint firstAttribute="bottomMargin" secondItem="82e-9d-4Eo" secondAttribute="bottom" constant="-8" id="SxE-uC-10U"/>
                                                 <constraint firstItem="82e-9d-4Eo" firstAttribute="leading" secondItem="zvc-74-WbD" secondAttribute="leadingMargin" constant="-8" id="gYW-Ud-bEX"/>
                                                 <constraint firstItem="QSd-Pb-vkP" firstAttribute="leading" secondItem="pdV-k7-B3W" secondAttribute="trailing" constant="8" id="iBG-0d-gO5"/>
                                                 <constraint firstItem="pdV-k7-B3W" firstAttribute="top" secondItem="zvc-74-WbD" secondAttribute="topMargin" id="jYa-cJ-v5s"/>
                                                 <constraint firstItem="QSd-Pb-vkP" firstAttribute="top" secondItem="zvc-74-WbD" secondAttribute="topMargin" constant="12" id="pwb-th-Yg8">
-                                                    <variation key="widthClass=compact" constant="0.0"/>
+                                                    <variation key="widthClass=compact" constant="9"/>
                                                 </constraint>
                                                 <constraint firstAttribute="trailingMargin" secondItem="82e-9d-4Eo" secondAttribute="trailing" constant="-8" id="vfC-r3-oCv"/>
                                                 <constraint firstItem="W0g-mZ-cyt" firstAttribute="leading" secondItem="d48-jp-dhj" secondAttribute="trailing" constant="8" id="w6e-pa-F4G">
@@ -249,9 +249,9 @@
                                                 <mask key="subviews">
                                                     <exclude reference="W0g-mZ-cyt"/>
                                                     <exclude reference="82e-9d-4Eo"/>
-                                                    <exclude reference="pdV-k7-B3W"/>
                                                     <exclude reference="d48-jp-dhj"/>
                                                     <exclude reference="QSd-Pb-vkP"/>
+                                                    <exclude reference="pdV-k7-B3W"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="iBG-0d-gO5"/>
@@ -272,9 +272,9 @@
                                                 <mask key="subviews">
                                                     <include reference="W0g-mZ-cyt"/>
                                                     <include reference="82e-9d-4Eo"/>
-                                                    <include reference="pdV-k7-B3W"/>
                                                     <include reference="d48-jp-dhj"/>
                                                     <include reference="QSd-Pb-vkP"/>
+                                                    <include reference="pdV-k7-B3W"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <include reference="iBG-0d-gO5"/>

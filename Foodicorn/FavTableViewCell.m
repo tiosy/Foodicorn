@@ -18,6 +18,10 @@
 - (void)awakeFromNib {
 
     self.favUserImageView.image = nil;
+    self.favUserImageView.layer.borderWidth = 1.0f;
+    self.favUserImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.favUserImageView.layer.cornerRadius = 20;
+    self.favUserImageView.layer.masksToBounds = YES;
 
     
 }

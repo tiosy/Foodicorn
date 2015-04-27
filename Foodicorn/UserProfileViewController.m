@@ -18,7 +18,7 @@
 #import "FDFollow.h"
 #import "FDLike.h"
 
-@interface UserProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate>
+@interface UserProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
@@ -111,6 +111,9 @@
     self.profileImageView.layer.masksToBounds = YES;
 
     self.collectionView.alwaysBounceVertical = YES;
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+    flowLayout.minimumInteritemSpacing = 1.0;
+    flowLayout.minimumLineSpacing = 1.0;
 
     //get profile image
     PFFile *userImageFile = [self.user objectForKey:@"profileThumbnailPFFile"];
@@ -162,6 +165,11 @@
     detailVC.recipeID = like.from;
 }
 
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake((self.collectionView.frame.size.width - 2)/3, (self.collectionView.frame.size.width - 2)/3);
+}
 
 #pragma mark - Button Methods
 - (IBAction)onFollowButtonTapped:(UIButton *)sender
