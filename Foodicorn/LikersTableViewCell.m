@@ -71,6 +71,28 @@
 
     //add object / remove object locally.....
     //update Parse when view disappear
+    //Just toggle locally
+    if ([self.followButton.titleLabel.text isEqual:kFollow]) {
+
+        self.followButton.backgroundColor = kFoodiCornNavBarColor;
+        [self.followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.followButton setTitle:kFollowing forState:UIControlStateNormal];
+
+        //+1
+        [self.addFDFollowArray addObject:self.cellUser];
+        NSLog(@"%li", self.addFDFollowArray.count);
+
+    }else{ //unfollow
+
+        [self.followButton setTitleColor:kFoodiCornNavBarColor forState:UIControlStateNormal];
+        [self.followButton setTitle:kFollow forState:UIControlStateNormal];
+        self.followButton.backgroundColor = [UIColor whiteColor];
+
+        //-1
+        [self.removeFDFollowArray addObject:self.cellUser];
+        NSLog(@"%li", self.removeFDFollowArray.count);
+
+    }
 
 
 }

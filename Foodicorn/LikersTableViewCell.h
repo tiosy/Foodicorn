@@ -25,7 +25,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *likersSubtitleLabel;
 @property (strong, nonatomic) FDPFUser *cellUser;
 @property NSIndexPath *indexPath;
-
+@property NSMutableArray *addFDFollowArray;
+@property NSMutableArray *removeFDFollowArray;
 @property NSArray *userData;
 
 

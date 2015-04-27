@@ -22,11 +22,29 @@
 
 @interface LikersViewController ()<UITableViewDataSource, UITableViewDelegate, LikersTableViewCellDelegate>
 
+@property NSMutableArray *addFDFollowArray;
+@property NSMutableArray *removeFDFollowArray;
 @property (nonatomic) NSArray *followingsArray;
 
 @end
 
 @implementation LikersViewController
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    for (FDPFUser *user in self.addFDFollowArray)
+    {
+        [FDFollow addFollow:user];
+    }
+
+    for (FDPFUser *user in self.removeFDFollowArray) {
+        [FDFollow removeFollowingWithCompletion:user completionHandler:^{
+
+        }];
+    }
+
+
+}
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -54,7 +72,10 @@
 
 - (void)viewDidLoad
 {
+
     [super viewDidLoad];
+    self.removeFDFollowArray = [NSMutableArray new];
+    self.addFDFollowArray = [NSMutableArray new];
 
 }
 
@@ -88,6 +109,9 @@
         [cell.followButton setTitle:kFollowing forState:UIControlStateNormal];
         
     }
+    cell.addFDFollowArray = self.addFDFollowArray;
+    cell.removeFDFollowArray = self.removeFDFollowArray;
+    cell.cellUser = theUser;
     return cell;
 }
 
