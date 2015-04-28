@@ -81,7 +81,7 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake((self.collectionView.frame.size.width - 2)/2.5, (self.collectionView.frame.size.width - 2)/2.5);
+    return CGSizeMake((self.collectionView.frame.size.width - 3)/3.5, (self.collectionView.frame.size.width - 3)/3.5);
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout methods
