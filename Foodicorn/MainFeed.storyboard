@@ -142,28 +142,6 @@
                                                         <outletCollection property="gestureRecognizers" destination="hQj-ag-VRL" appends="YES" id="vf8-Q1-5Nd"/>
                                                     </connections>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vES-8n-mp0">
-                                                    <rect key="frame" x="0.0" y="57" width="261" height="350"/>
-                                                    <gestureRecognizers/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="350" id="soT-g3-aSk">
-                                                            <variation key="widthClass=compact" constant="300"/>
-                                                        </constraint>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="soT-g3-aSk"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <variation key="widthClass=compact">
-                                                        <mask key="constraints">
-                                                            <include reference="soT-g3-aSk"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="QMn-ko-VcV" appends="YES" id="THu-0F-c0B"/>
-                                                    </connections>
-                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="idc-Cf-Cl3">
                                                     <rect key="frame" x="140" y="0.0" width="51" height="49"/>
                                                     <constraints>
@@ -248,6 +226,28 @@
                                                         </mask>
                                                     </variation>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vES-8n-mp0">
+                                                    <rect key="frame" x="0.0" y="57" width="261" height="350"/>
+                                                    <gestureRecognizers/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="350" id="soT-g3-aSk">
+                                                            <variation key="widthClass=compact" constant="300"/>
+                                                        </constraint>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="soT-g3-aSk"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="soT-g3-aSk"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="QMn-ko-VcV" appends="YES" id="THu-0F-c0B"/>
+                                                    </connections>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="FuK-dQ-YrT" firstAttribute="leading" secondItem="5vu-tB-fdU" secondAttribute="trailing" constant="8" id="5BB-pD-xvC"/>
@@ -276,7 +276,7 @@
                                                     <variation key="widthClass=compact" constant="14"/>
                                                 </constraint>
                                                 <constraint firstItem="vES-8n-mp0" firstAttribute="top" secondItem="FuK-dQ-YrT" secondAttribute="bottom" id="gTI-99-iIv">
-                                                    <variation key="widthClass=compact" constant="14"/>
+                                                    <variation key="widthClass=compact" constant="23"/>
                                                 </constraint>
                                                 <constraint firstItem="5vu-tB-fdU" firstAttribute="leading" secondItem="HXy-Xm-ZrH" secondAttribute="trailing" constant="8" id="p3D-7q-bS6"/>
                                                 <constraint firstItem="jkr-1y-32z" firstAttribute="top" secondItem="jkl-93-cW1" secondAttribute="topMargin" id="vJ1-LF-1oQ"/>
