@@ -324,7 +324,7 @@
         <!--Navigation Controller-->
         <scene sceneID="VjK-pY-SOh">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xXf-yH-XCh" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navVC2" automaticallyAdjustsScrollViewInsets="NO" id="xXf-yH-XCh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WzX-NL-FWg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -341,6 +341,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qjS-SB-eUU"/>
+        <segue reference="jpP-vv-p5t"/>
     </inferredMetricsTieBreakers>
 </document>

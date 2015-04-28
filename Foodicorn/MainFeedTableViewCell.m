@@ -24,7 +24,7 @@
 
     self.mainFeedImageView.userInteractionEnabled = YES;
     self.mainFeedImageView.layer.borderColor = kFoodiCornNavBarColor.CGColor;
-    self.mainFeedImageView.layer.borderWidth = 4.0f;
+    self.mainFeedImageView.layer.borderWidth = 2.0f;
     self.mainFeedImageView.image = nil;
 
     self.userImage.layer.borderColor = [UIColor whiteColor].CGColor;

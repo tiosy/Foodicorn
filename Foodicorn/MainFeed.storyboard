@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -142,28 +142,6 @@
                                                         <outletCollection property="gestureRecognizers" destination="hQj-ag-VRL" appends="YES" id="vf8-Q1-5Nd"/>
                                                     </connections>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vES-8n-mp0">
-                                                    <rect key="frame" x="0.0" y="57" width="261" height="350"/>
-                                                    <gestureRecognizers/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="350" id="soT-g3-aSk">
-                                                            <variation key="widthClass=compact" constant="300"/>
-                                                        </constraint>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="soT-g3-aSk"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <variation key="widthClass=compact">
-                                                        <mask key="constraints">
-                                                            <include reference="soT-g3-aSk"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="QMn-ko-VcV" appends="YES" id="THu-0F-c0B"/>
-                                                    </connections>
-                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="idc-Cf-Cl3">
                                                     <rect key="frame" x="140" y="0.0" width="51" height="49"/>
                                                     <constraints>
@@ -248,6 +226,28 @@
                                                         </mask>
                                                     </variation>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vES-8n-mp0">
+                                                    <rect key="frame" x="0.0" y="57" width="261" height="350"/>
+                                                    <gestureRecognizers/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="350" id="soT-g3-aSk">
+                                                            <variation key="widthClass=compact" constant="300"/>
+                                                        </constraint>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="soT-g3-aSk"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="soT-g3-aSk"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="QMn-ko-VcV" appends="YES" id="THu-0F-c0B"/>
+                                                    </connections>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="FuK-dQ-YrT" firstAttribute="leading" secondItem="5vu-tB-fdU" secondAttribute="trailing" constant="8" id="5BB-pD-xvC"/>
@@ -276,7 +276,7 @@
                                                     <variation key="widthClass=compact" constant="14"/>
                                                 </constraint>
                                                 <constraint firstItem="vES-8n-mp0" firstAttribute="top" secondItem="FuK-dQ-YrT" secondAttribute="bottom" id="gTI-99-iIv">
-                                                    <variation key="widthClass=compact" constant="14"/>
+                                                    <variation key="widthClass=compact" constant="23"/>
                                                 </constraint>
                                                 <constraint firstItem="5vu-tB-fdU" firstAttribute="leading" secondItem="HXy-Xm-ZrH" secondAttribute="trailing" constant="8" id="p3D-7q-bS6"/>
                                                 <constraint firstItem="jkr-1y-32z" firstAttribute="top" secondItem="jkl-93-cW1" secondAttribute="topMargin" id="vJ1-LF-1oQ"/>
@@ -564,9 +564,6 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yiQ-jR-gZp">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <gestureRecognizers/>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
-                                                    </variation>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -809,8 +806,7 @@
                                                             <exclude reference="bsL-Qp-3hh"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="209" y="8" width="103" height="27"/>
+                                                    <variation key="widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="bsL-Qp-3hh"/>
                                                         </mask>
@@ -886,7 +882,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JSm-4y-RpT" firstAttribute="top" secondItem="AwP-CW-bte" secondAttribute="topMargin" constant="65" id="8s8-kx-bYk"/>
+                            <constraint firstItem="JSm-4y-RpT" firstAttribute="top" secondItem="AwP-CW-bte" secondAttribute="topMargin" constant="65" id="8s8-kx-bYk">
+                                <variation key="widthClass=compact" constant="64"/>
+                            </constraint>
                             <constraint firstItem="JSm-4y-RpT" firstAttribute="leading" secondItem="AwP-CW-bte" secondAttribute="leadingMargin" constant="-16" id="NLD-Ks-0Nm"/>
                             <constraint firstItem="vae-mT-vhQ" firstAttribute="top" secondItem="JSm-4y-RpT" secondAttribute="bottom" id="Uvk-S0-piv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JSm-4y-RpT" secondAttribute="trailing" constant="-16" id="nZZ-xw-W4Y"/>
@@ -914,13 +912,14 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="7oY-8y-WK4"/>
                     <connections>
                         <outlet property="likersTableView" destination="JSm-4y-RpT" id="Lgy-ks-P6z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ilb-z0-ijE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2598" y="-266"/>
+            <point key="canvasLocation" x="3729" y="-266"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gpp-O3-6Ix">
@@ -939,6 +938,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9qZ-hP-ViI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2598" y="429"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="daR-Vd-iw7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OnI-0b-cGI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IX0-pE-8As">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gtU-Tr-S8K" kind="relationship" relationship="rootViewController" id="kbS-Ju-Q37"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aQ7-VC-muk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2920.5" y="-266"/>
         </scene>
     </scenes>
 </document>

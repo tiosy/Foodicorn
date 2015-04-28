@@ -41,7 +41,7 @@
 - (IBAction)onShareButtonTapped:(UIBarButtonItem *)sender
 {
     NSMutableArray *sharingItems = [NSMutableArray new];
-    NSString *message = @"Hey, checkout this recipe I found using FoodiCorn, the app I made at Mobile Makers Academy. Foodicorn allows you to search your favorite recipes with many unique filters like keywords, diets, cuisines, courses, holidays, and allergies. Checkout the recipe and the app below.";
+    NSString *message = @"Hey, checkout this recipe I found using FoodiCorn. Foodicorn allows you to search your favorite recipes with many unique filters and follow friends. Checkout the recipe and the app below. Enjoy!";
     NSURL *url = [NSURL URLWithString:self.webUrl];
     NSURL *imageUrl = [NSURL URLWithString:self.imageUrl];
     NSData *data = [NSData dataWithContentsOfURL:imageUrl];

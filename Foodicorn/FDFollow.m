@@ -84,7 +84,7 @@
 
         for (FDFollow *following in objects) {
             FDPFUser *user = [following objectForKey:@"to"];
-            [user fetchIfNeededInBackground];
+            [user fetchIfNeeded];
             [mutArray addObject:user];
         }
         NSArray *array = [mutArray mutableCopy];
@@ -105,7 +105,7 @@
 
         for (FDFollow *following in objects) {
             FDPFUser *user = [following objectForKey:@"from"];
-            [user fetchIfNeededInBackground];
+            [user fetchIfNeeded];
             [mutArray addObject:user];
         }
         NSArray *array = [mutArray mutableCopy];
