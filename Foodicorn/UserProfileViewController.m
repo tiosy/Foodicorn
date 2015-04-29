@@ -82,7 +82,7 @@
 
 //setter
 -(void)setFollowingsArray:(NSMutableArray *)followingsArray{
-    _followersArray = followingsArray;
+    _followingsArray = followingsArray;
     [self.view setNeedsDisplay];
 }
 
