@@ -206,6 +206,4 @@
     [self.navigationController pushViewController:likersVC animated:YES];
 }
 
-
-
 @end

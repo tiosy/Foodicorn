@@ -77,10 +77,6 @@
     self.allowedHolidaysStringsArray = [NSArray arrayWithObjects:@"&allowedHoliday[]=holiday^holiday-christmas", @"&allowedholiday[]=holiday^holiday-summer", @"&allowedHoliday[]=holiday^holiday-thanksgiving", @"&allowedHoliday[]=holiday^holiday-new+year", @"&allowedHoliday[]=holiday^holiday-super-bowl", @"&allowedHoliday[]=holiday^holiday-halloween", @"&allowedHoliday[]=holiday^holiday-hanukkah", @"&allowedHoliday[]=holiday^holiday-4th+of+july", nil];
 }
 
--(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
-    return YES;
-}
 -(void)viewDidAppear:(BOOL)animated
 {
 
@@ -454,10 +450,9 @@
 //}
 
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
-
-{
-    self.navigationController.hidesBarsOnSwipe = YES;
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+//
+//{
 
 //    if (self.lastContentOffsetY > scrollView.contentOffset.y) {
 //
@@ -476,6 +471,6 @@
 //
 //    }
 
-}
+//}
 
 @end

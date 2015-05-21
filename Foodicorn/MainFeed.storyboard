@@ -340,12 +340,14 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.3411764705882353" green="0.84313725490196079" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="2GN-WL-M5I" firstAttribute="leading" secondItem="tGU-6O-tgM" secondAttribute="leadingMargin" constant="-16" id="HhE-oX-wbW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2GN-WL-M5I" secondAttribute="trailing" constant="-16" id="JCG-Ow-T5H"/>
                             <constraint firstItem="2GN-WL-M5I" firstAttribute="bottom" secondItem="tGU-6O-tgM" secondAttribute="bottomMargin" id="isn-Fr-xM3"/>
-                            <constraint firstItem="2GN-WL-M5I" firstAttribute="top" secondItem="tGU-6O-tgM" secondAttribute="topMargin" id="wM8-Fc-uEp"/>
+                            <constraint firstItem="2GN-WL-M5I" firstAttribute="top" secondItem="tGU-6O-tgM" secondAttribute="topMargin" id="wM8-Fc-uEp">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -564,6 +566,9 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yiQ-jR-gZp">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <gestureRecognizers/>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                                    </variation>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
