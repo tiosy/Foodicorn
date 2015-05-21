@@ -13,7 +13,7 @@
 #import "FDPFUser.h"
 #import "Yummly.h"
 
-@interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property NSArray *allowedAllergies;
@@ -34,6 +34,8 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic) CGFloat lastContentOffsetY;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeGesture;
+@property (weak, nonatomic) IBOutlet UIButton *getRecipesButton;
 
 @end
 
@@ -46,7 +48,7 @@
     self.stringsArray = [NSMutableArray new];
     self.cellSelectedArray = [NSMutableArray new];
     self.title = @"Search";
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.getRecipesButton.enabled = NO;
 
 
     //TODO: Cut down number of arrays. Very difficult to manage multiple arrays in this fashion, would be better off using array of arrays. EX: NSArray *someArray = @[@[], @[], @[]];
@@ -73,13 +75,12 @@
 
     self.allowedHolidays = [NSArray arrayWithObjects:@"Christmas", @"Summer", @"Thanksgiving", @"New Year", @"Super Bowl / Game+Day", @"Halloween", @"Hanukkah", @"4th of July", nil];
     self.allowedHolidaysStringsArray = [NSArray arrayWithObjects:@"&allowedHoliday[]=holiday^holiday-christmas", @"&allowedholiday[]=holiday^holiday-summer", @"&allowedHoliday[]=holiday^holiday-thanksgiving", @"&allowedHoliday[]=holiday^holiday-new+year", @"&allowedHoliday[]=holiday^holiday-super-bowl", @"&allowedHoliday[]=holiday^holiday-halloween", @"&allowedHoliday[]=holiday^holiday-hanukkah", @"&allowedHoliday[]=holiday^holiday-4th+of+july", nil];
-
-//    self.filteredUsersArray = [NSMutableArray arrayWithObjects:@"Test1", @"Test2", @"Test3", nil];
 }
 
 
 -(void)viewDidAppear:(BOOL)animated
 {
+
     if (self.segmentedControl.selectedSegmentIndex == 0)
     {
         [super viewDidAppear:animated];
@@ -89,21 +90,19 @@
 
         [self.tableView reloadData];
 
-        //still need to figure this search bar out
-        [self.searchBar.text isEqualToString:nil];
+        self.searchBar.text = @"";
+        self.getRecipesButton.enabled = NO;
     
 
-        self.navigationItem.rightBarButtonItem.enabled = NO;
     }else if (self.segmentedControl.selectedSegmentIndex == 1)
     {
         [super viewDidAppear:animated];
         [self.filteredUsersArray removeAllObjects];
         self.searchBar.placeholder = @"Search Users";
         [self.tableView reloadData];
-        self.searchBar.text = nil;
-        self.navigationItem.rightBarButtonItem.enabled = NO;
+        self.searchBar.text = @"";
+        self.getRecipesButton.hidden = YES;
     }
-
 
 }
 
@@ -113,10 +112,6 @@
     [self.tableView reloadData];
 }
 
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    [self.searchBar resignFirstResponder];
-}
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
@@ -142,7 +137,7 @@
 {
     if (self.segmentedControl.selectedSegmentIndex == 0)
     {
-        return 60.0f;
+        return 30.0f;
     }else
     {
         return 0;
@@ -155,11 +150,12 @@
     switch (self.segmentedControl.selectedSegmentIndex) {
         case 0:
             self.searchBar.placeholder = @"Enter Recipe Keyword";
+            self.getRecipesButton.hidden = NO;
             [self.tableView reloadData];
             break;
         case 1:
             self.searchBar.placeholder = @"Search Users";
-
+            self.getRecipesButton.hidden = YES;
             [self.tableView reloadData];
         default:
             break;
@@ -268,7 +264,7 @@
 }
 
 
-
+//I AM CHANGING THIS- 05/21/15
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     if (self.segmentedControl.selectedSegmentIndex == 0)
@@ -279,9 +275,9 @@
         NSLog(@"%@", string);
 
         [self.stringsArray addObject:string];
-        self.searchBar.returnKeyType = UIReturnKeyNext;
+        self.searchBar.returnKeyType = UIReturnKeySearch;
         [searchBar resignFirstResponder];
-        self.navigationItem.rightBarButtonItem.enabled = YES;
+        self.getRecipesButton.enabled = YES;
     }else
     {
         PFQuery *query = [FDPFUser query];
@@ -291,20 +287,13 @@
         {
             self.usersArray = objects;
             self.filteredUsersArray = [self.usersArray mutableCopy];
-//
-//                if (searchBar.searchText.length != 0) {
-                [self.filteredUsersArray removeAllObjects];
-                for (FDPFUser *user in self.usersArray) {
-                    NSRange nameRange = [user.username rangeOfString:self.searchBar.text options:NSCaseInsensitiveSearch];
-                    if (nameRange.location != NSNotFound) {
-                        [self.filteredUsersArray addObject:user];
-                    }
-
-//            }else
-//            {
-//                [self.filteredUsersArray removeAllObjects];
-//            }
+            [self.filteredUsersArray removeAllObjects];
+            for (FDPFUser *user in self.usersArray) {
+                NSRange nameRange = [user.username rangeOfString:self.searchBar.text options:NSCaseInsensitiveSearch];
+                if (nameRange.location != NSNotFound) {
+                    [self.filteredUsersArray addObject:user];
                 }
+            }
         }
         [self.tableView reloadData];
         }];
@@ -316,14 +305,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //TODO: Instead of checking the cell's accessoryType, check to see if the object has been selected or not, and then change it accordingly. Then reload the selected cell.
-
-    //SomeObject *object = self.someArray[indexPath.section][indexPath.row];
-
     if (self.segmentedControl.selectedSegmentIndex == 0)
     {
 
-        self.navigationItem.rightBarButtonItem.enabled = YES;
+        self.getRecipesButton.enabled = YES;
 
 
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -397,6 +382,22 @@
     }
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    JustinViewController *justinVC = segue.destinationViewController;
+    self.urlText = [[self.stringsArray valueForKey:@"description"] componentsJoinedByString:@""];
+    justinVC.urlText = self.urlText;
+    //    NSLog(@"The Url Text is %@", self.urlText);
+
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.searchBar resignFirstResponder];
+    //    self.lastContentOffsetY = scrollView.contentOffset.y;
+    
+}
+
 
 //-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 //{
@@ -428,42 +429,40 @@
 //}
 
 //When "Get Recipes" Bar Button Item pressed
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    JustinViewController *justinVC = segue.destinationViewController;
-    self.urlText = [[self.stringsArray valueForKey:@"description"] componentsJoinedByString:@""];
-    justinVC.urlText = self.urlText;
-    //    NSLog(@"The Url Text is %@", self.urlText);
-    
-}
 
 
-//-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+//- (IBAction)swipedGestureSwiped:(UISwipeGestureRecognizer *)sender {
 //
-//{
-//
-//    self.lastContentOffsetY = scrollView.contentOffset.y;
-//
+//    if (self.swipeGesture.direction == UISwipeGestureRecognizerDirectionLeft) {
+//        self.segmentedControl.selectedSegmentIndex = 1;
+//    }else if (self.swipeGesture.direction == UISwipeGestureRecognizerDirectionRight)
+//    {
+//        self.segmentedControl.selectedSegmentIndex = 0;
+//    }
 //}
-
-
-
 
 
 //-(void)scrollViewDidScroll:(UIScrollView *)scrollView
 //
 //{
-//
+
 //    if (self.lastContentOffsetY > scrollView.contentOffset.y) {
 //
 //        [self.navigationController setNavigationBarHidden:NO animated:YES];
+//        CGFloat navBarHeight = 60;
+//        CGRect frame = CGRectMake(0, 0, self.view.layer.frame.size.width, navBarHeight);
+//        [self.navigationController.navigationBar setFrame:frame];
 //
 //    } else if (self.lastContentOffsetY < scrollView.contentOffset.y) {
 //
-//        [self.navigationController setNavigationBarHidden:YES animated:YES];
-//        
+////        [self.navigationController setNavigationBarHidden:YES animated:YES];
+//        CGFloat navBarHeight = 20.0f;
+//        CGRect frame = CGRectMake(0.0f, 0.0f, self.view.layer.frame.size.width, navBarHeight);
+//        [self.navigationController.navigationBar setFrame:frame];
+////        self.navigationController.navigationBar.layer.frame.size.height = 20;
+//
 //    }
-//    
+
 //}
 
 @end

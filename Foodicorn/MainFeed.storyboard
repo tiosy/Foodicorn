@@ -546,7 +546,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e33-8W-6bV">
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="eCR-43-MgP">
                                     <size key="itemSize" width="133" height="133"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -806,7 +806,8 @@
                                                             <exclude reference="bsL-Qp-3hh"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="209" y="8" width="103" height="27"/>
                                                         <mask key="constraints">
                                                             <include reference="bsL-Qp-3hh"/>
                                                         </mask>

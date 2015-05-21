@@ -79,7 +79,6 @@
     self.imageViewTapGesture = [UITapGestureRecognizer new];
     self.imageViewTapGesture.delegate = self;
     self.imageViewTapGesture.enabled = YES;
-
     self.userNameTapGesture = [UITapGestureRecognizer new];
     self.userNameTapGesture.delegate = self;
     self.userNameTapGesture.enabled = YES;
