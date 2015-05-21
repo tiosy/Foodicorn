@@ -20,6 +20,7 @@
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Qii-AF-cbM">
                                 <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="Search Recipes"/>
                                     <segment title="Search Users"/>
@@ -28,6 +29,13 @@
                                     <action selector="segmentedControlIndexChanged:" destination="Xqb-GI-TJg" eventType="valueChanged" id="HdP-Po-dIb"/>
                                 </connections>
                             </segmentedControl>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="hel-pA-3oH">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Xqb-GI-TJg" id="2gf-zx-aZO"/>
+                                </connections>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Wdr-Nz-Fu8">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -38,9 +46,6 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="p0s-HR-6aq" appends="YES" id="3bh-Sr-Umi"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -48,13 +53,6 @@
                                     <outlet property="delegate" destination="Xqb-GI-TJg" id="veS-Sm-Fak"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="hel-pA-3oH">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Xqb-GI-TJg" id="2gf-zx-aZO"/>
-                                </connections>
-                            </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeT-Qb-i5e">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.3411764705882353" green="0.84313725490196079" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,14 +78,16 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.3411764705882353" green="0.84313725490196079" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="hel-pA-3oH" firstAttribute="top" secondItem="WVh-x3-MQI" secondAttribute="bottom" id="8bb-nZ-Dxe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wdr-Nz-Fu8" secondAttribute="trailing" constant="-16" id="CTG-Oi-a6y"/>
                             <constraint firstItem="U5y-Ix-TzI" firstAttribute="top" secondItem="oeT-Qb-i5e" secondAttribute="bottom" id="G5Z-HD-utW"/>
                             <constraint firstItem="oeT-Qb-i5e" firstAttribute="leading" secondItem="1vd-2A-xUi" secondAttribute="leadingMargin" constant="-16" id="Hew-5s-17N"/>
-                            <constraint firstItem="Wdr-Nz-Fu8" firstAttribute="top" secondItem="Qii-AF-cbM" secondAttribute="bottom" constant="8" id="Nwr-H5-9aV"/>
+                            <constraint firstItem="Wdr-Nz-Fu8" firstAttribute="top" secondItem="Qii-AF-cbM" secondAttribute="bottom" constant="8" id="Nwr-H5-9aV">
+                                <variation key="widthClass=compact" constant="1"/>
+                            </constraint>
                             <constraint firstItem="oeT-Qb-i5e" firstAttribute="top" secondItem="Wdr-Nz-Fu8" secondAttribute="bottom" constant="1" id="Sd1-7Z-cZp"/>
                             <constraint firstItem="hel-pA-3oH" firstAttribute="leading" secondItem="Qii-AF-cbM" secondAttribute="leading" id="V3z-MZ-ANJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oeT-Qb-i5e" secondAttribute="trailing" constant="-16" id="VAZ-KF-2WK"/>
@@ -97,7 +97,7 @@
                             </constraint>
                             <constraint firstItem="Qii-AF-cbM" firstAttribute="top" secondItem="hel-pA-3oH" secondAttribute="bottom" id="cg2-jH-Pke"/>
                             <constraint firstItem="Wdr-Nz-Fu8" firstAttribute="top" secondItem="Qii-AF-cbM" secondAttribute="bottom" constant="8" id="dKj-Jw-7rF">
-                                <variation key="widthClass=compact" constant="8"/>
+                                <variation key="widthClass=compact" constant="1"/>
                             </constraint>
                             <constraint firstItem="Qii-AF-cbM" firstAttribute="leading" secondItem="1vd-2A-xUi" secondAttribute="leadingMargin" constant="-16" id="mbb-I9-iBd"/>
                             <constraint firstItem="Wdr-Nz-Fu8" firstAttribute="leading" secondItem="1vd-2A-xUi" secondAttribute="leadingMargin" constant="-16" id="rCB-L8-vD1"/>
@@ -107,17 +107,13 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Qii-AF-cbM"/>
-                                <exclude reference="Wdr-Nz-Fu8"/>
                                 <exclude reference="hel-pA-3oH"/>
+                                <exclude reference="Wdr-Nz-Fu8"/>
                                 <exclude reference="oeT-Qb-i5e"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="8bb-nZ-Dxe"/>
-                                <exclude reference="V3z-MZ-ANJ"/>
-                                <exclude reference="xGm-Id-OKA"/>
-                                <exclude reference="cg2-jH-Pke"/>
-                                <exclude reference="mbb-I9-iBd"/>
-                                <exclude reference="sXp-Il-gMO"/>
+                                <exclude reference="G5Z-HD-utW"/>
+                                <exclude reference="VSv-0B-7fl"/>
                                 <exclude reference="CTG-Oi-a6y"/>
                                 <exclude reference="Nwr-H5-9aV"/>
                                 <exclude reference="cRP-7S-Pio"/>
@@ -126,24 +122,24 @@
                                 <exclude reference="Hew-5s-17N"/>
                                 <exclude reference="Sd1-7Z-cZp"/>
                                 <exclude reference="VAZ-KF-2WK"/>
-                                <exclude reference="G5Z-HD-utW"/>
-                                <exclude reference="VSv-0B-7fl"/>
+                                <exclude reference="8bb-nZ-Dxe"/>
+                                <exclude reference="V3z-MZ-ANJ"/>
+                                <exclude reference="xGm-Id-OKA"/>
+                                <exclude reference="cg2-jH-Pke"/>
+                                <exclude reference="mbb-I9-iBd"/>
+                                <exclude reference="sXp-Il-gMO"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Qii-AF-cbM"/>
-                                <include reference="Wdr-Nz-Fu8"/>
                                 <include reference="hel-pA-3oH"/>
+                                <include reference="Wdr-Nz-Fu8"/>
                                 <include reference="oeT-Qb-i5e"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="8bb-nZ-Dxe"/>
-                                <include reference="V3z-MZ-ANJ"/>
-                                <include reference="xGm-Id-OKA"/>
-                                <include reference="cg2-jH-Pke"/>
-                                <include reference="mbb-I9-iBd"/>
-                                <include reference="sXp-Il-gMO"/>
+                                <include reference="G5Z-HD-utW"/>
+                                <exclude reference="VSv-0B-7fl"/>
                                 <include reference="CTG-Oi-a6y"/>
                                 <include reference="Nwr-H5-9aV"/>
                                 <exclude reference="cRP-7S-Pio"/>
@@ -152,8 +148,12 @@
                                 <include reference="Hew-5s-17N"/>
                                 <include reference="Sd1-7Z-cZp"/>
                                 <include reference="VAZ-KF-2WK"/>
-                                <include reference="G5Z-HD-utW"/>
-                                <exclude reference="VSv-0B-7fl"/>
+                                <include reference="8bb-nZ-Dxe"/>
+                                <include reference="V3z-MZ-ANJ"/>
+                                <include reference="xGm-Id-OKA"/>
+                                <include reference="cg2-jH-Pke"/>
+                                <include reference="mbb-I9-iBd"/>
+                                <include reference="sXp-Il-gMO"/>
                             </mask>
                         </variation>
                     </view>
@@ -164,17 +164,10 @@
                         <outlet property="getRecipesButton" destination="oeT-Qb-i5e" id="wU2-Nn-a4k"/>
                         <outlet property="searchBar" destination="hel-pA-3oH" id="kL3-c1-tgI"/>
                         <outlet property="segmentedControl" destination="Qii-AF-cbM" id="RYf-HX-an5"/>
-                        <outlet property="swipeGesture" destination="p0s-HR-6aq" id="axf-22-fK4"/>
                         <outlet property="tableView" destination="Wdr-Nz-Fu8" id="2m8-hj-aED"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kSl-X3-jzM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="p0s-HR-6aq">
-                    <connections>
-                        <action selector="swipedGestureSwiped:" destination="Xqb-GI-TJg" id="tqS-Jt-bGG"/>
-                        <outlet property="delegate" destination="Xqb-GI-TJg" id="ceM-45-mHV"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="988.5" y="1152"/>
         </scene>
@@ -269,7 +262,7 @@
         <!--Item-->
         <scene sceneID="4MD-tV-5fu">
             <objects>
-                <navigationController storyboardIdentifier="SearchNavVC" automaticallyAdjustsScrollViewInsets="NO" id="toT-yH-cek" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SearchNavVC" automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="toT-yH-cek" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Ma5-iF-ajy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rRm-ty-EBO">

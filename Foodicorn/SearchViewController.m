@@ -77,7 +77,10 @@
     self.allowedHolidaysStringsArray = [NSArray arrayWithObjects:@"&allowedHoliday[]=holiday^holiday-christmas", @"&allowedholiday[]=holiday^holiday-summer", @"&allowedHoliday[]=holiday^holiday-thanksgiving", @"&allowedHoliday[]=holiday^holiday-new+year", @"&allowedHoliday[]=holiday^holiday-super-bowl", @"&allowedHoliday[]=holiday^holiday-halloween", @"&allowedHoliday[]=holiday^holiday-hanukkah", @"&allowedHoliday[]=holiday^holiday-4th+of+july", nil];
 }
 
-
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
+}
 -(void)viewDidAppear:(BOOL)animated
 {
 
@@ -398,6 +401,15 @@
     
 }
 
+-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    if (velocity.y > 0) {
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+    } else if (velocity.y < 0){
+        [self.navigationController setNavigationBarHidden:NO];
+    }
+}
+
 
 //-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 //{
@@ -442,9 +454,10 @@
 //}
 
 
-//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
-//
-//{
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+
+{
+    self.navigationController.hidesBarsOnSwipe = YES;
 
 //    if (self.lastContentOffsetY > scrollView.contentOffset.y) {
 //
@@ -463,6 +476,6 @@
 //
 //    }
 
-//}
+}
 
 @end
