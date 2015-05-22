@@ -12,6 +12,7 @@
 //remember no ; here
 #define kFoodiCornNavBarColor [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2]
 #define kFollowing @"     ✅Following     "
+#define kFollowing2 @"✅Following"
 #define kFollow    @"+Follow"
 #define kLightGray [UIColor groupTableViewBackgroundColor]
 

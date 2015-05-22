@@ -106,7 +106,7 @@
 
         cell.followButton.backgroundColor = kFoodiCornNavBarColor;
         [cell.followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [cell.followButton setTitle:kFollowing forState:UIControlStateNormal];
+        [cell.followButton setTitle:kFollowing2 forState:UIControlStateNormal];
         
     }
     cell.addFDFollowArray = self.addFDFollowArray;
