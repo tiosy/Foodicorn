@@ -28,8 +28,6 @@
 @property NSMutableArray *addFDFollowArray;
 @property NSMutableArray *removeFDFollowArray;
 @property NSArray *userData;
-
-
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
 
 
