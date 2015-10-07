@@ -176,7 +176,7 @@
         //
     }];
 
-    [FDPFUser logOut];
+    [FDPFUser logOut];//should be login
     //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     //    LoginSignUpViewController *loginVC= [storyboard instantiateViewControllerWithIdentifier:@"LoginSignUpVC"];
     //    [self.navigationController presentViewController:loginVC animated:YES completion:nil];
