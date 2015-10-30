@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -176,7 +176,7 @@
         <!--Justin View Controller-->
         <scene sceneID="T9d-Z2-lIf">
             <objects>
-                <viewController storyboardIdentifier="Justin" id="YJg-gU-6t8" customClass="JustinViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Justin" automaticallyAdjustsScrollViewInsets="NO" id="YJg-gU-6t8" customClass="JustinViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3C2-Em-TcQ"/>
                         <viewControllerLayoutGuide type="bottom" id="dtT-Y7-7RY"/>
@@ -267,7 +267,7 @@
         <!--Item-->
         <scene sceneID="4MD-tV-5fu">
             <objects>
-                <navigationController storyboardIdentifier="SearchNavVC" automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="toT-yH-cek" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SearchNavVC" automaticallyAdjustsScrollViewInsets="NO" id="toT-yH-cek" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Ma5-iF-ajy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rRm-ty-EBO">

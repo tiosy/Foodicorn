@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property Yummly *yummly;
 
+@property NSMutableArray *thumbnailImages;
+
 
 @end
 
@@ -24,6 +26,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+
+    self.thumbnailImages = [NSMutableArray new];
+
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+
+
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:indicator];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    [indicator startAnimating];
     [Yummly recipeArrayFromDictionaryArray:self.urlText completeHandler:^(NSArray *array) {
         self.recipes = array;
 
@@ -32,9 +44,21 @@
             [self showAlert];
         }
 
+        for (Yummly *yummly in self.recipes) {
+            NSString *thumbnailString = yummly.thumbnailString;
+            NSURL *url = [NSURL URLWithString:thumbnailString];
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            UIImage *image = [UIImage imageWithData:data];
+
+            [self.thumbnailImages addObject:image];
+
+        }
+
         self.title = @"Search Results";
 
         NSLog(@"%@", self.recipes);
+
+        [indicator stopAnimating];
     }];
 
 }
@@ -60,9 +84,9 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"recipe"];
-    self.yummly = [self.recipes objectAtIndex:indexPath.row];
-    cell.textLabel.text = self.yummly.recipeName;
-    cell.detailTextLabel.text = self.yummly.sourceId;
+    Yummly *yummly = [self.recipes objectAtIndex:indexPath.row];
+    cell.textLabel.text = yummly.recipeName;
+    cell.detailTextLabel.text = yummly.sourceId;
     if (indexPath.row %2 == 0) {
         cell.backgroundColor = [UIColor whiteColor];
     } else
@@ -70,10 +94,7 @@
         cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
     }
 
-    NSString *thumnailImage = self.yummly.thumbnailString;
-    NSURL *url = [NSURL URLWithString:thumnailImage];
-    NSData *data = [[NSData alloc]initWithContentsOfURL:url];
-    cell.imageView.image = [UIImage imageWithData:data];
+    cell.imageView.image = self.thumbnailImages[indexPath.row];
     cell.imageView.frame = CGRectMake(self.view.frame.size.width - 50, self.view.frame.size.height - 50, 50, 50);
     cell.imageView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:2].CGColor;
     cell.imageView.layer.borderWidth = 1.0f;
@@ -97,5 +118,14 @@
     self.yummly = [self.recipes objectAtIndex:indexPath.row];
     detailVC.recipeID = self.yummly.recipeId;
 }
+
+//-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+//{
+//    if (velocity.y > 0) {
+//        [self.navigationController setNavigationBarHidden:YES animated:YES];
+//    } else if (velocity.y < 0){
+//        [self.navigationController setNavigationBarHidden:NO animated:YES];
+//    }
+//}
 @end
 

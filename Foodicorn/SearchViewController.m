@@ -383,6 +383,8 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
     JustinViewController *justinVC = segue.destinationViewController;
     self.urlText = [[self.stringsArray valueForKey:@"description"] componentsJoinedByString:@""];
     justinVC.urlText = self.urlText;
@@ -402,7 +404,7 @@
     if (velocity.y > 0) {
         [self.navigationController setNavigationBarHidden:YES animated:YES];
     } else if (velocity.y < 0){
-        [self.navigationController setNavigationBarHidden:NO];
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
 }
 

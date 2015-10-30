@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+
     self.title = self.name;
 
     self.activityIndicator.hidesWhenStopped = YES;
@@ -60,4 +61,5 @@
     UIActivityViewController *activityController = [[UIActivityViewController alloc]initWithActivityItems:sharingItems applicationActivities:nil];
     [self presentViewController:activityController animated:YES completion:nil];
 }
+
 @end

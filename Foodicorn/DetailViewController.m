@@ -35,7 +35,7 @@
 
     [Yummly detailDictionaryFromDictionary:self.recipeID completeHandler:^(Yummly *yummly) {
         self.yummly = yummly;
-        self.title = self.yummly.detailRecipeName;
+        self.title = self.yummly.recipeName;
         self.textView.text = self.yummly.detailIngredientsString;
         self.textView.layer.borderColor = [UIColor colorWithRed:87/255.0 green:215/255.0 blue:255/255.0 alpha:1].CGColor;
         self.textView.layer.borderWidth = 2.0f;
